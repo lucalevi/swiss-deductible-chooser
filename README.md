@@ -31,6 +31,6 @@ You’ll pay up to CHF 2,500 out-of-pocket, plus up to CHF 700 in co-insurance.
 - **Above ~CHF 2,000?** Opt for the **CHF 300 deductible**. Yes, premiums are higher, but you’ll only pay CHF 300 out-of-pocket before insurance kicks in, plus the CHF 700 co-insurance cap, keeping your total costs down when medical expenses soar.
 
 ## Why Only These Two?
-The math is clear: intermediate deductibles (CHF 500, 1,000, 1,500, or 2,000) result in higher total costs because their premium savings don’t offset the out-of-pocket expenses as effectively as the extremes. Check out the calculations and chart below to see how we arrived at this insight.
+The math is clear: intermediate deductibles (CHF 500, 1,000, 1,500, or 2,000) result in higher total costs because their premium savings don’t offset the out-of-pocket expenses as effectively as the extremes. Check out the calculations in the file `premium_chooser.ipynb` and chart above to see how we arrived at this insight.
 
 Ready to save? Know your health costs, pick CHF 300 or CHF 2,500, and keep more money in your pocket!
