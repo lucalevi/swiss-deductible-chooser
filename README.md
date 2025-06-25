@@ -40,6 +40,6 @@ If you want to choose with custom data, based on your person, the place you live
 
 For running the Jupyter Notebook you need Python installed on your machine. Else, you can go to [Google Colab](https://colab.research.google.com/), and choose this repo's URL from GitHub, i.e. `https://github.com/lucalevi/swiss-premium-chooser/`. Look the image below.
 ![image](https://github.com/user-attachments/assets/37720caa-28d9-4635-9fad-f1aa60821430)
-Once you click on the identified Jupyter Notebook, you should go to a URL like this `https://colab.research.google.com/github/lucalevi/swiss-premium-chooser/blob/main/premium_chooser.ipynb`
+Once you click on the identified Jupyter Notebook, you should go to a URL like this [https://colab.research.google.com/github/lucalevi/swiss-premium-chooser/blob/main/premium_chooser.ipynb](https://colab.research.google.com/github/lucalevi/swiss-premium-chooser/blob/main/premium_chooser.ipynb)
 Then, you can run the Jupyter Notebook directly from the browser not having to care about installing `pip` or anything else on your machine.
 
