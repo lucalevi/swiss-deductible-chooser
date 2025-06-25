@@ -34,3 +34,11 @@ You’ll pay up to CHF 2,500 out-of-pocket, plus up to CHF 700 in co-insurance.
 The math is clear: intermediate deductibles (CHF 500, 1,000, 1,500, or 2,000) result in higher total costs because their premium savings don’t offset the out-of-pocket expenses as effectively as the extremes. Check out the calculations in the file [premium_chooser.ipynb](https://github.com/lucalevi/swiss-premium-chooser/blob/main/premium_chooser.ipynb) and chart above to see how we arrived at this insight.
 
 Ready to save? Know your health costs, pick CHF 300 or CHF 2,500, and keep more money in your pocket!
+
+## Use cusotom data
+If you want to choose with custom data, based on your person, the place you live and other information based on your situation, feel free to run the Jupyter Notebook at [premium_chooser.ipynb](https://github.com/lucalevi/swiss-premium-chooser/blob/main/premium_chooser.ipynb) with your custom data. Follow the instructions contained in the notebook (the only change you have to make is providing the cheapest premiums for your situation.) 
+
+For running the Jupyter Notebook you need Python installed on your machine. Else, you can go to [Google Colab](https://colab.research.google.com/), and choose this repo's URL from GitHub, i.e. `https://github.com/lucalevi/swiss-premium-chooser/`. Look the image below.
+![image](https://github.com/user-attachments/assets/37720caa-28d9-4635-9fad-f1aa60821430)
+Then, you can run the Jupyter Notebook directly from the browser not having to care about installing `pip` or anything else on your machine.
+
