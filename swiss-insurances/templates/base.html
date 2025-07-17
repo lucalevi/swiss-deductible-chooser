@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="{{ lang }}">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Schweizer Krankenkassen-Rechner{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link
+        href="data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAD///8AAAD/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAERERERERERERERERERERERERERERERERERERAAAREREREREAABEREREREQAAERERERAAAAAAAREREAAAAAABEREQAAAAAAERERAAAAAAAREREREAABEREREREQAAERERERERAAAREREREREREREREREREREREREREREREREREREAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+        rel="icon" type="image/x-icon">
+    <meta name="description"
+        content="{% block description %}Entdecken Sie den Schweizer Krankenkassen-Rechner, um Franchisen zu vergleichen und Ihre Gesundheitskosten zu optimieren.{% endblock %}">
+    <meta name="keywords"
+        content="{% block keywords %}Schweizer Krankenkassen, Franchise-Rechner, Gesundheitskosten, Versicherungsvergleich, Krankenversicherung Schweiz{% endblock %}">
+</head>
+
+<body>
+    <nav class="navigation">
+        <a href="{{ url_for('root') }}">Home</a> |
+        <a href="{{ url_for('choose', lang=lang) }}">Tool</a>
+    </nav>
+    {% if not page_is_results %}
+    <div class="language-switcher">
+        <a href="{{ url_for('set_language', lang='en') }}">EN</a> |
+        <a href="{{ url_for('set_language', lang='de') }}">DE</a> |
+        <a href="{{ url_for('set_language', lang='fr') }}">FR</a> |
+        <a href="{{ url_for('set_language', lang='it') }}">IT</a>
+    </div>
+    {% endif %}
+    <div class="container">
+        {% block content %}{% endblock %}
+    </div>
+    {% if not page_is_results %}
+    <div class="language-switcher">
+        <a href="{{ url_for('set_language', lang='en') }}">EN</a> |
+        <a href="{{ url_for('set_language', lang='de') }}">DE</a> |
+        <a href="{{ url_for('set_language', lang='fr') }}">FR</a> |
+        <a href="{{ url_for('set_language', lang='it') }}">IT</a>
+    </div>
+    {% endif %}
+    <footer id="email"><a href="mailto:iacolettig.luca@gmail.com">Contact</a></footer>
+    {% block scripts %}{% endblock %}
+</body>
+
+</html>

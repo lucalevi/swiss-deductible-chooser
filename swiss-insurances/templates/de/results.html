@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}Berechnungsergebnisse – Schweizer Krankenkassen-Rechner{% endblock %}
+
+{% block description %}Erhalten Sie Ihre Berechnungsergebnisse mit dem Schweizer Krankenkassen-Rechner, um die beste
+Franchise zu finden und Ihre Gesundheitskosten zu optimieren.{% endblock %}
+
+{% block keywords %}Schweizer Krankenversicherung, Ergebnisse, Franchise-Rechner, Gesundheitskosten, Versicherung
+Schweiz{% endblock %}
+
+{% block content %}
+<h1>Berechnungsergebnisse</h1>
+<p>
+    Hier sehen Sie, welche Franchise für Sie am vorteilhaftesten ist!
+</p>
+<p>
+    Haben Sie Ihre <b>durchschnittlichen jährlichen Gesundheitskosten</b> berechnet? Wenn ja, können Sie anhand
+    des
+    folgenden <b>Break-even-Punkts</b> die für Sie optimalen Franchise auswählen.
+</p>
+<div class="results-container">
+    <p>Break-even-Punkt: ~<b>{{ results[0] }}</b> CHF jährliche Gesundheitskosten</p>
+    <p>Wenn Sie weniger als ~<b>{{ results[0] }}</b> CHF an jährlichen Gesundheitskosten haben, wählen Sie die
+        {{ results[1] }} CHF Franchise.
+    </p>
+    <p>Andernfalls, wenn Sie mehr als ~<b>{{ results[0] }}</b> CHF an jährlichen Gesundheitskosten haben, wählen
+        Sie die
+        {{ results[2] }} CHF Franchise.
+    </p>
+    <img src="/plot?premiums={{ premiums_str }}" alt="Vergleich der Versicherungskosten">
+</div>
+{% endblock %}

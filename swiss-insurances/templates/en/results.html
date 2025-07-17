@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block title %}Welcome to Swiss Health Insurance Calculator - Find Your Best Deductible{% endblock %}
+
+{% block description %}Discover the Swiss Health Insurance Calculator to compare deductibles (franchises) and optimize
+your health costs. Get started today with easy steps!{% endblock %}
+
+{% block keywords %}Swiss health insurance, deductible calculator, health costs, insurance comparison, Switzerland
+insurance{% endblock %}
+
+{% block content %}
+<h1>Calculation Results</h1>
+<p>
+    Here you can look which deductible benefits you most!
+</p>
+<p>
+    Have you calculated your <b>yearly average health expenses</b>? If so, the following <b>break-even point</b>
+    allows you to choose the best deductible for you.
+</p>
+<div class="results-container">
+    <p>Break-even point: ~<b>{{ results[0] }}</b> CHF yearly health costs</p>
+    <p>If you have less than ~<b>{{ results[0] }}</b> CHF of yearly health costs, choose the {{ results[1] }}
+        CHF
+        deductible.
+    </p>
+    <p>Otherwise, if you have more than ~<b>{{ results[0] }}</b> CHF of yearly health costs, choose the {{
+        results[2] }}
+        CHF
+        deductible.</p>
+    <img src="/plot?premiums={{ premiums_str }}" alt="Insurance Costs Comparison Chart">
+</div>
+</div>
+
+{% endblock %}

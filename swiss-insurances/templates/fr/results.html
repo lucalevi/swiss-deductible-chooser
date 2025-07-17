@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block title %}Bienvenue dans le Calculateur d’Assurance-Maladie Suisse – Trouvez votre meilleure franchise{% endblock
+%}
+
+{% block description %}Découvrez le calculateur d’assurance-maladie suisse pour comparer les franchises et optimiser vos
+coûts de santé. Commencez dès aujourd’hui en quelques étapes simples !{% endblock %}
+
+{% block keywords %}assurance-maladie suisse, calculateur de franchise, coûts de santé, comparaison d’assurances,
+assurance Suisse{% endblock %}
+
+{% block content %}
+<h1>Résultats du calcul</h1>
+<p>
+    Ici, vous pouvez voir quelle franchise vous est la plus avantageuse !
+</p>
+<p>
+    Avez-vous calculé le <b>montant moyen de vos dépenses de santé annuelles</b> ? Si oui, le <b>point
+        d'équilibre</b>
+    suivant
+    vous permet de choisir la franchise qui vous convient le mieux.
+</p>
+<div class="results-container">
+    <p>Point d’équilibre : ~<b>{{ results[0] }}</b> CHF de coûts de santé annuels</p>
+    <p>Si vous avez moins de ~<b>{{ results[0] }}</b> CHF de coûts de santé annuels, choisissez la franchise de
+        {{ results[1] }} CHF.
+    </p>
+    <p>Sinon, si vous avez plus de ~<b>{{ results[0] }}</b> CHF de coûts de santé annuels, choisissez la
+        franchise de
+        {{ results[2] }} CHF.
+    </p>
+    <img src="/plot?premiums={{ premiums_str }}" alt="Comparaison des coûts d’assurance">
+</div>
+{% endblock %}

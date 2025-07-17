@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% block title %}Welcome to Swiss Health Insurance Calculator - Find Your Best Deductible{% endblock %}
+
+{% block description %}Discover the Swiss Health Insurance Calculator to compare deductibles (franchises) and optimize
+your health costs. Get started today with easy steps!{% endblock %}
+
+{% block keywords %}Swiss health insurance, deductible calculator, health costs, insurance comparison, Switzerland
+insurance{% endblock %}
+
+{% block content %}
+<h1>Swiss Health Insurance Calculator</h1>
+<img id="hero-img" src="{{ url_for('static', filename='img/basel.jpg') }}" alt="The Mittlere Brücke in Basel">
+<p>
+    Input the premiums you found for each deductible (<b>300 CHF, 500 CHF, 1000 CHF, 1500 CHF,
+        2000 CHF, and 2500 CHF</b>) on the <a href="https://www.priminfo.admin.ch/" target="_blank">Swiss
+        Confederation
+        Premium
+        Calculator</a>.
+</p>
+<p>
+    <strong>Tip:</strong> the premium for the 300 CHF deductible is the highest, and the premiums costs decrease
+    with higher deductibles. The premium for the 2500 CHF deductible shall be the lowest one.
+    Make sure that your input your premiums in descending order.
+</p>
+<p>
+    Enter your monthly premium for each deductible option.
+</p>
+<p id="validation-warning" style="color: red; display: none;">Warning: Premiums must be in descending order (300
+    CHF > 500 CHF > 1000 CHF > 1500 CHF > 2000 CHF > 2500 CHF).</p>
+<p>
+<form method="post" action="{{ url_for('calculate', lang=lang) }}" id="premium-form">
+    <div class="form-group">
+        <label for="premium-300">Premium for 300 CHF deductible:</label>
+        <input type="number" step="0.01" name="premium[]" id="premium-300" placeholder="e.g. 463.40" min="100"
+            max="1000" required>
+    </div>
+
+    <div class="form-group">
+        <label for="premium-500">Premium for 500 CHF deductible:</label>
+        <input type="number" step="0.01" name="premium[]" id="premium-500" placeholder="e.g. 452.60" min="100"
+            max="1000" required>
+    </div>
+
+    <div class="form-group">
+        <label for="premium-1000">Premium for 1000 CHF deductible:</label>
+        <input type="number" step="0.01" name="premium[]" id="premium-1000" placeholder="e.g. 425.40" min="100"
+            max="1000" required>
+    </div>
+
+    <div class="form-group">
+        <label for="premium-1500">Premium for 1500 CHF deductible:</label>
+        <input type="number" step="0.01" name="premium[]" id="premium-1500" placeholder="e.g. 398.30" min="100"
+            max="1000" required>
+    </div>
+
+    <div class="form-group">
+        <label for="premium-2000">Premium for 2000 CHF deductible:</label>
+        <input type="number" step="0.01" name="premium[]" id="premium-2000" placeholder="e.g. 371.20" min="100"
+            max="1000" required>
+    </div>
+
+    <div class="form-group">
+        <label for="premium-2500">Premium for 2500 CHF deductible:</label>
+        <input type="number" step="0.01" name="premium[]" id="premium-2500" placeholder="e.g. 344.10" min="100"
+            max="1000" required>
+    </div>
+    <input type="submit" value="Calculate" id="submit-btn">
+</form>
+<p>
+    Click on "calculate" to see your results!
+</p>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='scripts.js') }}"></script>
+{% endblock %}

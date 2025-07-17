@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+
+{% block title %}Benvenuto nel Calcolatore dell’Assicurazione Malattia Svizzera – Trova la tua franchigia migliore{%
+endblock %}
+
+{% block description %}Scopri il calcolatore dell’assicurazione malattia svizzera per confrontare le franchigie e
+ottimizzare i tuoi costi sanitari. Inizia oggi con pochi semplici passaggi!{% endblock %}
+
+{% block keywords %}assicurazione malattia svizzera, calcolatore franchigia, costi sanitari, confronto assicurazioni,
+assicurazione
+Svizzera{% endblock %}
+
+{% block content %}
+<h1>Calcolatore Cassa Malati Svizzera</h1>
+<img id="hero-img" src="{{ url_for('static', filename='img/basel.jpg') }}" alt="Il Mittlere Brücke a Basilea">
+<p>
+    Inserisci i premi che hai trovato per ciascuna franchigia (<b>300 CHF, 500 CHF, 1000 CHF, 1500 CHF,
+        2000 CHF e 2500 CHF</b>) sul
+    <a href="https://www.priminfo.admin.ch/it" target="_blank">calcolatore ufficiale dei premi della
+        Confederazione Svizzera</a>.
+</p>
+<p>
+    <strong>Suggerimento:</strong> il premio per la franchigia di 300 CHF è il più alto, mentre i costi dei
+    premi diminuiscono
+    con l'aumentare delle franchigie. Il premio per la franchigia di 2500 CHF sarà il più basso.
+    Assicurati di inserire i premi in ordine decrescente.
+</p>
+<p>
+    Inserisci il tuo premio mensile per ogni opzione di franchigia.
+</p>
+<p id="validation-warning" style="color: red; display: none;">Attenzione: i premi devono essere in ordine
+    decrescente (300 CHF > 500 CHF > 1000 CHF > 1500 CHF > 2000 CHF > 2500 CHF).</p>
+<form method="post" action="{{ url_for('calculate', lang=lang) }}" id="premium-form">
+    <div class="form-group">
+        <label for="premium-300">Premio per franchigia di 300 CHF:</label>
+        <input type="number" step="0.01" name="premium[]" id="premium-300" placeholder="es. 463.40" min="100" max="1000"
+            required>
+    </div>
+
+    <div class="form-group">
+        <label for="premium-500">Premio per franchigia di 500 CHF:</label>
+        <input type="number" step="0.01" name="premium[]" id="premium-500" placeholder="es. 452.60" min="100" max="1000"
+            required>
+    </div>
+
+    <div class="form-group">
+        <label for="premium-1000">Premio per franchigia di 1000 CHF:</label>
+        <input type="number" step="0.01" name="premium[]" id="premium-1000" placeholder="es. 425.40" min="100"
+            max="1000" required>
+    </div>
+
+    <div class="form-group">
+        <label for="premium-1500">Premio per franchigia di 1500 CHF:</label>
+        <input type="number" step="0.01" name="premium[]" id="premium-1500" placeholder="es. 398.30" min="100"
+            max="1000" required>
+    </div>
+
+    <div class="form-group">
+        <label for="premium-2000">Premio per franchigia di 2000 CHF:</label>
+        <input type="number" step="0.01" name="premium[]" id="premium-2000" placeholder="es. 371.20" min="100"
+            max="1000" required>
+    </div>
+
+    <div class="form-group">
+        <label for="premium-2500">Premio per franchigia di 2500 CHF:</label>
+        <input type="number" step="0.01" name="premium[]" id="premium-2500" placeholder="es. 344.10" min="100"
+            max="1000" required>
+    </div>
+    <input type="submit" value="Calcola" id="submit-btn">
+</form>
+<p>
+    Clicca su "Calcola" per vedere i tuoi risultati!
+</p>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='scripts.js') }}"></script>
+{% endblock %}

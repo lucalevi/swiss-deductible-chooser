@@ -1,0 +1,110 @@
+{% extends "base.html" %}
+
+{% block title %}Bienvenue sur le Calculateur d’Assurance-Maladie Suisse – Trouvez votre meilleure franchise{% endblock
+%}
+
+{% block description %}Découvrez le Calculateur d’Assurance-Maladie Suisse pour comparer les franchises et optimiser vos
+coûts de santé. Commencez dès aujourd’hui en quelques étapes simples !{% endblock %}
+
+{% block keywords %}assurance-maladie suisse, calculateur de franchise, coûts de santé, comparaison assurance, assurance
+suisse{% endblock %}
+
+{% block content %}
+<h1>Bienvenue sur le Calculateur d’Assurance-Maladie Suisse</h1>
+
+<p>
+    Vous cherchez le meilleur moyen d’économiser sur votre assurance-maladie en Suisse ? Cet outil pratique vous
+    aide à trouver la <b>franchise la plus avantageuse</b> pour les adultes, en fonction de vos primes
+    mensuelles et de vos dépenses de santé annuelles.
+    Que vous viviez déjà en Suisse ou que vous prévoyiez de vous y installer, ce calculateur est votre guide
+    pour
+    faire des choix financiers plus intelligents !
+</p>
+
+<img id="hero-img" src="{{ url_for('static', filename='img/matterhorn.jpg') }}"
+    alt="Le Cervin, célèbre montagne suisse">
+
+<img src="{{ url_for('static', filename='img/info-icn.png') }}" id="icn">
+
+<p>
+    <b>Comment utiliser ce Calculateur d’Assurance-Maladie Suisse :</b>
+    Commencez par visiter le <a href="https://www.priminfo.admin.ch/fr" target="_blank">calculateur officiel des
+        primes de la Confédération</a> (disponible en allemand, français et italien).
+</p>
+
+<p>
+    Suivez ces étapes simples :
+<ul>
+    <li>Indiquez votre <b>code postal ou le nom de votre ville</b> dans le formulaire.</li>
+    <li>Saisissez votre <b>année de naissance</b> dans le champ prévu.</li>
+    <li>Décidez si vous avez besoin d’une <b>assurance-accidents</b> (si vous travaillez plus de 8 heures par
+        semaine, vous n’en avez pas besoin).</li>
+    <li>Choisissez une <b>franchise hypothétique</b> pour commencer.</li>
+    <li>Choisissez parmi les <b>modèles d'assurance</b> tels que « Standard », « Médecin de famille », « HMO »
+        ou «
+        Autres modèles» en cochant les
+        cases correspondantes en bas de la page.</li>
+</ul>
+</p>
+
+<p>
+    Faites ensuite défiler la page et cliquez sur <b>« calculer »</b>. Une fois la nouvelle page chargée,
+    sélectionnez l’onglet <b>« Comparaison des franchises »</b>. Cliquez sur le chiffre en surbrillance
+    <b>« 300 »</b> pour trier les primes de la moins chère à la plus chère.
+</p>
+
+<p>
+    Vous verrez alors <b>six primes différentes</b> — les options les plus avantageuses dans votre région.
+    Gardez cette page ouverte, car vous aurez besoin de ces primes à l’étape suivante !
+</p>
+
+<p>
+    Prêt à continuer ? Cliquez sur le bouton ci-dessous pour saisir vos primes.
+</p>
+
+<a href="{{ url_for('choose', lang=lang) }}" class="btn">Commencer</a>
+
+<p>
+    Sur la page suivante, saisissez les primes trouvées pour chaque franchise (<b>300 CHF, 500 CHF, 1000 CHF,
+        1500 CHF, 2000 CHF et 2500 CHF</b>). Voici comment faire :
+<ul>
+    <li>Indiquez votre prime mensuelle pour chaque option de franchise.</li>
+    <li>Cliquez sur <b>« Calculer »</b> pour voir vos résultats.</li>
+    <li>Consultez le <b>graphique</b> pour comprendre l’évolution des coûts selon vos dépenses de santé.</li>
+</ul>
+</p>
+
+<p>
+    <strong>Info :</strong> dès que vous connaissez vos <b>dépenses annuelles moyennes de santé</b>, vous pouvez
+    choisir la franchise qui vous fait économiser le plus.
+</p>
+
+<p>
+    <b>Comment calculer vos dépenses annuelles moyennes de santé ?</b>
+    Rassemblez toutes vos factures médicales des <b>3 dernières années</b> (consultations médicales,
+    médicaments, séjours à l’hôpital — mais <b>pas</b> les primes d’assurance). Additionnez-les puis divisez le
+    total par <b>3</b>. Ce chiffre vous aidera à choisir la meilleure franchise !
+</p>
+
+<p>
+    Avec ces informations, vous pouvez prendre une décision éclairée concernant votre assurance-maladie.
+    Découvrez plus de détails en cliquant sur le bouton ci-dessous.
+</p>
+
+<a href="{{ url_for('choose', lang=lang) }}" class="btn">Commencer</a>
+
+<img src="{{ url_for('static', filename='img/attention-icn.png') }}" id="icn">
+
+<p>
+    <b>Remarque importante :</b> cet outil se base sur les règles suisses, y compris la
+    <b>participation de 10 % aux coûts, plafonnée à 700 CHF par an</b> pour les adultes, afin de vous fournir
+    des
+    conseils fiables.
+    Cet outil ne prend pas en compte toutes les possibilités d'assurance, mais fournit simplement un guide de
+    référence pour
+    choisir votre franchise de manière raisonnable. Vérifiez attentivement vos besoins avant de choisir une
+    franchise !
+</p>
+
+<img id="bottom-img" src="{{ url_for('static', filename='img/mnt-flag.png') }}" alt="Drapeau de la Suisse">
+{% endblock %}

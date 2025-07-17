@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}Benvenuti nel Calcolatore dell’Assicurazione Malattia Svizzera – Trova la tua franchigia migliore{%
+endblock %}
+
+{% block description %}Scopri il calcolatore dell’assicurazione malattia svizzera per confrontare le franchigie e
+ottimizzare i tuoi costi sanitari. Inizia oggi con pochi semplici passaggi!{% endblock %}
+
+{% block keywords %}assicurazione malattia svizzera, calcolatore franchigia, costi sanitari, confronto assicurazioni,
+assicurazione Svizzera{% endblock %}
+
+{% block content %}
+<h1>Risultati del calcolo</h1>
+<p>
+    Qui puoi vedere quale franchigia è la più vantaggiosa per te!
+</p>
+<p>
+    Hai calcolato la tua <b>spesa sanitaria media annuale</b>? Se sì, il seguente <b>break-even point</b> ti
+    consente
+    di scegliere la franchigia più adatta alle tue esigenze.
+</p>
+<div class="results-container">
+    <p>Break-even point: ~<b>{{ results[0] }}</b> CHF di costi sanitari annuali</p>
+    <p>Se hai meno di ~<b>{{ results[0] }}</b> CHF di costi sanitari annuali, scegli la franchigia di
+        {{ results[1] }} CHF.
+    </p>
+    <p>Altrimenti, se hai più di ~<b>{{ results[0] }}</b> CHF di costi sanitari annuali, scegli la franchigia di
+        {{ results[2] }} CHF.
+    </p>
+    <img src="/plot?premiums={{ premiums_str }}" alt="Confronto dei costi dell’assicurazione">
+</div>
+{% endblock %}

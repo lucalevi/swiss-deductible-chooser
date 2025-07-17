@@ -1,0 +1,108 @@
+{% extends "base.html" %}
+
+{% block title %}Benvenuto sul Calcolatore Cassa Malati Svizzera – Trova la franchigia migliore per te{% endblock %}
+
+{% block description %}Scopri il Calcolatore Cassa Malati Svizzera per confrontare le franchigie e ottimizzare i tuoi
+costi sanitari. Inizia oggi con pochi semplici passaggi!{% endblock %}
+
+{% block keywords %}cassa malati Svizzera, calcolatore franchigia, costi sanitari, confronto assicurazione,
+assicurazione Svizzera{% endblock %}
+
+{% block content %}
+<h1>Benvenuto sul Calcolatore Cassa Malati Svizzera</h1>
+
+<p>
+    Cerchi il modo migliore per risparmiare sulla cassa malati in Svizzera?
+    Questo pratico strumento ti aiuta a trovare la <b>franchigia più conveniente</b> per adulti, in base ai tuoi
+    premi mensili e alle tue spese sanitarie annuali.
+    Che tu viva già in Svizzera o che tu stia per trasferirti, questo calcolatore è la tua guida per scelte
+    finanziarie più intelligenti!
+</p>
+
+<img id="hero-img" src="{{ url_for('static', filename='img/matterhorn.jpg') }}"
+    alt="Il Cervino, celebre montagna svizzera">
+
+<img src="{{ url_for('static', filename='img/info-icn.png') }}" id="icn">
+
+<p>
+    <b>Come usare questo Calcolatore Cassa Malati Svizzera:</b>
+    Inizia visitando il <a href="https://www.priminfo.admin.ch/it" target="_blank">calcolatore ufficiale dei
+        premi
+        della Confederazione</a> (disponibile in tedesco, francese e italiano).
+</p>
+
+<p>
+    Segui questi semplici passaggi:
+<ul>
+    <li>Inserisci il tuo <b>CAP o il nome della città</b> nel modulo.</li>
+    <li>Indica il tuo <b>anno di nascita</b> nel campo richiesto.</li>
+    <li>Decidi se hai bisogno dell’<b>assicurazione contro gli infortuni</b> (se lavori più di 8 ore a
+        settimana,
+        non ti serve).</li>
+    <li>Scegli una <b>franchigia ipotetica</b> per iniziare.</li>
+    <li>Scegli tra <b>modelli assicurativi</b> come “Standard”, “medico di famiglia”, “HMO” o “altri modelli”
+        selezionando le
+        caselle di controllo relative in basso.</li>
+</ul>
+</p>
+
+<p>
+    Poi scorri verso il basso e clicca su <b>“calcola”</b>.
+    Una volta caricata la nuova pagina, seleziona la scheda <b>“Confronto delle franchigie”</b>.
+    Clicca sul numero evidenziato <b>“300”</b> per ordinare i premi dal più basso al più alto.
+</p>
+
+<p>
+    Vedrai <b>sei premi diversi</b> — le opzioni più economiche nella tua zona.
+    Tieni aperta questa pagina, perché ti serviranno questi premi nel prossimo passaggio!
+</p>
+
+<p>
+    Pronto a continuare? Clicca sul pulsante qui sotto per inserire i tuoi premi.
+</p>
+
+<a href="{{ url_for('choose', lang=lang) }}" class="btn">Inizia</a>
+
+<p>
+    Nella pagina successiva inserisci i premi trovati per ogni franchigia (<b>300 CHF, 500 CHF, 1000 CHF,
+        1500 CHF, 2000 CHF e 2500 CHF</b>). Ecco come fare:
+<ul>
+    <li>Inserisci il premio mensile per ogni opzione di franchigia.</li>
+    <li>Clicca su <b>“Calcola”</b> per vedere i risultati.</li>
+    <li>Consulta il <b>grafico</b> per capire come variano i costi in base alle tue spese sanitarie.</li>
+</ul>
+</p>
+
+<p>
+    <strong>Info:</strong> quando conosci la tua <b>spesa sanitaria media annuale</b>, puoi scegliere la
+    franchigia che ti fa risparmiare di più.
+</p>
+
+<p>
+    <b>Come calcolare la tua spesa sanitaria media annuale?</b>
+    Raccogli tutte le fatture mediche degli <b>ultimi 3 anni</b> (visite mediche, medicinali, ricoveri
+    ospedalieri — ma <b>non</b> i premi della cassa malati).
+    Somma tutto e dividi per <b>3</b>. Questo numero ti aiuterà a scegliere la franchigia migliore!
+</p>
+
+<p>
+    Con queste informazioni puoi prendere una decisione consapevole sulla tua cassa malati.
+    Scopri maggiori dettagli cliccando sul pulsante qui sotto.
+</p>
+
+<a href="{{ url_for('choose', lang=lang) }}" class="btn">Inizia</a>
+
+<img src="{{ url_for('static', filename='img/attention-icn.png') }}" id="icn">
+
+<p>
+    <b>Nota importante:</b> questo strumento utilizza le regole svizzere, compreso il
+    <b>10 % di partecipazione ai costi, con un tetto massimo di 700 CHF all’anno</b> per gli adulti, per darti
+    consigli affidabili.
+    Questo strumento non tiene conto di tutte le possibilità assicurative, ma fornisce solo una guida di
+    riferimento per
+    scegliere la franchigia in modo ragionevole. Verificate attentamente le vostre esigenze prima di scegliere
+    una franchigia!
+</p>
+
+<img id="bottom-img" src="{{ url_for('static', filename='img/mnt-flag.png') }}" alt="Bandiera della Svizzera">
+{% endblock %}
