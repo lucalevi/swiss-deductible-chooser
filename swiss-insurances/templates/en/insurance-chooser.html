@@ -8,26 +8,31 @@ your health costs. Get started today with easy steps!{% endblock %}
 insurance{% endblock %}
 
 {% block content %}
-<h1>Swiss Health Insurance Calculator</h1>
+<h1>Swiss Health Insurance Deductible Calculator</h1>
 <p>
-    Calculate your best deductible. Insert the best premiums for each deductible below, and find out which deductible
-    you would better choose! Don't forget to know your average yearly health expenses for optimising your total costs!
+    Calculate now your best deductible. Insert the best premiums for each deductible option below, and find out which
+    deductible
+    you would better choose!
+    <b>Don't forget to know your average yearly health expenses</b> for optimising your total costs!
 </p>
 <img id="hero-img" src="{{ url_for('static', filename='img/basel.jpg') }}" alt="The Mittlere Brücke in Basel">
 <p>
-    Input the premiums you found for each deductible (<b>300 CHF, 500 CHF, 1000 CHF, 1500 CHF,
-        2000 CHF, and 2500 CHF</b>) on the <a href="https://www.priminfo.admin.ch/" target="_blank">Swiss
+    Now input the premiums you found on the <a href="https://www.priminfo.admin.ch/" target="_blank">Swiss
         Confederation
         Premium
-        Calculator</a>.
+        Calculator</a> for each deductible (<b>300 CHF, 500 CHF, 1000 CHF, 1500 CHF,
+        2000 CHF, and 2500 CHF</b>).
+<ul>
+    <li>Enter your monthly premium for each deductible option in the form below.</li>
+    <li>Click on <b>"Calculate"</b> to see your results.</li>
+    <li>Check the <b> calculated chart</b> to understand how costs change with your health expenses.</li>
+</ul>
+<strong>Tip:</strong> the premium for the 300 CHF deductible is the highest, and the premiums costs decrease
+with higher deductibles. The premium for the 2500 CHF deductible shall be the lowest one.
+<b>Make sure that your input your premiums in descending order.</b>
 </p>
 <p>
-    <strong>Tip:</strong> the premium for the 300 CHF deductible is the highest, and the premiums costs decrease
-    with higher deductibles. The premium for the 2500 CHF deductible shall be the lowest one.
-    Make sure that your input your premiums in descending order.
-</p>
-<p>
-    Enter your monthly premium for each deductible option.
+    Enter here below the monthly premiums for each deductible option.
 </p>
 <p id="validation-warning" style="color: red; display: none;">Warning: Premiums must be in descending order (300
     CHF > 500 CHF > 1000 CHF > 1500 CHF > 2000 CHF > 2500 CHF).</p>

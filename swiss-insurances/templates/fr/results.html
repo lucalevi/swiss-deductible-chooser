@@ -1,37 +1,48 @@
 {% extends "base.html" %}
 
-{% block title %}Bienvenue dans le Calculateur d’Assurance-Maladie Suisse – Trouvez votre meilleure franchise{% endblock
+{% block title %}Bienvenue sur le Calculateur Suisse d’Assurance Maladie – Trouvez votre meilleure franchise{% endblock
 %}
 
-{% block description %}Découvrez le calculateur d’assurance-maladie suisse pour comparer les franchises et optimiser vos
-coûts de santé. Commencez dès aujourd’hui en quelques étapes simples !{% endblock %}
+{% block description %}Découvrez le Calculateur Suisse d’Assurance Maladie pour comparer les franchises et optimiser vos
+coûts de santé. Commencez dès aujourd’hui en quelques étapes simples !{% endblock %}
 
-{% block keywords %}assurance-maladie suisse, calculateur de franchise, coûts de santé, comparaison d’assurances,
-assurance Suisse{% endblock %}
+{% block keywords %}assurance maladie suisse, calculateur de franchise, coûts de santé, comparaison assurance, assurance
+Suisse{% endblock %}
 
 {% block content %}
 <h1>Résultats du calcul</h1>
 <p>
-    Ici, vous pouvez voir quelle franchise vous est la plus avantageuse !
+    Voici quelle franchise vous avantage le plus !
 </p>
 <p>
-    Avez-vous calculé le <b>montant moyen de vos dépenses de santé annuelles</b> ? Si oui, le <b>point
-        d'équilibre</b>
-    suivant
-    vous permet de choisir la franchise qui vous convient le mieux.
+    Avez-vous calculé vos <b>dépenses moyennes de santé annuelles</b> ?
+    Si oui, le <b>point d’équilibre</b> ci-dessous vous permet de choisir la franchise la plus adaptée.
+</p>
+<p>
+    Le point d’équilibre est le niveau de dépenses annuelles moyennes de santé qui détermine
+    quelle franchise choisir pour économiser le plus d’argent !
 </p>
 <div class="results-container">
-    <p>Point d’équilibre : ~<b>{{ results[0] }}</b> CHF de coûts de santé annuels</p>
-    <p>Si vous avez moins de ~<b>{{ results[0] }}</b> CHF de coûts de santé annuels, choisissez la franchise de
+    <p>Point d’équilibre : ~<b>{{ results[0] }}</b> CHF de dépenses de santé annuelles</p>
+    <p>Si vous avez moins de ~<b>{{ results[0] }}</b> CHF de dépenses de santé annuelles, choisissez la franchise de
         {{ results[1] }} CHF.
     </p>
-    <p>Sinon, si vous avez plus de ~<b>{{ results[0] }}</b> CHF de coûts de santé annuels, choisissez la
-        franchise de
-        {{ results[2] }} CHF.
+    <p>Sinon, si vous avez plus de ~<b>{{ results[0] }}</b> CHF de dépenses de santé annuelles, choisissez la franchise
+        de {{ results[2] }} CHF.
     </p>
-    <div id="pinch-zoom">Zoomez sur le diagramme avec deux doigts pour l'agrandir !</div>
-    <img src="/plot?premiums={{ premiums_str }}" alt="Comparaison des coûts d’assurance">
-    <a href="/plot?premiums={{ premiums_str }}" download="Comparaison_franchises_assurance.png"
+    <div id="pinch-zoom">Pincez et zoomez sur le graphique pour l’agrandir !</div>
+    <img src="/plot?premiums={{ premiums_str }}" alt="Graphique comparatif des coûts d’assurance">
+    <a href="/plot?premiums={{ premiums_str }}" download="comparison_deductibles_insurances.png"
         class="download-btn">Télécharger le graphique</a>
 </div>
+<p>
+    Avec ces informations, vous pouvez prendre une décision éclairée pour votre assurance maladie !
+    Allez-vous maintenant choisir la franchise qui minimise vos coûts totaux ?
+</p>
+<p>
+    Vous voulez en savoir plus ? Découvrez les détails de notre algorithme Python en cliquant sur le bouton ci-dessous !
+</p>
+<a href="https://github.com/lucalevi/swiss-premium-chooser" class="btn" target="_blank">Voir l’algorithme</a>
+</div>
+
 {% endblock %}

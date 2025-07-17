@@ -1,96 +1,84 @@
 {% extends "base.html" %}
 
-{% block title %}Willkommen beim Schweizer Krankenkassen-Rechner – Finden Sie Ihre beste Franchise{% endblock %}
+{% block title %}Willkommen beim Schweizer Krankenversicherungs-Rechner – Finden Sie Ihre beste Franchise{% endblock %}
 
-{% block description %}Entdecken Sie den Schweizer Krankenkassen-Rechner, um Franchisen zu vergleichen und Ihre
-Gesundheitskosten zu optimieren. Starten Sie jetzt mit wenigen einfachen Schritten!{% endblock %}
+{% block description %}Entdecken Sie den Schweizer Krankenversicherungs-Rechner, um Franchisen zu vergleichen und Ihre
+Gesundheitskosten zu optimieren. Starten Sie noch heute mit wenigen einfachen Schritten!{% endblock %}
 
-{% block keywords %}Schweizer Krankenkasse, Franchise-Rechner, Gesundheitskosten, Krankenkassenvergleich,
-Krankenversicherung Schweiz{% endblock %}
+{% block keywords %}Schweizer Krankenversicherung, Franchise-Rechner, Gesundheitskosten, Versicherungsvergleich,
+Versicherung Schweiz{% endblock %}
 
 {% block content %}
-<h1>Willkommen beim Schweizer Krankenkassen-Franchise-Rechner</h1>
+<h1>Willkommen beim Schweizer Krankenversicherungs-Franchise-Rechner</h1>
 
 <p>
-    Suchen Sie nach der besten Möglichkeit, bei der Krankenkasse in der Schweiz zu sparen? Dieses praktische
-    Tool hilft Ihnen, die <b>kostengünstigste Franchise</b> für Erwachsene zu finden – basierend auf Ihren
-    monatlichen Prämien und jährlichen Gesundheitsausgaben.
-    Egal ob Sie in der Schweiz wohnen oder einen Umzug planen – dieser Rechner ist Ihr Leitfaden für kluge
-    finanzielle Entscheidungen!
+    Suchen Sie nach der besten Möglichkeit, bei der Krankenversicherung in der Schweiz zu sparen? Dieses praktische Tool
+    hilft Ihnen, die <b>kosteneffektivste Franchise</b> für Erwachsene zu finden – basierend auf Ihren monatlichen
+    Prämien und jährlichen Gesundheitsausgaben.
+    Egal, ob Sie in der Schweiz wohnen oder einen Umzug planen, dieser Rechner ist Ihr Wegweiser für klügere finanzielle
+    Entscheidungen!
 </p>
 
 <img id="hero-img" src="{{ url_for('static', filename='img/matterhorn.jpg') }}"
-    alt="Das Matterhorn, Berg in der Schweiz">
+    alt="Das Matterhorn, berühmter Berg in der Schweiz">
 
 <img src="{{ url_for('static', filename='img/info-icn.png') }}" id="icn">
 
 <p>
-    <b>So verwenden Sie diesen Schweizer Krankenkassen-Rechner:</b>
-    Beginnen Sie mit dem offiziellen <a href="https://www.priminfo.admin.ch/de" target="_blank">Prämienrechner des
-        Bundes</a> (verfügbar auf Deutsch, Französisch und Italienisch).
+    <b>So verwenden Sie diesen Schweizer Krankenversicherungs-Rechner:</b>
+    Klicken Sie zunächst auf den grünen Button „Prämienrechner“ unten.
+    Damit öffnen Sie den <b>offiziellen Prämienrechner der Schweizerischen Eidgenossenschaft</b>
+    (verfügbar in Deutsch, Französisch und Italienisch). Sie benötigen diese Informationen!
 </p>
 
+<div id="premium-calc">
+    <a href="https://www.priminfo.admin.ch/" target="_blank" class="btn">
+        <strong>Prämienrechner</strong></a>
+</div>
+
 <p>
-    Befolgen Sie diese einfachen Schritte:
+    Dort, im offiziellen Schweizer Prämienrechner, gehen Sie wie folgt vor:
+</p>
+
 <ul>
-    <li>Geben Sie Ihre <b>Postleitzahl oder den Namen Ihrer Stadt</b> ins Formular ein.</li>
+    <li>Geben Sie Ihre <b>Postleitzahl oder den Ortsnamen</b> in das Formular ein.</li>
     <li>Tragen Sie Ihr <b>Geburtsjahr</b> in das entsprechende Feld ein.</li>
     <li>Entscheiden Sie, ob Sie eine <b>Unfallversicherung</b> benötigen (wenn Sie mehr als 8 Stunden pro Woche
-        arbeiten, brauchen Sie sie nicht).</li>
-    <li>Wählen Sie eine <b>hypothetische Franchise</b>, um zu beginnen.</li>
-    <li>Wählen Sie zwischen <b>Versicherungsmodellen</b> wie „Standard“, „Hausarzt“, „HMO“ oder weitere Modelle,
-        indem
-        Sie
-        die
-        entsprechenden Kontrollkästchen unten aktivieren.</li>
+        arbeiten, nicht nötig).</li>
+    <li>Wählen Sie eine <b>hypothetische Franchise</b>, um zu starten.</li>
+    <li>Wählen Sie unter <b>Versicherungsmodellen</b> wie „Standard“, „Hausarztmodell“, „HMO“ oder „andere“ die
+        entsprechenden Kästchen unten aus.</li>
 </ul>
-</p>
 
 <p>
-    Scrollen Sie dann nach unten und klicken Sie auf <b>„berechnen“</b>. Sobald die neue Seite geladen ist,
-    wählen Sie den Reiter <b>„Vergleich der Franchisen“</b>. Klicken Sie auf die hervorgehobene Zahl
-    <b>„300“</b>, um die Prämien von der günstigsten zur teuersten zu sortieren.
+    Scrollen Sie danach im offiziellen Schweizer Prämienrechner nach unten und klicken Sie auf <b>„berechnen“</b>.
+    Sobald die neue Seite geladen ist, wählen Sie den
+    <b>Reiter „Vergleich der Franchisen“</b>. Klicken Sie auf die hervorgehobene Zahl <b>„300“</b>,
+    um die Prämien von der günstigsten zur teuersten zu sortieren.
 </p>
 
 <p>
     Sie sehen nun <b>sechs verschiedene Prämien</b> – die günstigsten Optionen in Ihrer Region.
-    Lassen Sie diese Seite geöffnet, denn Sie benötigen die Prämien im nächsten Schritt!
+    Lassen Sie diese Seite geöffnet, da Sie die Prämien im nächsten Schritt benötigen!
+</p>
+
+<img src="{{ url_for('static', filename='img/info-icn.png') }}" id="icn">
+
+<p>
+    <strong>Nun:</strong> Sie müssen Ihre <b>durchschnittlichen jährlichen Gesundheitsausgaben</b> kennen.
+    Sobald Sie diese kennen, können Sie mit unserem Tool die Franchise wählen, die Ihnen am meisten spart!
 </p>
 
 <p>
-    Bereit für den nächsten Schritt? Klicken Sie auf den Button unten, um Ihre Prämien einzugeben.
-</p>
-
-<a href="{{ url_for('choose', lang=lang) }}" class="btn">Jetzt starten</a>
-
-<p>
-    Auf der nächsten Seite geben Sie die Prämien für jede Franchise ein (<b>300 CHF, 500 CHF, 1000 CHF, 1500
-        CHF,
-        2000 CHF und 2500 CHF</b>). Gehen Sie wie folgt vor:
-<ul>
-    <li>Tragen Sie Ihre monatliche Prämie für jede Franchise-Option ein.</li>
-    <li>Klicken Sie auf <b>„Berechnen“</b>, um Ihre Ergebnisse zu sehen.</li>
-    <li>Sehen Sie sich das <b>Diagramm</b> an, um zu verstehen, wie sich die Kosten bei unterschiedlichen
-        Gesundheitsausgaben verändern.</li>
-</ul>
+    <b>Wie berechnen Sie Ihre durchschnittlichen Gesundheitsausgaben?</b> Sammeln Sie alle Ihre Arztrechnungen der
+    <b>letzten 3 Jahre</b> (Arztbesuche, Medikamente, Spitalaufenthalte – aber <b>nicht</b> die Versicherungsprämien).
+    Addieren Sie alles und teilen Sie durch <b>3</b>, um Ihren Jahresdurchschnitt zu erhalten. Diese Zahl hilft Ihnen,
+    die beste Franchise zu wählen!
 </p>
 
 <p>
-    <strong>Info:</strong> Sobald Sie Ihre <b>jährlichen durchschnittlichen Gesundheitskosten</b> kennen, können
-    Sie die Franchise wählen, mit der Sie am meisten sparen.
-</p>
-
-<p>
-    <b>Wie berechnen Sie Ihre durchschnittlichen Gesundheitskosten?</b>
-    Sammeln Sie alle Ihre Arztrechnungen der <b>letzten 3 Jahre</b> (Arztbesuche, Medikamente,
-    Spitalaufenthalte – aber <b>ohne</b> Krankenkassenprämien). Addieren Sie diese und teilen Sie die Summe
-    durch
-    <b>3</b>, um Ihren Jahresdurchschnitt zu erhalten. Diese Zahl hilft Ihnen, die beste Franchise zu wählen!
-</p>
-
-<p>
-    Mit diesen Informationen können Sie eine fundierte Entscheidung zu Ihrer Krankenkasse treffen.
-    Entdecken Sie weitere Details, indem Sie auf den Button unten klicken.
+    Bereit, mit unserem Tool fortzufahren? Klicken Sie auf den Button unten, um Ihre Prämien einzugeben. Es ist
+    kostenlos!
 </p>
 
 <a href="{{ url_for('choose', lang=lang) }}" class="btn">Jetzt starten</a>
@@ -98,14 +86,12 @@ Krankenversicherung Schweiz{% endblock %}
 <img src="{{ url_for('static', filename='img/attention-icn.png') }}" id="icn">
 
 <p>
-    <b>Wichtiger Hinweis:</b> Dieses Tool berücksichtigt die schweizerischen Versicherungsregeln, inklusive der
-    <b>10%-Selbstbehalt mit einer Obergrenze von 700 CHF pro Jahr</b> für Erwachsene, um Ihnen
-    zuverlässige Empfehlungen zu geben.
-    Dieses Tool berücksichtigt nicht alle Versicherungsmöglichkeiten, sondern dient lediglich als
-    Orientierungshilfe für die
-    sinnvolle Wahl Ihrer Franchise. Prüfen Sie Ihre Bedürfnisse sorgfältig, bevor Sie sich für eine
-    Franchise entscheiden!
+    <b>Wichtiger Hinweis:</b> Dieses Tool berücksichtigt die Schweizer Versicherungsregeln, einschliesslich des
+    <b>10%igen Selbstbehalts mit einer Obergrenze von 700 CHF pro Jahr</b> für Erwachsene, um Ihnen präzise
+    Empfehlungen zu geben.
+    Dieses Tool berücksichtigt nicht alle Versicherungsmodelle, sondern bietet lediglich eine Orientierungshilfe, um
+    Ihre Franchise sinnvoll zu wählen. Prüfen Sie Ihre Bedürfnisse sorgfältig, bevor Sie eine Franchise wählen!
 </p>
 
-<img id="bottom-img" src="{{ url_for('static', filename='img/mnt-flag.png') }}" alt="Fahne der Schweiz">
+<img id="bottom-img" src="{{ url_for('static', filename='img/mnt-flag.png') }}" alt="Flagge der Schweiz">
 {% endblock %}

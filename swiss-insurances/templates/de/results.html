@@ -1,36 +1,49 @@
 {% extends "base.html" %}
 
-{% block title %}Berechnungsergebnisse – Schweizer Krankenkassen-Rechner{% endblock %}
+{% block title %}Willkommen beim Schweizer Krankenversicherungs-Rechner – Finden Sie Ihre beste Franchise{% endblock %}
 
-{% block description %}Erhalten Sie Ihre Berechnungsergebnisse mit dem Schweizer Krankenkassen-Rechner, um die beste
-Franchise zu finden und Ihre Gesundheitskosten zu optimieren.{% endblock %}
+{% block description %}Entdecken Sie den Schweizer Krankenversicherungs-Rechner, um Franchisen zu vergleichen und Ihre
+Gesundheitskosten zu optimieren. Starten Sie noch heute mit wenigen einfachen Schritten!{% endblock %}
 
-{% block keywords %}Schweizer Krankenversicherung, Ergebnisse, Franchise-Rechner, Gesundheitskosten, Versicherung
-Schweiz{% endblock %}
+{% block keywords %}Schweizer Krankenversicherung, Franchise-Rechner, Gesundheitskosten, Versicherungsvergleich,
+Versicherung Schweiz{% endblock %}
 
 {% block content %}
 <h1>Berechnungsergebnisse</h1>
 <p>
-    Hier sehen Sie, welche Franchise für Sie am vorteilhaftesten ist!
+    Hier können Sie sehen, welche Franchise für Sie am vorteilhaftesten ist!
 </p>
 <p>
-    Haben Sie Ihre <b>durchschnittlichen jährlichen Gesundheitskosten</b> berechnet? Wenn ja, können Sie anhand
-    des
-    folgenden <b>Break-even-Punkts</b> die für Sie optimalen Franchise auswählen.
+    Haben Sie Ihre <b>durchschnittlichen jährlichen Gesundheitsausgaben</b> berechnet?
+    Falls ja, hilft Ihnen der folgende <b>Break-even-Punkt</b>, die für Sie beste Franchise zu wählen.
+</p>
+<p>
+    Der Break-even-Punkt ist der Schwellenwert Ihrer durchschnittlichen jährlichen Gesundheitsausgaben, der bestimmt,
+    welche Franchise
+    Ihnen am meisten Geld spart!
 </p>
 <div class="results-container">
     <p>Break-even-Punkt: ~<b>{{ results[0] }}</b> CHF jährliche Gesundheitskosten</p>
-    <p>Wenn Sie weniger als ~<b>{{ results[0] }}</b> CHF an jährlichen Gesundheitskosten haben, wählen Sie die
-        {{ results[1] }} CHF Franchise.
+    <p>Wenn Sie weniger als ~<b>{{ results[0] }}</b> CHF jährliche Gesundheitskosten haben, wählen Sie die
+        {{ results[1] }}-CHF-Franchise.
     </p>
-    <p>Andernfalls, wenn Sie mehr als ~<b>{{ results[0] }}</b> CHF an jährlichen Gesundheitskosten haben, wählen
-        Sie die
-        {{ results[2] }} CHF Franchise.
+    <p>Wenn Sie hingegen mehr als ~<b>{{ results[0] }}</b> CHF jährliche Gesundheitskosten haben, wählen Sie die
+        {{ results[2] }}-CHF-Franchise.
     </p>
-    <div id="pinch-zoom">Ziehen Sie das Diagramm mit zwei Fingern auseinander, um es zu vergrössern!</div>
-    <img src="/plot?premiums={{ premiums_str }}" alt="Vergleich der Versicherungskosten">
-    <a href="/plot?premiums={{ premiums_str }}" download="versicherungs_franchisen_vergleich.png"
-        class="download-btn">Download
-        Diagramm</a>
+    <div id="pinch-zoom">Vergrössern Sie das Diagramm mit Pinch und Zoom, um es grösser zu sehen!</div>
+    <img src="/plot?premiums={{ premiums_str }}" alt="Vergleich der Versicherungskosten – Diagramm">
+    <a href="/plot?premiums={{ premiums_str }}" download="vergleich_franchisen_versicherungen.png"
+        class="download-btn">Diagramm herunterladen</a>
 </div>
+<p>
+    Mit diesen Informationen können Sie eine kluge Entscheidung zu Ihrer Krankenversicherung treffen!
+    Wählen Sie nun die beste Franchise, um Ihre Gesamtkosten zu minimieren?
+</p>
+<p>
+    Möchten Sie mehr erfahren? Sehen Sie sich die Details unseres ausgeklügelten Python-Algorithmus an, indem Sie auf
+    den untenstehenden Button klicken!
+</p>
+<a href="https://github.com/lucalevi/swiss-premium-chooser" class="btn" target="_blank">Zum Algorithmus</a>
+</div>
+
 {% endblock %}

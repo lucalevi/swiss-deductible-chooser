@@ -1,41 +1,41 @@
 {% extends "base.html" %}
-
-{% block title %}Benvenuto nel Calcolatore dell’Assicurazione Malattia Svizzera – Trova la tua franchigia migliore{%
+{% block title %}Benvenuto nel Calcolatore Svizzero dell’Assicurazione Malattia – Trova la tua migliore franchigia{%
 endblock %}
 
-{% block description %}Scopri il calcolatore dell’assicurazione malattia svizzera per confrontare le franchigie e
-ottimizzare i tuoi costi sanitari. Inizia oggi con pochi semplici passaggi!{% endblock %}
+{% block description %}Scopri il Calcolatore Svizzero dell’Assicurazione Malattia per confrontare le franchigie e
+ottimizzare i tuoi costi sanitari. Inizia oggi in pochi semplici passi!{% endblock %}
 
 {% block keywords %}assicurazione malattia svizzera, calcolatore franchigia, costi sanitari, confronto assicurazioni,
-assicurazione
-Svizzera{% endblock %}
+assicurazione Svizzera{% endblock %}
 
 {% block content %}
-<h1>Calcolatore Cassa Malati Svizzera</h1>
+<h1>Calcolatore Svizzero della Franchigia dell’Assicurazione Malattia</h1>
 <p>
-    Calcola la tua franchigia migliore. Inserisci qui sotto i premi migliori per ciascuna franchigia e scopri quale
-    franchigia
-    è meglio scegliere! Non dimenticare di conoscere la tua spesa sanitaria media annuale per ottimizzare i costi
-    totali!
+    Calcola ora la tua franchigia ideale. Inserisci qui sotto i premi migliori per ogni opzione di franchigia e scopri
+    quale
+    franchigia ti conviene di più!
+    <b>Non dimenticare di conoscere le tue spese sanitarie medie annue</b> per ottimizzare i tuoi costi totali!
 </p>
 <img id="hero-img" src="{{ url_for('static', filename='img/basel.jpg') }}" alt="Il Mittlere Brücke a Basilea">
 <p>
-    Inserisci i premi che hai trovato per ciascuna franchigia (<b>300 CHF, 500 CHF, 1000 CHF, 1500 CHF,
-        2000 CHF e 2500 CHF</b>) sul
-    <a href="https://www.priminfo.admin.ch/it" target="_blank">calcolatore ufficiale dei premi della
-        Confederazione Svizzera</a>.
+    Inserisci ora i premi che hai trovato sul <a href="https://www.priminfo.admin.ch/" target="_blank">Calcolatore
+        Ufficiale dei Premi della Confederazione Svizzera</a> per ogni franchigia (<b>300 CHF, 500 CHF, 1000 CHF, 1500
+        CHF, 2000 CHF e 2500 CHF</b>).
+<ul>
+    <li>Scrivi nel modulo qui sotto il tuo premio mensile per ogni opzione di franchigia.</li>
+    <li>Clicca su <b>“Calcola”</b> per vedere i risultati.</li>
+    <li>Controlla il <b>grafico calcolato</b> per capire come cambiano i costi in base alle tue spese sanitarie.</li>
+</ul>
+<strong>Consiglio:</strong> il premio per la franchigia di 300 CHF è il più alto e i premi diminuiscono con franchigie
+più alte.
+<b>Assicurati di inserire i premi in ordine decrescente.</b>
 </p>
 <p>
-    <strong>Suggerimento:</strong> il premio per la franchigia di 300 CHF è il più alto, mentre i costi dei
-    premi diminuiscono
-    con l'aumentare delle franchigie. Il premio per la franchigia di 2500 CHF sarà il più basso.
-    Assicurati di inserire i premi in ordine decrescente.
+    Inserisci qui sotto i premi mensili per ogni opzione di franchigia.
 </p>
+<p id="validation-warning" style="color: red; display: none;">Attenzione: i premi devono essere in ordine decrescente
+    (300 CHF > 500 CHF > 1000 CHF > 1500 CHF > 2000 CHF > 2500 CHF).</p>
 <p>
-    Inserisci il tuo premio mensile per ogni opzione di franchigia.
-</p>
-<p id="validation-warning" style="color: red; display: none;">Attenzione: i premi devono essere in ordine
-    decrescente (300 CHF > 500 CHF > 1000 CHF > 1500 CHF > 2000 CHF > 2500 CHF).</p>
 <form method="post" action="{{ url_for('calculate', lang=lang) }}" id="premium-form">
     <div class="form-group">
         <label for="premium-300">Premio per franchigia di 300 CHF:</label>
@@ -75,7 +75,7 @@ Svizzera{% endblock %}
     <input type="submit" value="Calcola" id="submit-btn">
 </form>
 <p>
-    Clicca su "Calcola" per vedere i tuoi risultati!
+    Clicca su “Calcola” per vedere i tuoi risultati!
 </p>
 {% endblock %}
 
