@@ -27,6 +27,10 @@ assicurazione Svizzera{% endblock %}
     <p>Altrimenti, se hai più di ~<b>{{ results[0] }}</b> CHF di costi sanitari annuali, scegli la franchigia di
         {{ results[2] }} CHF.
     </p>
+    <div id="pinch-zoom">Ingrandisci il diagramma con due dita per vederlo più grande!</div>
     <img src="/plot?premiums={{ premiums_str }}" alt="Confronto dei costi dell’assicurazione">
+    <a href="/plot?premiums={{ premiums_str }}" download="paragone_franchige_assicurazione.png"
+        class="download-btn">Scarica il
+        grafico</a>
 </div>
 {% endblock %}

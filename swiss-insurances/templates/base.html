@@ -17,8 +17,10 @@
 
 <body>
     <nav class="navigation">
-        <a href="{{ url_for('root') }}">Home</a> |
-        <a href="{{ url_for('choose', lang=lang) }}">Tool</a>
+        <div>
+            <a href="{{ url_for('root') }}">Home</a> |
+            <a href="{{ url_for('choose', lang=lang) }}">Tool</a>
+        </div>
     </nav>
     {% if not page_is_results %}
     <div class="language-switcher">

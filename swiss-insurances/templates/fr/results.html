@@ -29,6 +29,9 @@ assurance Suisse{% endblock %}
         franchise de
         {{ results[2] }} CHF.
     </p>
+    <div id="pinch-zoom">Zoomez sur le diagramme avec deux doigts pour l'agrandir !</div>
     <img src="/plot?premiums={{ premiums_str }}" alt="Comparaison des coûts d’assurance">
+    <a href="/plot?premiums={{ premiums_str }}" download="Comparaison_franchises_assurance.png"
+        class="download-btn">Télécharger le graphique</a>
 </div>
 {% endblock %}

@@ -27,7 +27,11 @@ insurance{% endblock %}
         results[2] }}
         CHF
         deductible.</p>
+    <div id="pinch-zoom">Pinch and zoom the diagram to see it larger!</div>
     <img src="/plot?premiums={{ premiums_str }}" alt="Insurance Costs Comparison Chart">
+    <a href="/plot?premiums={{ premiums_str }}" download="comparison_deductibles_insurances.png"
+        class="download-btn">Download
+        Chart</a>
 </div>
 </div>
 

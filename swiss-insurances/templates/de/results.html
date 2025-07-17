@@ -27,6 +27,10 @@ Schweiz{% endblock %}
         Sie die
         {{ results[2] }} CHF Franchise.
     </p>
+    <div id="pinch-zoom">Ziehen Sie das Diagramm mit zwei Fingern auseinander, um es zu vergrössern!</div>
     <img src="/plot?premiums={{ premiums_str }}" alt="Vergleich der Versicherungskosten">
+    <a href="/plot?premiums={{ premiums_str }}" download="versicherungs_franchisen_vergleich.png"
+        class="download-btn">Download
+        Diagramm</a>
 </div>
 {% endblock %}
