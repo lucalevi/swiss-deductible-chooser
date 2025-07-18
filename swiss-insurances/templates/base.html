@@ -16,26 +16,38 @@
 </head>
 
 <body>
-    <nav class="navigation">
-        <div>
-            <a href="{{ url_for('root') }}">Home</a> |
-            <a href="{{ url_for('choose', lang=lang) }}">Tool</a>
+    <header class="navbar">
+        <div class="navbar-brand">
+            <a href="{{ url_for('root') }}"> <img src="{{ url_for('static', filename='img/ch-flag.webp') }}">
+                Insurek</a>
         </div>
-    </nav>
-    {% if not page_is_results %}
-    <div class="language-switcher">
-        <a href="{{ url_for('set_language', lang='en') }}">EN</a> |
-        <a href="{{ url_for('set_language', lang='de') }}">DE</a> |
-        <a href="{{ url_for('set_language', lang='fr') }}">FR</a> |
-        <a href="{{ url_for('set_language', lang='it') }}">IT</a>
-    </div>
-    {% endif %}
+        <button class="navbar-toggle" aria-label="Toggle navigation">
+            <span class="navbar-toggle-icon"></span>
+        </button>
+        <nav class="navbar-menu">
+            <ul>
+                <li><a href="{{ url_for('root') }}"
+                        class="{% if request.path == '/' + lang + '/' %}active{% endif %}">Home</a></li>
+                <li><a href="{{ url_for('choose', lang=lang) }}"
+                        class="{% if 'choose' in request.path %}active{% endif %}">Tool</a></li>
+                <li><a href="mailto:iacolettig.luca@gmail.com">Contact</a></li>
+            </ul>
+            <div class="language-switcher">
+                {% for lang_code in ['en', 'de', 'fr', 'it'] %}
+                <a href="{{ url_for('set_language', lang=lang_code) }}"
+                    class="{% if lang_code == lang %}active{% endif %}" {% if lang_code==lang %}aria-disabled="true" {%
+                    endif %}>{{ lang_code | upper }}</a>
+                {% if not loop.last %} {% endif %}
+                {% endfor %}
+            </div>
+        </nav>
+    </header>
     <div class="container">
-        {% block content %}
-        {% endblock %}
+        {% block content %}{% endblock %}
     </div>
-    <footer id="email"><a href="mailto:iacolettig.luca@gmail.com">Contact</a></footer>
-    {% block scripts %}{% endblock %}
+    {% block scripts %}
+    <script src="{{ url_for('static', filename='navbar.js') }}"></script>
+    {% endblock %}
 </body>
 
 </html>

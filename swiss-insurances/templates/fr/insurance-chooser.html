@@ -82,5 +82,6 @@ La prime pour la franchise de 2500 CHF doit être la plus basse.
 {% endblock %}
 
 {% block scripts %}
+{{ super() }}
 <script src="{{ url_for('static', filename='scripts.js') }}"></script>
 {% endblock %}

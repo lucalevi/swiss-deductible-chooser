@@ -80,5 +80,6 @@ più alte.
 {% endblock %}
 
 {% block scripts %}
+{{ super() }}
 <script src="{{ url_for('static', filename='scripts.js') }}"></script>
 {% endblock %}
