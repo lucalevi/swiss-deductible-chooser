@@ -485,6 +485,8 @@ input[type="submit"]:disabled {
 
     .navbar-menu {
         display: flex;
+        flex-direction: row;
+        align-items: center;
         position: static;
         background-color: transparent;
         box-shadow: none;

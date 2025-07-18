@@ -32,6 +32,7 @@
                         class="{% if 'choose' in request.path %}active{% endif %}">Tool</a></li>
                 <li><a href="mailto:iacolettig.luca@gmail.com">Contact</a></li>
             </ul>
+            {% if not page_is_results %}
             <div class="language-switcher">
                 {% for lang_code in ['en', 'de', 'fr', 'it'] %}
                 <a href="{{ url_for('set_language', lang=lang_code) }}"
@@ -40,6 +41,7 @@
                 {% if not loop.last %} {% endif %}
                 {% endfor %}
             </div>
+            {% endif %}
         </nav>
     </header>
     <div class="container">
