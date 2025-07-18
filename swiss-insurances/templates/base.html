@@ -31,16 +31,9 @@
     </div>
     {% endif %}
     <div class="container">
-        {% block content %}{% endblock %}
+        {% block content %}
+        {% endblock %}
     </div>
-    {% if not page_is_results %}
-    <div class="language-switcher">
-        <a href="{{ url_for('set_language', lang='en') }}">EN</a> |
-        <a href="{{ url_for('set_language', lang='de') }}">DE</a> |
-        <a href="{{ url_for('set_language', lang='fr') }}">FR</a> |
-        <a href="{{ url_for('set_language', lang='it') }}">IT</a>
-    </div>
-    {% endif %}
     <footer id="email"><a href="mailto:iacolettig.luca@gmail.com">Contact</a></footer>
     {% block scripts %}{% endblock %}
 </body>

@@ -23,7 +23,6 @@ assicurazione Svizzera{% endblock %}
 <img id="hero-img" src="{{ url_for('static', filename='img/matterhorn.jpg') }}"
     alt="Il Cervino, montagna famosa in Svizzera">
 
-<img src="{{ url_for('static', filename='img/info-icn.png') }}" id="icn">
 
 <p>
     <b>Come usare questo Calcolatore Svizzero dell’Assicurazione Malattia:</b>
@@ -39,19 +38,24 @@ assicurazione Svizzera{% endblock %}
 
 <p>
     Una volta lì, nel calcolatore ufficiale svizzero, segui questi semplici passi:
-<ul>
+<ol>
     <li>Inserisci il tuo <b>CAP o il nome della tua città</b>.</li>
     <li>Scrivi il tuo <b>anno di nascita</b>.</li>
+    <li>Scegli una <b>franchigia ipotetica</b> per iniziare.</li>
     <li>Decidi se ti serve l’<b>assicurazione contro gli infortuni</b> (se lavori più di 8 ore alla settimana, di solito
         no).</li>
-    <li>Scegli una <b>franchigia ipotetica</b> per iniziare.</li>
-    <li>Seleziona un <b>modello assicurativo</b> come “Standard”, “medico di famiglia”, “HMO” o altri,
-        spuntando le relative caselle in fondo alla pagina.</li>
-</ul>
+    <img class="bvg-imgs" src="{{ url_for('static', filename='img/priminfo-first-it.png') }}"
+        alt="La pagina iniziale del Calcolatore dei premi della Confederazione Svizzera">
+    <li>In fondo alla pagina, seleziona un <b>modello assicurativo</b> come “Standard”, “medico di famiglia”, “HMO” o
+        “altri modelli”,
+        spuntando le relative caselle. Di default, tutti i modelli sono selezionati.</li>
+    <img class="bvg-imgs" src="{{ url_for('static', filename='img/priminfo-second-ende.png') }}"
+        alt="Il fondo della pagina del calcolatore dei premi della Confederazione Svizzera">
+</ol>
 </p>
 
 <p>
-    Poi, sempre sul Calcolatore Ufficiale Svizzero, scorri verso il basso e clicca su <b>“calcola”</b>.
+    Poi, sempre sul Calcolatore Ufficiale Svizzero, scorri verso il basso e clicca su <b>“calcolare”</b>.
     Una volta caricata la nuova pagina, vai nella scheda <b>“Confronto delle franchigie”</b>.
     Clicca sul numero evidenziato <b>“300”</b> per ordinare i premi dal più basso al più alto.
 </p>
@@ -61,7 +65,7 @@ assicurazione Svizzera{% endblock %}
     Tieni aperta questa pagina: ti serviranno questi premi per il prossimo passo!
 </p>
 
-<img src="{{ url_for('static', filename='img/info-icn.png') }}" id="icn">
+<hr id="home-rule">
 
 <p>
     <strong>Ora:</strong> devi conoscere le tue <b>spese sanitarie medie annue</b>.
@@ -83,9 +87,7 @@ assicurazione Svizzera{% endblock %}
 
 <a href="{{ url_for('choose', lang=lang) }}" class="btn">Inizia ora</a>
 
-<img src="{{ url_for('static', filename='img/attention-icn.png') }}" id="icn">
-
-<p>
+<p class="warning-message">
     <b>Nota importante:</b> Questo strumento utilizza le regole dell’assicurazione svizzera, incluso il <b>10% di
         partecipazione ai costi (massimo 700 CHF all’anno)</b> per gli adulti, per darti un consiglio accurato.
     Non considera tutte le possibili assicurazioni, ma fornisce una guida di riferimento per scegliere la franchigia in
