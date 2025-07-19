@@ -181,15 +181,17 @@ body {
     max-width: 100%;
     margin: 0 auto;
     border: 1px solid var(--border-color);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
     hyphens: auto;
     word-wrap: break-word;
     -webkit-hyphens: auto;
     /* For Safari support */
     -ms-hyphens: auto;
+}
+
+.center-me {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 /* MOBILE FIRST - Base styles for mobile devices */
@@ -220,11 +222,11 @@ p {
     margin-bottom: 20px;
 }
 
-#premium-calc {
+/* #premium-calc {
     display: flex;
     justify-content: center;
     align-items: center;
-}
+} */
 
 #premium-calc a {
     padding: 20px;
@@ -362,6 +364,39 @@ input[type="submit"]:active {
 input[type="submit"]:disabled {
     background-color: #cccccc;
     cursor: not-allowed;
+}
+
+.btn-priminfo {
+    display: inline-block;
+    background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%);
+    /* Pale orange gradient */
+    color: #d35400;
+    /* Darker orange for text contrast */
+    padding: 18px 32px;
+    border: 2px solid #f39c12;
+    /* Solid orange border */
+    border-radius: 12px;
+    font-size: 18px;
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 12px rgba(243, 156, 18, 0.3);
+    /* Adjusted shadow to match palette */
+}
+
+.btn-priminfo:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(243, 156, 18, 0.4);
+    /* Slightly darker shadow on hover */
+    background: linear-gradient(135deg, #ffcc80 0%, #ffb347 100%);
+    /* Slightly richer pale orange */
+}
+
+.btn-priminfo:active {
+    transform: translateY(0);
 }
 
 /* Button class for links (e.g., Get Started) */

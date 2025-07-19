@@ -11,12 +11,18 @@ Switzerland
 insurance{% endblock %}
 
 {% block content %}
-<h1>Welcome to the Swiss Health Insurance Deductible Calculator</h1>
+<h1>Welcome to Insurek, the Swiss Health Insurance Deductible Calculator</h1>
 
 <p>
-    Looking for the best way to save on health insurance in Switzerland? This handy tool helps you find the most
-    cost-effective <b>deductible (franchise)</b> for adults based on your monthly premiums and yearly health
+    Looking for the best way to save on health insurance in Switzerland? This handy tool helps you!
+</p>
+
+<p>Find the most cost-effective <b>deductible (franchise)</b> for adults based on your monthly premiums and yearly
+    health
     expenses.
+</p>
+
+<p>
     Whether you live in Switzerland or are planning to move, this calculator is your guide to smarter financial
     choices!
 </p>
@@ -24,19 +30,21 @@ insurance{% endblock %}
 <img id="hero-img" src="{{ url_for('static', filename='img/matterhorn.jpg') }}"
     alt="The Matterhorn, famous mountain in Switzerland">
 
+<div class="center-me">
+    <b>How to Use Insurek.</b>
+</div>
 
 <p>
-    <b>How to Use This Swiss Health Insurance Calculator:</b>
-    First of all, click on the green button "Premium Calculator" below.
-    You will open the <b>official Premium Calculator of the Swiss Confederation</b>
-    (available in German, French, and Italian). You will need its information!
-</p>
+    You need two things:
+<ol>
+    <li>The premium amounts for each deductible (from <a href="https://www.priminfo.admin.ch/">Priminfo</a>)</li>
+    <li>Your average yearly health costs (you calculate them)</li>
+</ol>
 
-<div id="premium-calc">
-    <a href="https://www.priminfo.admin.ch/" target="_blank" class="btn">
-        <strong>Premium
-            Calculator</strong></a>
-</div>
+First of all, click on the green button "Premium Calculator" below.
+You will open the <b>official Premium Calculator of the Swiss Confederation</b>
+(available in German, French, and Italian). You will need its information!
+</p>
 
 <p>
     Once there, in the official Swiss premium calculator, follow these simple steps:
@@ -70,6 +78,12 @@ insurance{% endblock %}
     Keep this page open, as you’ll these premiums for the next step!
 </p>
 
+<div class="center-me" id="premium-calc">
+    <a href="https://www.priminfo.admin.ch/" target="priminfo" class="btn-priminfo">
+        <strong>Premium
+            Calculator</strong></a>
+</div>
+
 <hr id="home-rule">
 
 <p>
@@ -89,7 +103,10 @@ insurance{% endblock %}
     Ready to move forward with our tool? Click the button below to enter your premiums. It's free!
 </p>
 
-<a href="{{ url_for('choose', lang=lang) }}" class="btn">Get Started</a>
+<div class="center-me">
+    <a href="{{ url_for('choose', lang=lang) }}" class="btn">Get Started</a>
+</div>
+
 
 
 <p class="warning-message">
