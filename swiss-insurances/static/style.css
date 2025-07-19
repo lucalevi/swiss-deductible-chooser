@@ -238,8 +238,15 @@ ol {
     margin: 10px 0;
 }
 
-#home-rule {
+.home-rule {
     width: 80%;
+}
+
+.the-rule {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 40px 0;
 }
 
 .warning-message {
