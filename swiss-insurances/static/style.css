@@ -42,6 +42,7 @@ body {
     justify-content: space-between;
     align-items: center;
     box-shadow: var(--shadow);
+    border-radius: 16px;
 }
 
 .navbar-brand a {

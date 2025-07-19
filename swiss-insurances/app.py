@@ -80,6 +80,14 @@ def plot():
         return "Error: Invalid premium data for plot.", 400
 
 
+@app.route("/<lang>/info")
+def info(lang):
+    if lang not in SUPPORTED_LANGUAGES:
+        correct_lang = get_user_language()
+        return redirect(url_for("info", lang=correct_lang))
+    return render_template(f"{lang}/info.html", lang=lang, page_is_results=False)
+
+
 @app.route("/set_language/<lang>")
 def set_language(lang):
     print(f"Referrer: {request.referrer}")  # Add this for debugging
