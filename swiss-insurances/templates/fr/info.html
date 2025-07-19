@@ -1,16 +1,57 @@
 {% extends "base.html" %}
 
-{% block title %}Bienvenue sur le Calculateur Suisse d’Assurance Maladie – Trouvez votre meilleure franchise{% endblock
+{% block title %}Insurek - Calculateur Suisse d’Assurance Maladie – Trouvez votre meilleure franchise{% endblock
 %}
 
-{% block description %}Découvrez le Calculateur Suisse d’Assurance Maladie pour comparer les franchises et optimiser vos
+{% block description %}Découvrez Insurek, le Calculateur Suisse d’Assurance Maladie pour comparer les franchises et
+optimiser vos
 coûts de santé. Commencez dès aujourd’hui en quelques étapes simples !{% endblock %}
 
-{% block keywords %}assurance maladie suisse, calculateur de franchise, coûts de santé, comparaison assurance, assurance
+{% block keywords %}Insurek, assurance maladie suisse, calculateur de franchise, coûts de santé, comparaison assurance,
+assurance
 Suisse{% endblock %}
 
 {% block content %}
 
-<h1>Information</h1>
+<h1>Informations</h1>
+
+<p>
+    <b>Qu’est-ce qu’Insurek ?</b><br>
+    Insurek est un outil simple qui vous aide à trouver la franchise la plus avantageuse pour votre assurance maladie en
+    Suisse.
+    En entrant les primes de votre assureur et en connaissant vos <b>dépenses annuelles moyennes de santé</b>,
+    Insurek calcule avec quelle franchise vous économisez le plus d’argent.
+</p>
+
+<p>
+    <b>Les calculs sont-ils fiables ?</b><br>
+    Oui. Les calculs sont simples et basés sur des primes d’assurance publiquement disponibles.
+    Vous pourriez faire ce calcul vous-même en dessinant un graphique avec six lignes (une par franchise),
+    mais cela prendrait du temps. Insurek le fait instantanément grâce à un algorithme Python transparent,
+    que vous pouvez consulter sur <a href="https://github.com/lucalevi/swiss-premium-chooser"
+        target="_blank">GitHub</a>.
+</p>
+
+<p>
+    <b>Qui a créé Insurek ?</b><br>
+    Insurek est un petit projet personnel de <b>Luca Iacolettig</b>, qui a vécu en Suisse
+    et s’est retrouvé, lui aussi, face au choix de la meilleure franchise.
+    Il a créé cet outil pour aider les autres à économiser de l’argent.
+    Vous pouvez consulter le <a href="https://www.linkedin.com/in/luca-iacolettig/" target="_blank">profil LinkedIn de
+        Luca ici</a>.
+</p>
+
+<p>
+    <b>Pourquoi le site a-t-il un domaine « .it » s’il est suisse ?</b><br>
+    Le domaine <i>iacolettig.it</i> était déjà disponible, donc nous l’avons utilisé au lieu d’en acheter un nouveau.
+    Ici, <i>.it</i> signifie simplement <i>Information Technology</i>, et non « Italie ».
+    Le fait que Luca, le créateur du site, soit Italien est juste une coïncidence.
+</p>
+
+<p>
+    <b>Comment contacter Insurek ?</b><br>
+    Vous pouvez nous envoyer un e-mail en cliquant <a href="mailto:iacolettig.luca@gmail.com">ici</a>.
+    Nous répondons généralement sous deux jours ouvrables.
+</p>
 
 {% endblock %}
