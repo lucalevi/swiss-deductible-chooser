@@ -1,86 +1,87 @@
 {% extends "base.html" %}
-{% block title %}Insurek - Calculateur Suisse d’Assurance Maladie – Trouvez votre meilleure franchise{% endblock
-%}
+{% block title %}Insurek – Trouvez votre meilleure franchise{% endblock %}
 
-{% block description %}Découvrez Insurek, le Calculateur Suisse d’Assurance Maladie pour comparer les franchises et
-optimiser vos
-coûts de santé. Commencez dès aujourd’hui en quelques étapes simples !{% endblock %}
+{% block description %}Trouvez la franchise qui vous fait économiser le plus sur votre assurance maladie en Suisse.
+Entrez vos primes et calculez en quelques secondes !{% endblock %}
 
-{% block keywords %}Insurek, assurance maladie suisse, calculateur de franchise, coûts de santé, comparaison assurance,
-assurance
-Suisse{% endblock %}
+{% block keywords %}Insurek, assurance maladie Suisse, calculateur de franchise, économies primes, Suisse{% endblock %}
 
 {% block content %}
-<h1>Insurek, calculateur Suisse de Franchise d’Assurance Maladie</h1>
-<p>
-    Calculez maintenant la franchise qui vous convient le mieux.
-    Indiquez ci-dessous les meilleures primes pour chaque option de franchise, et découvrez laquelle vous devriez
-    choisir !
-    <b>N’oubliez pas de connaître vos dépenses moyennes de santé annuelles</b> afin d’optimiser vos coûts totaux !
+
+<h1>Trouvez votre meilleure franchise</h1>
+<p><b>Économisez chaque année.</b> Entrez vos primes ci-dessous – Insurek vous montre la franchise la plus avantageuse.
 </p>
-<img id="hero-img" src="{{ url_for('static', filename='img/basel.jpg') }}" alt="Le Mittlere Brücke à Bâle">
-<p>
-    Saisissez maintenant les primes que vous avez trouvées sur le
-    <a href="https://www.priminfo.admin.ch/" target="priminfo">Calculateur officiel des primes de la Confédération
-        suisse</a>
-    pour chaque franchise (<b>300 CHF, 500 CHF, 1000 CHF, 1500 CHF, 2000 CHF et 2500 CHF</b>).
+
+<img id="hero-img" src="{{ url_for('static', filename='img/basel.jpg') }}" alt="Bâle, Suisse">
+
+<div class="the-rule">
+    <hr class="home-rule">
+</div>
+
+<h2>Étape 1 – Vérifiez vos primes</h2>
+<p>Obtenez les <b>primes mensuelles</b> pour toutes les franchises (300 à 2500 CHF) sur le
+    <a href="https://www.priminfo.admin.ch/" target="priminfo">calculateur officiel des primes suisses</a>.
+</p>
+
+<div class="the-rule">
+    <hr class="home-rule">
+</div>
+
+<h2>Étape 2 – Entrez vos primes</h2>
+<p><b>Important :</b> Entrez-les par <b>ordre décroissant</b> (plus élevée = 300 CHF, plus basse = 2500 CHF).</p>
+<p id="validation-warning" style="color: red; display: none;">
+    ⚠️ Les primes doivent aller de la plus haute à la plus basse.
+</p>
+
+<div class="center-me">
+    <form method="post" action="{{ url_for('calculate', lang=lang) }}" id="premium-form">
+        <div class="form-group">
+            <label for="premium-300">300 CHF :</label>
+            <input type="number" step="0.01" name="premium[]" id="premium-300" placeholder="ex. 463.40" min="100"
+                max="1000" required>
+        </div>
+        <div class="form-group">
+            <label for="premium-500">500 CHF :</label>
+            <input type="number" step="0.01" name="premium[]" id="premium-500" placeholder="ex. 452.60" min="100"
+                max="1000" required>
+        </div>
+        <div class="form-group">
+            <label for="premium-1000">1000 CHF :</label>
+            <input type="number" step="0.01" name="premium[]" id="premium-1000" placeholder="ex. 425.40" min="100"
+                max="1000" required>
+        </div>
+        <div class="form-group">
+            <label for="premium-1500">1500 CHF :</label>
+            <input type="number" step="0.01" name="premium[]" id="premium-1500" placeholder="ex. 398.30" min="100"
+                max="1000" required>
+        </div>
+        <div class="form-group">
+            <label for="premium-2000">2000 CHF :</label>
+            <input type="number" step="0.01" name="premium[]" id="premium-2000" placeholder="ex. 371.20" min="100"
+                max="1000" required>
+        </div>
+        <div class="form-group">
+            <label for="premium-2500">2500 CHF :</label>
+            <input type="number" step="0.01" name="premium[]" id="premium-2500" placeholder="ex. 344.10" min="100"
+                max="1000" required>
+        </div>
+        <button type="submit" id="submit-btn" class="btn big-btn">Calculer maintenant</button>
+    </form>
+</div>
+
+<div class="the-rule">
+    <hr class="home-rule">
+</div>
+
+<h2>Étape 3 – Résultat</h2>
+<p>Après avoir cliqué sur <b>"Calculer maintenant"</b>, vous verrez :</p>
 <ul>
-    <li>Indiquez votre prime mensuelle pour chaque option de franchise dans le formulaire ci-dessous.</li>
-    <li>Cliquez sur <b>« Calculer »</b> pour voir vos résultats.</li>
-    <li>Consultez le <b>graphique généré</b> pour comprendre comment les coûts évoluent avec vos dépenses de santé.</li>
+    <li>la franchise la plus avantageuse pour vous</li>
+    <li>un graphique clair des coûts</li>
 </ul>
-<strong>Astuce :</strong> la prime pour la franchise de 300 CHF est la plus élevée, et les primes diminuent lorsque la
-franchise augmente.
-La prime pour la franchise de 2500 CHF doit être la plus basse.
-<b>Assurez-vous d’entrer vos primes par ordre décroissant.</b>
-</p>
-<p>
-    Indiquez ci-dessous les primes mensuelles pour chaque option de franchise :
-</p>
-<p id="validation-warning" style="color: red; display: none;">Attention : Les primes doivent être saisies par ordre
-    décroissant (300 CHF > 500 CHF > 1000 CHF > 1500 CHF > 2000 CHF > 2500 CHF).</p>
-<p>
-<form method="post" action="{{ url_for('calculate', lang=lang) }}" id="premium-form">
-    <div class="form-group">
-        <label for="premium-300">Prime pour la franchise de 300 CHF :</label>
-        <input type="number" step="0.01" name="premium[]" id="premium-300" placeholder="ex. 463.40" min="100" max="1000"
-            required>
-    </div>
 
-    <div class="form-group">
-        <label for="premium-500">Prime pour la franchise de 500 CHF :</label>
-        <input type="number" step="0.01" name="premium[]" id="premium-500" placeholder="ex. 452.60" min="100" max="1000"
-            required>
-    </div>
+<img id="bottom-img" src="{{ url_for('static', filename='img/mnt-flag.png') }}" alt="Drapeau suisse">
 
-    <div class="form-group">
-        <label for="premium-1000">Prime pour la franchise de 1000 CHF :</label>
-        <input type="number" step="0.01" name="premium[]" id="premium-1000" placeholder="ex. 425.40" min="100"
-            max="1000" required>
-    </div>
-
-    <div class="form-group">
-        <label for="premium-1500">Prime pour la franchise de 1500 CHF :</label>
-        <input type="number" step="0.01" name="premium[]" id="premium-1500" placeholder="ex. 398.30" min="100"
-            max="1000" required>
-    </div>
-
-    <div class="form-group">
-        <label for="premium-2000">Prime pour la franchise de 2000 CHF :</label>
-        <input type="number" step="0.01" name="premium[]" id="premium-2000" placeholder="ex. 371.20" min="100"
-            max="1000" required>
-    </div>
-
-    <div class="form-group">
-        <label for="premium-2500">Prime pour la franchise de 2500 CHF :</label>
-        <input type="number" step="0.01" name="premium[]" id="premium-2500" placeholder="ex. 344.10" min="100"
-            max="1000" required>
-    </div>
-    <input type="submit" value="Calculer" id="submit-btn">
-</form>
-<p>
-    Cliquez sur « Calculer » pour voir vos résultats !
-</p>
 {% endblock %}
 
 {% block scripts %}

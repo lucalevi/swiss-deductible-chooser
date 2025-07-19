@@ -1,86 +1,87 @@
 {% extends "base.html" %}
-{% block title %}Insurek - Schweizer Krankenversicherungs-Rechner – Finden Sie Ihre beste Franchise{% endblock %}
+{% block title %}Insurek – Finden Sie Ihre beste Franchise{% endblock %}
 
-{% block description %}Entdecken Sie Insurek, den Schweizer Krankenversicherungs-Rechner, um Franchisen zu vergleichen
-und Ihre
-Gesundheitskosten zu optimieren. Starten Sie noch heute mit wenigen einfachen Schritten!{% endblock %}
+{% block description %}Finden Sie die Franchise, mit der Sie bei der Schweizer Krankenversicherung am meisten sparen.
+Geben Sie Ihre Prämien ein und berechnen Sie es in Sekunden!{% endblock %}
 
-{% block keywords %}Insurek, Schweizer Krankenversicherung, Franchise-Rechner, Gesundheitskosten,
-Versicherungsvergleich,
-Versicherung Schweiz{% endblock %}
+{% block keywords %}Insurek, Schweizer Krankenversicherung, Franchise-Rechner, Prämien sparen, Schweiz{% endblock %}
 
 {% block content %}
-<h1>Insurek, schweizer Krankenversicherungs-Franchise-Rechner</h1>
-<p>
-    Berechnen Sie jetzt Ihre optimale Franchise. Geben Sie unten die besten Prämien für jede Franchise-Option ein und
-    finden Sie heraus, welche Franchise
-    Sie am besten wählen sollten!
-    <b>Vergessen Sie nicht, Ihre durchschnittlichen jährlichen Gesundheitsausgaben zu kennen</b>, um Ihre Gesamtkosten
-    optimal zu gestalten!
+
+<h1>Finden Sie Ihre beste Franchise</h1>
+<p><b>Sparen Sie jedes Jahr Geld.</b> Geben Sie unten Ihre Prämien ein – Insurek zeigt Ihnen die günstigste Franchise.
 </p>
-<img id="hero-img" src="{{ url_for('static', filename='img/basel.jpg') }}" alt="Die Mittlere Brücke in Basel">
-<p>
-    Geben Sie nun die Prämien ein, die Sie im <a href="https://www.priminfo.admin.ch/" target="priminfo">offiziellen
-        Prämienrechner der Schweizerischen Eidgenossenschaft</a> gefunden haben – für jede Franchise (<b>300 CHF, 500
-        CHF, 1000 CHF, 1500 CHF, 2000 CHF und 2500 CHF</b>).
+
+<img id="hero-img" src="{{ url_for('static', filename='img/basel.jpg') }}" alt="Basel, Schweiz">
+
+<div class="the-rule">
+    <hr class="home-rule">
+</div>
+
+<h2>Schritt 1 – Prämien prüfen</h2>
+<p>Holen Sie die <b>monatlichen Prämien</b> für alle Franchisen (300 bis 2500 CHF) beim
+    <a href="https://www.priminfo.admin.ch/" target="priminfo">offiziellen Prämienrechner der Schweiz</a>.
 </p>
+
+<div class="the-rule">
+    <hr class="home-rule">
+</div>
+
+<h2>Schritt 2 – Prämien eingeben</h2>
+<p><b>Wichtig:</b> In <b>absteigender Reihenfolge</b> eingeben (höchste = 300 CHF, niedrigste = 2500 CHF).</p>
+<p id="validation-warning" style="color: red; display: none;">
+    ⚠️ Prämien müssen von hoch nach tief eingetragen werden.
+</p>
+
+<div class="center-me">
+    <form method="post" action="{{ url_for('calculate', lang=lang) }}" id="premium-form">
+        <div class="form-group">
+            <label for="premium-300">300 CHF:</label>
+            <input type="number" step="0.01" name="premium[]" id="premium-300" placeholder="z.B. 463.40" min="100"
+                max="1000" required>
+        </div>
+        <div class="form-group">
+            <label for="premium-500">500 CHF:</label>
+            <input type="number" step="0.01" name="premium[]" id="premium-500" placeholder="z.B. 452.60" min="100"
+                max="1000" required>
+        </div>
+        <div class="form-group">
+            <label for="premium-1000">1000 CHF:</label>
+            <input type="number" step="0.01" name="premium[]" id="premium-1000" placeholder="z.B. 425.40" min="100"
+                max="1000" required>
+        </div>
+        <div class="form-group">
+            <label for="premium-1500">1500 CHF:</label>
+            <input type="number" step="0.01" name="premium[]" id="premium-1500" placeholder="z.B. 398.30" min="100"
+                max="1000" required>
+        </div>
+        <div class="form-group">
+            <label for="premium-2000">2000 CHF:</label>
+            <input type="number" step="0.01" name="premium[]" id="premium-2000" placeholder="z.B. 371.20" min="100"
+                max="1000" required>
+        </div>
+        <div class="form-group">
+            <label for="premium-2500">2500 CHF:</label>
+            <input type="number" step="0.01" name="premium[]" id="premium-2500" placeholder="z.B. 344.10" min="100"
+                max="1000" required>
+        </div>
+        <button type="submit" id="submit-btn" class="btn big-btn">Jetzt berechnen</button>
+    </form>
+</div>
+
+<div class="the-rule">
+    <hr class="home-rule">
+</div>
+
+<h2>Schritt 3 – Ihr Ergebnis</h2>
+<p>Nach dem Klick auf <b>"Jetzt berechnen"</b> sehen Sie:</p>
 <ul>
-    <li>Tragen Sie Ihre monatliche Prämie für jede Franchise-Option in das Formular unten ein.</li>
-    <li>Klicken Sie auf <b>„Berechnen“</b>, um Ihre Resultate zu sehen.</li>
-    <li>Überprüfen Sie das <b>berechnete Diagramm</b>, um zu verstehen, wie sich die Kosten in Abhängigkeit von Ihren
-        Gesundheitsausgaben verändern.</li>
+    <li>die für Sie günstigste Franchise</li>
+    <li>ein klares Kosten-Diagramm</li>
 </ul>
-<strong>Tipp:</strong> Die Prämie für die 300-CHF-Franchise ist die höchste, und die Prämien sinken mit höheren
-Franchisen.
-Die Prämie für die 2500-CHF-Franchise sollte die niedrigste sein.
-<b>Stellen Sie sicher, dass Sie Ihre Prämien in absteigender Reihenfolge eingeben.</b>
-<p>
-    Geben Sie unten die monatlichen Prämien für jede Franchise-Option ein.
-</p>
-<p id="validation-warning" style="color: red; display: none;">Achtung: Die Prämien müssen in absteigender Reihenfolge
-    eingegeben werden (300 CHF > 500 CHF > 1000 CHF > 1500 CHF > 2000 CHF > 2500 CHF).</p>
-<p>
-<form method="post" action="{{ url_for('calculate', lang=lang) }}" id="premium-form">
-    <div class="form-group">
-        <label for="premium-300">Prämie für 300-CHF-Franchise:</label>
-        <input type="number" step="0.01" name="premium[]" id="premium-300" placeholder="z.B. 463.40" min="100"
-            max="1000" required>
-    </div>
 
-    <div class="form-group">
-        <label for="premium-500">Prämie für 500-CHF-Franchise:</label>
-        <input type="number" step="0.01" name="premium[]" id="premium-500" placeholder="z.B. 452.60" min="100"
-            max="1000" required>
-    </div>
+<img id="bottom-img" src="{{ url_for('static', filename='img/mnt-flag.png') }}" alt="Schweizer Flagge">
 
-    <div class="form-group">
-        <label for="premium-1000">Prämie für 1000-CHF-Franchise:</label>
-        <input type="number" step="0.01" name="premium[]" id="premium-1000" placeholder="z.B. 425.40" min="100"
-            max="1000" required>
-    </div>
-
-    <div class="form-group">
-        <label for="premium-1500">Prämie für 1500-CHF-Franchise:</label>
-        <input type="number" step="0.01" name="premium[]" id="premium-1500" placeholder="z.B. 398.30" min="100"
-            max="1000" required>
-    </div>
-
-    <div class="form-group">
-        <label for="premium-2000">Prämie für 2000-CHF-Franchise:</label>
-        <input type="number" step="0.01" name="premium[]" id="premium-2000" placeholder="z.B. 371.20" min="100"
-            max="1000" required>
-    </div>
-
-    <div class="form-group">
-        <label for="premium-2500">Prämie für 2500-CHF-Franchise:</label>
-        <input type="number" step="0.01" name="premium[]" id="premium-2500" placeholder="z.B. 344.10" min="100"
-            max="1000" required>
-    </div>
-    <input type="submit" value="Berechnen" id="submit-btn">
-</form>
-<p>
-    Klicken Sie auf „Berechnen“, um Ihre Resultate zu sehen!
-</p>
 {% endblock %}
 
 {% block scripts %}

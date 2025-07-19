@@ -1,100 +1,82 @@
 {% extends "base.html" %}
 
-{% block title %}Insurek - Calcolatore Svizzero dell’Assicurazione Malattia – Trova la tua migliore franchigia{%
-endblock %}
+{% block title %}Insurek – Risparmia sull’assicurazione malattia in Svizzera{% endblock %}
 
-{% block description %}Scopri Insurek, il Calcolatore Svizzero dell’Assicurazione Malattia per confrontare le franchigie
-e
-ottimizzare i tuoi costi sanitari. Inizia oggi in pochi semplici passi!{% endblock %}
+{% block description %}Con Insurek trovi in 3 semplici passi la franchigia più conveniente per la tua assicurazione
+malattia in Svizzera. Risparmia subito!{% endblock %}
 
-{% block keywords %}Insurek, assicurazione malattia svizzera, calcolatore franchigia, costi sanitari, confronto
-assicurazioni,
-assicurazione Svizzera{% endblock %}
+{% block keywords %}Insurek, assicurazione malattia Svizzera, calcolatore franchigia, risparmiare premi, assicurazione
+Svizzera{% endblock %}
 
 {% block content %}
-<h1>Benvenuto su Insurek, il Calcolatore Svizzero della Franchigia dell’Assicurazione Malattia</h1>
 
-<p>
-    Cerchi il modo migliore per risparmiare sull’assicurazione malattia in Svizzera?
-    Questo pratico strumento ti aiuta a trovare la <b>franchigia</b> più conveniente per adulti,
-    in base ai tuoi premi mensili e alle tue spese sanitarie annue.
-    Che tu viva già in Svizzera o che ti stia trasferendo, questo calcolatore è la tua guida per scelte finanziarie più
-    intelligenti!
-</p>
+<h1>Risparmia sull’assicurazione malattia in Svizzera</h1>
+<p><b>Scegli la franchigia giusta. Risparmia centinaia di franchi ogni anno.</b>
+    Insurek ti mostra in pochi minuti quale franchigia è la più conveniente per te.</p>
 
-<img id="hero-img" src="{{ url_for('static', filename='img/matterhorn.jpg') }}"
-    alt="Il Cervino, montagna famosa in Svizzera">
+<img id="hero-img" src="{{ url_for('static', filename='img/matterhorn.jpg') }}" alt="Cervino, Svizzera">
 
-
-<p>
-    <b>Come usare questo Calcolatore Svizzero dell’Assicurazione Malattia:</b>
-    Prima di tutto, clicca sul pulsante verde “Calcolatore Premi” qui sotto.
-    Si aprirà il <b>Calcolatore Ufficiale dei Premi della Confederazione Svizzera</b>
-    (disponibile in tedesco, francese e italiano). Ti serviranno queste informazioni!
-</p>
-
-<p>
-    Una volta lì, nel calcolatore ufficiale svizzero, segui questi semplici passi:
-<ol>
-    <li>Inserisci il tuo <b>CAP o il nome della tua città</b>.</li>
-    <li>Scrivi il tuo <b>anno di nascita</b>.</li>
-    <li>Scegli una <b>franchigia ipotetica</b> per iniziare.</li>
-    <li>Decidi se ti serve l’<b>assicurazione contro gli infortuni</b> (se lavori più di 8 ore alla settimana, di solito
-        no).</li>
-    <img class="bvg-imgs" src="{{ url_for('static', filename='img/priminfo-first-it.png') }}"
-        alt="La pagina iniziale del Calcolatore dei premi della Confederazione Svizzera">
-    <li>In fondo alla pagina, seleziona un <b>modello assicurativo</b> come “Standard”, “medico di famiglia”, “HMO” o
-        “altri modelli”,
-        spuntando le relative caselle. Di default, tutti i modelli sono selezionati.</li>
-    <img class="bvg-imgs" src="{{ url_for('static', filename='img/priminfo-second-it.png') }}"
-        alt="Il fondo della pagina del calcolatore dei premi della Confederazione Svizzera">
+<h2>Come funziona – 3 passi facili</h2>
+<ol class="simple-steps">
+    <li><b>Ottieni i tuoi premi:</b> dal <a href="https://www.priminfo.admin.ch/" target="priminfo">calcolatore
+            ufficiale della Confederazione</a>.</li>
+    <li><b>Conosci le tue spese sanitarie annuali:</b> media degli ultimi 3 anni.</li>
+    <li><b>Inserisci i dati:</b> Insurek ti indica la franchigia con cui risparmi di più.</li>
 </ol>
-</p>
 
-<p>
-    Poi, sempre sul Calcolatore Ufficiale Svizzero, scorri verso il basso e clicca su <b>“calcolare”</b>.
-    Una volta caricata la nuova pagina, vai nella scheda <b>“Confronto delle franchigie”</b>.
-    Clicca sul numero evidenziato <b>“300”</b> per ordinare i premi dal più basso al più alto.
-</p>
-
-<p>
-    Vedrai <b>sei diversi premi</b> — le opzioni più economiche nella tua zona.
-    Tieni aperta questa pagina: ti serviranno questi premi per il prossimo passo!
-</p>
-
-<div id="premium-calc">
-    <a href="https://www.priminfo.admin.ch/it" target="priminfo" class="btn-priminfo">
-        <strong>Calcolatore Premi</strong></a>
+<div class="the-rule">
+    <hr class="home-rule">
 </div>
 
-<hr id="home-rule">
+<h2>Passo 1 – Ottieni i premi (Priminfo)</h2>
+<p>Usa il <b>calcolatore ufficiale dei premi</b> (Priminfo) per trovare i sei premi mensili più economici nella tua
+    zona.</p>
 
-<p>
-    <strong>Ora:</strong> devi conoscere le tue <b>spese sanitarie medie annue</b>.
-    Una volta che le conosci, potrai scegliere la franchigia migliore grazie al nostro strumento!
+<h3>Cosa fare su Priminfo:</h3>
+<ol>
+    <li>Inserisci il tuo <b>CAP</b> o la città.</li>
+    <li>Scrivi il tuo <b>anno di nascita</b>.</li>
+    <li>Scegli una <b>franchigia qualsiasi</b> (solo per iniziare).</li>
+    <li>Indica se hai bisogno dell’<b>assicurazione infortuni</b> (di solito no se lavori più di 8 ore/settimana).</li>
+    <li>In fondo, scegli il modello assicurativo (Standard, HMO, ecc.).</li>
+</ol>
+
+<p>Clicca su <b>"Calcolare"</b>. Nella pagina successiva apri la scheda <b>"Confronto delle franchigie"</b> e clicca su
+    <b>300</b> per ordinare i premi dal più basso.
+    Tieni aperta questa pagina per dopo.
 </p>
 
-<p>
-    <b>Come calcolare le tue spese sanitarie medie?</b>
-    Raccogli tutte le tue fatture mediche degli ultimi <b>3 anni</b> (visite mediche, farmaci, ricoveri — ma <b>non</b>
-    i premi assicurativi).
-    Somma tutto e dividi per <b>3</b> per ottenere la tua media annua. Questo numero ti aiuterà a scegliere la
-    franchigia ottimale!
-</p>
+<div class="center-me" id="premium-calc">
+    <a href="https://www.priminfo.admin.ch/" target="priminfo" class="btn-priminfo"><strong>Vai su Priminfo</strong></a>
+</div>
 
-<p>
-    Pronto a procedere con il nostro strumento?
-    Clicca sul pulsante qui sotto per inserire i tuoi premi. È gratuito!
-</p>
+<img class="bvg-imgs" src="{{ url_for('static', filename='img/priminfo-first-it.png') }}" alt="Esempio Priminfo">
+<img class="bvg-imgs" src="{{ url_for('static', filename='img/priminfo-second-it.png') }}" alt="Modelli Priminfo">
 
-<a href="{{ url_for('choose', lang=lang) }}" class="btn">Inizia ora</a>
+<div class="the-rule">
+    <hr class="home-rule">
+</div>
+
+<h2>Passo 2 – Le tue spese sanitarie medie</h2>
+<p>Raccogli le tue fatture mediche degli ultimi 3 anni (visite, farmaci, ricoveri – <b>senza i premi
+        dell’assicurazione</b>).
+    Somma tutto e dividi per 3. Questa media ti aiuta a scegliere la franchigia più economica.</p>
+
+<div class="the-rule">
+    <hr class="home-rule">
+</div>
+
+<h2>Passo 3 – Usa Insurek</h2>
+<div class="center-me">
+    <a href="{{ url_for('choose', lang=lang) }}" class="btn big-btn">Inizia ora – Gratis</a>
+</div>
 
 <p class="warning-message">
-    <b>Nota importante:</b> Questo strumento utilizza le regole dell’assicurazione svizzera, incluso il <b>10% di
-        partecipazione ai costi (massimo 700 CHF all’anno)</b> per gli adulti, per darti un consiglio accurato.
-    Non considera tutte le possibili assicurazioni, ma fornisce una guida di riferimento per scegliere la franchigia in
-    modo sensato. Valuta bene le tue necessità prima di decidere!
+    <b>Nota:</b> Insurek segue le regole svizzere, compreso il <b>10% di partecipazione ai costi (max 700 CHF/anno per
+        gli adulti)</b>.
+    È una guida, non un consiglio finanziario. Controlla la tua situazione personale prima di scegliere la franchigia.
 </p>
 
-<img id="bottom-img" src="{{ url_for('static', filename='img/mnt-flag.png') }}" alt="Bandiera della Svizzera">
+<img id="bottom-img" src="{{ url_for('static', filename='img/mnt-flag.png') }}" alt="Bandiera svizzera">
+
 {% endblock %}

@@ -1,101 +1,82 @@
 {% extends "base.html" %}
 
-{% block title %}Insurek - Schweizer Krankenversicherungs-Rechner – Finden Sie Ihre beste Franchise{% endblock %}
+{% block title %}Insurek – Sparen bei der Schweizer Krankenversicherung{% endblock %}
 
-{% block description %}Entdecken Sie Insurek, den Schweizer Krankenversicherungs-Rechner, um Franchisen zu vergleichen
-und Ihre
-Gesundheitskosten zu optimieren. Starten Sie noch heute mit wenigen einfachen Schritten!{% endblock %}
+{% block description %}Mit Insurek finden Sie in 3 einfachen Schritten die kostengünstigste Franchise für Ihre Schweizer
+Krankenversicherung. Sparen Sie Geld!{% endblock %}
 
-{% block keywords %}Insurek, Schweizer Krankenversicherung, Franchise-Rechner, Gesundheitskosten,
-Versicherungsvergleich,
-Versicherung Schweiz{% endblock %}
+{% block keywords %}Insurek, Schweizer Krankenversicherung, Franchise-Rechner, Prämien sparen, Schweiz Versicherung{%
+endblock %}
 
 {% block content %}
-<h1>Willkommen beim Insurek, der schweizer Krankenversicherungs-Franchise-Rechner</h1>
 
-<p>
-    Suchen Sie nach der besten Möglichkeit, bei der Krankenversicherung in der Schweiz zu sparen? Dieses praktische Tool
-    hilft Ihnen, die <b>kosteneffektivste Franchise</b> für Erwachsene zu finden – basierend auf Ihren monatlichen
-    Prämien und jährlichen Gesundheitsausgaben.
-    Egal, ob Sie in der Schweiz wohnen oder einen Umzug planen, dieser Rechner ist Ihr Wegweiser für klügere finanzielle
-    Entscheidungen!
-</p>
+<h1>Sparen bei der Schweizer Krankenversicherung</h1>
+<p><b>Wählen Sie die richtige Franchise. Sparen Sie jedes Jahr Hunderte Franken.</b>
+    Insurek zeigt Ihnen in wenigen Minuten, welche Franchise für Sie am günstigsten ist.</p>
 
-<img id="hero-img" src="{{ url_for('static', filename='img/matterhorn.jpg') }}"
-    alt="Das Matterhorn, berühmter Berg in der Schweiz">
+<img id="hero-img" src="{{ url_for('static', filename='img/matterhorn.jpg') }}" alt="Matterhorn, Schweiz">
 
-
-<p>
-    <b>So verwenden Sie diesen Schweizer Krankenversicherungs-Rechner:</b>
-    Klicken Sie zunächst auf den grünen Button „Prämienrechner“ unten.
-    Damit öffnen Sie den <b>offiziellen Prämienrechner der Schweizerischen Eidgenossenschaft</b>
-    (verfügbar in Deutsch, Französisch und Italienisch). Sie benötigen diese Informationen!
-</p>
-
-<p>
-    Dort, im offiziellen Schweizer Prämienrechner, gehen Sie wie folgt vor:
-</p>
-
-<ol>
-    <li>Geben Sie Ihre <b>Postleitzahl oder den Ortsnamen</b> in das Formular ein.</li>
-    <li>Tragen Sie Ihr <b>Geburtsjahr</b> in das entsprechende Feld ein.</li>
-    <li>Wählen Sie eine <b>hypothetische Franchise</b>, um zu starten.</li>
-    <li>Entscheiden Sie, ob Sie eine <b>Unfallversicherung</b> benötigen (wenn Sie mehr als 8 Stunden pro Woche
-        arbeiten, nicht nötig).</li>
-    <img class="bvg-imgs" src="{{ url_for('static', filename='img/priminfo-first-ende.png') }}"
-        alt="Die Startseite des Prämienrechners der Schweizerischen Eidgenossenschaft">
-    <li>Wählen Sie unten auf der Seite unter <b>Versicherungsmodellen</b> wie „Standard“, „Hausarztmodell“, „HMO“ oder
-        „weitere Modelle“ die
-        entsprechenden Kästchen aus. Standardmässig sind alle Modelle ausgewählt.</li>
-    <img class="bvg-imgs" src="{{ url_for('static', filename='img/priminfo-second-ende.png') }}"
-        alt="Die unterste Seite des Prämienrechners der Schweizerischen Eidgenossenschaft">
+<h2>So funktioniert es – 3 einfache Schritte</h2>
+<ol class="simple-steps">
+    <li><b>Prämien holen:</b> beim <a href="https://www.priminfo.admin.ch/" target="priminfo">offiziellen Prämienrechner
+            des Bundes</a>.</li>
+    <li><b>Jährliche Gesundheitskosten kennen:</b> Durchschnitt der letzten 3 Jahre berechnen.</li>
+    <li><b>Daten eingeben:</b> Insurek zeigt Ihnen die Franchise, mit der Sie am meisten sparen.</li>
 </ol>
 
-<p>
-    Scrollen Sie danach im offiziellen Schweizer Prämienrechner nach unten und klicken Sie auf <b>„berechnen“</b>.
-    Sobald die neue Seite geladen ist, wählen Sie den
-    <b>Reiter „Vergleich der Franchisen“</b>. Klicken Sie auf die hervorgehobene Zahl <b>„300“</b>,
-    um die Prämien von der günstigsten zur teuersten zu sortieren.
-</p>
-
-<p>
-    Sie sehen nun <b>sechs verschiedene Prämien</b> – die günstigsten Optionen in Ihrer Region.
-    Lassen Sie diese Seite geöffnet, da Sie die Prämien im nächsten Schritt benötigen!
-</p>
-
-<div id="premium-calc">
-    <a href="https://www.priminfo.admin.ch/de" target="priminfo" class="btn-priminfo">
-        <strong>Prämienrechner</strong></a>
+<div class="the-rule">
+    <hr class="home-rule">
 </div>
 
-<hr id="home-rule">
+<h2>Schritt 1 – Prämien holen (Priminfo)</h2>
+<p>Benutzen Sie den <b>Prämienrechner des Bundes</b> (Priminfo), um die sechs günstigsten monatlichen Prämien in Ihrer
+    Region zu finden.</p>
 
-<p>
-    <strong>Nun:</strong> Sie müssen Ihre <b>durchschnittlichen jährlichen Gesundheitsausgaben</b> kennen.
-    Sobald Sie diese kennen, können Sie mit unserem Tool die Franchise wählen, die Ihnen am meisten spart!
-</p>
+<h3>So gehen Sie auf Priminfo vor:</h3>
+<ol>
+    <li>Geben Sie Ihre <b>Postleitzahl</b> oder Ihren Wohnort ein.</li>
+    <li>Tragen Sie Ihr <b>Geburtsjahr</b> ein.</li>
+    <li>Wählen Sie eine <b>beliebige Franchise</b> (nur für den Start).</li>
+    <li>Wählen Sie, ob Sie <b>Unfallversicherung</b> benötigen (meist nicht, wenn Sie über 8 Std./Woche arbeiten).</li>
+    <li>Unten wählen Sie das Versicherungsmodell (Standard, HMO usw.).</li>
+</ol>
 
-<p>
-    <b>Wie berechnen Sie Ihre durchschnittlichen Gesundheitsausgaben?</b> Sammeln Sie alle Ihre Arztrechnungen der
-    <b>letzten 3 Jahre</b> (Arztbesuche, Medikamente, Spitalaufenthalte – aber <b>nicht</b> die Versicherungsprämien).
-    Addieren Sie alles und teilen Sie durch <b>3</b>, um Ihren Jahresdurchschnitt zu erhalten. Diese Zahl hilft Ihnen,
-    die beste Franchise zu wählen!
-</p>
+<p>Klicken Sie danach auf <b>„Berechnen“</b>. Auf der nächsten Seite öffnen Sie den Reiter <b>„Vergleich der
+        Franchisen“</b> und klicken auf <b>300</b>, um nach den günstigsten Prämien zu sortieren.
+    Lassen Sie die Seite für später geöffnet.</p>
 
-<p>
-    Bereit, mit unserem Tool fortzufahren? Klicken Sie auf den Button unten, um Ihre Prämien einzugeben. Es ist
-    kostenlos!
-</p>
+<div class="center-me" id="premium-calc">
+    <a href="https://www.priminfo.admin.ch/" target="priminfo" class="btn-priminfo"><strong>Zu Priminfo</strong></a>
+</div>
 
-<a href="{{ url_for('choose', lang=lang) }}" class="btn">Jetzt starten</a>
+<img class="bvg-imgs" src="{{ url_for('static', filename='img/priminfo-first-ende.png') }}" alt="Priminfo Beispiel">
+<img class="bvg-imgs" src="{{ url_for('static', filename='img/priminfo-second-ende.png') }}" alt="Priminfo Modelle">
+
+<div class="the-rule">
+    <hr class="home-rule">
+</div>
+
+<h2>Schritt 2 – Durchschnittliche Gesundheitskosten</h2>
+<p>Sammeln Sie Ihre Rechnungen der letzten 3 Jahre (Arztbesuche, Medikamente, Spitalaufenthalte – <b>ohne
+        Versicherungsprämien</b>).
+    Addieren Sie alles und teilen Sie durch 3. Dieser Durchschnitt hilft, die günstigste Franchise zu wählen.</p>
+
+<div class="the-rule">
+    <hr class="home-rule">
+</div>
+
+<h2>Schritt 3 – Insurek benutzen</h2>
+<div class="center-me">
+    <a href="{{ url_for('choose', lang=lang) }}" class="btn big-btn">Jetzt starten – Gratis</a>
+</div>
 
 <p class="warning-message">
-    <b>Wichtiger Hinweis:</b> Dieses Tool berücksichtigt die Schweizer Versicherungsregeln, einschliesslich des
-    <b>10%igen Selbstbehalts mit einer Obergrenze von 700 CHF pro Jahr</b> für Erwachsene, um Ihnen präzise
-    Empfehlungen zu geben.
-    Dieses Tool berücksichtigt nicht alle Versicherungsmodelle, sondern bietet lediglich eine Orientierungshilfe, um
-    Ihre Franchise sinnvoll zu wählen. Prüfen Sie Ihre Bedürfnisse sorgfältig, bevor Sie eine Franchise wählen!
+    <b>Hinweis:</b> Insurek berücksichtigt die Schweizer Regeln, inklusive des <b>10%-Selbstbehalts (max. 700
+        CHF/Jahr für Erwachsene)</b>.
+    Dies ist eine Orientierungshilfe, keine Finanzberatung. Prüfen Sie Ihre persönliche Situation vor der Wahl der
+    Franchise.
 </p>
 
-<img id="bottom-img" src="{{ url_for('static', filename='img/mnt-flag.png') }}" alt="Flagge der Schweiz">
+<img id="bottom-img" src="{{ url_for('static', filename='img/mnt-flag.png') }}" alt="Schweizer Flagge">
+
 {% endblock %}
