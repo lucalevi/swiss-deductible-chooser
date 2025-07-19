@@ -14,7 +14,9 @@ Svizzera{% endblock %}
 <p><b>Scegli la franchigia giusta. Risparmia centinaia di franchi ogni anno.</b>
     Insurek ti mostra in pochi minuti quale franchigia è la più conveniente per te.</p>
 
-<img id="hero-img" src="{{ url_for('static', filename='img/matterhorn.jpg') }}" alt="Cervino, Svizzera">
+<div class="center-me">
+    <img id="hero-img" src="{{ url_for('static', filename='img/matterhorn.jpg') }}" alt="Cervino, Svizzera">
+</div>
 
 <h2>Come funziona – 3 passi facili</h2>
 <ol class="simple-steps">
@@ -50,8 +52,10 @@ Svizzera{% endblock %}
     <a href="https://www.priminfo.admin.ch/" target="priminfo" class="btn-priminfo"><strong>Vai su Priminfo</strong></a>
 </div>
 
-<img class="bvg-imgs" src="{{ url_for('static', filename='img/priminfo-first-it.png') }}" alt="Esempio Priminfo">
-<img class="bvg-imgs" src="{{ url_for('static', filename='img/priminfo-second-it.png') }}" alt="Modelli Priminfo">
+<div class="center-me">
+    <img class="bvg-imgs" src="{{ url_for('static', filename='img/priminfo-first-it.png') }}" alt="Esempio Priminfo">
+    <img class="bvg-imgs" src="{{ url_for('static', filename='img/priminfo-second-it.png') }}" alt="Modelli Priminfo">
+</div>
 
 <div class="the-rule">
     <hr class="home-rule">
@@ -77,6 +81,8 @@ Svizzera{% endblock %}
     È una guida, non un consiglio finanziario. Controlla la tua situazione personale prima di scegliere la franchigia.
 </p>
 
-<img id="bottom-img" src="{{ url_for('static', filename='img/mnt-flag.png') }}" alt="Bandiera svizzera">
+<div class="center-me">
+    <img id="bottom-img" src="{{ url_for('static', filename='img/mnt-flag.png') }}" alt="Bandiera svizzera">
+</div>
 
 {% endblock %}

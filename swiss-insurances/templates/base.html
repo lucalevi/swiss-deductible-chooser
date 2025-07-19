@@ -29,9 +29,11 @@
                 <li><a href="{{ url_for('root') }}"
                         class="{% if request.path == '/' + lang + '/' %}active{% endif %}">Home</a></li>
                 <li><a href="{{ url_for('choose', lang=lang) }}"
-                        class="{% if 'choose' in request.path %}active{% endif %}">Tool</a></li>
+                        class="{% if 'choose' in request.path %}active{% endif %}">
+                        Tool
+                    </a></li>
                 <li><a href="{{ url_for('info', lang=lang) }}"
-                        class="{% if 'info' in request.path %}active{% endif %}">Info</a></li>
+                        class="{% if 'info' in request.path %}active{% endif %}">About</a></li>
             </ul>
             {% if not page_is_results %}
             <div class="language-switcher">

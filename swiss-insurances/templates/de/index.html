@@ -14,7 +14,10 @@ endblock %}
 <p><b>Wählen Sie die richtige Franchise. Sparen Sie jedes Jahr Hunderte Franken.</b>
     Insurek zeigt Ihnen in wenigen Minuten, welche Franchise für Sie am günstigsten ist.</p>
 
-<img id="hero-img" src="{{ url_for('static', filename='img/matterhorn.jpg') }}" alt="Matterhorn, Schweiz">
+<div class="center-me">
+    <img id="hero-img" src="{{ url_for('static', filename='img/matterhorn.jpg') }}" alt="Matterhorn, Schweiz">
+</div>
+
 
 <h2>So funktioniert es – 3 einfache Schritte</h2>
 <ol class="simple-steps">
@@ -49,8 +52,10 @@ endblock %}
     <a href="https://www.priminfo.admin.ch/" target="priminfo" class="btn-priminfo"><strong>Zu Priminfo</strong></a>
 </div>
 
-<img class="bvg-imgs" src="{{ url_for('static', filename='img/priminfo-first-ende.png') }}" alt="Priminfo Beispiel">
-<img class="bvg-imgs" src="{{ url_for('static', filename='img/priminfo-second-ende.png') }}" alt="Priminfo Modelle">
+<div class="center-me">
+    <img class="bvg-imgs" src="{{ url_for('static', filename='img/priminfo-first-ende.png') }}" alt="Priminfo Beispiel">
+    <img class="bvg-imgs" src="{{ url_for('static', filename='img/priminfo-second-ende.png') }}" alt="Priminfo Modelle">
+</div>
 
 <div class="the-rule">
     <hr class="home-rule">
@@ -77,6 +82,8 @@ endblock %}
     Franchise.
 </p>
 
-<img id="bottom-img" src="{{ url_for('static', filename='img/mnt-flag.png') }}" alt="Schweizer Flagge">
+<div class="center-me">
+    <img id="bottom-img" src="{{ url_for('static', filename='img/mnt-flag.png') }}" alt="Schweizer Flagge">
+</div>
 
 {% endblock %}

@@ -1,51 +1,59 @@
 {% extends "base.html" %}
 
-{% block title %}Insurek - Schweizer Krankenversicherungs-Rechner – Finden Sie Ihre beste Franchise{% endblock %}
+{% block title %}Insurek – Ihr bestes Versicherungsfranchise-Ergebnis{% endblock %}
 
-{% block description %}Entdecken Sie Insurek, den Schweizer Krankenversicherungs-Rechner, um Franchisen zu vergleichen
-und Ihre
-Gesundheitskosten zu optimieren. Starten Sie noch heute mit wenigen einfachen Schritten!{% endblock %}
+{% block description %}Finden Sie heraus, welches Franchise (Selbstbehalt) Ihnen bei der Schweizer Krankenversicherung
+am meisten spart. Klare Antwort – treffen Sie jetzt die beste Wahl!{% endblock %}
 
-{% block keywords %}Insurek, Schweizer Krankenversicherung, Franchise-Rechner, Gesundheitskosten,
-Versicherungsvergleich,
-Versicherung Schweiz{% endblock %}
+{% block keywords %}Insurek, Schweizer Krankenversicherung, Franchise Rechner, bestes Franchise, Prämien sparen{%
+endblock %}
 
 {% block content %}
-<h1>Berechnungsergebnisse</h1>
-<p>
-    Hier können Sie sehen, welche Franchise für Sie am vorteilhaftesten ist!
+
+<h1>Ihr bestes Franchise</h1>
+<p><b>Sparen Sie Geld. Wählen Sie klug.</b> Basierend auf Ihren Angaben – hier ist das Franchise, das Ihre Kosten senkt.
 </p>
-<p>
-    Haben Sie Ihre <b>durchschnittlichen jährlichen Gesundheitsausgaben</b> berechnet?
-    Falls ja, hilft Ihnen der folgende <b>Break-even-Punkt</b>, die für Sie beste Franchise zu wählen.
-</p>
-<p>
-    Der Break-even-Punkt ist der Schwellenwert Ihrer durchschnittlichen jährlichen Gesundheitsausgaben, der bestimmt,
-    welche Franchise
-    Ihnen am meisten Geld spart!
-</p>
+
 <div class="results-container">
-    <p>Break-even-Punkt: ~<b>{{ results[0] }}</b> CHF jährliche Gesundheitskosten</p>
-    <p>Wenn Sie weniger als ~<b>{{ results[0] }}</b> CHF jährliche Gesundheitskosten haben, wählen Sie die
-        {{ results[1] }}-CHF-Franchise.
+    <h2>Ihr Break-even-Punkt</h2>
+    <p><b>{{ results[0] }} CHF</b> jährliche Gesundheitskosten</p>
+
+    <p>
+        ✅ <b>Wenn Ihre jährlichen Kosten unter {{ results[0] }} CHF liegen:</b><br>
+        wählen Sie das <b>{{ results[1] }} CHF</b> Franchise.
     </p>
-    <p>Wenn Sie hingegen mehr als ~<b>{{ results[0] }}</b> CHF jährliche Gesundheitskosten haben, wählen Sie die
-        {{ results[2] }}-CHF-Franchise.
+    <p>
+        ✅ <b>Wenn über {{ results[0] }} CHF:</b><br>
+        wählen Sie das <b>{{ results[2] }} CHF</b> Franchise.
     </p>
-    <div id="pinch-zoom">Vergrössern Sie das Diagramm mit Pinch und Zoom, um es grösser zu sehen!</div>
-    <img src="/plot?premiums={{ premiums_str }}" alt="Vergleich der Versicherungskosten – Diagramm">
-    <a href="/plot?premiums={{ premiums_str }}" download="vergleich_franchisen_versicherungen.png"
-        class="download-btn">Diagramm herunterladen</a>
 </div>
-<p>
-    Mit diesen Informationen können Sie eine kluge Entscheidung zu Ihrer Krankenversicherung treffen!
-    Wählen Sie nun die beste Franchise, um Ihre Gesamtkosten zu minimieren?
-</p>
-<p>
-    Möchten Sie mehr erfahren? Sehen Sie sich die Details unseres ausgeklügelten Python-Algorithmus an, indem Sie auf
-    den untenstehenden Button klicken!
-</p>
-<a href="https://github.com/lucalevi/swiss-premium-chooser" class="btn" target="insurek-algo">Zum Algorithmus</a>
+
+<div class="the-rule">
+    <hr class="home-rule">
 </div>
+
+<h2>Kostenübersicht</h2>
+<p>Das Diagramm zeigt, wie sich Ihre Kosten mit verschiedenen Franchisen ändern.</p>
+
+<div class="center-me">
+    <img src="/plot?premiums={{ premiums_str }}" alt="Vergleich der Versicherungskosten" id="plot-chart">
+    <a href="/plot?premiums={{ premiums_str }}" download="vergleich_franchisen.png" class="btn download-btn">
+        Diagramm herunterladen
+    </a>
+</div>
+
+<div id="pinch-zoom">💡 Auf dem Handy: Zoomen oder vergrößern, um Details zu sehen.</div>
+
+<div class="the-rule">
+    <hr class="home-rule">
+</div>
+
+<h2>Was jetzt?</h2>
+<p>Jetzt kennen Sie das beste Franchise. Passen Sie es bei Ihrem Versicherer an und sparen Sie.</p>
+
+<p class="small-note">
+    Neugierig, wie wir rechnen?<br>
+    <a href="https://github.com/lucalevi/swiss-premium-chooser" class="link" target="insurek-algo">Zum Algorithmus</a>
+</p>
 
 {% endblock %}

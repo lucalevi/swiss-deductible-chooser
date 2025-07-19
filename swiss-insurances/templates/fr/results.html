@@ -1,50 +1,60 @@
 {% extends "base.html" %}
 
-{% block title %}Insurek - Calculateur Suisse d’Assurance Maladie – Trouvez votre meilleure franchise{% endblock
-%}
+{% block title %}Insurek – Votre meilleur résultat de franchise{% endblock %}
 
-{% block description %}Découvrez Insurek, le Calculateur Suisse d’Assurance Maladie pour comparer les franchises et
-optimiser vos
-coûts de santé. Commencez dès aujourd’hui en quelques étapes simples !{% endblock %}
+{% block description %}Découvrez quelle franchise d’assurance maladie suisse vous fait économiser le plus. Résultat
+clair – faites le bon choix maintenant !{% endblock %}
 
-{% block keywords %}Insurek, assurance maladie suisse, calculateur de franchise, coûts de santé, comparaison assurance,
-assurance
-Suisse{% endblock %}
+{% block keywords %}Insurek, assurance maladie suisse, calculateur de franchise, meilleure franchise, économies sur les
+primes{% endblock %}
 
 {% block content %}
-<h1>Résultats du calcul</h1>
-<p>
-    Voici quelle franchise vous avantage le plus !
+
+<h1>Votre meilleure franchise</h1>
+<p><b>Économisez de l’argent. Choisissez intelligemment.</b> Voici la franchise qui réduit vos coûts selon vos données.
 </p>
-<p>
-    Avez-vous calculé vos <b>dépenses moyennes de santé annuelles</b> ?
-    Si oui, le <b>point d’équilibre</b> ci-dessous vous permet de choisir la franchise la plus adaptée.
-</p>
-<p>
-    Le point d’équilibre est le niveau de dépenses annuelles moyennes de santé qui détermine
-    quelle franchise choisir pour économiser le plus d’argent !
-</p>
+
 <div class="results-container">
-    <p>Point d’équilibre : ~<b>{{ results[0] }}</b> CHF de dépenses de santé annuelles</p>
-    <p>Si vous avez moins de ~<b>{{ results[0] }}</b> CHF de dépenses de santé annuelles, choisissez la franchise de
-        {{ results[1] }} CHF.
+    <h2>Votre point d’équilibre</h2>
+    <p><b>{{ results[0] }} CHF</b> de frais de santé annuels</p>
+
+    <p>
+        ✅ <b>Si vos frais annuels sont inférieurs à {{ results[0] }} CHF :</b><br>
+        choisissez la franchise de <b>{{ results[1] }} CHF</b>.
     </p>
-    <p>Sinon, si vous avez plus de ~<b>{{ results[0] }}</b> CHF de dépenses de santé annuelles, choisissez la franchise
-        de {{ results[2] }} CHF.
+    <p>
+        ✅ <b>Si supérieurs à {{ results[0] }} CHF :</b><br>
+        choisissez la franchise de <b>{{ results[2] }} CHF</b>.
     </p>
-    <div id="pinch-zoom">Pincez et zoomez sur le graphique pour l’agrandir !</div>
-    <img src="/plot?premiums={{ premiums_str }}" alt="Graphique comparatif des coûts d’assurance">
-    <a href="/plot?premiums={{ premiums_str }}" download="comparison_deductibles_insurances.png"
-        class="download-btn">Télécharger le graphique</a>
 </div>
-<p>
-    Avec ces informations, vous pouvez prendre une décision éclairée pour votre assurance maladie !
-    Allez-vous maintenant choisir la franchise qui minimise vos coûts totaux ?
-</p>
-<p>
-    Vous voulez en savoir plus ? Découvrez les détails de notre algorithme Python en cliquant sur le bouton ci-dessous !
-</p>
-<a href="https://github.com/lucalevi/swiss-premium-chooser" class="btn" target="insurek-algo">Voir l’algorithme</a>
+
+<div class="the-rule">
+    <hr class="home-rule">
 </div>
+
+<h2>Voir vos coûts</h2>
+<p>Ce graphique montre comment vos coûts varient selon la franchise choisie.</p>
+
+<div class="center-me">
+    <img src="/plot?premiums={{ premiums_str }}" alt="Graphique comparatif des franchises" id="plot-chart">
+    <a href="/plot?premiums={{ premiums_str }}" download="comparaison_franchises.png" class="btn download-btn">
+        Télécharger le graphique
+    </a>
+</div>
+
+<div id="pinch-zoom">💡 Sur mobile : pincez ou zoomez pour agrandir.</div>
+
+<div class="the-rule">
+    <hr class="home-rule">
+</div>
+
+<h2>Et maintenant ?</h2>
+<p>Maintenant vous savez. Changez votre franchise auprès de votre assureur et économisez.</p>
+
+<p class="small-note">
+    Curieux de voir comment nous calculons ?<br>
+    <a href="https://github.com/lucalevi/swiss-premium-chooser" class="link" target="insurek-algo">Voir
+        l’algorithme</a>.
+</p>
 
 {% endblock %}

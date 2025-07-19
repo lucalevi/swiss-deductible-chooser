@@ -1,52 +1,62 @@
 {% extends "base.html" %}
 
-{% block title %}Insurek - Swiss Health Insurance Calculator - Find Your Best Deductible{% endblock %}
+{% block title %}Insurek – Your Best Deductible Result{% endblock %}
 
-{% block description %}Discover Insurek, the Swiss Health Insurance Calculator to compare deductibles (franchises) and
-optimize
-your health costs. Get started today with easy steps!{% endblock %}
+{% block description %}See which Swiss health insurance deductible saves you the most. Simple, clear result – make the
+smart choice now!{% endblock %}
 
-{% block keywords %}Insurek, Swiss health insurance, deductible calculator, health costs, insurance comparison,
-Switzerland
-insurance{% endblock %}
+{% block keywords %}Insurek, Swiss health insurance, deductible calculator, best deductible, save on premiums{% endblock
+%}
 
 {% block content %}
-<h1>Calculation Results</h1>
-<p>
-    Here you can look which deductible benefits you most!
-</p>
-<p>
-    Have you calculated your <b>yearly average health expenses</b>? If so, the following <b>break-even point</b>
-    allows you to choose the best deductible for you.
-</p>
-<p>
-    The break-even point is the level of yearly average health expenses that determines which deductible to choose to
-    save the most money!
-</p>
+
+<h1>Your Best Deductible</h1>
+<p><b>Save money. Choose smart.</b> Based on your data, here’s the deductible that cuts your costs.</p>
+
 <div class="results-container">
-    <p>Break-even point: ~<b>{{ results[0] }}</b> CHF yearly health costs</p>
-    <p>If you have less than ~<b>{{ results[0] }}</b> CHF of yearly health costs, choose the {{ results[1] }}
-        CHF
-        deductible.
+    <h2>Your Break-even Point</h2>
+    <p><b>{{ results[0] }} CHF</b> yearly health costs</p>
+
+    <p>
+        ✅ <b>If your yearly health costs are below {{ results[0] }} CHF:</b>
+        choose the <b>{{ results[1] }} CHF</b> deductible.
     </p>
-    <p>Otherwise, if you have more than ~<b>{{ results[0] }}</b> CHF of yearly health costs, choose the {{
-        results[2] }}
-        CHF
-        deductible.</p>
-    <div id="pinch-zoom">Pinch and zoom the diagram to see it larger!</div>
-    <img src="/plot?premiums={{ premiums_str }}" alt="Insurance Costs Comparison Chart">
+    <p>
+        ✅ <b>If above {{ results[0] }} CHF:</b>
+        choose the <b>{{ results[2] }} CHF</b> deductible.
+    </p>
+</div>
+
+<div class="the-rule">
+    <hr class="home-rule">
+</div>
+
+<h2>See Your Costs</h2>
+<p>The chart below shows how your costs change with different deductibles.</p>
+
+<div class="center-me">
+    <img src="/plot?premiums={{ premiums_str }}" alt="Insurance Costs Comparison Chart" id="plot-chart">
     <a href="/plot?premiums={{ premiums_str }}" download="comparison_deductibles_insurances.png"
-        class="download-btn">Download
-        Chart</a>
+        class="btn download-btn">
+        Download Chart
+    </a>
 </div>
-<p>
-    With this information, you can make a smart decision about your health insurance!
-    Will you now choose the best deductible that minimises your total costs?
-</p>
-<p>
-    Want to know more? Explore the details of our slick Python algorithm by clicking on the button below!
-</p>
-<a href="https://github.com/lucalevi/swiss-premium-chooser" class="btn" target="insurek-algo">To the algorithm</a>
+
+<div id="pinch-zoom">💡 Pinch or zoom to enlarge the chart on mobile.</div>
+
+<div class="the-rule">
+    <hr class="home-rule">
 </div>
+
+<h2>What’s Next?</h2>
+<p>
+    Now you know the best deductible. Change it with your insurer and start saving.
+</p>
+
+<p class="small-note">
+    Curious about how we calculate?
+    <a href="https://github.com/lucalevi/swiss-premium-chooser" class="link" target="insurek-algo">See the
+        algorithm</a>.
+</p>
 
 {% endblock %}

@@ -14,7 +14,9 @@ endblock %}
 <p><b>Choisissez la bonne franchise. Économisez des centaines de francs par an.</b>
     Insurek vous montre en quelques minutes quelle franchise est la plus avantageuse pour vous.</p>
 
-<img id="hero-img" src="{{ url_for('static', filename='img/matterhorn.jpg') }}" alt="Cervin, Suisse">
+<div class="center-me">
+    <img id="hero-img" src="{{ url_for('static', filename='img/matterhorn.jpg') }}" alt="Cervin, Suisse">
+</div>
 
 <h2>Comment ça marche – 3 étapes simples</h2>
 <ol class="simple-steps">
@@ -52,8 +54,10 @@ endblock %}
             Priminfo</strong></a>
 </div>
 
-<img class="bvg-imgs" src="{{ url_for('static', filename='img/priminfo-first-fr.png') }}" alt="Exemple Priminfo">
-<img class="bvg-imgs" src="{{ url_for('static', filename='img/priminfo-second-fr.png') }}" alt="Modèles Priminfo">
+<div class="center-me">
+    <img class="bvg-imgs" src="{{ url_for('static', filename='img/priminfo-first-fr.png') }}" alt="Exemple Priminfo">
+    <img class="bvg-imgs" src="{{ url_for('static', filename='img/priminfo-second-fr.png') }}" alt="Modèles Priminfo">
+</div>
 
 <div class="the-rule">
     <hr class="home-rule">
@@ -79,6 +83,8 @@ endblock %}
     C’est un guide, pas un conseil financier. Vérifiez votre situation personnelle avant de choisir votre franchise.
 </p>
 
-<img id="bottom-img" src="{{ url_for('static', filename='img/mnt-flag.png') }}" alt="Drapeau suisse">
+<div class="center-me">
+    <img id="bottom-img" src="{{ url_for('static', filename='img/mnt-flag.png') }}" alt="Drapeau suisse">
+</div>
 
 {% endblock %}

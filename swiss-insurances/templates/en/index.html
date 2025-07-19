@@ -14,7 +14,9 @@ endblock %}
 <p><b>Choose the right deductible. Save hundreds every year.</b> Insurek finds the best deductible for you in minutes.
 </p>
 
-<img id="hero-img" src="{{ url_for('static', filename='img/matterhorn.jpg') }}" alt="The Matterhorn, Switzerland">
+<div class="center-me">
+    <img id="hero-img" src="{{ url_for('static', filename='img/matterhorn.jpg') }}" alt="The Matterhorn, Switzerland">
+</div>
 
 <h2>How It Works – 3 Easy Steps</h2>
 <ol class="simple-steps">
@@ -49,8 +51,10 @@ endblock %}
     <a href="https://www.priminfo.admin.ch/" target="priminfo" class="btn-priminfo"><strong>Go to Priminfo</strong></a>
 </div>
 
-<img class="bvg-imgs" src="{{ url_for('static', filename='img/priminfo-first-ende.png') }}" alt="Priminfo example">
-<img class="bvg-imgs" src="{{ url_for('static', filename='img/priminfo-second-ende.png') }}" alt="Priminfo models">
+<div class="center-me">
+    <img class="bvg-imgs" src="{{ url_for('static', filename='img/priminfo-first-ende.png') }}" alt="Priminfo example">
+    <img class="bvg-imgs" src="{{ url_for('static', filename='img/priminfo-second-ende.png') }}" alt="Priminfo models">
+</div>
 
 <div class="the-rule">
     <hr class="home-rule">
@@ -76,6 +80,8 @@ endblock %}
     It’s a guide, not financial advice. Check your personal situation before choosing.
 </p>
 
-<img id="bottom-img" src="{{ url_for('static', filename='img/mnt-flag.png') }}" alt="Flag of Switzerland">
+<div class="center-me">
+    <img id="bottom-img" src="{{ url_for('static', filename='img/mnt-flag.png') }}" alt="Flag of Switzerland">
+</div>
 
 {% endblock %}

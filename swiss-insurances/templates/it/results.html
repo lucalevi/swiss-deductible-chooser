@@ -1,48 +1,60 @@
 {% extends "base.html" %}
 
-{% block title %}Insurek - Calcolatore Svizzero dell’Assicurazione Malattia – Trova la tua migliore franchigia{%
-endblock %}
+{% block title %}Insurek – Il tuo miglior risultato per la franchigia{% endblock %}
 
-{% block description %}Scopri Insurek, il Calcolatore Svizzero dell’Assicurazione Malattia per confrontare le franchigie
-e
-ottimizzare i tuoi costi sanitari. Inizia oggi in pochi semplici passi!{% endblock %}
+{% block description %}Scopri quale franchigia dell’assicurazione malattia svizzera ti fa risparmiare di più. Risultato
+chiaro – scegli bene ora!{% endblock %}
 
-{% block keywords %}Insurek, assicurazione malattia svizzera, calcolatore franchigia, costi sanitari, confronto
-assicurazioni,
-assicurazione Svizzera{% endblock %}
+{% block keywords %}Insurek, assicurazione malattia svizzera, calcolatore franchigia, migliore franchigia, risparmiare
+sulle prime{% endblock %}
 
 {% block content %}
-<h1>Risultati del calcolo</h1>
-<p>
-    Qui puoi vedere quale franchigia ti conviene di più!
+
+<h1>La tua migliore franchigia</h1>
+<p><b>Risparmia denaro. Scegli con intelligenza.</b> Ecco la franchigia che riduce i tuoi costi, in base ai tuoi dati.
 </p>
-<p>
-    Hai calcolato le tue <b>spese sanitarie medie annue</b>?
-    Se sì, il seguente <b>punto di equilibrio</b> ti permette di scegliere la franchigia migliore per te.
-</p>
-<p>
-    Il punto di equilibrio è il livello di spesa sanitaria media annua che determina
-    quale franchigia scegliere per risparmiare il massimo!
-</p>
+
 <div class="results-container">
-    <p>Punto di equilibrio: ~<b>{{ results[0] }}</b> CHF di spese sanitarie annue</p>
-    <p>Se hai meno di ~<b>{{ results[0] }}</b> CHF di spese sanitarie annue, scegli la franchigia di {{ results[1] }}
-        CHF.</p>
-    <p>Altrimenti, se hai più di ~<b>{{ results[0] }}</b> CHF di spese sanitarie annue, scegli la franchigia di {{
-        results[2] }} CHF.</p>
-    <div id="pinch-zoom">Pizzica e ingrandisci il grafico per vederlo meglio!</div>
-    <img src="/plot?premiums={{ premiums_str }}" alt="Grafico comparativo dei costi assicurativi">
-    <a href="/plot?premiums={{ premiums_str }}" download="comparison_deductibles_insurances.png"
-        class="download-btn">Scarica il grafico</a>
+    <h2>Il tuo punto di equilibrio</h2>
+    <p><b>{{ results[0] }} CHF</b> di spese sanitarie annuali</p>
+
+    <p>
+        ✅ <b>Se le tue spese annuali sono sotto {{ results[0] }} CHF:</b><br>
+        scegli la franchigia da <b>{{ results[1] }} CHF</b>.
+    </p>
+    <p>
+        ✅ <b>Se sopra {{ results[0] }} CHF:</b><br>
+        scegli la franchigia da <b>{{ results[2] }} CHF</b>.
+    </p>
 </div>
-<p>
-    Con queste informazioni, puoi prendere una decisione intelligente per la tua assicurazione malattia!
-    Sceglierai ora la franchigia che minimizza i tuoi costi totali?
-</p>
-<p>
-    Vuoi saperne di più? Scopri i dettagli del nostro algoritmo Python cliccando sul pulsante qui sotto!
-</p>
-<a href="https://github.com/lucalevi/swiss-premium-chooser" class="btn" target="insurek-algo">Vai all’algoritmo</a>
+
+<div class="the-rule">
+    <hr class="home-rule">
 </div>
+
+<h2>Guarda i tuoi costi</h2>
+<p>Il grafico mostra come cambiano i costi a seconda della franchigia scelta.</p>
+
+<div class="center-me">
+    <img src="/plot?premiums={{ premiums_str }}" alt="Grafico comparativo delle franchigie" id="plot-chart">
+    <a href="/plot?premiums={{ premiums_str }}" download="confronto_franchigie.png" class="btn download-btn">
+        Scarica il grafico
+    </a>
+</div>
+
+<div id="pinch-zoom">💡 Su mobile: pizzica o ingrandisci per vedere meglio.</div>
+
+<div class="the-rule">
+    <hr class="home-rule">
+</div>
+
+<h2>E adesso?</h2>
+<p>Ora lo sai. Cambia la franchigia con il tuo assicuratore e inizia a risparmiare.</p>
+
+<p class="small-note">
+    Vuoi sapere come calcoliamo?<br>
+    <a href="https://github.com/lucalevi/swiss-premium-chooser" class="link" target="insurek-algo">Guarda
+        l’algoritmo</a>.
+</p>
 
 {% endblock %}
