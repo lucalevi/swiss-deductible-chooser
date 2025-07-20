@@ -1,7 +1,9 @@
 # Insurek – Swiss Health Insurance Deductible Optimizer
 
 <div style="text-align: center;">
-  ![Insurek Banner](swiss-insurances/static/img/ch-flag.webp)
+
+![Insurek Banner](swiss-insurances/static/img/ch-flag.webp)
+
 </div>
 
 ## 💡 The Big Insight: Save Money by Choosing Smart
