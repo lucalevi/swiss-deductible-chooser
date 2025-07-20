@@ -22,7 +22,7 @@ calculate in seconds!{% endblock %}
 
 <h2>Step 1 – Check Your Premiums</h2>
 <p>Get the <b>monthly premiums</b> for all deductibles (300 to 2500 CHF) from the
-    <a href="https://www.priminfo.admin.ch/" target="priminfo">official Swiss Premium Calculator</a>.
+    <a href="https://www.priminfo.admin.ch/de" target="priminfo">official Swiss Premium Calculator</a>.
 </p>
 
 <div class="the-rule">
@@ -37,33 +37,33 @@ calculate in seconds!{% endblock %}
 
 <div class="center-me">
     <form method="post" action="{{ url_for('calculate', lang=lang) }}" id="premium-form">
-        <div class="form-group">
-            <label for="premium-300">300 CHF:</label>
+        <div class="form-group center-me center-me">
+            <label for="premium-300">300 CHF deductible:</label>
             <input type="number" step="0.01" name="premium[]" id="premium-300" placeholder="e.g. 463.40" min="100"
                 max="1000" required>
         </div>
-        <div class="form-group">
-            <label for="premium-500">500 CHF:</label>
+        <div class="form-group center-me">
+            <label for="premium-500">500 CHF deductible:</label>
             <input type="number" step="0.01" name="premium[]" id="premium-500" placeholder="e.g. 452.60" min="100"
                 max="1000" required>
         </div>
-        <div class="form-group">
-            <label for="premium-1000">1000 CHF:</label>
+        <div class="form-group center-me">
+            <label for="premium-1000">1000 CHF deductible:</label>
             <input type="number" step="0.01" name="premium[]" id="premium-1000" placeholder="e.g. 425.40" min="100"
                 max="1000" required>
         </div>
-        <div class="form-group">
-            <label for="premium-1500">1500 CHF:</label>
+        <div class="form-group center-me">
+            <label for="premium-1500">1500 CHF deductible:</label>
             <input type="number" step="0.01" name="premium[]" id="premium-1500" placeholder="e.g. 398.30" min="100"
                 max="1000" required>
         </div>
-        <div class="form-group">
-            <label for="premium-2000">2000 CHF:</label>
+        <div class="form-group center-me">
+            <label for="premium-2000">2000 CHF deductible:</label>
             <input type="number" step="0.01" name="premium[]" id="premium-2000" placeholder="e.g. 371.20" min="100"
                 max="1000" required>
         </div>
-        <div class="form-group">
-            <label for="premium-2500">2500 CHF:</label>
+        <div class="form-group center-me">
+            <label for="premium-2500">2500 CHF deductible:</label>
             <input type="number" step="0.01" name="premium[]" id="premium-2500" placeholder="e.g. 344.10" min="100"
                 max="1000" required>
         </div>

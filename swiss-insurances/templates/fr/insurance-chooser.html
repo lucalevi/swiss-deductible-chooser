@@ -23,7 +23,7 @@ Entrez vos primes et calculez en quelques secondes !{% endblock %}
 
 <h2>Étape 1 – Vérifiez vos primes</h2>
 <p>Obtenez les <b>primes mensuelles</b> pour toutes les franchises (300 à 2500 CHF) sur le
-    <a href="https://www.priminfo.admin.ch/" target="priminfo">calculateur officiel des primes suisses</a>.
+    <a href="https://www.priminfo.admin.ch/fr" target="priminfo">calculateur officiel des primes suisses</a>.
 </p>
 
 <div class="the-rule">
@@ -38,33 +38,33 @@ Entrez vos primes et calculez en quelques secondes !{% endblock %}
 
 <div class="center-me">
     <form method="post" action="{{ url_for('calculate', lang=lang) }}" id="premium-form">
-        <div class="form-group">
-            <label for="premium-300">300 CHF :</label>
+        <div class="form-group center-me">
+            <label for="premium-300">Franchise 300 CHF :</label>
             <input type="number" step="0.01" name="premium[]" id="premium-300" placeholder="ex. 463.40" min="100"
                 max="1000" required>
         </div>
-        <div class="form-group">
-            <label for="premium-500">500 CHF :</label>
+        <div class="form-group center-me">
+            <label for="premium-500">Franchise 500 CHF :</label>
             <input type="number" step="0.01" name="premium[]" id="premium-500" placeholder="ex. 452.60" min="100"
                 max="1000" required>
         </div>
-        <div class="form-group">
-            <label for="premium-1000">1000 CHF :</label>
+        <div class="form-group center-me">
+            <label for="premium-1000">Franchise 1000 CHF :</label>
             <input type="number" step="0.01" name="premium[]" id="premium-1000" placeholder="ex. 425.40" min="100"
                 max="1000" required>
         </div>
-        <div class="form-group">
-            <label for="premium-1500">1500 CHF :</label>
+        <div class="form-group center-me">
+            <label for="premium-1500">Franchise 1500 CHF :</label>
             <input type="number" step="0.01" name="premium[]" id="premium-1500" placeholder="ex. 398.30" min="100"
                 max="1000" required>
         </div>
-        <div class="form-group">
-            <label for="premium-2000">2000 CHF :</label>
+        <div class="form-group center-me">
+            <label for="premium-2000">Franchise 2000 CHF :</label>
             <input type="number" step="0.01" name="premium[]" id="premium-2000" placeholder="ex. 371.20" min="100"
                 max="1000" required>
         </div>
-        <div class="form-group">
-            <label for="premium-2500">2500 CHF :</label>
+        <div class="form-group center-me">
+            <label for="premium-2500">Franchise 2500 CHF :</label>
             <input type="number" step="0.01" name="premium[]" id="premium-2500" placeholder="ex. 344.10" min="100"
                 max="1000" required>
         </div>
