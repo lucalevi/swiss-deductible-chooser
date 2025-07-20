@@ -1,6 +1,6 @@
 # Insurek – Swiss Health Insurance Deductible Optimizer
 
-![Insurek Banner](static/img/ch-flag.webp)
+![Insurek Banner](swiss-insurances/static/img/ch-flag.webp)
 
 ## 💡 The Big Insight: Save Money by Choosing Smart
 
@@ -198,4 +198,4 @@ Questions? Email: [iacolettig.luca@gmail.com](mailto:iacolettig.luca@gmail.com)
 
 ---
 
-> **Save money. Choose smart. Insurek makes Swiss health
+**Save money. Choose smart. Insurek makes Swiss health**
