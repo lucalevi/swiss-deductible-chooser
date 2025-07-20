@@ -1,45 +1,201 @@
-# Swiss Health Insurance: Picking the Perfect Deductible
+# Insurek – Swiss Health Insurance Deductible Optimizer
 
-Switzerland’s health insurance system offers six deductible options (*franchises*), ranging from CHF 300 to CHF 2,500. But which one saves you the most money? 
-Let’s cut through the noise and find out.
+![Insurek Banner](static/img/ch-flag.webp)
 
-## The Big Reveal
-**TL;DR**: Your average yearly health expenses over the past three years determine your best choice. 
-If they’re *below ~CHF 2,000*, go for the **CHF 2,500 deductible** to slash your premiums. 
-If they’re *above ~CHF 2,000*, pick the **CHF 300 deductible** to minimize total costs. 
-The other four options? They’re just distractions that could cost you more.
+## 💡 The Big Insight: Save Money by Choosing Smart
 
-## How We Know This
-We’ve crunched the numbers using Python, NumPy, and Matplotlib to prove that only the extreme deductibles—CHF 300 and CHF 2,500—optimize your expenses 
-(premiums + deductible + 10% co-insurance, capped at CHF 700 annually). 
-The following chart visualizes this, showing how your total costs depend on your health spending.
-(The chart supposes data for a person born in 1984 living in Zurich.)
+Switzerland’s health insurance system offers **six deductible options** (*franchises*), from CHF 300 to CHF 2,500. But which one actually saves you the most money?  
+**The answer is surprisingly simple:**  
+- If your **average yearly health expenses are below ~CHF 2,000**, choose the **CHF 2,500 deductible** (lowest premiums).
+- If your **expenses are above ~CHF 2,000**, choose the **CHF 300 deductible** (lowest out-of-pocket costs).
 
-![image](https://github.com/user-attachments/assets/f8a177fa-0c18-47fb-8018-0c7861f4b433)
+The other four options? They’re almost always more expensive in total.  
+This project crunches the numbers for you, so you can make the smartest, most cost-effective choice—instantly.
 
-As you can see, if you have fewer expenses than 1,891 CHF, you'd better choose the highest deductible, 2,500 CHF.
-Instead, if you have more expenses than 1,891 CHF per year, your best choice would be the 300 CHF deductible, even if the premiums cost more!
+---
 
-## Find Your Sweet Spot
-To choose wisely, calculate your **average yearly health expenses**:
-1. Gather your medical bills (doctor visits, hospital stays, prescriptions—not insurance premiums) from the last three years.
-2. Sum them up and divide by 3 to get your annual average.
+## 🚀 What Is Insurek?
 
-Now, compare this number to our findings:
-- **Below ~CHF 2,000?** Choose the **CHF 2,500 deductible**. It comes with the lowest premiums, saving you money if your medical costs stay moderate.
-You’ll pay up to CHF 2,500 out-of-pocket, plus up to CHF 700 in co-insurance.
-- **Above ~CHF 2,000?** Opt for the **CHF 300 deductible**. Yes, premiums are higher, but you’ll only pay CHF 300 out-of-pocket before insurance kicks in, plus the CHF 700 co-insurance cap, keeping your total costs down when medical expenses soar.
+**Insurek** is a multilingual web tool and open-source project that helps you:
+- Find your optimal Swiss health insurance deductible (franchise)
+- Visualize your total costs (premiums + deductible + co-insurance)
+- Understand the math behind the recommendation
 
-## Why Only These Two?
-The math is clear: intermediate deductibles (CHF 500, 1,000, 1,500, or 2,000) result in higher total costs because their premium savings don’t offset the out-of-pocket expenses as effectively as the extremes. Check out the calculations in the file [premium_chooser.ipynb](https://github.com/lucalevi/swiss-premium-chooser/blob/main/premium_chooser.ipynb) and the chart above to see how we arrived at this insight.
+You can use Insurek as:
+- **A web app**: Enter your premiums, see your best deductible and a clear cost chart.
+- **A Jupyter Notebook**: Run your own calculations with custom data.
 
-Ready to save? Know your health costs, pick CHF 300 or CHF 2,500, and keep more money in your pocket!
+<!-- ---
 
-## Use custom data
-If you want to choose with custom data, based on your person, the place you live, and other information based on your situation, feel free to run the Jupyter Notebook at [premium_chooser.ipynb](https://github.com/lucalevi/swiss-premium-chooser/blob/main/premium_chooser.ipynb) with your custom data. Follow the instructions contained in the notebook (the only change you have to make is providing the cheapest premiums for your situation). 
+## 🌍 Try It Online
 
-To run the Jupyter Notebook, you need Python installed on your machine. Else, you can go to [Google Colab](https://colab.research.google.com/), and choose this repo's URL from GitHub, i.e., `https://github.com/lucalevi/swiss-premium-chooser/`. Look at the image below.
-![image](https://github.com/user-attachments/assets/37720caa-28d9-4635-9fad-f1aa60821430)
-Once you click on the identified Jupyter Notebook, you should go to a URL like this [https://colab.research.google.com/github/lucalevi/swiss-premium-chooser/blob/main/premium_chooser.ipynb](https://colab.research.google.com/github/lucalevi/swiss-premium-chooser/blob/main/premium_chooser.ipynb)
-Then, you can run the Jupyter Notebook directly from the browser not having to care about installing `pip` or anything else on your machine.
+Visit [Insurek Online](https://iacolettig.it/swiss-insurances)   -->
 
+---
+
+## 🧠 How Does It Work?
+
+Swiss law sets strict rules:
+- You pay a **monthly premium** (varies by deductible, region, age, insurer).
+- You pay out-of-pocket up to your **deductible** (franchise).
+- After that, you pay **10% co-insurance** on further costs, capped at **CHF 700/year** for adults.
+
+**Insurek** compares all six deductible options for your real premiums and shows:
+- Where the total cost lines cross (the "break-even" point)
+- Which deductible is optimal for your health expense level
+
+**Result:**  
+- If you’re healthy and rarely see a doctor, the **highest deductible (CHF 2,500)** saves you the most.
+- If you have high medical costs, the **lowest deductible (CHF 300)** is best.
+
+---
+
+## 📊 Example: The Math Behind the Magic
+
+Suppose your average yearly health expenses are **CHF 1,500**:
+- **CHF 2,500 deductible**: Lowest premiums, you pay most costs out-of-pocket, but overall you save.
+- **CHF 300 deductible**: Higher premiums, but you pay less out-of-pocket—only worth it if your expenses are high.
+
+The **break-even point** is usually around **CHF 1,800–2,000** (depends on your actual premiums).
+
+![Example Chart](chart.png)
+
+---
+
+## 🛠️ How to Use the Web App
+
+### 1. Get Your Premiums
+- Go to [Priminfo](https://www.priminfo.admin.ch/) (official Swiss premium calculator)
+- Enter your ZIP code, birth year, and insurance model
+- Write down the **six monthly premiums** for each deductible (CHF 300, 500, 1,000, 1,500, 2,000, 2,500)
+
+### 2. Enter Your Data
+- Go to the [Insurek web app](https://www.insurek.ch)
+- Select your language (EN, DE, FR, IT)
+- Enter your six premiums in descending order (highest = CHF 300, lowest = CHF 2,500)
+- Click **Calculate**
+
+### 3. See Your Result
+- Instantly see which deductible saves you the most
+- View a chart comparing all options
+- Download the chart for your records
+
+---
+
+## ⚙️ Local Installation & Development
+
+### Requirements
+
+- Python 3.8+
+- `pip` (Python package manager)
+- [Optional] Jupyter Notebook (for advanced users)
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/lucalevi/swiss-deductible-chooser.git
+cd swiss-deductible-chooser/swiss-insurances
+```
+
+### 2. Install Dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+(In truth, aside from Python, only `numpy`, `matplotlib` and `flask` are theoretically necessary.)
+
+
+If you want to use the Jupyter Notebook, also install:
+
+```bash
+pip install notebook
+```
+
+### 3. Set Up Environment
+
+Create a `.env` file in the `swiss-insurances` directory with:
+
+```
+FLASK_SECRET_KEY=your_secret_key_here
+```
+
+### 4. Run the Web App
+
+```bash
+python app.py
+```
+
+Visit [http://127.0.0.1:5000](http://127.0.0.1:5000) in your browser.
+
+---
+
+## 📒 Advanced: Run Your Own Calculations (Jupyter Notebook)
+
+If you want to experiment with your own data, use the included [premium_chooser.ipynb](premium_chooser.ipynb):
+
+1. Open the notebook in Jupyter or [Google Colab](https://colab.research.google.com/).
+2. Enter your own premiums in the `MONTHLY_PREMIUM` list.
+3. Run all cells to see the break-even point and cost chart for your situation.
+
+---
+
+## 🗂️ Project Structure
+
+```
+swiss-insurances/
+│
+├── app.py                # Flask web app (main entry point)
+├── scripts/
+│   └── insurance_calculator.py  # Core calculation logic
+├── static/               # CSS, JS, images
+├── templates/            # Multilingual HTML templates (EN, DE, FR, IT)
+├── .env                  # Environment variables (not committed)
+├── requirements.txt      # Python dependencies
+|
+premium_chooser.ipynb  # Jupyter Notebook (advanced)
+```
+
+---
+
+## 🌐 Multilingual Support
+
+- 🇬🇧 English
+- 🇩🇪 Deutsch
+- 🇫🇷 Français
+- 🇮🇹 Italiano
+
+Switch language anytime using the menu.
+
+---
+
+## 🤝 Contributing
+
+Pull requests are welcome!  
+If you find a bug or want to add a feature, open an issue or submit a PR.
+
+---
+
+## 📖 License
+
+GNU GPL-2.0 License. See [LICENSE](LICENSE) for details. Do mention the source when developing further.
+
+---
+
+## 🙋‍♂️ Author & Contact
+
+Created by [Luca Iacolettig](https://www.linkedin.com/in/luca-iacolettig/).  
+Questions? Email: [iacolettig.luca@gmail.com](mailto:iacolettig.luca@gmail.com)
+
+---
+
+## ⭐️ Why Use Insurek?
+
+- **Transparent**: All calculations are open-source and visible in [insurance_calculator.py](swiss-insurances/scripts/insurance_calculator.py) and [premium_chooser.ipynb](premium_chooser.ipynb).
+- **Fast**: Get your answer in seconds.
+- **Accurate**: Follows Swiss insurance law and real math.
+- **Private**: No data is stored—everything runs locally or in your browser.
+
+---
+
+> **Save money. Choose smart. Insurek makes Swiss health
