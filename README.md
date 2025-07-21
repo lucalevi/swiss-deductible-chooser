@@ -141,7 +141,7 @@ docker compose up --build
 
 ### 4. Development Workflow
 - Make changes to `app.py`, templates, or static files.
-- Rebuild and restart with docker compose up --build to apply changes.
+- Rebuild and restart with `docker compose up --build` to apply changes.
 - To stop and remove the container (optional cleanup):
 ```
 docker compose down
