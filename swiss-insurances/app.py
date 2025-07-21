@@ -5,7 +5,7 @@ import os
 from dotenv import load_dotenv
 
 # Load environment variables from the .env file (if present)
-load_dotenv()
+load_dotenv("swiss-insurances/.env")
 
 app = Flask(__name__)
 app.secret_key = os.getenv("FLASK_SECRET_KEY")  # Required for session management
@@ -109,4 +109,9 @@ def set_language(lang):
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    port = int(os.getenv("PORT", 5000))
+    host_port = int(os.getenv("HOST_PORT", 8080))  # New variable for host port
+    print(
+        f"\nAccess the app at http://localhost:{host_port} or http://127.0.0.1:{host_port}"
+    )
+    app.run(host="0.0.0.0", port=port, debug=False)

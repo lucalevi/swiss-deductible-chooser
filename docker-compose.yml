@@ -1,0 +1,10 @@
+services:
+  app:
+    build: .
+    ports:
+      - "8080:5000"
+    env_file:
+      - swiss-insurances/.env
+    volumes:
+      - .:/app
+    container_name: insurek-app

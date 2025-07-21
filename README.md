@@ -86,10 +86,10 @@ The **break-even point** is usually around **CHF 1,800–2,000** (depends on you
 
 ## ⚙️ Local Installation & Development
 
-### Requirements
+### Prerequisites
 
-- Python 3.8+
-- `pip` (Python package manager)
+- [Docker](https://www.docker.com/get-started) installed on your system
+- [Git](https://git-scm.com/) (to clone the repository)
 - [Optional] Jupyter Notebook (for advanced users)
 
 ### 1. Clone the Repository
@@ -99,14 +99,15 @@ git clone https://github.com/lucalevi/swiss-deductible-chooser.git
 cd swiss-deductible-chooser/swiss-insurances
 ```
 
-### 2. Install Dependencies
+### 2. Configure Environment
 
-```bash
-pip install -r requirements.txt
+- Create a `.env` file in the `swiss-insurances` directory with:
 ```
-
-(In truth, aside from Python, only `numpy`, `matplotlib` and `flask` are theoretically necessary.)
-
+FLASK_SECRET_KEY=your_secret_key_here  # Replace with a secure random string
+PORT=5000
+HOST_PORT=8080
+```
+- Note: The `FLASK_SECRET_KEY` is required for session management. Generate one using `openssl rand -hex 16` or a similar tool.
 
 If you want to use the Jupyter Notebook, also install:
 
@@ -114,21 +115,50 @@ If you want to use the Jupyter Notebook, also install:
 pip install notebook
 ```
 
-### 3. Set Up Environment
+### 3. Build and Run with Docker Compose
 
-Create a `.env` file in the `swiss-insurances` directory with:
-
+- Create a `docker-compose.yml` file in the project root:
 ```
-FLASK_SECRET_KEY=your_secret_key_here
+version: '3.8'
+services:
+  app:
+    build: .
+    ports:
+      - "8080:5000"
+    env_file:
+      - swiss-insurances/.env
+    volumes:
+      - .:/app
+    container_name: insurek-app
 ```
 
-### 4. Run the Web App
-
-```bash
-python app.py
+- Build and start the container:
+```
+docker compose up --build
 ```
 
-Visit [http://127.0.0.1:5000](http://127.0.0.1:5000) in your browser.
+- Access the app at [http://localhost:8080](http://localhost:8080).
+- Stop the container with `CTRL+C`, then restart with `docker compose up` (no `--build` needed unless code changes).
+
+### 4. Development Workflow
+- Make changes to `app.py`, templates, or static files.
+- Rebuild and restart with docker compose up --build to apply changes.
+- To stop and remove the container (optional cleanup):
+```
+docker compose down
+```
+
+#### Alternative: Manual Docker Run
+If you prefer not using Docker Compose, run:
+```
+docker run -p 8080:5000 --env-file swiss-insurances/.env swiss-deductible-chooser
+```
+- This creates a new container each time. To reuse, name it and manage it:
+```
+docker run -d --name insurek-app -p 8080:5000 --env-file swiss-insurances/.env swiss-deductible-chooser
+docker stop insurek-app
+docker start insurek-app
+```
 
 ---
 

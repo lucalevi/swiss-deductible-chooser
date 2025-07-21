@@ -1,0 +1,11 @@
+venv/
+.env
+*.pyc
+__pycache__/
+
+chart.png
+
+.git
+.gitignore
+
+.DS_Store
