@@ -119,7 +119,6 @@ pip install notebook
 
 - Create a `docker-compose.yml` file in the project root:
 ```
-version: '3.8'
 services:
   app:
     build: .
@@ -183,8 +182,8 @@ swiss-insurances/
 ├── static/               # CSS, JS, images
 ├── templates/            # Multilingual HTML templates (EN, DE, FR, IT)
 ├── .env                  # Environment variables (not committed)
-├── requirements.txt      # Python dependencies
 |
+requirements.txt      # Python dependencies
 premium_chooser.ipynb  # Jupyter Notebook (advanced)
 ```
 
