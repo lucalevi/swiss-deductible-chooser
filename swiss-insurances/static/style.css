@@ -471,6 +471,10 @@ input[type="submit"]:disabled {
     border: 1px solid var(--border-color);
 }
 
+#plot-chart {
+    max-width: 100%;
+}
+
 #pinch-zoom {
     font-size: 16px;
 }
@@ -697,10 +701,6 @@ input[type="submit"]:disabled {
 
     #pinch-zoom {
         display: none;
-    }
-
-    #plot-chart {
-        max-width: 100%;
     }
 }
 
