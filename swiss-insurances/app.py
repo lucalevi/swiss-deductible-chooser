@@ -9,6 +9,7 @@ load_dotenv("swiss-insurances/.env")
 
 app = Flask(__name__)
 app.secret_key = os.getenv("FLASK_SECRET_KEY")  # Required for session management
+app.config['TEMPLATES_AUTO_RELOAD'] = True
 
 SUPPORTED_LANGUAGES = ["en", "de", "fr", "it"]
 
