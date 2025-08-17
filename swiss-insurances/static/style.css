@@ -34,7 +34,7 @@ body {
 
 .navbar {
     position: sticky;
-    top: 0;
+    top: 16px;
     z-index: 1000;
     background-color: var(--bg-primary);
     padding: 10px 20px;
@@ -42,7 +42,7 @@ body {
     justify-content: space-between;
     align-items: center;
     box-shadow: var(--shadow);
-    border-radius: 16px;
+    /* border-radius: 16px; */
 }
 
 .navbar-brand a {
@@ -526,7 +526,11 @@ input[type="submit"]:disabled {
 /* TABLET - 768px and up */
 @media (min-width: 768px) {
     body {
-        padding: 32px;
+        padding: 24px 0px;
+    }
+
+    .navbar {
+        top: 24px;
     }
 
     .navbar-toggle {
@@ -631,9 +635,6 @@ input[type="submit"]:disabled {
 
 /* DESKTOP - 1024px and up */
 @media (min-width: 1024px) {
-    body {
-        padding: 48px;
-    }
 
     .container {
         max-width: 800px;
