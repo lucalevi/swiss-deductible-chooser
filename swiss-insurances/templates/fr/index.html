@@ -46,24 +46,33 @@ endblock %}
             Priminfo</strong></a>
 </div>
 
-<h3>Sur Priminfo :</h3>
-<ol>
-    <li>Entrez votre <b>code postal</b> ou votre commune.</li>
-    <li>Ajoutez votre <b>année de naissance</b>.</li>
-    <li>Choisissez une <b>franchise</b> (n’importe laquelle pour commencer).</li>
-    <li>Indiquez si vous avez besoin d’une <b>assurance accidents</b> (souvent non si vous travaillez +8 h/semaine).
-    </li>
-    <li>En bas de page, choisissez un ou plusieurs modèles d’assurance (Standard, HMO, etc.).</li>
-</ol>
+<h3 class="collapsible-header" onclick="toggleCollapsible()">
+    <span class="arrow">▶</span>
+    Sur Priminfo :
+</h3>
 
-<p>Cliquez sur <b>« Calculer »</b>. Ensuite, ouvrez l’onglet <b>« Comparaison des franchises »</b> et cliquez sur
-    <b>300</b> pour classer par primes les plus basses.
-    Gardez la page ouverte pour la suite.
-</p>
+<div id="priminfo-instructions" class="collapsible-content">
+    <ol>
+        <li>Entrez votre <b>code postal</b> ou votre commune.</li>
+        <li>Ajoutez votre <b>année de naissance</b>.</li>
+        <li>Choisissez une <b>franchise</b> (n’importe laquelle pour commencer).</li>
+        <li>Indiquez si vous avez besoin d’une <b>assurance accidents</b> (souvent non si vous travaillez +8 h/semaine).
+        </li>
+        <li>En bas de page, choisissez un ou plusieurs modèles d’assurance (Standard, HMO, etc.).</li>
+    </ol>
 
-<div class="center-me">
-    <img class="bvg-imgs" src="{{ url_for('static', filename='img/priminfo-first-fr.png') }}" alt="Exemple Priminfo">
-    <img class="bvg-imgs" src="{{ url_for('static', filename='img/priminfo-second-fr.png') }}" alt="Modèles Priminfo">
+    <p>Cliquez sur <b>« Calculer »</b>. Ensuite, ouvrez l’onglet <b>« Comparaison des franchises »</b> et cliquez sur
+        <b>300</b> pour classer par primes les plus basses.
+        Gardez la page ouverte pour la suite.
+    </p>
+
+    <div class="center-me">
+        <img class="bvg-imgs" src="{{ url_for('static', filename='img/priminfo-first-fr.png') }}"
+            alt="Exemple Priminfo">
+        <img class="bvg-imgs" src="{{ url_for('static', filename='img/priminfo-second-fr.png') }}"
+            alt="Modèles Priminfo">
+    </div>
+
 </div>
 
 <div class="the-rule">

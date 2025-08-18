@@ -46,22 +46,31 @@ endblock %}
     <a href="https://www.priminfo.admin.ch/de" target="priminfo" class="btn-priminfo"><strong>Zu Priminfo</strong></a>
 </div>
 
-<h3>So gehen Sie auf Priminfo vor:</h3>
-<ol>
-    <li>Geben Sie Ihre <b>Postleitzahl</b> oder Ihren Wohnort ein.</li>
-    <li>Tragen Sie Ihr <b>Geburtsjahr</b> ein.</li>
-    <li>Wählen Sie eine <b>beliebige Franchise</b> (nur für den Start).</li>
-    <li>Wählen Sie, ob Sie <b>Unfallversicherung</b> benötigen (meist nicht, wenn Sie über 8 Std./Woche arbeiten).</li>
-    <li>Unten wählen Sie ein oder mehrere Versicherungsmodelle (Standard, HMO usw.).</li>
-</ol>
+<h3 class="collapsible-header" onclick="toggleCollapsible()">
+    <span class="arrow">▶</span>
+    So gehen Sie auf Priminfo vor:
+</h3>
+<div id="priminfo-instructions" class="collapsible-content">
 
-<p>Klicken Sie danach auf <b>„Berechnen“</b>. Klicken Sie auf den Reiter <b>„Vergleich der
-        Franchisen“</b> und klicken auf <b>300</b>, um nach den günstigsten Prämien zu sortieren.
-    Lassen Sie die Seite für später geöffnet.</p>
+    <ol>
+        <li>Geben Sie Ihre <b>Postleitzahl</b> oder Ihren Wohnort ein.</li>
+        <li>Tragen Sie Ihr <b>Geburtsjahr</b> ein.</li>
+        <li>Wählen Sie eine <b>beliebige Franchise</b> (nur für den Start).</li>
+        <li>Wählen Sie, ob Sie <b>Unfallversicherung</b> benötigen (meist nicht, wenn Sie über 8 Std./Woche arbeiten).
+        </li>
+        <li>Unten wählen Sie ein oder mehrere Versicherungsmodelle (Standard, HMO usw.).</li>
+    </ol>
 
-<div class="center-me">
-    <img class="bvg-imgs" src="{{ url_for('static', filename='img/priminfo-first-ende.png') }}" alt="Priminfo Beispiel">
-    <img class="bvg-imgs" src="{{ url_for('static', filename='img/priminfo-second-ende.png') }}" alt="Priminfo Modelle">
+    <p>Klicken Sie danach auf <b>„Berechnen“</b>. Klicken Sie auf den Reiter <b>„Vergleich der
+            Franchisen“</b> und klicken auf <b>300</b>, um nach den günstigsten Prämien zu sortieren.
+        Lassen Sie die Seite für später geöffnet.</p>
+
+    <div class="center-me">
+        <img class="bvg-imgs" src="{{ url_for('static', filename='img/priminfo-first-ende.png') }}"
+            alt="Priminfo Beispiel">
+        <img class="bvg-imgs" src="{{ url_for('static', filename='img/priminfo-second-ende.png') }}"
+            alt="Priminfo Modelle">
+    </div>
 </div>
 
 <div class="the-rule">

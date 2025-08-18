@@ -409,6 +409,34 @@ input[type="submit"]:disabled {
     transform: translateY(0);
 }
 
+.collapsible-header {
+    cursor: pointer;
+    user-select: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.collapsible-header:hover {
+    color: #0066cc;
+}
+
+.arrow {
+    transition: transform 0.2s ease;
+    font-weight: bold;
+}
+
+.collapsible-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+}
+
+.collapsible-content.expanded {
+    max-height: 1000px;
+    /* Adjust based on your content height */
+}
+
 /* Button class for links (e.g., Get Started) */
 .btn {
     display: inline-block;

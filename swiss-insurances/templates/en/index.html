@@ -46,22 +46,31 @@ endblock %}
 </div>
 
 
-<h3>What to Do on Priminfo:</h3>
-<ol>
-    <li>Enter your <b>ZIP code</b> or city.</li>
-    <li>Add your <b>birth year</b>.</li>
-    <li>Choose a <b>deductible</b> (any – it’s just to start).</li>
-    <li>Select if you need <b>injury insurance</b> (most workers don’t).</li>
-    <li>At the bottom, choose one or more insurance models (Standard, HMO, etc.).</li>
-</ol>
+<h3 class="collapsible-header" onclick="toggleCollapsible()">
+    <span class="arrow">▶</span>
+    What to Do on Priminfo:
+</h3>
 
-<p>Then click <b>"Calculate"</b> (<i>berechnen</i> in German). Open the tab <b>"Deductible Comparison"</b> (<i>Vergleich
-        der Franchisen</i> in German) and click on <b>300</b>
-    to sort by cheapest premiums. Keep that page open for later.</p>
+<div id="priminfo-instructions" class="collapsible-content">
+    <ol>
+        <li>Enter your <b>ZIP code</b> or city.</li>
+        <li>Add your <b>birth year</b>.</li>
+        <li>Choose a <b>deductible</b> (any – it’s just to start).</li>
+        <li>Select if you need <b>injury insurance</b> (most workers don’t).</li>
+        <li>At the bottom, choose one or more insurance models (Standard, HMO, etc.).</li>
+    </ol>
 
-<div class="center-me">
-    <img class="bvg-imgs" src="{{ url_for('static', filename='img/priminfo-first-ende.png') }}" alt="Priminfo example">
-    <img class="bvg-imgs" src="{{ url_for('static', filename='img/priminfo-second-ende.png') }}" alt="Priminfo models">
+    <p>Then click <b>"Calculate"</b> (<i>berechnen</i> in German). Open the tab <b>"Deductible Comparison"</b>
+        (<i>Vergleich
+            der Franchisen</i> in German) and click on <b>300</b>
+        to sort by cheapest premiums. Keep that page open for later.</p>
+
+    <div class="center-me">
+        <img class="bvg-imgs" src="{{ url_for('static', filename='img/priminfo-first-ende.png') }}"
+            alt="Priminfo example">
+        <img class="bvg-imgs" src="{{ url_for('static', filename='img/priminfo-second-ende.png') }}"
+            alt="Priminfo models">
+    </div>
 </div>
 
 <div class="the-rule">

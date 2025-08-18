@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
+    // Your existing form validation code
     const inputs = [
         document.getElementById("premium-300"),
         document.getElementById("premium-500"),
@@ -27,21 +28,40 @@ document.addEventListener("DOMContentLoaded", function () {
         submitBtn.disabled = allFilled && !isDescending;
     }
 
-    inputs.forEach(input => {
-        input.addEventListener("input", validateOrder);
-    });
+    // Only run form validation if the elements exist (they might not be on every page)
+    if (form && inputs[0]) {
+        inputs.forEach(input => {
+            input.addEventListener("input", validateOrder);
+        });
 
-    form.addEventListener("submit", function (event) {
-        if (!form.checkValidity()) {
-            form.reportValidity();
-            event.preventDefault();
-            return;
-        }
+        form.addEventListener("submit", function (event) {
+            if (!form.checkValidity()) {
+                form.reportValidity();
+                event.preventDefault();
+                return;
+            }
+            validateOrder();
+            if (submitBtn.disabled) {
+                event.preventDefault();
+            }
+        });
+
         validateOrder();
-        if (submitBtn.disabled) {
-            event.preventDefault();
-        }
-    });
+    }
 
-    validateOrder();
+    // Collapsible functionality
+    window.toggleCollapsible = function () {
+        const content = document.getElementById('priminfo-instructions');
+        const arrow = document.querySelector('.arrow');
+
+        if (content && arrow) {
+            if (content.classList.contains('expanded')) {
+                content.classList.remove('expanded');
+                arrow.textContent = '▶';
+            } else {
+                content.classList.add('expanded');
+                arrow.textContent = '▼';
+            }
+        }
+    };
 });

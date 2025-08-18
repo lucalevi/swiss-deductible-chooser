@@ -45,23 +45,32 @@ Svizzera{% endblock %}
             Priminfo</strong></a>
 </div>
 
-<h3>Cosa fare su Priminfo:</h3>
-<ol>
-    <li>Inserisci il tuo <b>CAP</b> o la città.</li>
-    <li>Scrivi il tuo <b>anno di nascita</b>.</li>
-    <li>Scegli una <b>franchigia qualsiasi</b> (solo per iniziare).</li>
-    <li>Indica se hai bisogno dell’<b>assicurazione infortuni</b> (di solito no se lavori più di 8 ore/settimana).</li>
-    <li>In fondo, scegli uno o più modelli assicurativi (Standard, HMO, ecc.).</li>
-</ol>
+<h3 class="collapsible-header" onclick="toggleCollapsible()">
+    <span class="arrow">▶</span>
+    Cosa fare su Priminfo:
+</h3>
+<div id="priminfo-instructions" class="collapsible-content">
 
-<p>Clicca su <b>"Calcolare"</b>. Scegli quindi la scheda <b>"Confronto delle franchigie"</b> e clicca su
-    <b>300</b> per ordinare i premi dal più basso al più alto.
-    Tieni aperta questa pagina per dopo.
-</p>
+    <ol>
+        <li>Inserisci il tuo <b>CAP</b> o la città.</li>
+        <li>Scrivi il tuo <b>anno di nascita</b>.</li>
+        <li>Scegli una <b>franchigia qualsiasi</b> (solo per iniziare).</li>
+        <li>Indica se hai bisogno dell’<b>assicurazione infortuni</b> (di solito no se lavori più di 8 ore/settimana).
+        </li>
+        <li>In fondo, scegli uno o più modelli assicurativi (Standard, HMO, ecc.).</li>
+    </ol>
 
-<div class="center-me">
-    <img class="bvg-imgs" src="{{ url_for('static', filename='img/priminfo-first-it.png') }}" alt="Esempio Priminfo">
-    <img class="bvg-imgs" src="{{ url_for('static', filename='img/priminfo-second-it.png') }}" alt="Modelli Priminfo">
+    <p>Clicca su <b>"Calcolare"</b>. Scegli quindi la scheda <b>"Confronto delle franchigie"</b> e clicca su
+        <b>300</b> per ordinare i premi dal più basso al più alto.
+        Tieni aperta questa pagina per dopo.
+    </p>
+
+    <div class="center-me">
+        <img class="bvg-imgs" src="{{ url_for('static', filename='img/priminfo-first-it.png') }}"
+            alt="Esempio Priminfo">
+        <img class="bvg-imgs" src="{{ url_for('static', filename='img/priminfo-second-it.png') }}"
+            alt="Modelli Priminfo">
+    </div>
 </div>
 
 <div class="the-rule">
@@ -87,9 +96,11 @@ Svizzera{% endblock %}
 <h2>Passo 3 – Inserisci i premi</h2>
 
 <p class="warning-message">
-    <b>Nota:</b> Insurek segue le regole svizzere, compreso il <b>10% di partecipazione ai costi (max 700 CHF/anno per
+    <b>Nota:</b> Insurek segue le regole svizzere, compreso il <b>10% di partecipazione ai costi (max 700 CHF/anno
+        per
         gli adulti)</b>.
-    È una guida, non un consiglio finanziario. Controlla la tua situazione personale prima di scegliere la franchigia.
+    È una guida, non un consiglio finanziario. Controlla la tua situazione personale prima di scegliere la
+    franchigia.
 </p>
 
 <p><b>Importante:</b> Inserisci i premi in <b>ordine decrescente</b> (più alto = 300 CHF, più basso = 2500 CHF).</p>
@@ -179,7 +190,8 @@ Svizzera{% endblock %}
     <li>Puoi fare gli stessi calcoli tu stesso, se lo desideri</li>
 </ul>
 <p>
-    Vuoi una prova? Verifica i nostri risultati con i tuoi calcoli. Le nostre raccomandazioni corrisponderanno perché la
+    Vuoi una prova? Verifica i nostri risultati con i tuoi calcoli. Le nostre raccomandazioni corrisponderanno
+    perché la
     matematica non mente—ti mostra la scelta più economica per la tua situazione.
 </p>
 
