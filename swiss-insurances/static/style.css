@@ -523,6 +523,10 @@ input[type="submit"]:disabled {
     /* Even darker when clicked */
 }
 
+.about-end {
+    margin-top: 40px;
+}
+
 /* TABLET - 768px and up */
 @media (min-width: 768px) {
     body {
