@@ -32,8 +32,6 @@
                         class="{% if 'choose' in request.path %}active{% endif %}">
                         Tool
                     </a></li>
-                <li><a href="{{ url_for('info', lang=lang) }}"
-                        class="{% if 'info' in request.path %}active{% endif %}">About</a></li>
             </ul>
             {% if not page_is_results %}
             <div class="language-switcher">
