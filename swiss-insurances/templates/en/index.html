@@ -74,16 +74,17 @@ endblock %}
     Add up the amounts of all bills and divide by 3.
     This average is needed to find the cheapest deductible.
 </p>
+<p>How? By comparing it with the break-even point found in the next step.
+    If your average yearly health costs are below the break-even point,
+    you save money with the highest deductible. And if your costs are above it,
+    the lowest deductible might be better.
+</p>
 
 <div class="the-rule">
     <hr class="home-rule">
 </div>
 
-<h2>Step 3 – Use Insurek</h2>
-<div class="center-me">
-    <a href="{{ url_for('choose', lang=lang) }}" class="btn big-btn">Start Now – It’s Free</a>
-</div>
-
+<h2>Step 3 – Enter Your Premiums</h2>
 
 <p class="warning-message">
     <b>Note:</b> Insurek follows Swiss insurance rules, including the <b>10% co-insurance limit (max 700 CHF/year for
@@ -91,8 +92,65 @@ endblock %}
     It’s a guide, not financial advice. Check your personal situation before choosing.
 </p>
 
+<p><b>Important:</b> Enter the premiums in <b>descending order</b> (highest = 300 CHF, lowest = 2500 CHF).</p>
+<p id="validation-warning" style="color: red; display: none;">
+    ⚠️ Premiums must go from highest to lowest.
+</p>
+
+<div class="center-me">
+    <form method="post" action="{{ url_for('calculate', lang=lang) }}" id="premium-form">
+        <div class="form-group center-me center-me">
+            <label for="premium-300">300 CHF deductible:</label>
+            <input type="number" step="0.01" name="premium[]" id="premium-300" placeholder="e.g. 463.40" min="100"
+                max="1000" required>
+        </div>
+        <div class="form-group center-me">
+            <label for="premium-500">500 CHF deductible:</label>
+            <input type="number" step="0.01" name="premium[]" id="premium-500" placeholder="e.g. 452.60" min="100"
+                max="1000" required>
+        </div>
+        <div class="form-group center-me">
+            <label for="premium-1000">1000 CHF deductible:</label>
+            <input type="number" step="0.01" name="premium[]" id="premium-1000" placeholder="e.g. 425.40" min="100"
+                max="1000" required>
+        </div>
+        <div class="form-group center-me">
+            <label for="premium-1500">1500 CHF deductible:</label>
+            <input type="number" step="0.01" name="premium[]" id="premium-1500" placeholder="e.g. 398.30" min="100"
+                max="1000" required>
+        </div>
+        <div class="form-group center-me">
+            <label for="premium-2000">2000 CHF deductible:</label>
+            <input type="number" step="0.01" name="premium[]" id="premium-2000" placeholder="e.g. 371.20" min="100"
+                max="1000" required>
+        </div>
+        <div class="form-group center-me">
+            <label for="premium-2500">2500 CHF deductible:</label>
+            <input type="number" step="0.01" name="premium[]" id="premium-2500" placeholder="e.g. 344.10" min="100"
+                max="1000" required>
+        </div>
+        <button type="submit" id="submit-btn" class="btn big-btn">Calculate Your Savings</button>
+    </form>
+</div>
+
+<div class="the-rule">
+    <hr class="home-rule">
+</div>
+
+<h2>Step 3 – See Your Results</h2>
+<p>After clicking <b>"Calculate Your Savings"</b>, you’ll see:</p>
+<ul>
+    <li>The best deductible for you</li>
+    <li>A clear cost comparison chart</li>
+</ul>
+
 <div class="center-me">
     <img id="bottom-img" src="{{ url_for('static', filename='img/mnt-flag.png') }}" alt="Flag of Switzerland">
 </div>
 
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+<script src="{{ url_for('static', filename='scripts.js') }}"></script>
 {% endblock %}

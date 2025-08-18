@@ -74,15 +74,17 @@ Svizzera{% endblock %}
     Somma gli importi di tutte le fatture e dividi per 3.
     Questa media è necessaria per conoscere la franchigia più economica.
 </p>
+<p>Come? Confrontandolo con il punto d'equilibrio calcolato nel passo successivo.
+    Se le tue spese sanitarie medie annue sono inferiori a questo punto,
+    risparmi con la franchigia più alta. E se invece sono superiori,
+    potrebbe convenire la franchigia più bassa.
+</p>
 
 <div class="the-rule">
     <hr class="home-rule">
 </div>
 
-<h2>Passo 3 – Usa Insurek</h2>
-<div class="center-me">
-    <a href="{{ url_for('choose', lang=lang) }}" class="btn big-btn">Inizia ora – Gratis</a>
-</div>
+<h2>Passo 3 – Inserisci i premi</h2>
 
 <p class="warning-message">
     <b>Nota:</b> Insurek segue le regole svizzere, compreso il <b>10% di partecipazione ai costi (max 700 CHF/anno per
@@ -90,8 +92,65 @@ Svizzera{% endblock %}
     È una guida, non un consiglio finanziario. Controlla la tua situazione personale prima di scegliere la franchigia.
 </p>
 
+<p><b>Importante:</b> Inserisci i premi in <b>ordine decrescente</b> (più alto = 300 CHF, più basso = 2500 CHF).</p>
+<p id="validation-warning" style="color: red; display: none;">
+    ⚠️ I premi devono andare dal più alto al più basso.
+</p>
+
+<div class="center-me">
+    <form method="post" action="{{ url_for('calculate', lang=lang) }}" id="premium-form">
+        <div class="form-group center-me">
+            <label for="premium-300">Franchigia 300 CHF:</label>
+            <input type="number" step="0.01" name="premium[]" id="premium-300" placeholder="es. 463.40" min="100"
+                max="1000" required>
+        </div>
+        <div class="form-group center-me">
+            <label for="premium-500">Franchigia 500 CHF:</label>
+            <input type="number" step="0.01" name="premium[]" id="premium-500" placeholder="es. 452.60" min="100"
+                max="1000" required>
+        </div>
+        <div class="form-group center-me">
+            <label for="premium-1000">Franchigia 1000 CHF:</label>
+            <input type="number" step="0.01" name="premium[]" id="premium-1000" placeholder="es. 425.40" min="100"
+                max="1000" required>
+        </div>
+        <div class="form-group center-me">
+            <label for="premium-1500">Franchigia 1500 CHF:</label>
+            <input type="number" step="0.01" name="premium[]" id="premium-1500" placeholder="es. 398.30" min="100"
+                max="1000" required>
+        </div>
+        <div class="form-group center-me">
+            <label for="premium-2000">Franchigia 2000 CHF:</label>
+            <input type="number" step="0.01" name="premium[]" id="premium-2000" placeholder="es. 371.20" min="100"
+                max="1000" required>
+        </div>
+        <div class="form-group center-me">
+            <label for="premium-2500">Franchigia 2500 CHF:</label>
+            <input type="number" step="0.01" name="premium[]" id="premium-2500" placeholder="es. 344.10" min="100"
+                max="1000" required>
+        </div>
+        <button type="submit" id="submit-btn" class="btn big-btn">Calcola ora</button>
+    </form>
+</div>
+
+<div class="the-rule">
+    <hr class="home-rule">
+</div>
+
+<h2>Passo 3 – Il tuo risultato</h2>
+<p>Dopo aver cliccato <b>"Calcola ora"</b>, vedrai:</p>
+<ul>
+    <li>la franchigia più conveniente per te</li>
+    <li>un grafico chiaro dei costi</li>
+</ul>
+
 <div class="center-me">
     <img id="bottom-img" src="{{ url_for('static', filename='img/mnt-flag.png') }}" alt="Bandiera svizzera">
 </div>
 
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+<script src="{{ url_for('static', filename='scripts.js') }}"></script>
 {% endblock %}

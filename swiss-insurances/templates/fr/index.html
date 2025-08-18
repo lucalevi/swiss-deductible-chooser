@@ -76,15 +76,17 @@ endblock %}
     Additionnez le montant de toutes les factures et divisez par 3.
     Cette moyenne est nécessaire pour connaître la franchise la moins chère.
 </p>
+<p>Comment ? En le comparant avec le point d’équilibre indiqué à l’étape suivante.
+    Si vos dépenses de santé annuelles moyennes sont en dessous de ce point,
+    vous économisez avec la franchise la plus élevée. Et si elles sont au-dessus,
+    la franchise la plus basse peut être plus avantageuse.
+</p>
 
 <div class="the-rule">
     <hr class="home-rule">
 </div>
 
-<h2>Étape 3 – Utilisez Insurek</h2>
-<div class="center-me">
-    <a href="{{ url_for('choose', lang=lang) }}" class="btn big-btn">Commencer maintenant – Gratuit</a>
-</div>
+<h2>Étape 3 – Entrez vos primes</h2>
 
 <p class="warning-message">
     <b>Remarque :</b> Insurek suit les règles suisses, y compris la <b>participation de 10 % (max. 700 CHF/an pour les
@@ -92,8 +94,65 @@ endblock %}
     C’est un guide, pas un conseil financier. Vérifiez votre situation personnelle avant de choisir votre franchise.
 </p>
 
+<p><b>Important :</b> Entrez les primes par <b>ordre décroissant</b> (plus élevée = 300 CHF, plus basse = 2500 CHF).</p>
+<p id="validation-warning" style="color: red; display: none;">
+    ⚠️ Les primes doivent aller de la plus haute à la plus basse.
+</p>
+
+<div class="center-me">
+    <form method="post" action="{{ url_for('calculate', lang=lang) }}" id="premium-form">
+        <div class="form-group center-me">
+            <label for="premium-300">Franchise 300 CHF :</label>
+            <input type="number" step="0.01" name="premium[]" id="premium-300" placeholder="ex. 463.40" min="100"
+                max="1000" required>
+        </div>
+        <div class="form-group center-me">
+            <label for="premium-500">Franchise 500 CHF :</label>
+            <input type="number" step="0.01" name="premium[]" id="premium-500" placeholder="ex. 452.60" min="100"
+                max="1000" required>
+        </div>
+        <div class="form-group center-me">
+            <label for="premium-1000">Franchise 1000 CHF :</label>
+            <input type="number" step="0.01" name="premium[]" id="premium-1000" placeholder="ex. 425.40" min="100"
+                max="1000" required>
+        </div>
+        <div class="form-group center-me">
+            <label for="premium-1500">Franchise 1500 CHF :</label>
+            <input type="number" step="0.01" name="premium[]" id="premium-1500" placeholder="ex. 398.30" min="100"
+                max="1000" required>
+        </div>
+        <div class="form-group center-me">
+            <label for="premium-2000">Franchise 2000 CHF :</label>
+            <input type="number" step="0.01" name="premium[]" id="premium-2000" placeholder="ex. 371.20" min="100"
+                max="1000" required>
+        </div>
+        <div class="form-group center-me">
+            <label for="premium-2500">Franchise 2500 CHF :</label>
+            <input type="number" step="0.01" name="premium[]" id="premium-2500" placeholder="ex. 344.10" min="100"
+                max="1000" required>
+        </div>
+        <button type="submit" id="submit-btn" class="btn big-btn">Calculer maintenant</button>
+    </form>
+</div>
+
+<div class="the-rule">
+    <hr class="home-rule">
+</div>
+
+<h2>Étape 3 – Résultat</h2>
+<p>Après avoir cliqué sur <b>"Calculer maintenant"</b>, vous verrez :</p>
+<ul>
+    <li>la franchise la plus avantageuse pour vous</li>
+    <li>un graphique clair des coûts</li>
+</ul>
+
 <div class="center-me">
     <img id="bottom-img" src="{{ url_for('static', filename='img/mnt-flag.png') }}" alt="Drapeau suisse">
 </div>
 
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+<script src="{{ url_for('static', filename='scripts.js') }}"></script>
 {% endblock %}

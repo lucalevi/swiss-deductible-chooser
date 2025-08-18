@@ -73,17 +73,18 @@ endblock %}
         Versicherungsprämien</b>).
     Addieren Sie die Beträge aller Rechnungen und teilen Sie durch 3.
     Dieser Durchschnitt ist nötig, um die günstigste Franchise zu finden.
-
+</p>
+<p>Wie? Indem Sie ihn mit dem Break-even-Punkt im nächsten Schritt vergleichen.
+    Liegen Ihre durchschnittlichen jährlichen Gesundheitskosten unter diesem Punkt,
+    sparen Sie mit der höchsten Franchise. Und wenn Ihre Kosten darüber liegen,
+    ist die tiefste Franchise möglicherweise besser.
 </p>
 
 <div class="the-rule">
     <hr class="home-rule">
 </div>
 
-<h2>Schritt 3 – Insurek benutzen</h2>
-<div class="center-me">
-    <a href="{{ url_for('choose', lang=lang) }}" class="btn big-btn">Jetzt starten – Gratis</a>
-</div>
+<h2>Schritt 3 – Prämien eingeben</h2>
 
 <p class="warning-message">
     <b>Hinweis:</b> Insurek berücksichtigt die Schweizer Regeln, inklusive des <b>10%-Selbstbehalts (max. 700
@@ -92,8 +93,66 @@ endblock %}
     Franchise.
 </p>
 
+<p><b>Wichtig:</b> die Prämien in <b>absteigender Reihenfolge</b> eingeben (höchste = 300 CHF, niedrigste = 2500 CHF).
+</p>
+<p id="validation-warning" style="color: red; display: none;">
+    ⚠️ Prämien müssen von hoch nach tief eingetragen werden.
+</p>
+
+<div class="center-me">
+    <form method="post" action="{{ url_for('calculate', lang=lang) }}" id="premium-form">
+        <div class="form-group center-me">
+            <label for="premium-300">300 CHF-Franchise:</label>
+            <input type="number" step="0.01" name="premium[]" id="premium-300" placeholder="z.B. 463.40" min="100"
+                max="1000" required>
+        </div>
+        <div class="form-group center-me">
+            <label for="premium-500">500 CHF-Franchise:</label>
+            <input type="number" step="0.01" name="premium[]" id="premium-500" placeholder="z.B. 452.60" min="100"
+                max="1000" required>
+        </div>
+        <div class="form-group center-me">
+            <label for="premium-1000">1000 CHF-Franchise:</label>
+            <input type="number" step="0.01" name="premium[]" id="premium-1000" placeholder="z.B. 425.40" min="100"
+                max="1000" required>
+        </div>
+        <div class="form-group center-me">
+            <label for="premium-1500">1500 CHF-Franchise:</label>
+            <input type="number" step="0.01" name="premium[]" id="premium-1500" placeholder="z.B. 398.30" min="100"
+                max="1000" required>
+        </div>
+        <div class="form-group center-me">
+            <label for="premium-2000">2000 CHF-Franchise:</label>
+            <input type="number" step="0.01" name="premium[]" id="premium-2000" placeholder="z.B. 371.20" min="100"
+                max="1000" required>
+        </div>
+        <div class="form-group center-me">
+            <label for="premium-2500">2500 CHF-Franchise:</label>
+            <input type="number" step="0.01" name="premium[]" id="premium-2500" placeholder="z.B. 344.10" min="100"
+                max="1000" required>
+        </div>
+        <button type="submit" id="submit-btn" class="btn big-btn">Jetzt berechnen</button>
+    </form>
+</div>
+
+<div class="the-rule">
+    <hr class="home-rule">
+</div>
+
+<h2>Schritt 3 – Ihr Ergebnis</h2>
+<p>Nach dem Klick auf <b>"Jetzt berechnen"</b> sehen Sie:</p>
+<ul>
+    <li>die für Sie günstigste Franchise</li>
+    <li>ein klares Kosten-Diagramm</li>
+</ul>
+
 <div class="center-me">
     <img id="bottom-img" src="{{ url_for('static', filename='img/mnt-flag.png') }}" alt="Schweizer Flagge">
 </div>
 
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+<script src="{{ url_for('static', filename='scripts.js') }}"></script>
 {% endblock %}
