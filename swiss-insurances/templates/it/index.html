@@ -28,8 +28,8 @@ Svizzera{% endblock %}
 <h2>Come funziona – 3 passi facili</h2>
 <ol class="simple-steps">
     <li><b>Ottieni i tuoi premi:</b> dal calcolatore ufficiale della Confederazione.</li>
-    <li><b>Conosci le tue spese sanitarie annuali:</b> media degli ultimi 3 anni.</li>
     <li><b>Inserisci i dati:</b> Insurek ti indica la franchigia con cui risparmi di più.</li>
+    <li><b>Conosci le tue spese sanitarie annuali:</b> media degli ultimi 3 anni.</li>
 </ol>
 
 <div class="the-rule">
@@ -77,23 +77,7 @@ Svizzera{% endblock %}
     <hr class="home-rule">
 </div>
 
-<h2>Passo 2 – Le tue spese sanitarie medie</h2>
-<p>Raccogli le tue fatture mediche degli ultimi 3 anni (visite, farmaci, ricoveri – <b>senza i premi
-        dell’assicurazione</b>).
-    Somma gli importi di tutte le fatture e dividi per 3.
-    Questa media è necessaria per conoscere la franchigia più economica.
-</p>
-<p>Come? Confrontandolo con il punto d'equilibrio calcolato nel passo successivo.
-    Se le tue spese sanitarie medie annue sono inferiori a questo punto,
-    risparmi con la franchigia più alta. E se invece sono superiori,
-    potrebbe convenire la franchigia più bassa.
-</p>
-
-<div class="the-rule">
-    <hr class="home-rule">
-</div>
-
-<h2>Passo 3 – Inserisci i premi</h2>
+<h2>Passo 2 – Inserisci i premi</h2>
 
 <p class="warning-message">
     <b>Nota:</b> Insurek segue le regole svizzere, compreso il <b>10% di partecipazione ai costi (max 700 CHF/anno
@@ -144,16 +128,27 @@ Svizzera{% endblock %}
     </form>
 </div>
 
-<div class="the-rule">
-    <hr class="home-rule">
-</div>
-
-<h2>Passo 3 – Il tuo risultato</h2>
 <p>Dopo aver cliccato <b>"Calcola ora"</b>, vedrai:</p>
 <ul>
     <li>la franchigia più conveniente per te</li>
     <li>un grafico chiaro dei costi</li>
 </ul>
+
+<div class="the-rule">
+    <hr class="home-rule">
+</div>
+
+<h2>Passo 3 – Le tue spese sanitarie medie</h2>
+<p>Raccogli le tue fatture mediche degli ultimi 3 anni (visite, farmaci, ricoveri – <b>senza i premi
+        dell’assicurazione</b>).
+    Somma gli importi di tutte le fatture e dividi per 3.
+    Questa media è necessaria per conoscere la franchigia più economica.
+</p>
+<p>Come? Confrontandolo con il punto d'equilibrio calcolato nel passo precedente.
+    Se le tue spese sanitarie medie annue sono inferiori a questo punto,
+    risparmi con la franchigia più alta. E se invece sono superiori,
+    potrebbe convenire la franchigia più bassa.
+</p>
 
 <div class="center-me">
     <img id="bottom-img" src="{{ url_for('static', filename='img/mnt-flag.png') }}" alt="Bandiera svizzera">
