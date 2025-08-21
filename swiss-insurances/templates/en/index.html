@@ -63,7 +63,9 @@ endblock %}
     <p>Then click <b>"Calculate"</b> (<i>berechnen</i> in German). Open the tab <b>"Deductible Comparison"</b>
         (<i>Vergleich
             der Franchisen</i> in German) and click on <b>300</b>
-        to sort by cheapest premiums. Keep that page open for later.</p>
+        to sort by cheapest premiums.
+        Choose the six premiums that suit you best from the most convenient health insurance.
+        Keep that page open for later.</p>
 
     <div class="center-me">
         <img class="bvg-imgs" src="{{ url_for('static', filename='img/priminfo-first-ende.png') }}"
@@ -157,11 +159,47 @@ endblock %}
 <h2>What It Does – And Why It Matters</h2>
 <p>
     <b>Insurek helps you save money on Swiss health insurance.</b><br>
-    By entering your <b>monthly premiums</b> and by knowing your <b>average yearly health costs</b>, it indicates you
-    which
-    deductible
+    By entering your <b>monthly premiums</b> and your <b>average yearly health costs</b>, it shows you which deductible
     (franchise) will cost the least overall.
     It’s quick, clear, and based on real Swiss insurance data.
+</p>
+
+<h2>How Swiss Health Insurance Works</h2>
+<p>
+    In Switzerland, <b>basic health insurance is mandatory for everyone</b>. You can freely choose the insurance company
+    (like choosing a phone provider), but the coverage itself is defined by law and is the same everywhere.
+</p>
+<p>
+    When you sign up, you also pick a <b>franchise (deductible)</b>. This is the amount you pay yourself before
+    insurance
+    starts covering most of the costs. Once you reach this amount, your insurer pays the bills, but you still contribute
+    a small part (<b>10% co-insurance</b>, capped at CHF 700 per year).
+</p>
+<p>
+    On top of this, you can choose <b>different models</b> to save money or get more services. For example:
+</p>
+<ul>
+    <li><b>Hausarzt model</b>: you always visit your family doctor first.</li>
+    <li><b>Telemedizin model</b>: you call a medical hotline before going to a doctor.</li>
+</ul>
+<p>
+    These models often reduce your monthly premium.
+</p>
+<p>
+    There are also <b>hospital stay categories</b>:
+</p>
+<ul>
+    <li><b>Allgemein</b>: shared room, covered by basic insurance.</li>
+    <li><b>Halbprivat</b>: two-bed room, often with choice of doctor.</li>
+    <li><b>Privat</b>: private room and full freedom in choosing doctors.</li>
+</ul>
+<p>
+    These options, along with dental insurance, alternative medicine, or private wards, belong to
+    <b>supplementary insurance</b>. They’re optional add-ons for more comfort or flexibility.
+</p>
+<p>
+    👉 <b>In short:</b> basic insurance is mandatory and equal for all, but you can adjust your deductible,
+    choose models, and add extras depending on your needs and budget.
 </p>
 
 <h2>Why You Can Trust It</h2>
@@ -169,7 +207,7 @@ endblock %}
     <b>Insurek uses pure mathematics and Swiss law rules</b> to calculate your optimal deductible:
 </p>
 <ul>
-    <li>We add up your <b>yearly premiums</b> (your monthly premium × 12)</li>
+    <li>We add up your <b>yearly premiums</b> (monthly premium × 12)</li>
     <li>We calculate your <b>out-of-pocket costs</b> (up to your chosen deductible)</li>
     <li>We include the <b>10% co-insurance</b> (capped at CHF 700 by law)</li>
 </ul>
@@ -180,22 +218,21 @@ endblock %}
     <li>Our <a href="https://github.com/lucalevi/swiss-deductible-chooser" target="insurek-algo">open-source code</a> is
         public on GitHub</li>
     <li>All calculations follow official Swiss health insurance regulations</li>
-    <li>We don't store your data—everything runs in your browser</li>
-    <li>The same math can be used by you, if you do the calculations by hands</li>
+    <li>We don’t store your data—everything runs in your browser</li>
+    <li>The same math can be used by you, if you calculate by hand</li>
 </ul>
 <p>
-    Want proof? Check your results against your own calculations. Our recommendations will align because math doesn't
-    lie—it shows you
-    the most cost-effective choice for your situation.
+    Want proof? Compare your results with your own manual calculation. They’ll match, because
+    <b>math doesn’t lie</b>—it simply shows you the most cost-effective choice for your situation.
 </p>
 
 <h2>Who Made It – And Why</h2>
 <p>
     Insurek is a personal project by <b>Luca Iacolettig</b>.
     When Luca lived in Switzerland, he struggled to choose the right deductible.
-    He built Insurek so others wouldn’t waste time – or money – making the same mistake.
-    You can read more about him on <a href="https://www.linkedin.com/in/luca-iacolettig/"
-        target="linkedin-li">LinkedIn</a>.
+    He built Insurek so others wouldn’t waste time—or money—making the same mistake.
+    You can read more about him on
+    <a href="https://www.linkedin.com/in/luca-iacolettig/" target="linkedin-li">LinkedIn</a>.
 </p>
 
 <hr class="home-rule">

@@ -62,6 +62,7 @@ Svizzera{% endblock %}
 
     <p>Clicca su <b>"Calcolare"</b>. Scegli quindi la scheda <b>"Confronto delle franchigie"</b> e clicca su
         <b>300</b> per ordinare i premi dal più basso al più alto.
+        Scegli i sei premi più adatti a te dall'assicurazione sanitaria più conveniente.
         Tieni aperta questa pagina per dopo.
     </p>
 
@@ -154,57 +155,99 @@ Svizzera{% endblock %}
     <img id="bottom-img" src="{{ url_for('static', filename='img/mnt-flag.png') }}" alt="Bandiera svizzera">
 </div>
 
-<h1 class="about-end">Chi siamo – Insurek</h1>
+<h1 class="about-end">Informazioni su Insurek</h1>
 
-<h2>Cosa fa Insurek – e perché è utile</h2>
+<h2>Cosa fa – e perché è importante</h2>
 <p>
     <b>Insurek ti aiuta a risparmiare sull’assicurazione malattia in Svizzera.</b><br>
-    Inserisci i tuoi <b>premi mensili</b>. Conoscendo le tue <b>spese sanitarie medie annue</b>, Insurek ti indica
-    quale
-    franchigia costa meno in totale.
-    È veloce, chiaro e basato su dati ufficiali svizzeri.
+    Inserendo le tue <b>premie mensili</b> e i tuoi <b>costi sanitari annui medi</b>,
+    ti mostra quale franchigia è la più conveniente.
+    È veloce, chiaro e basato su dati reali delle assicurazioni svizzere.
 </p>
 
-<h2>Perché puoi fidarti di noi</h2>
+<h2>Come funziona l’assicurazione malattia in Svizzera</h2>
 <p>
-    <b>Insurek utilizza pura matematica e le regole legali svizzere</b> per calcolare la tua franchigia ottimale:
+    In Svizzera <b>l’assicurazione di base è obbligatoria per tutti</b>.
+    Puoi scegliere liberamente la compagnia (come un operatore telefonico),
+    ma le prestazioni sono definite per legge e uguali ovunque.
+</p>
+<p>
+    Devi anche scegliere una <b>franchigia</b>. È la somma che paghi di tasca tua
+    prima che l’assicurazione inizi a coprire la maggior parte dei costi.
+    Dopo di ciò, l’assicuratore paga, ma tu contribuisci ancora un po’
+    (<b>10% di partecipazione ai costi</b>, limitata per legge a CHF 700 all’anno).
+</p>
+<p>
+    Esistono poi <b>diversi modelli assicurativi</b> per risparmiare o ottenere più servizi. Ad esempio:
 </p>
 <ul>
-    <li>Sommiamo i tuoi <b>premi annuali</b> (il tuo premio mensile × 12)</li>
-    <li>Calcoliamo le tue <b>spese a carico</b> (fino alla franchigia scelta)</li>
-    <li>Includiamo la <b>partecipazione ai costi del 10%</b> (limitata per legge a CHF 700)</li>
+    <li><b>Modello medico di famiglia</b>: consulti sempre prima il tuo medico di fiducia.</li>
+    <li><b>Modello telemedicina</b>: chiami una hotline medica prima di andare dal medico.</li>
 </ul>
 <p>
-    Il risultato? Un confronto chiaro che mostra dove risparmi di più. La matematica è trasparente:
+    Questi modelli spesso riducono il premio mensile.
+</p>
+<p>
+    Anche per i <b>ricoveri ospedalieri</b> esistono categorie:
 </p>
 <ul>
-    <li>Il nostro <a href="https://github.com/lucalevi/swiss-deductible-chooser" target="insurek-algo">codice open
-            source</a> è pubblico su GitHub</li>
-    <li>Tutti i calcoli seguono le normative ufficiali dell'assicurazione malattia svizzera</li>
-    <li>Non memorizziamo i tuoi dati—tutto viene eseguito nel tuo browser</li>
-    <li>Puoi fare gli stessi calcoli tu stesso, se lo desideri</li>
+    <li><b>Reparto comune</b>: camera condivisa, coperta dall’assicurazione di base.</li>
+    <li><b>Semiprivato</b>: camera a due letti, spesso con possibilità di scelta del medico.</li>
+    <li><b>Privato</b>: camera singola con massima libertà di scelta del medico.</li>
 </ul>
 <p>
-    Vuoi una prova? Verifica i nostri risultati con i tuoi calcoli. Le nostre raccomandazioni corrisponderanno
-    perché la
-    matematica non mente—ti mostra la scelta più economica per la tua situazione.
+    Queste opzioni, insieme all’assicurazione dentale, alla medicina alternativa o ai reparti privati,
+    fanno parte delle <b>assicurazioni complementari</b>. Sono facoltative e offrono più comfort o flessibilità.
+</p>
+<p>
+    👉 <b>In breve:</b> l’assicurazione di base è obbligatoria e uguale per tutti,
+    ma puoi adattare la franchigia, scegliere un modello e aggiungere coperture complementari
+    in base alle tue esigenze e al tuo budget.
 </p>
 
-<h2>Chi lo ha creato – e perché</h2>
+<h2>Perché puoi fidarti</h2>
+<p>
+    <b>Insurek utilizza calcoli matematici e le regole di legge svizzere</b> per determinare
+    la tua franchigia ottimale:
+</p>
+<ul>
+    <li>Sommiamo le tue <b>premie annuali</b> (premio mensile × 12)</li>
+    <li>Calcoliamo i <b>costi a tuo carico</b> (fino alla franchigia scelta)</li>
+    <li>Aggiungiamo il <b>10% di partecipazione</b> (limitato per legge a CHF 700 all’anno)</li>
+</ul>
+<p>
+    Il risultato? Un confronto chiaro che mostra dove risparmi di più.
+    La matematica è trasparente:
+</p>
+<ul>
+    <li>Il nostro <a href="https://github.com/lucalevi/swiss-deductible-chooser" target="insurek-algo">codice
+            open-source</a>
+        è pubblico su GitHub</li>
+    <li>Tutti i calcoli seguono le regole ufficiali dell’assicurazione malattia svizzera</li>
+    <li>Non memorizziamo alcun dato – tutto avviene nel tuo browser</li>
+    <li>Puedes eseguire gli stessi calcoli anche a mano</li>
+</ul>
+<p>
+    Vuoi una prova? Confronta i risultati con i tuoi calcoli manuali.
+    Saranno identici, perché <b>la matematica non mente</b> – ti mostra semplicemente
+    l’opzione più conveniente per la tua situazione.
+</p>
+
+<h2>Chi l’ha creato – e perché</h2>
 <p>
     Insurek è un progetto personale di <b>Luca Iacolettig</b>.
-    Quando Luca viveva in Svizzera, anche lui ha avuto difficoltà a scegliere la franchigia giusta.
-    Ha creato Insurek per aiutare gli altri a non perdere tempo – o soldi – con una scelta sbagliata.
-    Puoi saperne di più su di lui su <a href="https://www.linkedin.com/in/luca-iacolettig/"
-        target="linkedin-li">LinkedIn</a>.
+    Quando Luca viveva in Svizzera, ha trovato difficile scegliere la franchigia giusta.
+    Ha sviluppato Insurek affinché altri non perdano tempo – o soldi – nello stesso errore.
+    Puoi leggere di più su di lui su
+    <a href="https://www.linkedin.com/in/luca-iacolettig/" target="linkedin-li">LinkedIn</a>.
 </p>
 
 <hr class="home-rule">
 
-<h3>Contatti</h3>
+<h3>Vuoi contattarci?</h3>
 <p>
     Scrivici a <a href="mailto:iacolettig.luca@gmail.com">iacolettig.luca@gmail.com</a>.
-    Rispondiamo di solito entro due giorni lavorativi.
+    Rispondiamo entro due giorni lavorativi.
 </p>
 
 
