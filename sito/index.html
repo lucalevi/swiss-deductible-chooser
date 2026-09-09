@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>Insurek — La cassa malati che ti costa meno</title>
+    <meta name="description" content="Dimmi dove abiti e quanto spendi in salute: Insurek confronta tutte le casse malati e tutte le franchigie della tua zona con i dati ufficiali dell&rsquo;UFSP, e ti dice quale combinazione costa meno." />
+
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230F0F0F'/%3E%3Cpath d='M6 22 L26 11 M6 14 L26 20' fill='none' stroke='%23F5F5F5' stroke-width='1.4'/%3E%3C/svg%3E" />
+    <meta name="theme-color" content="#0F0F0F" />
+    <meta name="author" content="Luca Iacolettig" />
+
+    <meta property="og:title" content="Insurek — La cassa malati che ti costa meno" />
+    <meta property="og:description" content="Confronta tutte le casse malati e tutte le franchigie della tua zona con i dati ufficiali dell&rsquo;UFSP." />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Insurek" />
+    <meta property="og:url" content="https://insurek.lucalevi.com/" />
+
+    <link rel="canonical" href="https://insurek.lucalevi.com/" />
+
+    <!-- I font stanno su questo dominio, come su lucalevi.com: nessuna
+         richiesta a Google, nessun indirizzo IP di chi legge a terzi,
+         nessun banner dei cookie da mettere. -->
+    <link rel="stylesheet" href="/assets/fonts.css" />
+    <link rel="stylesheet" href="/assets/styles.css" />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Insurek",
+        "url": "https://insurek.lucalevi.com/",
+        "applicationCategory": "FinanceApplication",
+        "operatingSystem": "Web",
+        "inLanguage": ["it", "de", "fr", "en"],
+        "isAccessibleForFree": true,
+        "author": { "@type": "Person", "name": "Luca Iacolettig", "url": "https://www.lucalevi.com/" }
+      }
+    </script>
+  </head>
+
+  <body data-pagina="calcolatore">
+    <a class="skip-link" href="#calcolatore" data-de="Zum Rechner" data-fr="Aller au calculateur" data-en="Skip to the calculator">Vai al calcolatore</a>
+
+    <!-- =============================================================== testa -->
+    <header class="site-header">
+      <div class="container-editorial header-row">
+        <a href="#top" class="wordmark-link" aria-label="Insurek, torna all'inizio"
+           data-aria-de="Insurek, zum Seitenanfang" data-aria-fr="Insurek, retour en haut" data-aria-en="Insurek, back to top">
+          <span class="wordmark">Insurek</span>
+          <span class="wordmark-nota">lucalevi</span>
+        </a>
+
+        <nav class="header-nav" aria-label="Sezioni" data-aria-de="Bereiche" data-aria-fr="Sections" data-aria-en="Sections">
+          <a href="#calcolatore" data-de="Rechner" data-fr="Calculateur" data-en="Calculator">Calcolatore</a>
+          <a href="#capire" data-de="Verstehen" data-fr="Comprendre" data-en="Understand">Capire</a>
+          <a href="/metodo/" data-de="Methode" data-fr="Méthode" data-en="Method">Metodo</a>
+        </nav>
+
+        <div class="header-side">
+          <div class="lang-switch" role="group" aria-label="Lingua del sito"
+               data-aria-de="Sprache" data-aria-fr="Langue du site" data-aria-en="Site language">
+            <button type="button" data-lang="it" aria-label="Italiano">IT</button>
+            <button type="button" data-lang="de" aria-label="Deutsch">DE</button>
+            <button type="button" data-lang="fr" aria-label="Français">FR</button>
+            <button type="button" data-lang="en" aria-label="English">EN</button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <!-- ============================================================== hero -->
+      <!-- Il segno di Insurek e' l'incrocio: due curve di costo, quella della
+           franchigia alta e quella della bassa, che si scambiano il posto. E'
+           letteralmente la cosa che il sito calcola. -->
+      <section id="top" class="hero section-ink" aria-labelledby="titolo">
+        <div class="hero-incrocio" aria-hidden="true">
+          <svg viewBox="0 0 600 340" fill="none" focusable="false">
+            <g stroke="hsl(0 0% 96%)" stroke-width="1" opacity="0.28">
+              <line x1="40" y1="300" x2="560" y2="300" />
+              <line x1="40" y1="230" x2="560" y2="230" />
+              <line x1="40" y1="160" x2="560" y2="160" />
+              <line x1="40" y1="90"  x2="560" y2="90" />
+            </g>
+            <path d="M40 285 L180 218 L320 156 L430 126 L560 112"
+                  stroke="hsl(0 0% 96%)" stroke-width="1.4" stroke-linecap="square" />
+            <path d="M40 176 L180 168 L320 156 L430 146 L560 136"
+                  stroke="hsl(0 0% 96%)" stroke-width="1.4" stroke-linecap="square" />
+            <line x1="320" y1="60" x2="320" y2="300" stroke="hsl(0 0% 96%)"
+                  stroke-width="1" stroke-dasharray="3 4" opacity="0.55" />
+            <circle cx="320" cy="156" r="4" fill="hsl(0 0% 6%)" stroke="hsl(0 0% 96%)" stroke-width="1.4" />
+          </svg>
+        </div>
+        <svg class="grain" aria-hidden="true" focusable="false" preserveAspectRatio="none">
+          <filter id="grana"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="4" stitchTiles="stitch" /></filter>
+          <rect width="100%" height="100%" filter="url(#grana)" />
+        </svg>
+
+        <div class="container-editorial hero-inner">
+          <p class="eyebrow ink-muted" data-de="Krankenkassenprämien <span data-anno-premio>2026</span>" data-fr="Primes maladie <span data-anno-premio>2026</span>" data-en="Health premiums <span data-anno-premio>2026</span>">Premi malattia <span data-anno-premio>2026</span></p>
+          <h1 id="titolo">
+            <span data-de="Die Kasse, die Sie am wenigsten kostet." data-fr="La caisse qui vous coûte le moins." data-en="The insurance that costs you least.">La cassa malati che ti costa meno.</span><br />
+            <em data-de="In dreissig Sekunden." data-fr="En trente secondes." data-en="In thirty seconds.">In trenta secondi.</em>
+          </h1>
+          <p class="hero-sommario" data-de="Zwei Angaben — wo Sie wohnen und wie viel Sie im Jahr für Ihre Gesundheit ausgeben — und Insurek vergleicht jede Kasse, jedes Modell und jede Franchise Ihrer Region. Mit den offiziellen Zahlen des Bundesamtes für Gesundheit. Sie müssen nichts von Priminfo abschreiben." data-fr="Deux indications — où vous habitez et combien vous dépensez par an pour votre santé — et Insurek compare chaque caisse, chaque modèle et chaque franchise de votre région. Avec les chiffres officiels de l’Office fédéral de la santé publique. Rien à recopier depuis Priminfo." data-en="Two things — where you live and what you spend on health care in a year — and Insurek compares every insurer, model and deductible in your area, using the official figures from the Federal Office of Public Health. Nothing to copy over from Priminfo.">Due indicazioni — dove abiti e quanto spendi in un anno per la tua salute — e Insurek confronta ogni cassa, ogni modello e ogni franchigia della tua zona. Con i numeri ufficiali dell&rsquo;Ufficio federale della sanità pubblica. Niente da ricopiare da Priminfo.</p>
+          <div class="hero-azioni">
+            <a class="btn btn-chiaro" href="#calcolatore" data-de="Rechnen" data-fr="Calculer" data-en="Calculate">Calcola</a>
+            <a class="link-underline" href="/metodo/" style="font-size:0.9375rem" data-de="Wie gerechnet wird" data-fr="Comment le calcul fonctionne" data-en="How the calculation works">Come funziona il calcolo</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================================================== calcolatore -->
+      <section id="calcolatore" class="section-rhythm" aria-labelledby="titolo-calcolatore">
+        <div class="container-editorial">
+          <p class="eyebrow muted" data-de="Drei Fragen" data-fr="Trois questions" data-en="Three questions">Tre domande</p>
+          <h2 id="titolo-calcolatore" style="margin-top:1rem" data-de="Wo, wann geboren, wie viel Arzt." data-fr="Où, né quand, combien de médecin." data-en="Where, born when, how much doctor.">Dove, quando sei nato, quanto medico.</h2>
+
+          <p id="stato-dati" class="caricamento" style="margin-top:1.5rem" data-de="Daten werden geladen…" data-fr="Chargement des données…" data-en="Loading the data…">Carico i dati…</p>
+
+          <div class="campi" style="margin-top:2.5rem">
+            <!-- 1. il luogo -->
+            <div class="campo">
+              <label for="cerca-nap" data-de="1 — Wo wohnen Sie" data-fr="1 — Où habitez-vous" data-en="1 — Where you live">1 — Dove abiti</label>
+              <div class="cerca" id="cerca-guscio">
+                <input type="search" id="cerca-nap" autocomplete="postal-code" disabled
+                       placeholder="NAP o nome del comune, es. 6900 o Lugano"
+                       data-ph-de="PLZ oder Gemeindename, z. B. 8001 oder Zürich"
+                       data-ph-fr="NPA ou nom de la commune, p. ex. 1003 ou Lausanne"
+                       data-ph-en="Postcode or town, e.g. 3011 or Bern"
+                       aria-describedby="aiuto-luogo" />
+                <ul class="suggerimenti" id="suggerimenti" hidden></ul>
+              </div>
+              <div class="scelto" id="luogo-scelto" hidden></div>
+              <p class="campo-aiuto" id="aiuto-luogo" data-de="Die Prämien hängen vom Kanton und von der Prämienregion ab. Aus der PLZ ergibt sich beides — Sie müssen Ihre Region nicht kennen." data-fr="Les primes dépendent du canton et de la région de primes. Le NPA donne les deux : vous n’avez pas besoin de connaître votre région." data-en="Premiums depend on the canton and the premium region. Your postcode gives both — you do not need to know your region.">I premi dipendono dal cantone e dalla regione di premio. Il NAP le determina entrambe: non devi sapere in che regione stai.</p>
+            </div>
+
+            <!-- 2. l'eta' -->
+            <div class="campo">
+              <label for="anno-nascita" data-de="2 — Geburtsjahr" data-fr="2 — Année de naissance" data-en="2 — Year of birth">2 — Anno di nascita</label>
+              <input type="number" id="anno-nascita" inputmode="numeric" min="1900" max="2010" step="1"
+                     placeholder="es. 1988" data-ph-de="z. B. 1988" data-ph-fr="p. ex. 1988" data-ph-en="e.g. 1988"
+                     style="max-width:12rem" aria-describedby="nota-eta" />
+              <p class="campo-aiuto" id="nota-eta" hidden></p>
+            </div>
+
+            <!-- 3. la spesa -->
+            <div class="campo">
+              <span class="campo-titolo" data-de="3 — Wie viel geben Sie im Jahr für Ihre Gesundheit aus" data-fr="3 — Combien dépensez-vous par an pour votre santé" data-en="3 — What you spend on health care in a year">3 — Quanto spendi in salute in un anno</span>
+              <div class="tessere" role="group">
+                <button type="button" class="tessera" data-fascia="rara" aria-pressed="false">
+                  <span class="tessera-titolo" data-de="Selten beim Arzt" data-fr="Rarement chez le médecin" data-en="Rarely at the doctor">Raramente dal medico</span>
+                  <span class="tessera-nota" data-de="Ein Besuch im Jahr, eine Kontrolle. Rechnet mit rund 500 CHF." data-fr="Une visite par an, un contrôle. On compte environ 500 CHF." data-en="A visit a year, a check-up. Counts as about CHF 500.">Una visita l&rsquo;anno, un controllo. Conta circa 500 CHF.</span>
+                </button>
+                <button type="button" class="tessera" data-fascia="regolare" aria-pressed="true">
+                  <span class="tessera-titolo" data-de="Regelmässige Behandlungen" data-fr="Soins réguliers" data-en="Regular care">Cure regolari</span>
+                  <span class="tessera-nota" data-de="Ein paar Besuche, Medikamente, Physiotherapie. Rund 2 000 CHF." data-fr="Quelques visites, des médicaments, de la physio. Environ 2 000 CHF." data-en="A few visits, medication, physiotherapy. About CHF 2,000.">Qualche visita, medicine, fisioterapia. Circa 2000 CHF.</span>
+                </button>
+                <button type="button" class="tessera" data-fascia="continua" aria-pressed="false">
+                  <span class="tessera-titolo" data-de="Laufende Therapie" data-fr="Traitement continu" data-en="Ongoing treatment">Terapia continuativa</span>
+                  <span class="tessera-nota" data-de="Chronische Krankheit, Spezialisten, Dauermedikation. Rund 6 000 CHF." data-fr="Maladie chronique, spécialistes, traitement au long cours. Environ 6 000 CHF." data-en="A chronic condition, specialists, long-term medication. About CHF 6,000.">Malattia cronica, specialisti, terapia continua. Circa 6000 CHF.</span>
+                </button>
+              </div>
+              <p class="campo-aiuto" data-de="Wenn Sie Ihre Zahl kennen, schreiben Sie sie hin: dann gilt diese." data-fr="Si vous connaissez votre chiffre, écrivez-le : c’est lui qui compte alors." data-en="If you know your own figure, write it in: then that is what counts.">Se la tua cifra la conosci, scrivila: allora vale quella.</p>
+              <input type="number" id="spesa-esatta" inputmode="numeric" min="0" max="50000" step="50"
+                     placeholder="CHF esatti in un anno" style="max-width:16rem; margin-top:0.5rem"
+                     data-ph-de="Genaue CHF im Jahr" data-ph-fr="CHF exacts par an" data-ph-en="Exact CHF in a year"
+                     aria-label="Spesa sanitaria annua esatta in franchi"
+                     data-aria-de="Genaue jährliche Gesundheitskosten in Franken"
+                     data-aria-fr="Frais de santé annuels exacts en francs"
+                     data-aria-en="Exact annual health costs in francs" />
+            </div>
+
+            <!-- il resto, chiuso -->
+            <details class="dettagli">
+              <summary data-de="Weitere Einstellungen" data-fr="Réglages supplémentaires" data-en="More settings">Altre impostazioni</summary>
+              <div class="dettagli-corpo">
+                <div class="campo">
+                  <span class="campo-titolo" data-de="Unfalldeckung" data-fr="Couverture accidents" data-en="Accident cover">Copertura infortuni</span>
+                  <div class="tessere due" role="group">
+                    <button type="button" class="tessera" data-infortuni="1" aria-pressed="true">
+                      <span class="tessera-titolo" data-de="Mit Unfall" data-fr="Avec accidents" data-en="With accident cover">Con infortuni</span>
+                      <span class="tessera-nota" data-de="Wenn Sie nicht angestellt sind, weniger als acht Stunden pro Woche arbeiten oder nicht erwerbstätig sind." data-fr="Si vous n’êtes pas salarié, travaillez moins de huit heures par semaine ou n’exercez pas d’activité." data-en="If you are not employed, work fewer than eight hours a week, or are not working.">Se non sei dipendente, lavori meno di otto ore a settimana o non lavori.</span>
+                    </button>
+                    <button type="button" class="tessera" data-infortuni="0" aria-pressed="false">
+                      <span class="tessera-titolo" data-de="Ohne Unfall" data-fr="Sans accidents" data-en="Without accident cover">Senza infortuni</span>
+                      <span class="tessera-nota" data-de="Wenn Sie mindestens acht Stunden pro Woche angestellt sind: dann versichert Sie schon Ihr Arbeitgeber, und die Prämie ist tiefer." data-fr="Si vous êtes salarié au moins huit heures par semaine : votre employeur vous couvre déjà, et la prime baisse." data-en="If you are employed for at least eight hours a week: your employer already covers you, and the premium is lower.">Se sei dipendente per almeno otto ore a settimana: ti copre già il datore di lavoro, e il premio scende.</span>
+                    </button>
+                  </div>
+                </div>
+
+                <div class="campo">
+                  <span class="campo-titolo" data-de="Versicherungsmodelle" data-fr="Modèles d’assurance" data-en="Insurance models">Modelli assicurativi</span>
+                  <div class="caselle">
+                    <label class="casella"><input type="checkbox" data-tipo="BASE" checked /> <span data-de="Standard" data-fr="Standard" data-en="Standard">Base</span></label>
+                    <label class="casella"><input type="checkbox" data-tipo="HAM" checked /> <span data-de="Hausarzt" data-fr="Médecin de famille" data-en="Family doctor">Medico di famiglia</span></label>
+                    <label class="casella"><input type="checkbox" data-tipo="HMO" checked /> <span>HMO</span></label>
+                    <label class="casella"><input type="checkbox" data-tipo="DIV" checked /> <span data-de="Telmed und andere" data-fr="Télémédecine et autres" data-en="Telemedicine and others">Telemedicina e altri</span></label>
+                  </div>
+                  <p class="campo-aiuto" data-de="Die alternativen Modelle kosten weniger, verlangen aber, zuerst eine bestimmte Stelle zu fragen: den Hausarzt, ein HMO-Zentrum, eine Telefonberatung. Die Leistungen bleiben dieselben." data-fr="Les modèles alternatifs coûtent moins cher mais demandent de s’adresser d’abord à un point précis : le médecin de famille, un centre HMO, un conseil téléphonique. Les prestations, elles, ne changent pas." data-en="The alternative models cost less but require you to go to one place first: your family doctor, an HMO centre, a phone line. The benefits themselves are identical.">I modelli alternativi costano meno ma chiedono di rivolgersi prima a un punto preciso: il medico di famiglia, un centro HMO, una consulenza telefonica. Le prestazioni restano identiche.</p>
+                </div>
+              </div>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================================= risultati -->
+      <section id="sezione-risultati" class="section-rhythm" style="padding-top:0" hidden aria-live="polite">
+        <div class="container-editorial">
+          <hr class="regola" style="margin-bottom:2.5rem" />
+          <div id="risultati"></div>
+        </div>
+      </section>
+
+      <!-- ============================================================ capire -->
+      <section id="capire" class="section-rhythm" style="background:hsl(var(--muted))" aria-labelledby="titolo-capire">
+        <div class="container-editorial">
+          <p class="eyebrow muted" data-de="Die Regel" data-fr="La règle" data-en="The rule">La regola</p>
+          <h2 id="titolo-capire" style="margin-top:1rem; margin-bottom:2.5rem" data-de="Warum fast immer nur zwei Franchisen zählen" data-fr="Pourquoi seules deux franchises comptent presque toujours" data-en="Why almost only two deductibles ever matter">Perché quasi sempre contano solo due franchigie</h2>
+
+          <div class="blocchi">
+            <div class="blocco reveal">
+              <h3 data-de="Drei Zahlen, sonst nichts" data-fr="Trois nombres, rien d’autre" data-en="Three numbers, nothing else">Tre numeri, niente altro</h3>
+              <p data-de="Sie zahlen zwölf Prämien. Sie zahlen alles selbst bis zur Franchise. Darüber zahlen Sie 10 %, höchstens aber 700 Franken im Jahr. Die Gesamtkosten eines Jahres sind die Summe dieser drei Dinge — mehr braucht es nicht." data-fr="Vous payez douze primes. Vous payez tout vous-même jusqu’à la franchise. Au-delà, vous payez 10 %, mais au maximum 700 francs par an. Le coût total de l’année, c’est la somme de ces trois choses — rien de plus." data-en="You pay twelve premiums. You pay everything yourself up to the deductible. Above it you pay 10%, but never more than 700 francs a year. The total cost of a year is the sum of those three things — there is nothing else to it.">Paghi dodici premi. Paghi tutto di tasca tua fino alla franchigia. Sopra, paghi il 10%, ma non più di 700 franchi l&rsquo;anno. Il costo totale di un anno è la somma di queste tre cose &mdash; non serve altro.</p>
+            </div>
+            <div class="blocco reveal">
+              <h3 data-de="Die Mitte verliert" data-fr="Le milieu perd" data-en="The middle loses">Il centro perde</h3>
+              <p data-de="Zwischen 300 und 2 500 liegen vier weitere Franchisen. Rechnet man nach, gewinnt fast keine davon je: ihre Kostenkurve bleibt auf jedem Ausgabenniveau über einer der beiden äusseren. Genau deshalb ist Insurek entstanden — und im Ergebnis sieht man es schwarz auf grau." data-fr="Entre 300 et 2 500, il y a quatre autres franchises. Le calcul montre qu’aucune ou presque ne gagne jamais : leur courbe de coût reste au-dessus de l’une des deux extrêmes à tous les niveaux de dépense. C’est pour cela qu’Insurek existe — et le graphique le montre." data-en="Between 300 and 2,500 there are four more deductibles. Do the arithmetic and almost none of them ever wins: their cost curve stays above one of the two extremes at every level of spending. That is why Insurek was built — and the chart shows it.">Fra 300 e 2500 ci sono altre quattro franchigie. A fare i conti, quasi nessuna vince mai: la loro curva di costo resta sopra a una delle due estreme a qualunque livello di spesa. È per questo che Insurek è nato &mdash; e nel grafico si vede.</p>
+            </div>
+            <div class="blocco reveal">
+              <h3 data-de="Und dann kommt die Kasse dazu" data-fr="Et puis il y a la caisse" data-en="And then there is the insurer">E poi c&rsquo;è la cassa</h3>
+              <p data-de="Die richtige Franchise ist der halbe Betrag. Die andere Hälfte ist, dass für dieselbe gesetzlich identische Leistung zwischen der teuersten und der günstigsten Kasse Ihrer Region über tausend Franken im Jahr liegen können. Insurek rechnet beides zusammen." data-fr="La bonne franchise, c’est la moitié de la somme. L’autre moitié, c’est que pour une prestation identique par la loi, entre la caisse la plus chère et la moins chère de votre région il peut y avoir plus de mille francs par an. Insurek calcule les deux ensemble." data-en="The right deductible is half the money. The other half is that for benefits the law makes identical, the gap between the dearest and the cheapest insurer in your area can be over a thousand francs a year. Insurek works out both at once.">La franchigia giusta è metà della cifra. L&rsquo;altra metà è che, per prestazioni che la legge rende identiche, fra la cassa più cara e la più economica della tua zona possono passare più di mille franchi l&rsquo;anno. Insurek calcola le due cose insieme.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ============================================================== piede -->
+    <footer class="site-footer">
+      <div class="container-editorial footer-righe">
+        <p class="footer-nota">
+          <span data-de="Prämien des Jahres" data-fr="Primes de l’année" data-en="Premiums for">Premi dell&rsquo;anno</span>
+          <span data-anno-premio>2026</span>,
+          <span data-de="Quelle: Bundesamt für Gesundheit (BAG), Datensatz «Krankenversicherungsprämien» auf opendata.swiss. Insurek ist ein freies, quelloffenes Werkzeug: es verkauft nichts, vermittelt nichts und speichert nichts. Alles wird in Ihrem Browser gerechnet." data-fr="source : Office fédéral de la santé publique (OFSP), jeu de données « Primes de l’assurance-maladie » sur opendata.swiss. Insurek est un outil libre et ouvert : il ne vend rien, ne place rien et n’enregistre rien. Tout est calculé dans votre navigateur." data-en="source: Federal Office of Public Health (FOPH), the “Health insurance premiums” dataset on opendata.swiss. Insurek is a free and open tool: it sells nothing, refers nothing and stores nothing. Everything is worked out in your browser.">fonte: Ufficio federale della sanità pubblica (UFSP), dataset «Krankenversicherungsprämien» su opendata.swiss. Insurek è uno strumento libero e aperto: non vende niente, non procura niente e non registra niente. Tutto viene calcolato nel tuo browser.</span>
+        </p>
+        <nav class="footer-link" aria-label="Collegamenti" data-aria-de="Links" data-aria-fr="Liens" data-aria-en="Links">
+          <a href="/metodo/" data-de="Methode" data-fr="Méthode" data-en="Method">Metodo</a>
+          <a href="https://github.com/lucalevi/swiss-deductible-chooser">GitHub</a>
+          <a href="https://www.lucalevi.com/">lucalevi.com</a>
+          <a href="https://www.priminfo.admin.ch/">Priminfo</a>
+        </nav>
+      </div>
+    </footer>
+
+    <script src="/assets/lingua.js"></script>
+    <script src="/assets/calcolo.js"></script>
+    <script src="/assets/insurek.js"></script>
+  </body>
+</html>

@@ -1,0 +1,71 @@
+# Insurek — l'aggiornamento annuale dei premi.
+#
+# L'UFSP approva e pubblica i premi dell'anno dopo verso il 22-23 settembre.
+# Questo lavoro gira di lunedi', mercoledi' e venerdi' in settembre e ottobre:
+# scarica i file, ricostruisce i JSON, li verifica contro il CSV federale e,
+# SE qualcosa e' cambiato, apre una pull request. Se i dati sono ancora quelli
+# dell'anno prima i file generati sono identici, non c'e' nessuna differenza e
+# non succede niente: nessuna pull request, nessun rumore.
+#
+# La pull request non si fonde da sola. La si guarda, si controlla che l'anno
+# nel titolo sia quello giusto, e si fonde a mano.
+
+name: Premi nuovi
+
+on:
+  schedule:
+    # 06:00 UTC, lunedi'/mercoledi'/venerdi', solo settembre e ottobre
+    - cron: "0 6 * 9,10 1,3,5"
+  workflow_dispatch:        # e quando si vuole, dal tasto "Run workflow"
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  aggiorna:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Installa openpyxl
+        run: pip install --quiet openpyxl
+
+      - name: Scarica i file dell'UFSP
+        run: python3 etl/scarica.py
+
+      - name: Ricostruisci i dati del sito
+        run: python3 etl/costruisci.py
+
+      - name: Verifica i dati contro il CSV federale
+        run: python3 etl/verifica.py
+
+      - name: Leggi l'anno di premio
+        id: anno
+        run: |
+          echo "anno=$(python3 -c 'import json;print(json.load(open("sito/dati/meta.json"))["anno"])')" >> "$GITHUB_OUTPUT"
+
+      - name: Apri la pull request, se qualcosa e' cambiato
+        uses: peter-evans/create-pull-request@v7
+        with:
+          add-paths: sito/dati
+          branch: premi-${{ steps.anno.outputs.anno }}
+          commit-message: "Premi ${{ steps.anno.outputs.anno }}"
+          title: "Premi ${{ steps.anno.outputs.anno }}"
+          body: |
+            Dati rigenerati da `etl/costruisci.py` a partire dai file dell'UFSP,
+            e verificati da `etl/verifica.py` contro il CSV federale.
+
+            Anno di premio: **${{ steps.anno.outputs.anno }}**
+
+            Da controllare prima di fondere:
+            - l'anno qui sopra e' quello nuovo;
+            - il registro degli assicuratori e' quello dell'anno nuovo (guardare
+              il log del passo «Scarica i file dell'UFSP»);
+            - la verifica e' passata (se non fosse passata questa pull request
+              non esisterebbe: il lavoro si sarebbe fermato prima).
+          labels: dati

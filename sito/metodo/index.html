@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>Come funziona il calcolo — Insurek</title>
+    <meta name="description" content="La regola svizzera in tre righe, la formula del costo totale annuo, da dove vengono i dati e cosa Insurek non fa." />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230F0F0F'/%3E%3Cpath d='M6 22 L26 11 M6 14 L26 20' fill='none' stroke='%23F5F5F5' stroke-width='1.4'/%3E%3C/svg%3E" />
+    <meta name="theme-color" content="#0F0F0F" />
+    <link rel="canonical" href="https://insurek.lucalevi.com/metodo/" />
+    <link rel="stylesheet" href="/assets/fonts.css" />
+    <link rel="stylesheet" href="/assets/styles.css" />
+  </head>
+
+  <body data-pagina="metodo">
+    <a class="skip-link" href="#contenuto" data-de="Zum Inhalt" data-fr="Aller au contenu" data-en="Skip to content">Vai al contenuto</a>
+
+    <header class="site-header">
+      <div class="container-editorial header-row">
+        <a href="/" class="wordmark-link" aria-label="Insurek, torna al calcolatore"
+           data-aria-de="Insurek, zurück zum Rechner" data-aria-fr="Insurek, retour au calculateur" data-aria-en="Insurek, back to the calculator">
+          <span class="wordmark">Insurek</span>
+          <span class="wordmark-nota">lucalevi</span>
+        </a>
+        <nav class="header-nav" aria-label="Sezioni" data-aria-de="Bereiche" data-aria-fr="Sections" data-aria-en="Sections">
+          <a href="/#calcolatore" data-de="Rechner" data-fr="Calculateur" data-en="Calculator">Calcolatore</a>
+          <a href="/#capire" data-de="Verstehen" data-fr="Comprendre" data-en="Understand">Capire</a>
+        </nav>
+        <div class="header-side">
+          <div class="lang-switch" role="group" aria-label="Lingua del sito"
+               data-aria-de="Sprache" data-aria-fr="Langue du site" data-aria-en="Site language">
+            <button type="button" data-lang="it" aria-label="Italiano">IT</button>
+            <button type="button" data-lang="de" aria-label="Deutsch">DE</button>
+            <button type="button" data-lang="fr" aria-label="Français">FR</button>
+            <button type="button" data-lang="en" aria-label="English">EN</button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main id="contenuto" class="section-rhythm">
+      <div class="container-editorial container-stretto">
+        <p class="eyebrow muted" data-de="Methode" data-fr="Méthode" data-en="Method">Metodo</p>
+        <h1 style="margin-top:1rem; font-size:clamp(2rem,5.5vw,3.25rem)" data-de="Was Insurek rechnet, und woher die Zahlen kommen" data-fr="Ce qu’Insurek calcule, et d’où viennent les chiffres" data-en="What Insurek works out, and where the numbers come from">Cosa calcola Insurek, e da dove vengono i numeri</h1>
+
+        <div class="prosa" style="margin-top:2.5rem">
+          <h2 style="font-size:clamp(1.4rem,3vw,1.9rem); margin-bottom:0.75rem" data-de="Die Regel" data-fr="La règle" data-en="The rule">La regola</h2>
+          <p data-de="Bei der obligatorischen Krankenpflegeversicherung zahlt eine erwachsene Person dreierlei: die Prämie, zwölfmal im Jahr; die eigenen Kosten bis zur gewählten Franchise; und darüber 10 % der weiteren Kosten, aber nie mehr als 700 Franken im Jahr. Sonst nichts. Die Leistungen selbst sind gesetzlich für alle Kassen dieselben." data-fr="Dans l’assurance obligatoire des soins, un adulte paie trois choses : la prime, douze fois par an ; ses frais jusqu’à la franchise choisie ; et au-delà, 10 % des frais suivants, mais jamais plus de 700 francs par an. Rien d’autre. Les prestations, elles, sont fixées par la loi et identiques dans toutes les caisses." data-en="Under the compulsory health insurance an adult pays three things: the premium, twelve times a year; their own costs up to the deductible they chose; and above that, 10% of what follows, but never more than 700 francs a year. Nothing else. The benefits themselves are set by law and identical at every insurer.">Nell&rsquo;assicurazione obbligatoria delle cure, un adulto paga tre cose: il premio, dodici volte l&rsquo;anno; le proprie spese fino alla franchigia scelta; e oltre quella, il 10% di quel che segue, ma mai più di 700 franchi l&rsquo;anno. Nient&rsquo;altro. Le prestazioni sono fissate dalla legge e identiche presso ogni cassa.</p>
+          <p data-de="Daraus die einzige Formel, die es braucht:" data-fr="D’où la seule formule nécessaire :" data-en="Hence the only formula needed:">Da qui l&rsquo;unica formula che serve:</p>
+        </div>
+
+        <p class="avviso cifra" style="margin-top:1.25rem; font-family:var(--font-display); font-size:1.0625rem; line-height:1.8"
+           data-de="Kosten(Ausgaben) = Prämie × 12 + min(Ausgaben, Franchise) + min(10 % × (Ausgaben − Franchise), 700)"
+           data-fr="coût(dépenses) = prime × 12 + min(dépenses, franchise) + min(10 % × (dépenses − franchise), 700)"
+           data-en="cost(spending) = premium × 12 + min(spending, deductible) + min(10% × (spending − deductible), 700)">costo(spesa) = premio × 12 + min(spesa, franchigia) + min(10% × (spesa − franchigia), 700)</p>
+
+        <div class="prosa" style="margin-top:2.5rem">
+          <h2 style="font-size:clamp(1.4rem,3vw,1.9rem); margin-bottom:0.75rem" data-de="Woher die Zahlen kommen" data-fr="D’où viennent les chiffres" data-en="Where the numbers come from">Da dove vengono i numeri</h2>
+          <p data-de="Vom Bundesamt für Gesundheit, aus dem Datensatz «Krankenversicherungsprämien» auf opendata.swiss — genau derselben Quelle, auf der der Prämienrechner des Bundes steht. Sie enthält jede genehmigte Prämie jeder Kasse: nach Kanton, Prämienregion, Altersklasse, Modell, Unfalldeckung und Franchise. Dazu die Bundestabelle der Prämienregionen, aus der sich aus einer PLZ Kanton und Region ergeben, und das Verzeichnis der zugelassenen Versicherer für die Namen." data-fr="De l’Office fédéral de la santé publique, jeu de données « Primes de l’assurance-maladie » sur opendata.swiss — exactement la source sur laquelle repose le calculateur fédéral. Elle contient chaque prime approuvée de chaque caisse : par canton, région de primes, classe d’âge, modèle, couverture accidents et franchise. S’y ajoutent la table fédérale des régions de primes, qui donne canton et région à partir d’un NPA, et le registre des assureurs admis pour les noms." data-en="From the Federal Office of Public Health, the “Health insurance premiums” dataset on opendata.swiss — the very source the federal premium calculator is built on. It holds every approved premium of every insurer: by canton, premium region, age class, model, accident cover and deductible. To that are added the federal premium-region table, which turns a postcode into a canton and a region, and the register of admitted insurers, for the names.">Dall&rsquo;Ufficio federale della sanità pubblica, dataset «Krankenversicherungsprämien» su opendata.swiss &mdash; esattamente la fonte su cui è costruito il calcolatore federale. Contiene ogni premio approvato di ogni cassa: per cantone, regione di premio, classe d&rsquo;età, modello, copertura infortuni e franchigia. A questa si aggiungono la tabella federale delle regioni di premio, che da un NAP ricava cantone e regione, e il registro degli assicuratori ammessi, per i nomi.</p>
+          <p data-de="Die Daten werden einmal im Jahr heruntergeladen und in statische Dateien umgewandelt, hier auf der Seite. Beim Gebrauch wird nichts abgefragt: kein Scraper, keine fremden Server, keine Wartezeit." data-fr="Les données sont téléchargées une fois par an et converties en fichiers statiques, ici sur le site. À l’usage, rien n’est interrogé : pas de scraper, pas de serveur tiers, pas d’attente." data-en="The data is downloaded once a year and turned into static files, here on the site. Nothing is queried while you use it: no scraper, no third-party server, no waiting.">I dati vengono scaricati una volta l&rsquo;anno e trasformati in file statici, qui sul sito. Durante l&rsquo;uso non si interroga niente: nessuno scraper, nessun server di terzi, nessuna attesa.</p>
+
+          <h2 style="font-size:clamp(1.4rem,3vw,1.9rem); margin:2.5rem 0 0.75rem" data-de="Was Insurek nicht tut" data-fr="Ce qu’Insurek ne fait pas" data-en="What Insurek does not do">Cosa Insurek non fa</h2>
+          <p data-de="Es verkauft nichts und vermittelt niemanden: keine Provision, keine Partnerschaft, keine bevorzugte Kasse. Es speichert nichts: was Sie eintippen, verlässt Ihren Browser nicht, weil es niemanden gibt, dem man es schicken könnte. Es weiss nichts von Ihrer Gesundheit ausser der Zahl, die Sie selbst hinschreiben." data-fr="Il ne vend rien et ne place personne : pas de commission, pas de partenariat, pas de caisse favorite. Il n’enregistre rien : ce que vous tapez ne quitte pas votre navigateur, parce qu’il n’y a personne à qui l’envoyer. Il ne sait rien de votre santé, sauf le chiffre que vous écrivez vous-même." data-en="It sells nothing and refers no one: no commission, no partnership, no favoured insurer. It stores nothing: what you type never leaves your browser, because there is nobody to send it to. It knows nothing about your health beyond the figure you type yourself.">Non vende niente e non procura nessuno: nessuna provvigione, nessuna partnership, nessuna cassa preferita. Non registra niente: quel che scrivi non esce dal tuo browser, perché non c&rsquo;è nessuno a cui mandarlo. Non sa niente della tua salute oltre alla cifra che scrivi tu.</p>
+          <p data-de="Und es ist kein Rat. Es ist eine Rechnung mit öffentlichen Zahlen: die Prämien stimmen, die Formel steht oben, und wer nachrechnen will, findet den Code auf GitHub. Ob Ihnen ein alternatives Modell passt und ob Ihre Ausgaben nächstes Jahr denen von diesem gleichen, wissen nur Sie." data-fr="Et ce n’est pas un conseil. C’est un calcul sur des chiffres publics : les primes sont exactes, la formule est ci-dessus, et le code est sur GitHub pour qui veut vérifier. Savoir si un modèle alternatif vous convient, et si vos dépenses de l’an prochain ressembleront à celles de cette année, cela n’appartient qu’à vous." data-en="And it is not advice. It is arithmetic on public numbers: the premiums are exact, the formula is above, and the code is on GitHub for anyone who wants to check. Whether an alternative model suits you, and whether next year’s spending will look like this year’s, only you can say.">E non è un consiglio. È un conto su numeri pubblici: i premi sono esatti, la formula è qui sopra, e il codice sta su GitHub per chi vuole verificare. Se un modello alternativo faccia per te, e se la tua spesa dell&rsquo;anno prossimo somiglierà a quella di quest&rsquo;anno, lo sai solo tu.</p>
+
+          <h2 style="font-size:clamp(1.4rem,3vw,1.9rem); margin:2.5rem 0 0.75rem" data-de="Was noch fehlt" data-fr="Ce qui manque encore" data-en="What is still missing">Cosa manca ancora</h2>
+          <p data-de="Minderjährige: ihre Franchisen gehen von 0 bis 600 Franken, der Selbstbehalt ist auf 350 begrenzt, und es gibt Familienrabatte. Andere Regeln, die halb behandelt schlimmer wären als gar nicht. Ebenso die Prämien für Versicherte in der EU und der EFTA und die kantonale Prämienverbilligung." data-fr="Les mineurs : leurs franchises vont de 0 à 600 francs, la quote-part est plafonnée à 350, et il y a les rabais de famille. D’autres règles, qu’il vaut mieux ne pas traiter que mal traiter. De même pour les primes des assurés dans l’UE et l’AELE et pour la réduction cantonale des primes." data-en="Minors: their deductibles run from 0 to 600 francs, co-insurance is capped at 350, and family discounts apply. Different rules, and handling them badly would be worse than not handling them. The same goes for premiums for people insured in the EU and EFTA, and for cantonal premium reductions.">I minorenni: le loro franchigie vanno da 0 a 600 franchi, la partecipazione è limitata a 350, e ci sono gli sconti famiglia. Regole diverse, che trattate male sarebbero peggio che non trattate. Lo stesso vale per i premi degli assicurati in UE e AELS e per la riduzione cantonale dei premi.</p>
+        </div>
+
+        <p style="margin-top:3rem">
+          <a class="btn" href="/#calcolatore" data-de="Zum Rechner" data-fr="Au calculateur" data-en="To the calculator">Vai al calcolatore</a>
+        </p>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container-editorial footer-righe">
+        <p class="footer-nota" data-de="Insurek ist quelloffen, unter GNU GPL-2.0." data-fr="Insurek est un logiciel libre, sous GNU GPL-2.0." data-en="Insurek is open source, under the GNU GPL-2.0.">Insurek è software libero, sotto GNU GPL-2.0.</p>
+        <nav class="footer-link" aria-label="Collegamenti" data-aria-de="Links" data-aria-fr="Liens" data-aria-en="Links">
+          <a href="/" data-de="Rechner" data-fr="Calculateur" data-en="Calculator">Calcolatore</a>
+          <a href="https://github.com/lucalevi/swiss-deductible-chooser">GitHub</a>
+          <a href="https://www.lucalevi.com/">lucalevi.com</a>
+        </nav>
+      </div>
+    </footer>
+
+    <script src="/assets/lingua.js"></script>
+    <script>window.Lingua.avvia();</script>
+  </body>
+</html>

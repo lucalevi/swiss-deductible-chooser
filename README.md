@@ -1,232 +1,113 @@
-# Insurek – Swiss Health Insurance Deductible Optimizer
+# Insurek
 
-<p align="center">
-  <img src=swiss-insurances/static/img/ch-flag.webp>
-</p>
+**Which Swiss health insurance costs you least?**
+Give it a postcode and a year of birth, say whether you rarely see a doctor,
+see one regularly, or are in ongoing treatment — and Insurek compares every
+insurer, every model and every deductible available where you live, using the
+official premium data of the Swiss Federal Office of Public Health.
 
-## 💡 The Big Insight: Save Money by Choosing Smart
+→ **[insurek.lucalevi.com](https://insurek.lucalevi.com)** · Italian, German,
+French, English
 
-Switzerland’s health insurance system offers **six deductible options** (*franchises*), from CHF 300 to CHF 2,500. But which one actually saves you the most money?  
-**The answer is surprisingly simple:**  
-- If your **average yearly health expenses are below ~CHF 2,000**, choose the **CHF 2,500 deductible** (lowest premiums).
-- If your **expenses are above ~CHF 2,000**, choose the **CHF 300 deductible** (lowest out-of-pocket costs).
+Insurek sells nothing, refers no one and stores nothing. It is not advice: it
+is arithmetic on public numbers, and the numbers and the formula are both in
+this repository.
 
-The other four options? They’re almost always more expensive in total.  
-This project crunches the numbers for you, so you can make the smartest, most cost-effective choice—instantly.
+## Why it exists
 
----
+Under Swiss compulsory health insurance (KVG/LAMal) an adult pays three
+things: the premium, twelve times a year; their own costs up to the deductible
+they chose; and above that 10% of what follows, capped at 700 francs a year.
+The benefits are fixed by law and identical at every insurer. So the whole
+question of what a year costs is one line of arithmetic:
 
-## 🚀 What Is Insurek?
+```
+cost(spending) = premium × 12
+               + min(spending, deductible)
+               + min(10% × (spending − deductible), 700)
+```
 
-**Insurek** is a multilingual web tool and open-source project that helps you:
-- Find your optimal Swiss health insurance deductible (franchise)
-- Visualize your total costs (premiums + deductible + co-insurance)
-- Understand the math behind the recommendation
+Run that over real premiums and two things fall out. First, of the six adult
+deductibles only **300 and 2500** ever win — across every offer in a region
+and every level of spending, the four in the middle never come out cheapest.
+Second, and larger: for benefits the law makes identical, the gap between the
+cheapest and the dearest insurer in the same region can exceed a thousand
+francs a year.
 
-You can use Insurek as:
-- **A web app**: Enter your premiums, see your best deductible and a clear cost chart.
-- **A Jupyter Notebook**: Run your own calculations with custom data.
+Insurek answers both at once.
 
-<!-- ---
+## How it works
 
-## 🌍 Try It Online
+There is no application server, no database and no third-party request while
+anyone uses the site. A Python script runs **once a year** on the maintainer's
+machine, turns the federal data files into static JSON, and that is the whole
+backend. The browser downloads the index, the postcode table and **one**
+premium file — the one for the area the visitor lives in — under 250 KB in
+total, and does the arithmetic itself.
 
-Visit [Insurek Online](https://iacolettig.it/swiss-insurances)   -->
+```
+etl/scarica.py        downloads the federal source files
+etl/costruisci.py     turns them into the site's JSON
+etl/verifica.py       checks the JSON against the federal CSV, row by row
+sito/                 the site — plain HTML, CSS and JavaScript, no build
+sito/dati/            generated; do not edit by hand
+```
 
----
-
-## 🧠 How Does It Work?
-
-Swiss law sets strict rules:
-- You pay a **monthly premium** (varies by deductible, region, age, insurer).
-- You pay out-of-pocket up to your **deductible** (franchise).
-- After that, you pay **10% co-insurance** on further costs, capped at **CHF 700/year** for adults.
-
-**Insurek** compares all six deductible options for your real premiums and shows:
-- Where the total cost lines cross (the "break-even" point)
-- Which deductible is optimal for your health expense level
-
-**Result:**  
-- If you’re healthy and rarely see a doctor, the **highest deductible (CHF 2,500)** saves you the most.
-- If you have high medical costs, the **lowest deductible (CHF 300)** is best.
-
----
-
-## 📊 Example: The Math Behind the Magic
-
-Suppose your average yearly health expenses are **CHF 1,500**:
-- **CHF 2,500 deductible**: Lowest premiums, you pay most costs out-of-pocket, but overall you save.
-- **CHF 300 deductible**: Higher premiums, but you pay less out-of-pocket—only worth it if your expenses are high.
-
-The **break-even point** is usually around **CHF 1,800–2,000** (depends on your actual premiums).
-
-![Example Chart](chart.png)
-
----
-
-## 🛠️ How to Use the Web App
-
-### 1. Get Your Premiums
-- Go to [Priminfo](https://www.priminfo.admin.ch/) (official Swiss premium calculator)
-- Enter your ZIP code, birth year, and insurance model
-- Write down the **six monthly premiums** for each deductible (CHF 300, 500, 1,000, 1,500, 2,000, 2,500)
-
-### 2. Enter Your Data
-- Go to the [Insurek web app](https://www.insurek.ch)
-- Select your language (EN, DE, FR, IT)
-- Enter your six premiums in descending order (highest = CHF 300, lowest = CHF 2,500)
-- Click **Calculate**
-
-### 3. See Your Result
-- Instantly see which deductible saves you the most
-- View a chart comparing all options
-- Download the chart for your records
-
----
-
-## ⚙️ Local Installation & Development
-
-### Prerequisites
-
-- [Docker](https://www.docker.com/get-started) installed on your system
-- [Git](https://git-scm.com/) (to clone the repository)
-- [Optional] Jupyter Notebook (for advanced users)
-
-### 1. Clone the Repository
+Run it locally:
 
 ```bash
-git clone https://github.com/lucalevi/swiss-deductible-chooser.git
-cd swiss-deductible-chooser/swiss-insurances
+cd sito && python3 -m http.server 8000     # then http://localhost:8000
 ```
 
-### 2. Configure Environment
+A real server, not a double-click: the paths are absolute and `fetch` does not
+work from `file://`.
 
-- Create a `.env` file in the `swiss-insurances` directory with:
-```
-FLASK_SECRET_KEY=your_secret_key_here  # Replace with a secure random string
-PORT=5000
-HOST_PORT=8080
-```
-- Note: The `FLASK_SECRET_KEY` is required for session management. Generate one using `openssl rand -hex 16` or a similar tool.
+## Where the data comes from
 
-If you want to use the Jupyter Notebook, also install:
+The Federal Office of Public Health (FOPH/BAG) publishes every approved
+premium of every insurer — by canton, premium region, age class, model,
+accident cover and deductible — in the **[Krankenversicherungsprämien
+dataset](https://opendata.swiss/en/dataset/health-insurance-premiums)** on
+opendata.swiss, under an open-use licence. Two more federal files turn a
+postcode into a canton and a premium region, and an insurer number into a
+name.
 
-```bash
-pip install notebook
-```
+This is the same source the federal premium calculator at
+[priminfo.admin.ch](https://www.priminfo.admin.ch/) is built on — which is why
+Insurek does **not** scrape it. Scraping would mean parsing fragile HTML for
+numbers that are already published as CSV, carrying every redesign of a
+government site and putting load on a public service, to arrive at identical
+figures. (Priminfo also has no JSON API for premiums: it is a server-rendered
+form.)
 
-### 3. Build and Run with Docker Compose
+The data is refreshed once a year, in late September, when the FOPH approves
+the following year's premiums. A GitHub Action does the download, the rebuild
+and the verification, and opens a pull request when anything changed.
 
-- Create a `docker-compose.yml` file in the project root:
-```
-services:
-  app:
-    build: .
-    ports:
-      - "8080:5000"
-    env_file:
-      - swiss-insurances/.env
-    volumes:
-      - .:/app
-    container_name: insurek-app
-```
+## Scope
 
-- Build and start the container:
-```
-docker compose up --build
-```
+**Covered**: adults (26+) and young adults (19–25), every canton and premium
+region, every insurer and model, with and without accident cover, all six
+deductibles — including the roughly 1 000 combinations out of 20 000 where an
+insurer does not offer one of them.
 
-- Access the app at [http://localhost:8080](http://localhost:8080).
-- Stop the container with `CTRL+C`, then restart with `docker compose up` (no `--build` needed unless code changes).
+**Not covered**, deliberately: minors (deductibles from 0 to 600, co-insurance
+capped at 350, family discounts — different rules, and handling them badly
+would be worse than not handling them), premiums for people insured in the
+EU/EFTA, and cantonal premium reductions.
 
-### 4. Development Workflow
-- Make changes to `app.py`, templates, or static files.
-- Rebuild and restart with `docker compose up --build` to apply changes.
-- To stop and remove the container (optional cleanup):
-```
-docker compose down
-```
+## History
 
-#### Alternative: Manual Docker Run
-If you prefer not using Docker Compose, run:
-```
-docker run -p 8080:5000 --env-file swiss-insurances/.env swiss-deductible-chooser
-```
-- This creates a new container each time. To reuse, name it and manage it:
-```
-docker run -d --name insurek-app -p 8080:5000 --env-file swiss-insurances/.env swiss-deductible-chooser
-docker stop insurek-app
-docker start insurek-app
-```
+Insurek began as a Flask app that asked you to copy six premiums by hand out
+of Priminfo and told you which deductible was cheapest. The arithmetic was
+right; the work was on you. This version keeps the arithmetic, does the
+copying itself, and widens the question from one insurer's deductibles to
+every insurer in your area. The Python survived — it just moved from serving
+requests to preparing data once a year.
 
----
+## Licence
 
-## 📒 Advanced: Run Your Own Calculations (Jupyter Notebook)
+Code: GNU GPL-2.0, see [`LICENSE`](LICENSE).
+Data: Federal Office of Public Health, open use with attribution.
 
-If you want to experiment with your own data, use the included [premium_chooser.ipynb](premium_chooser.ipynb):
-
-1. Open the notebook in Jupyter or [Google Colab](https://colab.research.google.com/).
-2. Enter your own premiums in the `MONTHLY_PREMIUM` list.
-3. Run all cells to see the break-even point and cost chart for your situation.
-
----
-
-## 🗂️ Project Structure
-
-```
-swiss-insurances/
-│
-├── app.py                # Flask web app (main entry point)
-├── scripts/
-│   └── insurance_calculator.py  # Core calculation logic
-├── static/               # CSS, JS, images
-├── templates/            # Multilingual HTML templates (EN, DE, FR, IT)
-├── .env                  # Environment variables (not committed)
-|
-requirements.txt      # Python dependencies
-premium_chooser.ipynb  # Jupyter Notebook (advanced)
-```
-
----
-
-## 🌐 Multilingual Support
-
-- 🇬🇧 English
-- 🇩🇪 Deutsch
-- 🇫🇷 Français
-- 🇮🇹 Italiano
-
-Switch language anytime using the menu.
-
----
-
-## 🤝 Contributing
-
-Pull requests are welcome!  
-If you find a bug or want to add a feature, open an issue or submit a PR.
-
----
-
-## 📖 License
-
-GNU GPL-2.0 License. See [LICENSE](LICENSE) for details. Do mention the source when developing further.
-
----
-
-## 🙋‍♂️ Author & Contact
-
-Created by [Luca Iacolettig](https://www.linkedin.com/in/luca-iacolettig/).  
-Questions? Email: [iacolettig.luca@gmail.com](mailto:iacolettig.luca@gmail.com)
-
----
-
-## ⭐️ Why Use Insurek?
-
-- **Transparent**: All calculations are open-source and visible in [insurance_calculator.py](swiss-insurances/scripts/insurance_calculator.py) and [premium_chooser.ipynb](premium_chooser.ipynb).
-- **Fast**: Get your answer in seconds.
-- **Accurate**: Follows Swiss insurance law and real math.
-- **Private**: No data is stored—everything runs locally or in your browser.
-
----
-
-**Save money. Choose smart. Insurek makes Swiss health**
+Maintainer's notes, in Italian: [`LEGGIMI.md`](LEGGIMI.md).

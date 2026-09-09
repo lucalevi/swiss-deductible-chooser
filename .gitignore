@@ -1,0 +1,9 @@
+.DS_Store
+__pycache__/
+*.pyc
+_to_delete/
+
+# I file dell'UFSP si riscaricano in mezzo minuto e pesano 23 MB: fuori dal
+# repository. Le istruzioni per prenderli stanno in LEGGIMI.md.
+dati-fonte/*.csv
+dati-fonte/*.xlsx
