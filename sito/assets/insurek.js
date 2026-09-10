@@ -3,7 +3,7 @@
  *
  * Tutto quello che succede succede qui, nel browser di chi usa il sito.
  * Non c'e' un server applicativo: la pagina scarica tre cose statiche —
- * l'anagrafica (meta.json), la tabella dei NAP (nap.json) e il file dei premi
+ * l'anagrafica (meta.json), la tabella dei NPA (npa.json) e il file dei premi
  * della sola zona in cui abita chi sta guardando — e da li' in poi calcola
  * da sola. Nessun dato di chi usa il sito viene inviato da nessuna parte,
  * perche' non c'e' nessuna parte a cui inviarlo.
@@ -38,7 +38,7 @@
       classeE: "adulto", classeJ: "giovane adulto",
       etichettaRisposta: "La franchigia giusta per te",
       franchigiaCHF: "Franchigia {f} CHF",
-      percheSvolta: "Con {s} di spese sanitarie all'anno conviene la franchigia da {f} franchi. Il punto di scambio è intorno a {b}: sotto conviene la {alta}, sopra la {bassa}.",
+      percheSvolta: "Con {s} di spese sanitarie all'anno conviene la franchigia da {f} franchi. La soglia di convenienza è intorno a {b}: sotto conviene la {alta}, sopra la {bassa}.",
       percheUnica: "Con questi premi la franchigia da {f} franchi conviene a qualsiasi livello di spesa.",
       combinazioneEtichetta: "La combinazione che costa meno nella tua zona",
       premiAnnui: "Premi, dodici mesi",
@@ -52,10 +52,10 @@
       graficoTitolo: "E se le tue spese fossero diverse?",
       graficoNota: "Le sei franchigie di {nome}, modello {modello}, {inf}. La linea verticale è la spesa che hai indicato. Si vede a occhio perché le franchigie intermedie non vincono quasi mai: le loro curve restano sopra a una delle due estreme a ogni livello di spesa.",
       assiSpesa: "Spese sanitarie nell'anno (CHF)",
-      assiCosto: "Costo totale (CHF)",
+      assiCosto: "Costo totale dell'anno (CHF)",
       minorenne: "Insurek per ora vale solo per gli adulti. Per i minorenni le franchigie vanno da 0 a 600 CHF, il tetto della partecipazione è 350 CHF e ci sono gli sconti famiglia: sono regole diverse, e trattarle male sarebbe peggio che non trattarle.",
       annoStrano: "Controlla l'anno di nascita.",
-      napIgnoto: "Questo NAP non è nella tabella federale delle regioni di premio. Prova con il nome del comune.",
+      npaIgnoto: "Questo NPA non è nella tabella federale delle regioni di premio. Prova con il nome del comune.",
       nessunRisultato: "Con questi filtri non resta nessuna combinazione. Prova a riaprire qualche tipo di modello.",
       caricamento: "Carico i premi della tua zona…",
       erroreDati: "Non riesco a caricare i dati. Ricarica la pagina.",
@@ -68,7 +68,7 @@
       classeE: "Erwachsene", classeJ: "junge Erwachsene",
       etichettaRisposta: "Ihre richtige Franchise",
       franchigiaCHF: "Franchise {f} CHF",
-      percheSvolta: "Bei {s} Gesundheitskosten im Jahr lohnt sich die Franchise von {f} Franken. Der Wechselpunkt liegt bei rund {b}: darunter die {alta}, darüber die {bassa}.",
+      percheSvolta: "Bei {s} Gesundheitskosten im Jahr lohnt sich die Franchise von {f} Franken. Die Schwelle liegt bei rund {b}: darunter die {alta}, darüber die {bassa}.",
       percheUnica: "Mit diesen Prämien lohnt sich die Franchise von {f} Franken bei jedem Kostenniveau.",
       combinazioneEtichetta: "Die günstigste Kombination in Ihrer Region",
       premiAnnui: "Prämien, zwölf Monate",
@@ -82,10 +82,10 @@
       graficoTitolo: "Und wenn Ihre Kosten anders wären?",
       graficoNota: "Die sechs Franchisen von {nome}, Modell {modello}, {inf}. Die senkrechte Linie sind Ihre angegebenen Kosten. Man sieht, warum mittlere Franchisen fast nie gewinnen: ihre Kurven bleiben auf jedem Niveau über einer der beiden äusseren.",
       assiSpesa: "Gesundheitskosten im Jahr (CHF)",
-      assiCosto: "Gesamtkosten (CHF)",
+      assiCosto: "Gesamtkosten des Jahres (CHF)",
       minorenne: "Insurek gilt vorerst nur für Erwachsene. Für Kinder gehen die Franchisen von 0 bis 600 CHF, der Selbstbehalt ist auf 350 CHF begrenzt und es gibt Familienrabatte: andere Regeln, die halb behandelt schlimmer wären als gar nicht.",
       annoStrano: "Bitte das Geburtsjahr prüfen.",
-      napIgnoto: "Diese PLZ steht nicht in der Bundestabelle der Prämienregionen. Versuchen Sie es mit dem Gemeindenamen.",
+      npaIgnoto: "Diese PLZ steht nicht in der Bundestabelle der Prämienregionen. Versuchen Sie es mit dem Gemeindenamen.",
       nessunRisultato: "Mit diesen Filtern bleibt keine Kombination übrig. Öffnen Sie wieder ein paar Modelltypen.",
       caricamento: "Ich lade die Prämien Ihrer Region…",
       erroreDati: "Die Daten lassen sich nicht laden. Bitte die Seite neu laden.",
@@ -98,7 +98,7 @@
       classeE: "adulte", classeJ: "jeune adulte",
       etichettaRisposta: "La franchise qu'il vous faut",
       franchigiaCHF: "Franchise {f} CHF",
-      percheSvolta: "Avec {s} de frais de santé par an, la franchise de {f} francs est la bonne. Le point de bascule est vers {b} : en dessous la {alta}, au-dessus la {bassa}.",
+      percheSvolta: "Avec {s} de frais de santé par an, la franchise de {f} francs est la bonne. Le seuil de bascule est vers {b} : en dessous la {alta}, au-dessus la {bassa}.",
       percheUnica: "Avec ces primes, la franchise de {f} francs est la meilleure à tous les niveaux de frais.",
       combinazioneEtichetta: "La combinaison la moins chère de votre région",
       premiAnnui: "Primes, douze mois",
@@ -112,10 +112,10 @@
       graficoTitolo: "Et si vos frais étaient différents ?",
       graficoNota: "Les six franchises de {nome}, modèle {modello}, {inf}. La ligne verticale correspond aux frais que vous avez indiqués. On voit pourquoi les franchises intermédiaires ne gagnent presque jamais : leurs courbes restent au-dessus de l'une des deux extrêmes à tous les niveaux.",
       assiSpesa: "Frais de santé dans l'année (CHF)",
-      assiCosto: "Coût total (CHF)",
+      assiCosto: "Coût total de l'année (CHF)",
       minorenne: "Insurek ne vaut pour l'instant que pour les adultes. Pour les enfants les franchises vont de 0 à 600 CHF, la quote-part est plafonnée à 350 CHF et il y a les rabais de famille : d'autres règles, qu'il vaut mieux ne pas traiter que mal traiter.",
       annoStrano: "Vérifiez l'année de naissance.",
-      napIgnoto: "Ce NPA ne figure pas dans la table fédérale des régions de primes. Essayez avec le nom de la commune.",
+      npaIgnoto: "Ce NPA ne figure pas dans la table fédérale des régions de primes. Essayez avec le nom de la commune.",
       nessunRisultato: "Avec ces filtres il ne reste aucune combinaison. Rouvrez quelques types de modèle.",
       caricamento: "Je charge les primes de votre région…",
       erroreDati: "Impossible de charger les données. Rechargez la page.",
@@ -128,7 +128,7 @@
       classeE: "adult", classeJ: "young adult",
       etichettaRisposta: "The deductible that fits you",
       franchigiaCHF: "CHF {f} deductible",
-      percheSvolta: "At {s} of health costs a year the {f}-franc deductible wins. The crossing point is around {b}: below it the {alta}, above it the {bassa}.",
+      percheSvolta: "At {s} of health costs a year the {f}-franc deductible wins. The tipping point is around {b}: below it the {alta}, above it the {bassa}.",
       percheUnica: "With these premiums the {f}-franc deductible wins at every level of health costs.",
       combinazioneEtichetta: "The cheapest combination in your area",
       premiAnnui: "Premiums, twelve months",
@@ -142,10 +142,10 @@
       graficoTitolo: "What if your costs were different?",
       graficoNota: "The six deductibles of {nome}, {modello} model, {inf}. The vertical line is the spending you entered. You can see why the middle deductibles almost never win: their curves stay above one of the two extremes at every level.",
       assiSpesa: "Health costs in the year (CHF)",
-      assiCosto: "Total cost (CHF)",
+      assiCosto: "Total cost for the year (CHF)",
       minorenne: "Insurek covers adults only for now. For children the deductibles run from 0 to 600 CHF, co-insurance is capped at 350 CHF and family discounts apply: different rules, and handling them badly would be worse than not handling them.",
       annoStrano: "Please check the year of birth.",
-      napIgnoto: "This postcode is not in the federal premium-region table. Try the name of the town instead.",
+      npaIgnoto: "This postcode is not in the federal premium-region table. Try the name of the town instead.",
       nessunRisultato: "No combination is left with these filters. Try switching some model types back on.",
       caricamento: "Loading the premiums for your area…",
       erroreDati: "The data will not load. Please reload the page.",
@@ -158,8 +158,8 @@
 
   var stato = {
     meta: null,
-    nap: null,
-    indice: null,      // per la ricerca: [nap, localita, cantone, regione, comune]
+    npa: null,
+    indice: null,      // per la ricerca: [npa, localita, cantone, regione, comune]
     luogo: null,
     offerte: null,
     areaCaricata: null,
@@ -221,10 +221,10 @@
 
   function costruisciIndice() {
     var indice = [];
-    Object.keys(stato.nap).forEach(function (codice) {
-      stato.nap[codice].forEach(function (v) {
+    Object.keys(stato.npa).forEach(function (codice) {
+      stato.npa[codice].forEach(function (v) {
         indice.push({
-          nap: codice, localita: v[0], cantone: v[1], regione: v[2], comune: v[3],
+          npa: codice, localita: v[0], cantone: v[1], regione: v[2], comune: v[3],
           cerca: (codice + " " + v[0] + " " + v[3]).toLowerCase()
         });
       });
@@ -232,7 +232,7 @@
     return indice;
   }
 
-  /* ------------------------------------------------------- ricerca del NAP */
+  /* ------------------------------------------------------- ricerca del NPA */
 
   function cerca(query) {
     var q = query.trim().toLowerCase();
@@ -240,7 +240,7 @@
     var esatti = [], parziali = [];
     for (var i = 0; i < stato.indice.length && esatti.length + parziali.length < 400; i++) {
       var v = stato.indice[i];
-      if (v.nap.indexOf(q) === 0 || v.localita.toLowerCase().indexOf(q) === 0) esatti.push(v);
+      if (v.npa.indexOf(q) === 0 || v.localita.toLowerCase().indexOf(q) === 0) esatti.push(v);
       else if (v.cerca.indexOf(q) !== -1) parziali.push(v);
     }
     var tutti = esatti.concat(parziali);
@@ -248,7 +248,7 @@
     // una voce per ogni combinazione davvero diversa di zona.
     var visti = {}, unici = [];
     for (var j = 0; j < tutti.length && unici.length < 12; j++) {
-      var chiave = tutti[j].nap + "|" + tutti[j].localita + "|" + tutti[j].cantone + "|" + tutti[j].regione;
+      var chiave = tutti[j].npa + "|" + tutti[j].localita + "|" + tutti[j].cantone + "|" + tutti[j].regione;
       if (visti[chiave]) continue;
       visti[chiave] = true;
       unici.push(tutti[j]);
@@ -262,7 +262,7 @@
     var html = voci.map(function (v, i) {
       var zona = v.cantone + (v.regione !== "0" ? " · " + t().regione + " " + v.regione : "");
       return '<li><button type="button" data-voce="' + i + '">' +
-             '<span><span class="luogo-nap">' + testo(v.nap) + '</span> ' + testo(v.localita) + '</span>' +
+             '<span><span class="luogo-npa">' + testo(v.npa) + '</span> ' + testo(v.localita) + '</span>' +
              '<span class="luogo-regione">' + testo(zona) + "</span></button></li>";
     }).join("");
     lista.innerHTML = html;
@@ -277,11 +277,11 @@
   function scegliLuogo(voce) {
     stato.luogo = voce;
     $("suggerimenti").hidden = true;
-    $("cerca-nap").value = "";
+    $("cerca-npa").value = "";
     $("cerca-guscio").hidden = true;
     var zona = voce.cantone + (voce.regione !== "0" ? " · " + t().regione + " " + voce.regione : "");
     $("luogo-scelto").innerHTML =
-      "<span>" + testo(voce.nap + " " + voce.localita) + " <span class=\"luogo-regione\">" + testo(zona) + "</span></span>" +
+      "<span>" + testo(voce.npa + " " + voce.localita) + " <span class=\"luogo-regione\">" + testo(zona) + "</span></span>" +
       '<button type="button" id="cambia-luogo">' +
       testo({ it: "cambia", de: "ändern", fr: "changer", en: "change" }[window.Lingua.get()]) + "</button>";
     $("luogo-scelto").hidden = false;
@@ -289,7 +289,7 @@
       stato.luogo = null;
       $("luogo-scelto").hidden = true;
       $("cerca-guscio").hidden = false;
-      $("cerca-nap").focus();
+      $("cerca-npa").focus();
       aggiorna();
     });
     caricaArea();
@@ -452,7 +452,10 @@
     var serie = Calcolo.curve(vincente.premi, limite).filter(Boolean);
     if (!serie.length) return "";
 
-    var L = 62, R = 16, S = 14, G = 34;      // margini
+    // Margine sinistro largo: ci stanno i valori dell'asse e, ruotato, il suo
+    // titolo. Senza titolo il lettore deve indovinare che quei numeri sono
+    // franchi all'anno, e sono la meta' del senso del grafico.
+    var L = 86, R = 16, S = 14, G = 46;      // margini
     var larghezza = 760, altezza = 380;
     var x0 = L, x1 = larghezza - R, y0 = S, y1 = altezza - G;
 
@@ -514,8 +517,10 @@
     var xs = sx(Math.min(stato.spesa, limite));
     pezzi.push('<line class="marcatore" x1="' + xs.toFixed(1) + '" y1="' + y0 + '" x2="' + xs.toFixed(1) + '" y2="' + y1 + '"/>');
 
-    pezzi.push('<text x="' + ((x0 + x1) / 2).toFixed(1) + '" y="' + (altezza - 4) + '" text-anchor="middle">' +
+    pezzi.push('<text x="' + ((x0 + x1) / 2).toFixed(1) + '" y="' + (altezza - 8) + '" text-anchor="middle">' +
                testo(l.assiSpesa) + "</text>");
+    pezzi.push('<text transform="rotate(-90)" x="' + (-(y0 + y1) / 2).toFixed(1) +
+               '" y="14" text-anchor="middle">' + testo(l.assiCosto) + "</text>");
 
     var ass = assicuratore(vincente.assicuratore);
     var mod = modello(vincente.assicuratore, vincente.tariffa);
@@ -533,7 +538,7 @@
   /* ------------------------------------------------------------- controlli */
 
   function collegaControlli() {
-    var campo = $("cerca-nap");
+    var campo = $("cerca-npa");
     campo.addEventListener("input", function () { disegnaSuggerimenti(cerca(campo.value)); });
     campo.addEventListener("focus", function () { if (campo.value) disegnaSuggerimenti(cerca(campo.value)); });
     document.addEventListener("click", function (e) {
@@ -624,12 +629,12 @@
     segnaTessere("data-fascia", stato.fascia);
     segnaTessere("data-infortuni", String(stato.infortuni));
 
-    Promise.all([prendi("meta.json"), prendi("nap.json")]).then(function (r) {
+    Promise.all([prendi("meta.json"), prendi("npa.json")]).then(function (r) {
       stato.meta = r[0];
-      stato.nap = r[1];
+      stato.npa = r[1];
       stato.indice = costruisciIndice();
       collegaControlli();
-      $("cerca-nap").disabled = false;
+      $("cerca-npa").disabled = false;
       scriviAnno();
       $("stato-dati").hidden = true;
     }).catch(function () {

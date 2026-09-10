@@ -86,12 +86,12 @@ def main() -> None:
     if senza_modello:
         guasti.append(f"{len(senza_modello)} modelli senza nome, es. {sorted(senza_modello)[0]}")
 
-    # ogni NAP deve puntare a un'area che esiste
-    nap = json.loads((USCITA / "nap.json").read_text(encoding="utf-8"))
+    # ogni NPA deve puntare a un'area che esiste
+    npa = json.loads((USCITA / "npa.json").read_text(encoding="utf-8"))
     aree = {p.stem for p in (USCITA / "premi").glob("*.json")}
-    orfani = {v[1] + "-" + v[2] for voci in nap.values() for v in voci} - aree
+    orfani = {v[1] + "-" + v[2] for voci in npa.values() for v in voci} - aree
     if orfani:
-        guasti.append("NAP che puntano ad aree senza file di premi: " + ", ".join(sorted(orfani)))
+        guasti.append("NPA che puntano ad aree senza file di premi: " + ", ".join(sorted(orfani)))
 
     conteggio = collections.Counter(len([x for x in v if x is not None]) for v in letto.values())
 
@@ -99,7 +99,7 @@ def main() -> None:
     print(f"  combinazioni nel CSV  : {len(atteso)}")
     print(f"  combinazioni nei JSON : {len(letto)}")
     print(f"  franchigie per offerta: {dict(sorted(conteggio.items()))}")
-    print(f"  aree                  : {len(aree)}   NAP: {len(nap)}   "
+    print(f"  aree                  : {len(aree)}   NPA: {len(npa)}   "
           f"assicuratori: {len(meta['assicuratori'])}")
 
     if guasti:

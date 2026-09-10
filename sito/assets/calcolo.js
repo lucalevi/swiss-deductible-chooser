@@ -21,8 +21,9 @@
  *                            + min(10% × (spesa − franchigia), 700)
  *
  * Sotto una certa spesa vince sempre la franchigia piu' alta, sopra vince
- * sempre la piu' bassa, e il punto in cui le due si scambiano il posto e' il
- * break-even. Le franchigie intermedie, di norma, non vincono mai: la loro
+ * sempre la piu' bassa, e il punto in cui le due si scambiano il posto e'
+ * quello che il sito chiama soglia di convenienza (break-even, in gergo).
+ * Le franchigie intermedie, di norma, non vincono mai: la loro
  * curva sta sopra a una delle due estreme per ogni livello di spesa. Insurek
  * e' nato per far vedere questo, e continua a farlo — solo che adesso lo fa
  * per tutte le combinazioni disponibili, non per una sola.
@@ -100,8 +101,8 @@ var Calcolo = (function () {
   }
 
   /**
-   * I punti in cui, per una singola offerta, cambia la franchigia migliore.
-   * Restituisce [{spesa, da, a}] con gli importi delle franchigie.
+   * Le soglie di convenienza di una singola offerta: i punti in cui cambia la
+   * franchigia migliore. Restituisce [{spesa, da, a}] con gli importi.
    */
   function puntiDiSvolta(premi) {
     var svolte = [];

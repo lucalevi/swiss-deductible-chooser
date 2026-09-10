@@ -4,7 +4,7 @@ Insurek risponde a una domanda sola: **fra tutte le casse malati, tutti i
 modelli e tutte le franchigie disponibili dove abito, quale combinazione mi
 costa meno in un anno?**
 
-Chi arriva dà due indicazioni — il NAP e l'anno di nascita — dice se va dal
+Chi arriva dà due indicazioni — il NPA e l'anno di nascita — dice se va dal
 medico raramente, regolarmente o di continuo, e ha la risposta. Niente da
 ricopiare da Priminfo.
 
@@ -41,13 +41,13 @@ sito/assets/fonts.css    le regole @font-face (copia identica a lucalevi.com)
 sito/fonts/           EB Garamond e Inter in woff2, con le licenze OFL
 sito/dati/            GENERATI dall'ETL — non modificare a mano
   meta.json             anno, assicuratori, modelli, cantoni  (18 KB)
-  nap.json              NAP → cantone e regione di premio    (182 KB)
+  npa.json              NPA → cantone e regione di premio    (182 KB)
   premi/<CT>-<R>.json   un file per area, il piu' grande      (31 KB)
 .github/workflows/    l'aggiornamento annuale automatico
 _to_delete/           il vecchio progetto Flask e il notebook (fuori dal repo)
 ```
 
-Il browser scarica `meta.json`, `nap.json` e **un solo** file di premi: quello
+Il browser scarica `meta.json`, `npa.json` e **un solo** file di premi: quello
 della zona in cui abita chi sta guardando. In tutto meno di 250 KB.
 
 ## Guardarlo in locale
@@ -78,7 +78,7 @@ python3 etl/verifica.py     # li ricontrolla contro il CSV federale
 `verifica.py` esce con errore se qualcosa non torna: combinazioni che
 mancano, premi diversi da quelli del CSV, premi che non calano al crescere
 della franchigia (il segnale che il pivot è andato storto), modelli senza
-nome, NAP che puntano a un'area inesistente. È il passo che impedisce
+nome, NPA che puntano a un'area inesistente. È il passo che impedisce
 all'aggiornamento automatico di pubblicare dati sbagliati, e vale la pena
 lanciarlo anche a mano.
 

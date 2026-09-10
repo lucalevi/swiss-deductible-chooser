@@ -249,7 +249,7 @@ select {
   padding-right: 2.25rem;
 }
 
-/* Ricerca del NAP con i suggerimenti */
+/* Ricerca del NPA con i suggerimenti */
 .cerca { position: relative; max-width: 26rem; }
 .suggerimenti {
   position: absolute; z-index: 30; inset-inline: 0; top: calc(100% + 2px);
@@ -268,7 +268,7 @@ select {
   display: flex; justify-content: space-between; gap: 1rem; align-items: baseline;
 }
 .suggerimenti button:hover, .suggerimenti button:focus-visible { background: hsl(var(--muted)); }
-.suggerimenti .luogo-nap { font-variant-numeric: tabular-nums; color: hsl(var(--muted-foreground)); font-size: 0.8125rem; }
+.suggerimenti .luogo-npa { font-variant-numeric: tabular-nums; color: hsl(var(--muted-foreground)); font-size: 0.8125rem; }
 .suggerimenti .luogo-regione { color: hsl(var(--muted-foreground)); font-size: 0.75rem; letter-spacing: 0.06em; text-transform: uppercase; }
 
 .scelto {

@@ -226,23 +226,23 @@ def leggi_modelli() -> dict[str, dict]:
     return modelli
 
 
-# --------------------------------------------------------------------- NAP
+# --------------------------------------------------------------------- NPA
 
-def leggi_nap() -> tuple[dict, dict]:
-    """Foglio B_NPA di praemienregionen.xlsx: NAP -> cantone e regione.
+def leggi_npa() -> tuple[dict, dict]:
+    """Foglio B_NPA di praemienregionen.xlsx: NPA -> cantone e regione.
 
     E' il pezzo che il CSV dei premi non ha. I premi sono indicizzati per
-    cantone e regione di premio (PR-REG CH0..CH3), non per NAP: senza questa
+    cantone e regione di premio (PR-REG CH0..CH3), non per NPA: senza questa
     tabella l'utente dovrebbe sapere in che regione abita, che e' esattamente
     la cosa che non sa e non deve sapere.
 
-    Un NAP puo' stare in piu' regioni (i comuni sparsi su piu' valli): in quel
+    Un NPA puo' stare in piu' regioni (i comuni sparsi su piu' valli): in quel
     caso restituiamo tutte le possibilita' e il sito chiede quale sia la
     localita' giusta."""
     ws = openpyxl.load_workbook(solo("praemienregionen.xlsx"),
                                 data_only=True, read_only=True)["B_NPA"]
 
-    nap: dict[str, list] = defaultdict(list)
+    npa: dict[str, list] = defaultdict(list)
     regioni_per_cantone: dict[str, set] = defaultdict(set)
     visti: set[tuple] = set()
     intestazione_passata = False
@@ -270,9 +270,9 @@ def leggi_nap() -> tuple[dict, dict]:
         if chiave in visti:
             continue
         visti.add(chiave)
-        nap[codice].append([localita, cantone, regione, comune])
+        npa[codice].append([localita, cantone, regione, comune])
 
-    return dict(nap), {k: sorted(v, key=int) for k, v in regioni_per_cantone.items()}
+    return dict(npa), {k: sorted(v, key=int) for k, v in regioni_per_cantone.items()}
 
 
 # ------------------------------------------------------------------- premi
@@ -338,8 +338,8 @@ def main() -> None:
     modelli_tarife = leggi_modelli()
     print(f"  modelli con nome tradotto          : {len(modelli_tarife)}")
 
-    nap, regioni_per_cantone = leggi_nap()
-    print(f"  NAP                                : {len(nap)}")
+    npa, regioni_per_cantone = leggi_npa()
+    print(f"  NPA                                : {len(npa)}")
 
     per_regione, etichette, anno = leggi_premi()
     print(f"  anno di premio                     : {anno}")
@@ -376,7 +376,7 @@ def main() -> None:
 
     # Nel CSV dei premi compaiono un paio di codici di territorio ("ZE",
     # "ZR") che non sono cantoni e non stanno nella tabella delle regioni di
-    # premio: nessun NAP porta li', quindi sarebbero aree irraggiungibili.
+    # premio: nessun NPA porta li', quindi sarebbero aree irraggiungibili.
     fantasma = sorted({c for c, _ in per_regione} - set(regioni_per_cantone))
     if fantasma:
         for chiave in [k for k in per_regione if k[0] in fantasma]:
@@ -399,7 +399,7 @@ def main() -> None:
 
     totale = 0
     totale += scrivi(USCITA / "meta.json", meta)
-    totale += scrivi(USCITA / "nap.json", nap)
+    totale += scrivi(USCITA / "npa.json", npa)
 
     # Le aree cambiano da un anno all'altro (fusioni di comuni, assicuratori
     # che si ritirano da un cantone). I file dell'anno prima che nessuno
@@ -429,7 +429,7 @@ def main() -> None:
           f"{sum(len(v) for v in per_regione.values())}")
     print(f"  file dell'area piu' grande         : {massimo / 1024:.0f} KB")
     print(f"  peso complessivo di sito/dati/     : {totale / 1024:.0f} KB")
-    print(f"  (il browser ne scarica meta.json + nap.json + un'area sola)")
+    print(f"  (il browser ne scarica meta.json + npa.json + un'area sola)")
 
     if senza_nome_breve:
         print("\n  Assicuratori presenti nei premi ma assenti dal registro "
