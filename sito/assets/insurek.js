@@ -167,7 +167,12 @@
     fascia: "regolare",
     spesa: FASCE.regolare,
     spesaEsatta: null,
-    infortuni: 1,
+    /* 0 = senza infortuni, la variante di chi e' dipendente per almeno otto
+       ore a settimana: gli infortuni glieli copre gia' il datore di lavoro
+       (LAINF), e il premio scende. E' il caso della maggior parte delle
+       persone, quindi e' la predefinita. Deve restare d'accordo con
+       l'aria-pressed delle tessere [data-infortuni] nell'HTML. */
+    infortuni: 0,
     tipi: TIPI.slice()
   };
 

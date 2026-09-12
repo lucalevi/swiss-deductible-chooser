@@ -52,7 +52,8 @@
     }
   };
 
-  var LOCALE = { it: "it", de: "de-CH", fr: "fr-CH", en: "en-GB" };
+  // it-CH e non it: il sito parla a chi vive in Svizzera, come de-CH e fr-CH.
+  var LOCALE = { it: "it-CH", de: "de-CH", fr: "fr-CH", en: "en-GB" };
 
   var corrente = "it";
   var ascoltatori = [];

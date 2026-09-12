@@ -161,6 +161,24 @@ a { color: inherit; }
 
 .header-side { display: flex; align-items: center; gap: 1rem; flex-shrink: 0; }
 
+/* Ritorno al sito padre. Sempre visibile, anche sul telefono: e' l'unica via
+   da insurek.lucalevi.com verso www.lucalevi.com. */
+.risali {
+  display: inline-flex; align-items: center; gap: 0.35rem;
+  min-height: 44px; flex-shrink: 0;
+  font-size: 0.75rem; letter-spacing: 0.02em; white-space: nowrap;
+  color: hsl(var(--muted-foreground)); text-decoration: none;
+  transition: color 180ms var(--ease-editorial);
+}
+.risali:hover { color: hsl(var(--foreground)); text-decoration: underline; text-underline-offset: 3px; }
+.risali .freccia { font-size: 0.95em; line-height: 1; }
+/* Sotto i 24rem restano soltanto Insurek, la freccia e i quattro bottoni della
+   lingua: il dominio si accorcia invece di mandare la riga a capo. */
+@media (max-width: 24rem) {
+  .header-side { gap: 0.5rem; }
+  .risali { font-size: 0.6875rem; gap: 0.2rem; }
+}
+
 /* ------------------------------------------------------------ lingue */
 .lang-switch { display: flex; align-items: center; gap: 0.125rem; }
 .lang-switch button {

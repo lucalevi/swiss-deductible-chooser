@@ -1,0 +1,27 @@
+# Intestazioni di Cloudflare Pages per insurek.lucalevi.com.
+
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  X-Frame-Options: DENY
+  Permissions-Policy: geolocation=(), microphone=(), camera=(), payment=(), usb=()
+
+/fonts/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# CSS e JavaScript firmati da strumenti/versiona.py.
+/assets/styles.css
+  Cache-Control: public, max-age=31536000, immutable
+/assets/fonts.css
+  Cache-Control: public, max-age=31536000, immutable
+/assets/lingua.js
+  Cache-Control: public, max-age=31536000, immutable
+/assets/calcolo.js
+  Cache-Control: public, max-age=31536000, immutable
+/assets/insurek.js
+  Cache-Control: public, max-age=31536000, immutable
+
+# I premi cambiano una volta l'anno, verso fine settembre. Un giorno di cache
+# non fa danno e toglie 250 KB di richieste a chi torna.
+/dati/*
+  Cache-Control: public, max-age=86400

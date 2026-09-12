@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="it">
+<html lang="it-CH">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
@@ -17,12 +17,25 @@
     <meta property="og:url" content="https://insurek.lucalevi.com/" />
 
     <link rel="canonical" href="https://insurek.lucalevi.com/" />
+    <meta property="og:locale" content="it_CH" />
+    <meta property="og:locale:alternate" content="de_CH" />
+    <meta property="og:locale:alternate" content="fr_CH" />
+    <meta property="og:locale:alternate" content="en_GB" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Insurek — La cassa malati che ti costa meno" />
+    <!-- L'anteprima che compare quando l'indirizzo viene incollato in una
+         chat o su un social. Si rigenera con `python3 materiali/og/genera.py`. -->
+    <meta property="og:image" content="https://insurek.lucalevi.com/assets/og-insurek.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Insurek — la cassa malati, il modello e la franchigia che costano meno" />
+    <meta name="twitter:image" content="https://insurek.lucalevi.com/assets/og-insurek.png" />
 
     <!-- I font stanno su questo dominio, come su lucalevi.com: nessuna
          richiesta a Google, nessun indirizzo IP di chi legge a terzi,
          nessun banner dei cookie da mettere. -->
-    <link rel="stylesheet" href="/assets/fonts.css" />
-    <link rel="stylesheet" href="/assets/styles.css" />
+    <link rel="stylesheet" href="/assets/fonts.css?v=a85ff2ea" />
+    <link rel="stylesheet" href="/assets/styles.css?v=bfef1d03" />
 
     <script type="application/ld+json">
       {
@@ -48,7 +61,6 @@
         <a href="#top" class="wordmark-link" aria-label="Insurek, torna all'inizio"
            data-aria-de="Insurek, zum Seitenanfang" data-aria-fr="Insurek, retour en haut" data-aria-en="Insurek, back to top">
           <span class="wordmark">Insurek</span>
-          <span class="wordmark-nota">lucalevi</span>
         </a>
 
         <nav class="header-nav" aria-label="Sezioni" data-aria-de="Bereiche" data-aria-fr="Sections" data-aria-en="Sections">
@@ -58,6 +70,16 @@
         </nav>
 
         <div class="header-side">
+          <!-- Ritorno al sito padre. Sta in .header-side e non in .header-nav
+               perche' .header-nav sparisce sotto i 700 px: questa e' l'unica
+               via verso www.lucalevi.com e deve restare anche sul telefono. -->
+          <a class="risali" href="https://www.lucalevi.com/"
+             aria-label="Torna a lucalevi.com, il sito di Luca Iacolettig"
+             data-aria-de="Zur&uuml;ck zu lucalevi.com, der Website von Luca Iacolettig"
+             data-aria-fr="Retour &agrave; lucalevi.com, le site de Luca Iacolettig"
+             data-aria-en="Back to lucalevi.com, the site of Luca Iacolettig">
+            <span class="freccia" aria-hidden="true">&#8592;</span>lucalevi.com
+          </a>
           <div class="lang-switch" role="group" aria-label="Lingua del sito"
                data-aria-de="Sprache" data-aria-fr="Langue du site" data-aria-en="Site language">
             <button type="button" data-lang="it" aria-label="Italiano">IT</button>
@@ -114,8 +136,8 @@
       <!-- ======================================================== calcolatore -->
       <section id="calcolatore" class="section-rhythm" aria-labelledby="titolo-calcolatore">
         <div class="container-editorial">
-          <p class="eyebrow muted" data-de="Drei Fragen" data-fr="Trois questions" data-en="Three questions">Tre domande</p>
-          <h2 id="titolo-calcolatore" style="margin-top:1rem" data-de="Wo, wann geboren, wie oft zum Arzt." data-fr="Où, né quand, combien chez le médecin." data-en="Where, born when, how often the doctor.">Dove, quando sei nato, quanto dal medico.</h2>
+          <p class="eyebrow muted" data-de="Vier Fragen" data-fr="Quatre questions" data-en="Four questions">Quattro domande</p>
+          <h2 id="titolo-calcolatore" style="margin-top:1rem" data-de="Wo, wann geboren, wie oft zum Arzt, ob angestellt." data-fr="Où, né quand, combien chez le médecin, salarié ou non." data-en="Where, born when, how often the doctor, employed or not.">Dove, quando sei nato, quanto dal medico, se lavori.</h2>
 
           <p id="stato-dati" class="caricamento" style="margin-top:1.5rem" data-de="Daten werden geladen…" data-fr="Chargement des données…" data-en="Loading the data…">Carico i dati…</p>
 
@@ -172,24 +194,38 @@
                      data-aria-en="Exact annual health costs in francs" />
             </div>
 
+            <!-- 4. la copertura infortuni -->
+            <!-- Stava dentro «Altre impostazioni», chiuso, con «Con infortuni»
+                 come predefinita. Ma chi è dipendente per almeno otto ore a
+                 settimana — la maggioranza — gli infortuni ce li ha già dal
+                 datore di lavoro, e sui dati UFSP 2026 la differenza fra le due
+                 varianti è di 31 CHF al mese in media (minimo 1,70, massimo
+                 61,60): quasi 400 franchi l'anno decisi da una casella nascosta.
+                 Quindi: domanda in chiaro, e la variante «senza infortuni»
+                 selezionata in partenza. Le tessere sono nell'ordine della
+                 risposta più frequente, e il titolo dice la situazione invece
+                 del gergo — «senza infortuni» a chi non è del mestiere suona
+                 come una copertura che manca, ed è proprio l'equivoco che
+                 portava a scegliere la variante più cara. -->
+            <div class="campo">
+              <span class="campo-titolo" data-de="4 — Sind Sie angestellt?" data-fr="4 — Êtes-vous salarié ?" data-en="4 — Are you employed?">4 — Lavori come dipendente?</span>
+              <div class="tessere due" role="group">
+                <button type="button" class="tessera" data-infortuni="0" aria-pressed="true">
+                  <span class="tessera-titolo" data-de="Ja, angestellt" data-fr="Oui, salarié" data-en="Yes, employed">Sì, sono dipendente</span>
+                  <span class="tessera-nota" data-de="Mindestens acht Stunden pro Woche: Unfälle deckt bereits Ihr Arbeitgeber, und die Prämie ist tiefer. In den Tarifen heißt das «ohne Unfall»." data-fr="Au moins huit heures par semaine : votre employeur couvre déjà les accidents, et la prime baisse. Dans les tarifs, c’est la variante « sans accidents »." data-en="At least eight hours a week: your employer already covers accidents, and the premium is lower. In the tariffs this is the “without accident cover” variant.">Almeno otto ore a settimana: gli infortuni te li copre già il datore di lavoro, e il premio scende. Nelle tariffe è la variante «senza infortuni».</span>
+                </button>
+                <button type="button" class="tessera" data-infortuni="1" aria-pressed="false">
+                  <span class="tessera-titolo" data-de="Nein, oder weniger" data-fr="Non, ou moins" data-en="No, or less">No, o meno di otto ore</span>
+                  <span class="tessera-nota" data-de="Selbstständig, ohne Arbeit, pensioniert, in Ausbildung oder mit kurzem Teilzeitpensum: die Unfalldeckung muss in der Krankenversicherung stecken, und die Prämie steigt. In den Tarifen heißt das «mit Unfall»." data-fr="Indépendant, sans emploi, retraité, étudiant ou petit temps partiel : la couverture accidents doit se trouver dans l’assurance maladie, et la prime monte. Dans les tarifs, c’est la variante « avec accidents »." data-en="Self-employed, out of work, retired, a student or on a short part-time contract: accident cover has to sit inside the health insurance, and the premium goes up. In the tariffs this is the “with accident cover” variant.">Indipendente, senza lavoro, in pensione, studente o part-time corto: la copertura infortuni deve stare dentro l’assicurazione malattia, e il premio sale. Nelle tariffe è la variante «con infortuni».</span>
+                </button>
+              </div>
+              <p class="campo-aiuto" data-de="Es geht um rund 31 Franken im Monat, fast 400 im Jahr: keine Kleinigkeit. Wer angestellt ist, ist nach dem Unfallversicherungsgesetz bereits über den Arbeitgeber gedeckt — die Krankenkasse muss es dann nicht noch einmal tun." data-fr="Cela représente environ 31 francs par mois, près de 400 par an : ce n’est pas un détail. Si vous êtes salarié, la loi sur l’assurance-accidents vous fait couvrir par votre employeur — la caisse maladie n’a alors pas à le refaire." data-en="It is worth about 31 francs a month, close to 400 a year: not a detail. If you are employed, the accident insurance act has your employer cover you — so your health insurer does not have to.">Sono circa 31 franchi al mese, quasi 400 l’anno: non è un dettaglio. Se sei dipendente, la legge sull’assicurazione infortuni ti fa coprire dal datore di lavoro — e la cassa malati non deve rifarlo.</p>
+            </div>
+
             <!-- il resto, chiuso -->
             <details class="dettagli">
               <summary data-de="Weitere Einstellungen" data-fr="Réglages supplémentaires" data-en="More settings">Altre impostazioni</summary>
               <div class="dettagli-corpo">
-                <div class="campo">
-                  <span class="campo-titolo" data-de="Unfalldeckung" data-fr="Couverture accidents" data-en="Accident cover">Copertura infortuni</span>
-                  <div class="tessere due" role="group">
-                    <button type="button" class="tessera" data-infortuni="1" aria-pressed="true">
-                      <span class="tessera-titolo" data-de="Mit Unfall" data-fr="Avec accidents" data-en="With accident cover">Con infortuni</span>
-                      <span class="tessera-nota" data-de="Wenn Sie nicht angestellt sind, weniger als acht Stunden pro Woche arbeiten oder nicht erwerbstätig sind." data-fr="Si vous n’êtes pas salarié, travaillez moins de huit heures par semaine ou n’exercez pas d’activité." data-en="If you are not employed, work fewer than eight hours a week, or are not working.">Se non sei dipendente, lavori meno di otto ore a settimana o non lavori.</span>
-                    </button>
-                    <button type="button" class="tessera" data-infortuni="0" aria-pressed="false">
-                      <span class="tessera-titolo" data-de="Ohne Unfall" data-fr="Sans accidents" data-en="Without accident cover">Senza infortuni</span>
-                      <span class="tessera-nota" data-de="Wenn Sie mindestens acht Stunden pro Woche angestellt sind: dann versichert Sie schon Ihr Arbeitgeber, und die Prämie ist tiefer." data-fr="Si vous êtes salarié au moins huit heures par semaine : votre employeur vous couvre déjà, et la prime baisse." data-en="If you are employed for at least eight hours a week: your employer already covers you, and the premium is lower.">Se sei dipendente per almeno otto ore a settimana: ti copre già il datore di lavoro, e il premio scende.</span>
-                    </button>
-                  </div>
-                </div>
-
                 <div class="campo">
                   <span class="campo-titolo" data-de="Versicherungsmodelle" data-fr="Modèles d’assurance" data-en="Insurance models">Modelli assicurativi</span>
                   <div class="caselle">
@@ -250,13 +286,15 @@
           <a href="/metodo/" data-de="Methode" data-fr="Méthode" data-en="Method">Metodo</a>
           <a href="https://github.com/lucalevi/swiss-deductible-chooser">GitHub</a>
           <a href="https://www.lucalevi.com/">lucalevi.com</a>
+          <a href="https://way.lucalevi.com/">lucalevi&rsquo;s way</a>
           <a href="https://www.priminfo.admin.ch/">Priminfo</a>
+          <a href="https://www.lucalevi.com/privacy/" data-de="Datenschutz" data-fr="Confidentialité" data-en="Privacy">Privacy</a>
         </nav>
       </div>
     </footer>
 
-    <script src="/assets/lingua.js"></script>
-    <script src="/assets/calcolo.js"></script>
-    <script src="/assets/insurek.js"></script>
+    <script src="/assets/lingua.js?v=80434b2e"></script>
+    <script src="/assets/calcolo.js?v=c94a59ed"></script>
+    <script src="/assets/insurek.js?v=595056fd"></script>
   </body>
 </html>

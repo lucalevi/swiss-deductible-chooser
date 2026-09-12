@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="it">
+<html lang="it-CH">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
@@ -8,8 +8,21 @@
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230F0F0F'/%3E%3Cpath d='M6 22 L26 11 M6 14 L26 20' fill='none' stroke='%23F5F5F5' stroke-width='1.4'/%3E%3C/svg%3E" />
     <meta name="theme-color" content="#0F0F0F" />
     <link rel="canonical" href="https://insurek.lucalevi.com/metodo/" />
-    <link rel="stylesheet" href="/assets/fonts.css" />
-    <link rel="stylesheet" href="/assets/styles.css" />
+    <meta property="og:locale" content="it_CH" />
+    <meta property="og:locale:alternate" content="de_CH" />
+    <meta property="og:locale:alternate" content="fr_CH" />
+    <meta property="og:locale:alternate" content="en_GB" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Come funziona il calcolo — Insurek" />
+    <!-- L'anteprima che compare quando l'indirizzo viene incollato in una
+         chat o su un social. Si rigenera con `python3 materiali/og/genera.py`. -->
+    <meta property="og:image" content="https://insurek.lucalevi.com/assets/og-insurek.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Insurek — la cassa malati, il modello e la franchigia che costano meno" />
+    <meta name="twitter:image" content="https://insurek.lucalevi.com/assets/og-insurek.png" />
+    <link rel="stylesheet" href="/assets/fonts.css?v=a85ff2ea" />
+    <link rel="stylesheet" href="/assets/styles.css?v=bfef1d03" />
   </head>
 
   <body data-pagina="metodo">
@@ -20,13 +33,22 @@
         <a href="/" class="wordmark-link" aria-label="Insurek, torna al calcolatore"
            data-aria-de="Insurek, zurück zum Rechner" data-aria-fr="Insurek, retour au calculateur" data-aria-en="Insurek, back to the calculator">
           <span class="wordmark">Insurek</span>
-          <span class="wordmark-nota">lucalevi</span>
         </a>
         <nav class="header-nav" aria-label="Sezioni" data-aria-de="Bereiche" data-aria-fr="Sections" data-aria-en="Sections">
           <a href="/#calcolatore" data-de="Rechner" data-fr="Calculateur" data-en="Calculator">Calcolatore</a>
           <a href="/#capire" data-de="Verstehen" data-fr="Comprendre" data-en="Understand">Capire</a>
         </nav>
         <div class="header-side">
+          <!-- Ritorno al sito padre. Sta in .header-side e non in .header-nav
+               perche' .header-nav sparisce sotto i 700 px: questa e' l'unica
+               via verso www.lucalevi.com e deve restare anche sul telefono. -->
+          <a class="risali" href="https://www.lucalevi.com/"
+             aria-label="Torna a lucalevi.com, il sito di Luca Iacolettig"
+             data-aria-de="Zur&uuml;ck zu lucalevi.com, der Website von Luca Iacolettig"
+             data-aria-fr="Retour &agrave; lucalevi.com, le site de Luca Iacolettig"
+             data-aria-en="Back to lucalevi.com, the site of Luca Iacolettig">
+            <span class="freccia" aria-hidden="true">&#8592;</span>lucalevi.com
+          </a>
           <div class="lang-switch" role="group" aria-label="Lingua del sito"
                data-aria-de="Sprache" data-aria-fr="Langue du site" data-aria-en="Site language">
             <button type="button" data-lang="it" aria-label="Italiano">IT</button>
@@ -80,11 +102,13 @@
           <a href="/" data-de="Rechner" data-fr="Calculateur" data-en="Calculator">Calcolatore</a>
           <a href="https://github.com/lucalevi/swiss-deductible-chooser">GitHub</a>
           <a href="https://www.lucalevi.com/">lucalevi.com</a>
+          <a href="https://way.lucalevi.com/">lucalevi&rsquo;s way</a>
+          <a href="https://www.lucalevi.com/privacy/" data-de="Datenschutz" data-fr="Confidentialité" data-en="Privacy">Privacy</a>
         </nav>
       </div>
     </footer>
 
-    <script src="/assets/lingua.js"></script>
+    <script src="/assets/lingua.js?v=80434b2e"></script>
     <script>window.Lingua.avvia();</script>
   </body>
 </html>
