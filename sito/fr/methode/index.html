@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="fr-CH">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>Comment le calcul fonctionne — Insurek</title>
+    <meta name="description" content="La règle suisse en trois lignes, la formule du coût annuel total, d'où viennent les données et ce qu'Insurek ne fait pas." />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230F0F0F'/%3E%3Cpath d='M6 22 L26 11 M6 14 L26 20' fill='none' stroke='%23F5F5F5' stroke-width='1.4'/%3E%3C/svg%3E" />
+    <meta name="theme-color" content="#0F0F0F" />
+    <meta property="og:locale" content="fr_CH" />
+    <meta property="og:locale:alternate" content="it_CH" />
+    <meta property="og:locale:alternate" content="de_CH" />
+    <meta property="og:locale:alternate" content="en_GB" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Comment le calcul fonctionne — Insurek" />
+    <!-- L'anteprima che compare quando l'indirizzo viene incollato in una
+         chat o su un social. Si rigenera con `python3 materiali/og/genera.py`. -->
+    <meta property="og:image" content="https://insurek.lucalevi.com/assets/og-insurek-fr.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Insurek — la cassa malati, il modello e la franchigia che costano meno" />
+    <meta name="twitter:image" content="https://insurek.lucalevi.com/assets/og-insurek-fr.png" />
+    <link rel="stylesheet" href="/assets/fonts.css?v=a85ff2ea" />
+    <link rel="stylesheet" href="/assets/styles.css?v=9dca97f7" />
+    <link rel="canonical" href="https://insurek.lucalevi.com/fr/methode/" />
+    <link rel="alternate" hreflang="it-CH" href="https://insurek.lucalevi.com/metodo/" />
+    <link rel="alternate" hreflang="de-CH" href="https://insurek.lucalevi.com/de/methode/" />
+    <link rel="alternate" hreflang="fr-CH" href="https://insurek.lucalevi.com/fr/methode/" />
+    <link rel="alternate" hreflang="en-GB" href="https://insurek.lucalevi.com/en/method/" />
+    <link rel="alternate" hreflang="x-default" href="https://insurek.lucalevi.com/metodo/" />
+  </head>
+
+  <body data-pagina="metodo">
+    <a class="skip-link" href="#contenuto">Aller au contenu</a>
+
+    <header class="site-header">
+      <div class="container-editorial header-row">
+        <a href="/fr/" class="wordmark-link" aria-label="Insurek, retour au calculateur">
+          <span class="wordmark">Insurek</span>
+        </a>
+        <nav class="header-nav" aria-label="Sections">
+          <a href="/fr/#calcolatore">Calculateur</a>
+          <a href="/fr/#capire">Comprendre</a>
+        </nav>
+        <div class="header-side">
+          <!-- Ritorno al sito padre. Sta in .header-side e non in .header-nav
+               perche' .header-nav sparisce sotto i 700 px: questa e' l'unica
+               via verso www.lucalevi.com e deve restare anche sul telefono. -->
+          <a class="risali" href="https://www.lucalevi.com/" aria-label="Retour à lucalevi.com, le site de Luca Iacolettig">
+            <span class="freccia" aria-hidden="true">&#8592;</span>lucalevi.com
+          </a>
+          <div class="lang-switch" role="group" aria-label="Langue du site">
+            <a data-lingua="it" hreflang="it-CH" lang="it" href="/metodo/" aria-label="Leggi in italiano">IT</a>
+            <a data-lingua="de" hreflang="de-CH" lang="de" href="/de/methode/" aria-label="Auf Deutsch lesen">DE</a>
+            <a data-lingua="fr" hreflang="fr-CH" lang="fr" href="/fr/methode/" aria-label="Lire en français" aria-current="true">FR</a>
+            <a data-lingua="en" hreflang="en-GB" lang="en" href="/en/method/" aria-label="Read in English">EN</a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main id="contenuto" class="section-rhythm">
+      <div class="container-editorial container-stretto">
+        <p class="eyebrow muted">Méthode</p>
+        <h1 style="margin-top:1rem; font-size:clamp(2rem,5.5vw,3.25rem)">Ce qu’Insurek calcule, et d’où viennent les chiffres</h1>
+
+        <div class="prosa" style="margin-top:2.5rem">
+          <h2 style="font-size:clamp(1.4rem,3vw,1.9rem); margin-bottom:0.75rem">La règle</h2>
+          <p>Dans l’assurance obligatoire des soins, un adulte paie trois choses : la prime, douze fois par an ; ses frais jusqu’à la franchise choisie ; et au-delà, 10 % des frais suivants, mais jamais plus de 700 francs par an. Rien d’autre. Les prestations, elles, sont fixées par la loi et identiques dans toutes les caisses.</p>
+          <p>D’où la seule formule nécessaire :</p>
+        </div>
+
+        <p class="avviso cifra" style="margin-top:1.25rem; font-family:var(--font-display); font-size:1.0625rem; line-height:1.8">coût(dépenses) = prime × 12 + min(dépenses, franchise) + min(10 % × (dépenses − franchise), 700)</p>
+
+        <div class="prosa" style="margin-top:2.5rem">
+          <h2 style="font-size:clamp(1.4rem,3vw,1.9rem); margin-bottom:0.75rem">D’où viennent les chiffres</h2>
+          <p>De l’Office fédéral de la santé publique, jeu de données « Primes de l’assurance-maladie » sur opendata.swiss — exactement la source sur laquelle repose le calculateur fédéral. Elle contient chaque prime approuvée de chaque caisse : par canton, région de primes, classe d’âge, modèle, couverture accidents et franchise. S’y ajoutent la table fédérale des régions de primes, qui donne canton et région à partir d’un NPA, et le registre des assureurs admis pour les noms.</p>
+          <p>Les données sont téléchargées une fois par an et converties en fichiers statiques, ici sur le site. À l’usage, rien n’est interrogé : pas de scraper, pas de serveur tiers, pas d’attente.</p>
+
+          <h2 style="font-size:clamp(1.4rem,3vw,1.9rem); margin:2.5rem 0 0.75rem">Ce qu’Insurek ne fait pas</h2>
+          <p>Il ne vend rien et ne place personne : pas de commission, pas de partenariat, pas de caisse favorite. Il n’enregistre rien : ce que vous tapez ne quitte pas votre navigateur, parce qu’il n’y a personne à qui l’envoyer. Il ne sait rien de votre santé, sauf le chiffre que vous écrivez vous-même.</p>
+          <p>Et ce n’est pas un conseil. C’est un calcul sur des chiffres publics : les primes sont exactes, la formule est ci-dessus, et le code est sur GitHub pour qui veut vérifier. Savoir si un modèle alternatif vous convient, et si vos dépenses de l’an prochain ressembleront à celles de cette année, cela n’appartient qu’à vous.</p>
+
+          <h2 style="font-size:clamp(1.4rem,3vw,1.9rem); margin:2.5rem 0 0.75rem">Ce qui manque encore</h2>
+          <p>Les mineurs : leurs franchises vont de 0 à 600 francs, la quote-part est plafonnée à 350, et il y a les rabais de famille. D’autres règles, qu’il vaut mieux ne pas traiter que mal traiter. De même pour les primes des assurés dans l’UE et l’AELE et pour la réduction cantonale des primes.</p>
+        </div>
+
+        <p style="margin-top:3rem">
+          <a class="btn" href="/fr/#calcolatore">Au calculateur</a>
+        </p>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container-editorial footer-righe">
+        <p class="footer-nota">Insurek est un logiciel libre, sous GNU GPL-2.0.</p>
+        <nav class="footer-link" aria-label="Liens">
+          <a href="/fr/">Calculateur</a>
+          <a href="https://github.com/lucalevi/swiss-deductible-chooser">GitHub</a>
+          <a href="https://www.lucalevi.com/">lucalevi.com</a>
+          <a href="https://way.lucalevi.com/">lucalevi&rsquo;s way</a>
+          <a href="https://www.lucalevi.com/privacy/">Confidentialité</a>
+        </nav>
+      </div>
+    </footer>
+
+    <script src="/assets/lingua.js?v=b5010d9b"></script>
+    <script>window.Lingua.avvia();</script>
+  </body>
+</html>

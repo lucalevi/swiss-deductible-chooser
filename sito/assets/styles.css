@@ -101,6 +101,15 @@ a { color: inherit; }
   letter-spacing: 0.22em;
   line-height: 1;
 }
+/* line-height: 1 va bene finche' l'occhiello sta su una riga, ed e' voluto:
+   e' un'etichetta, non un paragrafo. Ma quando va a capo le due righe si
+   toccano — succede nei risultati a 390 px, dove «La combinazione che costa
+   meno nella tua zona» sta su due righe. Sotto i 640 px si da' aria: dove
+   l'occhiello resta su una riga il riquadro cresce di 4 px e non si vede,
+   dove va a capo si legge. */
+@media (max-width: 40rem) {
+  .eyebrow { line-height: 1.45; }
+}
 .eyebrow.muted { color: hsl(var(--muted-foreground)); }
 .eyebrow.ink-muted { color: hsl(var(--ink-muted)); }
 
@@ -180,16 +189,23 @@ a { color: inherit; }
 }
 
 /* ------------------------------------------------------------ lingue */
+/* I quattro dell'interruttore sono <a>, non <button>: da settembre 2026 ogni
+   lingua ha un indirizzo suo (/ /de/ /fr/ /en/), cosi' si possono condividere
+   e i motori di ricerca li seguono. */
 .lang-switch { display: flex; align-items: center; gap: 0.125rem; }
-.lang-switch button {
+.lang-switch a { text-decoration: none; display: inline-flex; align-items: center; }
+.lang-switch button,
+.lang-switch a {
   appearance: none; border: 0; background: none; cursor: pointer;
   font-family: inherit; font-size: 0.75rem; letter-spacing: 0.08em;
   color: hsl(var(--muted-foreground));
   padding: 0.5rem 0.25rem; min-height: 44px;
   transition: color 180ms var(--ease-editorial);
 }
-.lang-switch button:hover { color: hsl(var(--foreground)); }
-.lang-switch button[aria-pressed="true"] { color: hsl(var(--foreground)); text-decoration: underline; text-underline-offset: 4px; }
+.lang-switch button:hover,
+.lang-switch a:hover { color: hsl(var(--foreground)); }
+.lang-switch button[aria-pressed="true"],
+.lang-switch a[aria-current="true"] { color: hsl(var(--foreground)); text-decoration: underline; text-underline-offset: 4px; }
 
 /* ------------------------------------------------------------------- hero */
 .hero { overflow: hidden; }

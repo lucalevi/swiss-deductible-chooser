@@ -58,18 +58,24 @@
   var corrente = "it";
   var ascoltatori = [];
 
+  /**
+   * La lingua la decide l'indirizzo, e nient'altro.
+   *
+   * Da settembre 2026 ogni lingua ha una pagina sua — / , /de/ , /fr/ , /en/ —
+   * e ciascuna nasce gia' scritta nella sua lingua, con <html lang> che lo
+   * dichiara. Leggere qui l'archivio locale o la lingua del browser vorrebbe
+   * dire avere due verita' per la stessa pagina, e i casi in cui non vanno
+   * d'accordo sono proprio quelli che fanno danno: apri un collegamento
+   * tedesco e ti ritrovi in italiano perche' un mese fa avevi premuto IT.
+   *
+   * Chi arriva sulla radice in una lingua che non e' l'italiano lo vede
+   * dall'interruttore in alto, che ora e' fatto di collegamenti veri.
+   */
   function linguaIniziale() {
     try {
-      var salvata = window.localStorage.getItem(CHIAVE);
-      if (LINGUE.indexOf(salvata) !== -1) return salvata;
-    } catch (e) { /* archivio non disponibile: si tira a indovinare dal browser */ }
-    try {
-      var lingue = navigator.languages || [navigator.language || "it"];
-      for (var i = 0; i < lingue.length; i++) {
-        var due = String(lingue[i]).slice(0, 2).toLowerCase();
-        if (LINGUE.indexOf(due) !== -1) return due;
-      }
-    } catch (e) { /* nessun navigator */ }
+      var dichiarata = (document.documentElement.getAttribute("lang") || "").slice(0, 2).toLowerCase();
+      if (LINGUE.indexOf(dichiarata) !== -1) return dichiarata;
+    } catch (e) { /* nessun documento: impossibile, ma non si sa mai */ }
     return "it";
   }
 

@@ -3,20 +3,19 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-    <title>Insurek — La cassa malati che ti costa meno</title>
-    <meta name="description" content="Dimmi dove abiti e quanto spendi in salute: Insurek confronta tutte le casse malati e tutte le franchigie della tua zona con i dati ufficiali dell&rsquo;UFSP, e ti dice quale combinazione costa meno." />
+    <title data-de="Insurek — Die Krankenkasse, die Sie am wenigsten kostet" data-fr="Insurek — L'assurance maladie qui vous coûte le moins" data-en="Insurek — The Swiss health insurance that costs you least">Insurek — La cassa malati che ti costa meno</title>
+    <meta name="description" content="Dimmi dove abiti e quanto spendi in salute: Insurek confronta tutte le casse malati e tutte le franchigie della tua zona con i dati ufficiali dell&rsquo;UFSP, e ti dice quale combinazione costa meno." data-de="Wohnort und Gesundheitskosten eingeben: Insurek vergleicht alle Krankenkassen und alle Franchisen Ihrer Region mit den offiziellen BAG-Daten und zeigt, welche Kombination am günstigsten ist." data-fr="Indiquez où vous habitez et vos frais de santé : Insurek compare toutes les caisses et toutes les franchises de votre région avec les données officielles de l'OFSP et vous dit quelle combinaison coûte le moins." data-en="Tell it where you live and what you spend on health care: Insurek compares every insurer and every deductible in your area using the official FOPH data, and names the cheapest combination." />
 
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230F0F0F'/%3E%3Cpath d='M6 22 L26 11 M6 14 L26 20' fill='none' stroke='%23F5F5F5' stroke-width='1.4'/%3E%3C/svg%3E" />
     <meta name="theme-color" content="#0F0F0F" />
     <meta name="author" content="Luca Iacolettig" />
 
     <meta property="og:title" content="Insurek — La cassa malati che ti costa meno" />
-    <meta property="og:description" content="Confronta tutte le casse malati e tutte le franchigie della tua zona con i dati ufficiali dell&rsquo;UFSP." />
+    <meta property="og:description" content="Dimmi dove abiti e quanto spendi in salute: Insurek confronta tutte le casse malati e tutte le franchigie della tua zona con i dati ufficiali dell&rsquo;UFSP, e ti dice quale combinazione costa meno." />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Insurek" />
     <meta property="og:url" content="https://insurek.lucalevi.com/" />
 
-    <link rel="canonical" href="https://insurek.lucalevi.com/" />
     <meta property="og:locale" content="it_CH" />
     <meta property="og:locale:alternate" content="de_CH" />
     <meta property="og:locale:alternate" content="fr_CH" />
@@ -25,17 +24,17 @@
     <meta name="twitter:title" content="Insurek — La cassa malati che ti costa meno" />
     <!-- L'anteprima che compare quando l'indirizzo viene incollato in una
          chat o su un social. Si rigenera con `python3 materiali/og/genera.py`. -->
-    <meta property="og:image" content="https://insurek.lucalevi.com/assets/og-insurek.png" />
+    <meta property="og:image" content="https://insurek.lucalevi.com/assets/og-insurek-it.png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:image:alt" content="Insurek — la cassa malati, il modello e la franchigia che costano meno" />
-    <meta name="twitter:image" content="https://insurek.lucalevi.com/assets/og-insurek.png" />
+    <meta name="twitter:image" content="https://insurek.lucalevi.com/assets/og-insurek-it.png" />
 
     <!-- I font stanno su questo dominio, come su lucalevi.com: nessuna
          richiesta a Google, nessun indirizzo IP di chi legge a terzi,
          nessun banner dei cookie da mettere. -->
     <link rel="stylesheet" href="/assets/fonts.css?v=a85ff2ea" />
-    <link rel="stylesheet" href="/assets/styles.css?v=bfef1d03" />
+    <link rel="stylesheet" href="/assets/styles.css?v=9dca97f7" />
 
     <script type="application/ld+json">
       {
@@ -50,6 +49,12 @@
         "author": { "@type": "Person", "name": "Luca Iacolettig", "url": "https://www.lucalevi.com/" }
       }
     </script>
+    <link rel="canonical" href="https://insurek.lucalevi.com/" />
+    <link rel="alternate" hreflang="it-CH" href="https://insurek.lucalevi.com/" />
+    <link rel="alternate" hreflang="de-CH" href="https://insurek.lucalevi.com/de/" />
+    <link rel="alternate" hreflang="fr-CH" href="https://insurek.lucalevi.com/fr/" />
+    <link rel="alternate" hreflang="en-GB" href="https://insurek.lucalevi.com/en/" />
+    <link rel="alternate" hreflang="x-default" href="https://insurek.lucalevi.com/" />
   </head>
 
   <body data-pagina="calcolatore">
@@ -82,10 +87,10 @@
           </a>
           <div class="lang-switch" role="group" aria-label="Lingua del sito"
                data-aria-de="Sprache" data-aria-fr="Langue du site" data-aria-en="Site language">
-            <button type="button" data-lang="it" aria-label="Italiano">IT</button>
-            <button type="button" data-lang="de" aria-label="Deutsch">DE</button>
-            <button type="button" data-lang="fr" aria-label="Français">FR</button>
-            <button type="button" data-lang="en" aria-label="English">EN</button>
+            <a data-lingua="it" hreflang="it-CH" lang="it" href="/" aria-label="Leggi in italiano" aria-current="true">IT</a>
+            <a data-lingua="de" hreflang="de-CH" lang="de" href="/de/" aria-label="Auf Deutsch lesen">DE</a>
+            <a data-lingua="fr" hreflang="fr-CH" lang="fr" href="/fr/" aria-label="Lire en français">FR</a>
+            <a data-lingua="en" hreflang="en-GB" lang="en" href="/en/" aria-label="Read in English">EN</a>
           </div>
         </div>
       </div>
@@ -293,7 +298,7 @@
       </div>
     </footer>
 
-    <script src="/assets/lingua.js?v=80434b2e"></script>
+    <script src="/assets/lingua.js?v=b5010d9b"></script>
     <script src="/assets/calcolo.js?v=c94a59ed"></script>
     <script src="/assets/insurek.js?v=595056fd"></script>
   </body>

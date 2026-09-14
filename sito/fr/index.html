@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="fr-CH">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>Insurek — L'assurance maladie qui vous coûte le moins</title>
+    <meta name="description" content="Indiquez où vous habitez et vos frais de santé : Insurek compare toutes les caisses et toutes les franchises de votre région avec les données officielles de l'OFSP et vous dit quelle combinaison coûte le moins." />
+
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230F0F0F'/%3E%3Cpath d='M6 22 L26 11 M6 14 L26 20' fill='none' stroke='%23F5F5F5' stroke-width='1.4'/%3E%3C/svg%3E" />
+    <meta name="theme-color" content="#0F0F0F" />
+    <meta name="author" content="Luca Iacolettig" />
+
+    <meta property="og:title" content="Insurek — L'assurance maladie qui vous coûte le moins" />
+    <meta property="og:description" content="Indiquez où vous habitez et vos frais de santé : Insurek compare toutes les caisses et toutes les franchises de votre région avec les données officielles de l'OFSP et vous dit quelle combinaison coûte le moins." />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Insurek" />
+    <meta property="og:url" content="https://insurek.lucalevi.com/fr/" />
+
+    <meta property="og:locale" content="fr_CH" />
+    <meta property="og:locale:alternate" content="it_CH" />
+    <meta property="og:locale:alternate" content="de_CH" />
+    <meta property="og:locale:alternate" content="en_GB" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Insurek — L'assurance maladie qui vous coûte le moins" />
+    <!-- L'anteprima che compare quando l'indirizzo viene incollato in una
+         chat o su un social. Si rigenera con `python3 materiali/og/genera.py`. -->
+    <meta property="og:image" content="https://insurek.lucalevi.com/assets/og-insurek-fr.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Insurek — la cassa malati, il modello e la franchigia che costano meno" />
+    <meta name="twitter:image" content="https://insurek.lucalevi.com/assets/og-insurek-fr.png" />
+
+    <!-- I font stanno su questo dominio, come su lucalevi.com: nessuna
+         richiesta a Google, nessun indirizzo IP di chi legge a terzi,
+         nessun banner dei cookie da mettere. -->
+    <link rel="stylesheet" href="/assets/fonts.css?v=a85ff2ea" />
+    <link rel="stylesheet" href="/assets/styles.css?v=9dca97f7" />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Insurek",
+        "url": "https://insurek.lucalevi.com/",
+        "applicationCategory": "FinanceApplication",
+        "operatingSystem": "Web",
+        "inLanguage": ["it", "de", "fr", "en"],
+        "isAccessibleForFree": true,
+        "author": { "@type": "Person", "name": "Luca Iacolettig", "url": "https://www.lucalevi.com/" }
+      }
+    </script>
+    <link rel="canonical" href="https://insurek.lucalevi.com/fr/" />
+    <link rel="alternate" hreflang="it-CH" href="https://insurek.lucalevi.com/" />
+    <link rel="alternate" hreflang="de-CH" href="https://insurek.lucalevi.com/de/" />
+    <link rel="alternate" hreflang="fr-CH" href="https://insurek.lucalevi.com/fr/" />
+    <link rel="alternate" hreflang="en-GB" href="https://insurek.lucalevi.com/en/" />
+    <link rel="alternate" hreflang="x-default" href="https://insurek.lucalevi.com/" />
+  </head>
+
+  <body data-pagina="calcolatore">
+    <a class="skip-link" href="#calcolatore">Aller au calculateur</a>
+
+    <!-- =============================================================== testa -->
+    <header class="site-header">
+      <div class="container-editorial header-row">
+        <a href="#top" class="wordmark-link" aria-label="Insurek, retour en haut">
+          <span class="wordmark">Insurek</span>
+        </a>
+
+        <nav class="header-nav" aria-label="Sections">
+          <a href="#calcolatore">Calculateur</a>
+          <a href="#capire">Comprendre</a>
+          <a href="/fr/methode/">Méthode</a>
+        </nav>
+
+        <div class="header-side">
+          <!-- Ritorno al sito padre. Sta in .header-side e non in .header-nav
+               perche' .header-nav sparisce sotto i 700 px: questa e' l'unica
+               via verso www.lucalevi.com e deve restare anche sul telefono. -->
+          <a class="risali" href="https://www.lucalevi.com/" aria-label="Retour à lucalevi.com, le site de Luca Iacolettig">
+            <span class="freccia" aria-hidden="true">&#8592;</span>lucalevi.com
+          </a>
+          <div class="lang-switch" role="group" aria-label="Langue du site">
+            <a data-lingua="it" hreflang="it-CH" lang="it" href="/" aria-label="Leggi in italiano">IT</a>
+            <a data-lingua="de" hreflang="de-CH" lang="de" href="/de/" aria-label="Auf Deutsch lesen">DE</a>
+            <a data-lingua="fr" hreflang="fr-CH" lang="fr" href="/fr/" aria-label="Lire en français" aria-current="true">FR</a>
+            <a data-lingua="en" hreflang="en-GB" lang="en" href="/en/" aria-label="Read in English">EN</a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <!-- ============================================================== hero -->
+      <!-- Il segno di Insurek e' l'incrocio: due curve di costo, quella della
+           franchigia alta e quella della bassa, che si scambiano il posto. E'
+           letteralmente la cosa che il sito calcola. -->
+      <section id="top" class="hero section-ink" aria-labelledby="titolo">
+        <div class="hero-incrocio" aria-hidden="true">
+          <svg viewbox="0 0 600 340" fill="none" focusable="false">
+            <g stroke="hsl(0 0% 96%)" stroke-width="1" opacity="0.28">
+              <line x1="40" y1="300" x2="560" y2="300" />
+              <line x1="40" y1="230" x2="560" y2="230" />
+              <line x1="40" y1="160" x2="560" y2="160" />
+              <line x1="40" y1="90" x2="560" y2="90" />
+            </g>
+            <path d="M40 285 L180 218 L320 156 L430 126 L560 112" stroke="hsl(0 0% 96%)" stroke-width="1.4" stroke-linecap="square" />
+            <path d="M40 176 L180 168 L320 156 L430 146 L560 136" stroke="hsl(0 0% 96%)" stroke-width="1.4" stroke-linecap="square" />
+            <line x1="320" y1="60" x2="320" y2="300" stroke="hsl(0 0% 96%)" stroke-width="1" stroke-dasharray="3 4" opacity="0.55" />
+            <circle cx="320" cy="156" r="4" fill="hsl(0 0% 6%)" stroke="hsl(0 0% 96%)" stroke-width="1.4" />
+          </svg>
+        </div>
+        <svg class="grain" aria-hidden="true" focusable="false" preserveaspectratio="none">
+          <filter id="grana"><feturbulence type="fractalNoise" basefrequency="0.8" numoctaves="4" stitchtiles="stitch" /></filter>
+          <rect width="100%" height="100%" filter="url(#grana)" />
+        </svg>
+
+        <div class="container-editorial hero-inner">
+          <p class="eyebrow ink-muted">Primes maladie <span data-anno-premio>2026</span></p>
+          <h1 id="titolo">
+            <span>La caisse qui vous coûte le moins.</span><br />
+            <em>En trente secondes.</em>
+          </h1>
+          <p class="hero-sommario">Deux indications — où vous habitez et combien vous dépensez par an pour votre santé — et Insurek compare chaque caisse, chaque modèle et chaque franchise de votre région. Avec les chiffres officiels de l’Office fédéral de la santé publique.</p>
+          <div class="hero-azioni">
+            <a class="btn btn-chiaro" href="#calcolatore">Calculer</a>
+            <a class="link-underline" href="/fr/methode/" style="font-size:0.9375rem">Comment le calcul fonctionne</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================================================== calcolatore -->
+      <section id="calcolatore" class="section-rhythm" aria-labelledby="titolo-calcolatore">
+        <div class="container-editorial">
+          <p class="eyebrow muted">Quatre questions</p>
+          <h2 id="titolo-calcolatore" style="margin-top:1rem">Où, né quand, combien chez le médecin, salarié ou non.</h2>
+
+          <p id="stato-dati" class="caricamento" style="margin-top:1.5rem">Chargement des données…</p>
+
+          <div class="campi" style="margin-top:2.5rem">
+            <!-- 1. il luogo -->
+            <div class="campo">
+              <label for="cerca-npa">1 — Où habitez-vous</label>
+              <div class="cerca" id="cerca-guscio">
+                <input type="search" id="cerca-npa" autocomplete="postal-code" disabled placeholder="NPA ou nom de la commune, p. ex. 1003 ou Lausanne" aria-describedby="aiuto-luogo" />
+                <ul class="suggerimenti" id="suggerimenti" hidden></ul>
+              </div>
+              <div class="scelto" id="luogo-scelto" hidden></div>
+              <p class="campo-aiuto" id="aiuto-luogo">Les primes dépendent du canton et de la région de primes. Le NPA donne les deux : vous n’avez pas besoin de connaître votre région.</p>
+            </div>
+
+            <!-- 2. l'eta' -->
+            <div class="campo">
+              <label for="anno-nascita">2 — Année de naissance</label>
+              <input type="number" id="anno-nascita" inputmode="numeric" min="1900" max="2010" step="1" placeholder="p. ex. 1988" style="max-width:12rem" aria-describedby="nota-eta" />
+              <p class="campo-aiuto" id="nota-eta" hidden></p>
+            </div>
+
+            <!-- 3. la spesa -->
+            <div class="campo">
+              <span class="campo-titolo">3 — Combien dépensez-vous par an pour votre santé</span>
+              <div class="tessere" role="group">
+                <button type="button" class="tessera" data-fascia="rara" aria-pressed="false">
+                  <span class="tessera-titolo">Rarement chez le médecin</span>
+                  <span class="tessera-nota">Une visite par an, un contrôle. On compte environ 500 CHF.</span>
+                </button>
+                <button type="button" class="tessera" data-fascia="regolare" aria-pressed="true">
+                  <span class="tessera-titolo">Soins réguliers</span>
+                  <span class="tessera-nota">Quelques visites, des médicaments, de la physio. Environ 2 000 CHF.</span>
+                </button>
+                <button type="button" class="tessera" data-fascia="continua" aria-pressed="false">
+                  <span class="tessera-titolo">Traitement continu</span>
+                  <span class="tessera-nota">Maladie chronique, spécialistes, traitement au long cours. Environ 6 000 CHF.</span>
+                </button>
+              </div>
+              <p class="campo-aiuto">Si vous connaissez votre chiffre, écrivez-le : c’est lui qui compte alors.</p>
+              <input type="number" id="spesa-esatta" inputmode="numeric" min="0" max="50000" step="50" placeholder="CHF exacts par an" style="max-width:16rem; margin-top:0.5rem" aria-label="Frais de santé annuels exacts en francs" />
+            </div>
+
+            <!-- 4. la copertura infortuni -->
+            <!-- Stava dentro «Altre impostazioni», chiuso, con «Con infortuni»
+                 come predefinita. Ma chi è dipendente per almeno otto ore a
+                 settimana — la maggioranza — gli infortuni ce li ha già dal
+                 datore di lavoro, e sui dati UFSP 2026 la differenza fra le due
+                 varianti è di 31 CHF al mese in media (minimo 1,70, massimo
+                 61,60): quasi 400 franchi l'anno decisi da una casella nascosta.
+                 Quindi: domanda in chiaro, e la variante «senza infortuni»
+                 selezionata in partenza. Le tessere sono nell'ordine della
+                 risposta più frequente, e il titolo dice la situazione invece
+                 del gergo — «senza infortuni» a chi non è del mestiere suona
+                 come una copertura che manca, ed è proprio l'equivoco che
+                 portava a scegliere la variante più cara. -->
+            <div class="campo">
+              <span class="campo-titolo">4 — Êtes-vous salarié ?</span>
+              <div class="tessere due" role="group">
+                <button type="button" class="tessera" data-infortuni="0" aria-pressed="true">
+                  <span class="tessera-titolo">Oui, salarié</span>
+                  <span class="tessera-nota">Au moins huit heures par semaine : votre employeur couvre déjà les accidents, et la prime baisse. Dans les tarifs, c’est la variante « sans accidents ».</span>
+                </button>
+                <button type="button" class="tessera" data-infortuni="1" aria-pressed="false">
+                  <span class="tessera-titolo">Non, ou moins</span>
+                  <span class="tessera-nota">Indépendant, sans emploi, retraité, étudiant ou petit temps partiel : la couverture accidents doit se trouver dans l’assurance maladie, et la prime monte. Dans les tarifs, c’est la variante « avec accidents ».</span>
+                </button>
+              </div>
+              <p class="campo-aiuto">Cela représente environ 31 francs par mois, près de 400 par an : ce n’est pas un détail. Si vous êtes salarié, la loi sur l’assurance-accidents vous fait couvrir par votre employeur — la caisse maladie n’a alors pas à le refaire.</p>
+            </div>
+
+            <!-- il resto, chiuso -->
+            <details class="dettagli">
+              <summary>Réglages supplémentaires</summary>
+              <div class="dettagli-corpo">
+                <div class="campo">
+                  <span class="campo-titolo">Modèles d’assurance</span>
+                  <div class="caselle">
+                    <label class="casella"><input type="checkbox" data-tipo="BASE" checked /> <span>Standard</span></label>
+                    <label class="casella"><input type="checkbox" data-tipo="HAM" checked /> <span>Médecin de famille</span></label>
+                    <label class="casella"><input type="checkbox" data-tipo="HMO" checked /> <span>HMO</span></label>
+                    <label class="casella"><input type="checkbox" data-tipo="DIV" checked /> <span>Télémédecine et autres</span></label>
+                  </div>
+                  <p class="campo-aiuto">Les modèles alternatifs coûtent moins cher mais demandent de s’adresser d’abord à un point précis : le médecin de famille, un centre HMO, un conseil téléphonique. Les prestations, elles, ne changent pas.</p>
+                </div>
+              </div>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================================= risultati -->
+      <section id="sezione-risultati" class="section-rhythm" style="padding-top:0" hidden aria-live="polite">
+        <div class="container-editorial">
+          <hr class="regola" style="margin-bottom:2.5rem" />
+          <div id="risultati"></div>
+        </div>
+      </section>
+
+      <!-- ============================================================ capire -->
+      <section id="capire" class="section-rhythm" style="background:hsl(var(--muted))" aria-labelledby="titolo-capire">
+        <div class="container-editorial">
+          <p class="eyebrow muted">La règle</p>
+          <h2 id="titolo-capire" style="margin-top:1rem; margin-bottom:2.5rem">Pourquoi seules deux franchises comptent presque toujours</h2>
+
+          <div class="blocchi">
+            <div class="blocco reveal">
+              <h3>Trois nombres, rien d’autre</h3>
+              <p>Vous payez douze primes. Vous payez tout vous-même jusqu’à la franchise. Au-delà, vous payez 10 %, mais au maximum 700 francs par an. Le coût total de l’année, c’est la somme de ces trois choses — rien de plus.</p>
+            </div>
+            <div class="blocco reveal">
+              <h3>Le milieu perd</h3>
+              <p>Entre 300 et 2 500, il y a quatre autres franchises. Le calcul montre qu’aucune ou presque ne gagne jamais : leur courbe de coût reste au-dessus de l’une des deux extrêmes à tous les niveaux de dépense. C’est pour cela qu’Insurek existe — et le graphique le montre.</p>
+            </div>
+            <div class="blocco reveal">
+              <h3>Et puis il y a la caisse</h3>
+              <p>La bonne franchise, c’est la moitié de la somme. L’autre moitié, c’est que pour une prestation identique par la loi, entre la caisse la plus chère et la moins chère de votre région il peut y avoir plus de mille francs par an. Insurek calcule les deux ensemble.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ============================================================== piede -->
+    <footer class="site-footer">
+      <div class="container-editorial footer-righe">
+        <p class="footer-nota">
+          <span>Primes de l’année</span>
+          <span data-anno-premio>2026</span>,
+          <span>source : Office fédéral de la santé publique (OFSP), jeu de données « Primes de l’assurance-maladie » sur opendata.swiss. Insurek est un outil libre et ouvert : il ne vend rien, ne place rien et n’enregistre rien. Tout est calculé dans votre navigateur.</span>
+        </p>
+        <nav class="footer-link" aria-label="Liens">
+          <a href="/fr/methode/">Méthode</a>
+          <a href="https://github.com/lucalevi/swiss-deductible-chooser">GitHub</a>
+          <a href="https://www.lucalevi.com/">lucalevi.com</a>
+          <a href="https://way.lucalevi.com/">lucalevi&rsquo;s way</a>
+          <a href="https://www.priminfo.admin.ch/">Priminfo</a>
+          <a href="https://www.lucalevi.com/privacy/">Confidentialité</a>
+        </nav>
+      </div>
+    </footer>
+
+    <script src="/assets/lingua.js?v=b5010d9b"></script>
+    <script src="/assets/calcolo.js?v=c94a59ed"></script>
+    <script src="/assets/insurek.js?v=595056fd"></script>
+  </body>
+</html>
