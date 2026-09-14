@@ -3,15 +3,15 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-    <title>Insurek — L'assurance maladie qui vous coûte le moins</title>
-    <meta name="description" content="Indiquez où vous habitez et vos frais de santé : Insurek compare toutes les caisses et toutes les franchises de votre région avec les données officielles de l'OFSP et vous dit quelle combinaison coûte le moins." />
+    <title>Insurek — L’assurance maladie qui vous coûte le moins</title>
+    <meta name="description" content="Indiquez où vous habitez et vos frais de santé : Insurek compare toutes les caisses et toutes les franchises de votre région avec les données officielles de l’OFSP et vous dit quelle combinaison coûte le moins." />
 
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230F0F0F'/%3E%3Cpath d='M6 22 L26 11 M6 14 L26 20' fill='none' stroke='%23F5F5F5' stroke-width='1.4'/%3E%3C/svg%3E" />
     <meta name="theme-color" content="#0F0F0F" />
     <meta name="author" content="Luca Iacolettig" />
 
-    <meta property="og:title" content="Insurek — L'assurance maladie qui vous coûte le moins" />
-    <meta property="og:description" content="Indiquez où vous habitez et vos frais de santé : Insurek compare toutes les caisses et toutes les franchises de votre région avec les données officielles de l'OFSP et vous dit quelle combinaison coûte le moins." />
+    <meta property="og:title" content="Insurek — L’assurance maladie qui vous coûte le moins" />
+    <meta property="og:description" content="Indiquez où vous habitez et vos frais de santé : Insurek compare toutes les caisses et toutes les franchises de votre région avec les données officielles de l’OFSP et vous dit quelle combinaison coûte le moins." />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Insurek" />
     <meta property="og:url" content="https://insurek.lucalevi.com/fr/" />
@@ -21,7 +21,7 @@
     <meta property="og:locale:alternate" content="de_CH" />
     <meta property="og:locale:alternate" content="en_GB" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Insurek — L'assurance maladie qui vous coûte le moins" />
+    <meta name="twitter:title" content="Insurek — L’assurance maladie qui vous coûte le moins" />
     <!-- L'anteprima che compare quando l'indirizzo viene incollato in una
          chat o su un social. Si rigenera con `python3 materiali/og/genera.py`. -->
     <meta property="og:image" content="https://insurek.lucalevi.com/assets/og-insurek-fr.png" />
@@ -34,7 +34,7 @@
          richiesta a Google, nessun indirizzo IP di chi legge a terzi,
          nessun banner dei cookie da mettere. -->
     <link rel="stylesheet" href="/assets/fonts.css?v=a85ff2ea" />
-    <link rel="stylesheet" href="/assets/styles.css?v=9dca97f7" />
+    <link rel="stylesheet" href="/assets/styles.css?v=ba0ff4ec" />
 
     <script type="application/ld+json">
       {
@@ -121,7 +121,7 @@
             <span>La caisse qui vous coûte le moins.</span><br />
             <em>En trente secondes.</em>
           </h1>
-          <p class="hero-sommario">Deux indications — où vous habitez et combien vous dépensez par an pour votre santé — et Insurek compare chaque caisse, chaque modèle et chaque franchise de votre région. Avec les chiffres officiels de l’Office fédéral de la santé publique.</p>
+          <p class="hero-sommario">Quatre questions — où vous habitez, votre année de naissance, combien vous dépensez pour votre santé et si vous êtes salarié — et Insurek compare chaque caisse, chaque modèle et chaque franchise de votre région. Avec les chiffres officiels de l’Office fédéral de la santé publique.</p>
           <div class="hero-azioni">
             <a class="btn btn-chiaro" href="#calcolatore">Calculer</a>
             <a class="link-underline" href="/fr/methode/" style="font-size:0.9375rem">Comment le calcul fonctionne</a>
@@ -144,9 +144,13 @@
               <div class="cerca" id="cerca-guscio">
                 <input type="search" id="cerca-npa" autocomplete="postal-code" disabled placeholder="NPA ou nom de la commune, p. ex. 1003 ou Lausanne" aria-describedby="aiuto-luogo" />
                 <ul class="suggerimenti" id="suggerimenti" hidden></ul>
+                <!-- Quando i suggerimenti compaiono, sullo schermo si vedono;
+                     chi ascolta la pagina non se ne accorgerebbe. Qui sotto
+                     glielo diciamo. -->
+                <p class="solo-voce" id="conta-luoghi" role="status" aria-live="polite"></p>
               </div>
               <div class="scelto" id="luogo-scelto" hidden></div>
-              <p class="campo-aiuto" id="aiuto-luogo">Les primes dépendent du canton et de la région de primes. Le NPA donne les deux : vous n’avez pas besoin de connaître votre région.</p>
+              <p class="campo-aiuto" id="aiuto-luogo">Les primes dépendent du canton et de la région de primes. Le NPA donne les deux : vous n’avez pas besoin de connaître votre région.</p>
             </div>
 
             <!-- 2. l'eta' -->
@@ -166,14 +170,14 @@
                 </button>
                 <button type="button" class="tessera" data-fascia="regolare" aria-pressed="true">
                   <span class="tessera-titolo">Soins réguliers</span>
-                  <span class="tessera-nota">Quelques visites, des médicaments, de la physio. Environ 2 000 CHF.</span>
+                  <span class="tessera-nota">Quelques visites, des médicaments, de la physio. Environ 2'000 CHF.</span>
                 </button>
                 <button type="button" class="tessera" data-fascia="continua" aria-pressed="false">
                   <span class="tessera-titolo">Traitement continu</span>
-                  <span class="tessera-nota">Maladie chronique, spécialistes, traitement au long cours. Environ 6 000 CHF.</span>
+                  <span class="tessera-nota">Maladie chronique, spécialistes, traitement au long cours. Environ 6'000 CHF.</span>
                 </button>
               </div>
-              <p class="campo-aiuto">Si vous connaissez votre chiffre, écrivez-le : c’est lui qui compte alors.</p>
+              <p class="campo-aiuto">Si vous connaissez votre chiffre, écrivez-le : c’est lui qui compte alors.</p>
               <input type="number" id="spesa-esatta" inputmode="numeric" min="0" max="50000" step="50" placeholder="CHF exacts par an" style="max-width:16rem; margin-top:0.5rem" aria-label="Frais de santé annuels exacts en francs" />
             </div>
 
@@ -191,18 +195,18 @@
                  come una copertura che manca, ed è proprio l'equivoco che
                  portava a scegliere la variante più cara. -->
             <div class="campo">
-              <span class="campo-titolo">4 — Êtes-vous salarié ?</span>
+              <span class="campo-titolo">4 — Êtes-vous salarié ?</span>
               <div class="tessere due" role="group">
                 <button type="button" class="tessera" data-infortuni="0" aria-pressed="true">
                   <span class="tessera-titolo">Oui, salarié</span>
-                  <span class="tessera-nota">Au moins huit heures par semaine : votre employeur couvre déjà les accidents, et la prime baisse. Dans les tarifs, c’est la variante « sans accidents ».</span>
+                  <span class="tessera-nota">Au moins huit heures par semaine : votre employeur couvre déjà les accidents, et la prime baisse. Dans les tarifs, c’est la variante « sans accidents ».</span>
                 </button>
                 <button type="button" class="tessera" data-infortuni="1" aria-pressed="false">
                   <span class="tessera-titolo">Non, ou moins</span>
-                  <span class="tessera-nota">Indépendant, sans emploi, retraité, étudiant ou petit temps partiel : la couverture accidents doit se trouver dans l’assurance maladie, et la prime monte. Dans les tarifs, c’est la variante « avec accidents ».</span>
+                  <span class="tessera-nota">Indépendant, sans emploi, retraité, étudiant ou petit temps partiel : la couverture accidents doit se trouver dans l’assurance maladie, et la prime monte. Dans les tarifs, c’est la variante « avec accidents ».</span>
                 </button>
               </div>
-              <p class="campo-aiuto">Cela représente environ 31 francs par mois, près de 400 par an : ce n’est pas un détail. Si vous êtes salarié, la loi sur l’assurance-accidents vous fait couvrir par votre employeur — la caisse maladie n’a alors pas à le refaire.</p>
+              <p class="campo-aiuto">Cela représente environ 31 francs par mois, près de 400 par an : ce n’est pas un détail. Si vous êtes salarié, la loi sur l’assurance-accidents vous fait couvrir par votre employeur — la caisse maladie n’a alors pas à le refaire.</p>
             </div>
 
             <!-- il resto, chiuso -->
@@ -217,7 +221,7 @@
                     <label class="casella"><input type="checkbox" data-tipo="HMO" checked /> <span>HMO</span></label>
                     <label class="casella"><input type="checkbox" data-tipo="DIV" checked /> <span>Télémédecine et autres</span></label>
                   </div>
-                  <p class="campo-aiuto">Les modèles alternatifs coûtent moins cher mais demandent de s’adresser d’abord à un point précis : le médecin de famille, un centre HMO, un conseil téléphonique. Les prestations, elles, ne changent pas.</p>
+                  <p class="campo-aiuto">Les modèles alternatifs coûtent moins cher mais demandent de s’adresser d’abord à un point précis : le médecin de famille, un centre HMO, un conseil téléphonique. Les prestations, elles, ne changent pas.</p>
                 </div>
               </div>
             </details>
@@ -246,7 +250,7 @@
             </div>
             <div class="blocco reveal">
               <h3>Le milieu perd</h3>
-              <p>Entre 300 et 2 500, il y a quatre autres franchises. Le calcul montre qu’aucune ou presque ne gagne jamais : leur courbe de coût reste au-dessus de l’une des deux extrêmes à tous les niveaux de dépense. C’est pour cela qu’Insurek existe — et le graphique le montre.</p>
+              <p>Entre 300 et 2 500, il y a quatre autres franchises. Le calcul montre qu’aucune ou presque ne gagne jamais : leur courbe de coût reste au-dessus de l’une des deux extrêmes à tous les niveaux de dépense. C’est pour cela qu’Insurek existe — et le graphique le montre.</p>
             </div>
             <div class="blocco reveal">
               <h3>Et puis il y a la caisse</h3>
@@ -263,7 +267,7 @@
         <p class="footer-nota">
           <span>Primes de l’année</span>
           <span data-anno-premio>2026</span>,
-          <span>source : Office fédéral de la santé publique (OFSP), jeu de données « Primes de l’assurance-maladie » sur opendata.swiss. Insurek est un outil libre et ouvert : il ne vend rien, ne place rien et n’enregistre rien. Tout est calculé dans votre navigateur.</span>
+          <span>source : Office fédéral de la santé publique (OFSP), jeu de données « Primes de l’assurance-maladie » sur opendata.swiss. Insurek est un outil libre et ouvert : il ne vend rien, ne place rien et n’enregistre rien. Tout est calculé dans votre navigateur.</span>
         </p>
         <nav class="footer-link" aria-label="Liens">
           <a href="/fr/methode/">Méthode</a>
@@ -276,8 +280,8 @@
       </div>
     </footer>
 
-    <script src="/assets/lingua.js?v=b5010d9b"></script>
-    <script src="/assets/calcolo.js?v=c94a59ed"></script>
-    <script src="/assets/insurek.js?v=595056fd"></script>
+    <script src="/assets/lingua.js?v=06b0dc0a"></script>
+    <script src="/assets/calcolo.js?v=dbd969b7"></script>
+    <script src="/assets/insurek.js?v=1ccc58f1"></script>
   </body>
 </html>

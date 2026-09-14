@@ -24,7 +24,7 @@ question of what a year costs is one line of arithmetic:
 ```
 cost(spending) = premium × 12
                + min(spending, deductible)
-               + min(10% × (spending − deductible), 700)
+               + min(10% × max(0, spending − deductible), 700)
 ```
 
 Run that over real premiums and two things fall out. First, of the six adult

@@ -407,6 +407,63 @@ table.classifica tr:last-child td { border-bottom: 0; }
 table.classifica tbody tr:hover { background: hsl(var(--muted)); }
 table.classifica tr[data-vincente="true"] td { background: hsl(var(--accent-surface)); }
 .col-num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+/* L'etichetta dentro la cella serve solo alla versione a schede: su schermo
+   largo c'e' l'intestazione di colonna. */
+.et-mobile { display: none; }
+
+/* Sotto i 700 px la tabella non ci sta: a 390 px era larga 883 px e il totale,
+   che e' la colonna che si guarda, restava fuori. Ogni riga diventa allora una
+   scheda: sopra la cassa con il suo numero di posizione e il modello, sotto i
+   quattro numeri come coppie etichetta-valore. I ruoli scritti nell'HTML
+   tengono in piedi la tabella per chi legge con un lettore di schermo. */
+@media (max-width: 700px) {
+  .tabella-guscio { overflow-x: visible; border: 0; border-radius: 0; }
+  table.classifica { display: block; min-width: 0; font-size: 0.9375rem; }
+  table.classifica thead {
+    position: absolute; width: 1px; height: 1px;
+    margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+  }
+  table.classifica tbody { display: block; }
+  table.classifica tr {
+    display: block;
+    border: 1px solid hsl(var(--border));
+    border-radius: var(--radius);
+    padding: 0.875rem 1rem 0.8125rem;
+    margin-bottom: 0.75rem;
+  }
+  table.classifica tr:last-child { margin-bottom: 0; }
+  table.classifica tbody tr:hover { background: none; }
+  table.classifica tr[data-vincente="true"],
+  table.classifica tr[data-vincente="true"]:hover { background: hsl(var(--accent-surface)); }
+  table.classifica tr[data-vincente="true"] td { background: none; }
+  table.classifica td { display: block; padding: 0; border-bottom: 0; }
+
+  /* il numero di posizione sta davanti al nome, non in una colonna sua */
+  table.classifica td.posizione { display: none; }
+  table.classifica td.nome-assicuratore { font-weight: 500; }
+  table.classifica td.nome-assicuratore::before {
+    content: attr(data-posizione) ". ";
+    color: hsl(var(--muted-foreground));
+    font-variant-numeric: tabular-nums;
+  }
+  table.classifica td.col-modello { color: hsl(var(--muted-foreground)); line-height: 1.4; }
+  table.classifica td.col-modello .tipo-modello { display: inline; }
+
+  /* i quattro numeri: etichetta a sinistra, valore a destra */
+  table.classifica td.col-num {
+    display: flex; align-items: baseline; justify-content: space-between;
+    gap: 1rem; padding: 0.25rem 0; white-space: normal;
+  }
+  table.classifica td.col-num:nth-child(4) {
+    margin-top: 0.75rem; padding-top: 0.6875rem;
+    border-top: 1px solid hsl(var(--border));
+  }
+  table.classifica td.col-num:last-child { font-weight: 500; }
+  table.classifica .et-mobile {
+    display: inline; color: hsl(var(--muted-foreground)); font-weight: 400; text-align: left;
+  }
+  table.classifica .va-mobile { white-space: nowrap; }
+}
 .posizione { color: hsl(var(--muted-foreground)); font-variant-numeric: tabular-nums; width: 2.5rem; }
 .nome-assicuratore { letter-spacing: -0.005em; }
 .nome-modello { color: hsl(var(--muted-foreground)); font-size: 0.8125rem; }
@@ -466,4 +523,10 @@ table.classifica tr[data-vincente="true"] td { background: hsl(var(--accent-surf
 @media (prefers-reduced-motion: reduce) {
   .reveal { opacity: 1; transform: none; transition: none; }
   html { scroll-behavior: auto; }
+}
+
+/* Testo che sta nella pagina solo per chi la ascolta. */
+.solo-voce {
+  position: absolute; width: 1px; height: 1px;
+  margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
 }

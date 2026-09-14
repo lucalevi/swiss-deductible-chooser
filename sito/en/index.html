@@ -34,7 +34,7 @@
          richiesta a Google, nessun indirizzo IP di chi legge a terzi,
          nessun banner dei cookie da mettere. -->
     <link rel="stylesheet" href="/assets/fonts.css?v=a85ff2ea" />
-    <link rel="stylesheet" href="/assets/styles.css?v=9dca97f7" />
+    <link rel="stylesheet" href="/assets/styles.css?v=ba0ff4ec" />
 
     <script type="application/ld+json">
       {
@@ -121,7 +121,7 @@
             <span>The insurance that costs you least.</span><br />
             <em>In thirty seconds.</em>
           </h1>
-          <p class="hero-sommario">Two things — where you live and what you spend on health care in a year — and Insurek compares every insurer, model and deductible in your area, using the official figures from the Federal Office of Public Health.</p>
+          <p class="hero-sommario">Four questions — where you live, when you were born, what you spend on health care and whether you are employed — and Insurek compares every insurer, model and deductible in your area, using the official figures from the Federal Office of Public Health.</p>
           <div class="hero-azioni">
             <a class="btn btn-chiaro" href="#calcolatore">Calculate</a>
             <a class="link-underline" href="/en/method/" style="font-size:0.9375rem">How the calculation works</a>
@@ -144,6 +144,10 @@
               <div class="cerca" id="cerca-guscio">
                 <input type="search" id="cerca-npa" autocomplete="postal-code" disabled placeholder="Postcode or town, e.g. 3011 or Bern" aria-describedby="aiuto-luogo" />
                 <ul class="suggerimenti" id="suggerimenti" hidden></ul>
+                <!-- Quando i suggerimenti compaiono, sullo schermo si vedono;
+                     chi ascolta la pagina non se ne accorgerebbe. Qui sotto
+                     glielo diciamo. -->
+                <p class="solo-voce" id="conta-luoghi" role="status" aria-live="polite"></p>
               </div>
               <div class="scelto" id="luogo-scelto" hidden></div>
               <p class="campo-aiuto" id="aiuto-luogo">Premiums depend on the canton and the premium region. Your postcode gives both — you do not need to know your region.</p>
@@ -166,11 +170,11 @@
                 </button>
                 <button type="button" class="tessera" data-fascia="regolare" aria-pressed="true">
                   <span class="tessera-titolo">Regular care</span>
-                  <span class="tessera-nota">A few visits, medication, physiotherapy. About CHF 2,000.</span>
+                  <span class="tessera-nota">A few visits, medication, physiotherapy. About CHF 2'000.</span>
                 </button>
                 <button type="button" class="tessera" data-fascia="continua" aria-pressed="false">
                   <span class="tessera-titolo">Ongoing treatment</span>
-                  <span class="tessera-nota">A chronic condition, specialists, long-term medication. About CHF 6,000.</span>
+                  <span class="tessera-nota">A chronic condition, specialists, long-term medication. About CHF 6'000.</span>
                 </button>
               </div>
               <p class="campo-aiuto">If you know your own figure, write it in: then that is what counts.</p>
@@ -276,8 +280,8 @@
       </div>
     </footer>
 
-    <script src="/assets/lingua.js?v=b5010d9b"></script>
-    <script src="/assets/calcolo.js?v=c94a59ed"></script>
-    <script src="/assets/insurek.js?v=595056fd"></script>
+    <script src="/assets/lingua.js?v=06b0dc0a"></script>
+    <script src="/assets/calcolo.js?v=dbd969b7"></script>
+    <script src="/assets/insurek.js?v=1ccc58f1"></script>
   </body>
 </html>

@@ -5,15 +5,15 @@
  * legge niente dalla pagina e non si sa niente della lingua. Sono funzioni
  * pure che prendono numeri e restituiscono numeri, e questa e' la ragione per
  * cui il file esiste da solo — se un giorno Insurek tornasse ad avere un
- * backend, o diventasse una libreria, questo file si porta via com'e'.
+ * backend, o diventasse una libreria, questo file si porta via com’e'.
  *
- * La regola svizzera, per l'assicurazione obbligatoria delle cure
+ * La regola svizzera, per l’assicurazione obbligatoria delle cure
  * medico-sanitarie (LAMal), per un adulto:
  *
- *   1. il premio si paga comunque, dodici volte l'anno;
- *   2. le prime spese sono a carico dell'assicurato fino alla franchigia;
- *   3. oltre la franchigia l'assicurato paga il 10% (l'aliquota percentuale),
- *      ma non piu' di 700 franchi l'anno.
+ *   1. il premio si paga comunque, dodici volte l’anno;
+ *   2. le prime spese sono a carico dell’assicurato fino alla franchigia;
+ *   3. oltre la franchigia l’assicurato paga il 10% (l’aliquota percentuale),
+ *      ma non piu' di 700 franchi l’anno.
  *
  * Da cui il costo totale annuo, che e' tutto quello che serve sapere:
  *
@@ -32,7 +32,7 @@ var Calcolo = (function () {
   "use strict";
 
   var FRANCHIGIE = [300, 500, 1000, 1500, 2000, 2500];
-  var TETTO_PARTECIPAZIONE = 700;   // CHF l'anno, adulti
+  var TETTO_PARTECIPAZIONE = 700;   // CHF l’anno, adulti
   var QUOTA_PARTECIPAZIONE = 0.10;  // 10% oltre la franchigia
   var SPESA_MASSIMA = 12000;        // oltre, tutte le curve sono parallele
 
@@ -53,8 +53,8 @@ var Calcolo = (function () {
    * Classifica tutte le combinazioni disponibili in una zona.
    *
    * offerte: righe [assicuratore, tariffa, classe, infortuni, [6 premi]]
-   *          come le scrive l'ETL; un premio a null vuol dire che quella
-   *          franchigia da quell'assicuratore non esiste, e allora quella
+   *          come le scrive l’ETL; un premio a null vuol dire che quella
+   *          franchigia da quell’assicuratore non esiste, e allora quella
    *          combinazione semplicemente non entra in classifica. Non e' un
    *          caso raro: su circa 9 900 combinazioni adulte, 500 hanno cinque
    *          franchigie invece di sei.
@@ -94,7 +94,7 @@ var Calcolo = (function () {
     esiti.sort(function (a, b) {
       if (a.totale !== b.totale) return a.totale - b.totale;
       // A parita' di costo totale meglio la franchigia bassa: stesso prezzo,
-      // meno rischio se l'anno va peggio del previsto.
+      // meno rischio se l’anno va peggio del previsto.
       return a.franchigia - b.franchigia;
     });
     return esiti;
@@ -160,7 +160,7 @@ var Calcolo = (function () {
     return risultato;
   }
 
-  /** Classe d'eta' dell'UFSP a partire dall'anno di nascita. */
+  /** Classe d’eta' dell’UFSP a partire dall’anno di nascita. */
   function classeEta(annoNascita, annoPremio) {
     var eta = annoPremio - annoNascita;
     if (eta <= 18) return "K";   // minorenni: fuori da questa versione

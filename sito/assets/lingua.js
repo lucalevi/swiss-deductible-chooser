@@ -1,43 +1,42 @@
 /**
  * Insurek — lingua, intestazione, comparsa allo scorrimento.
  *
- * Quattro lingue: italiano, tedesco, francese, inglese. L'italiano sta
- * nell'HTML, le altre tre negli attributi data-de, data-fr, data-en. Il
+ * Quattro lingue: italiano, tedesco, francese, inglese. L’italiano sta
+ * nell’HTML, le altre tre negli attributi data-de, data-fr, data-en. Il
  * motivo e' lo stesso di lucalevi.com: la pagina si legge anche con
  * JavaScript spento, e chi la indicizza trova del testo vero invece di un
  * guscio vuoto.
  *
- *   data-de / data-fr / data-en           contenuto dell'elemento
+ *   data-de / data-fr / data-en           contenuto dell’elemento
  *   data-aria-de / data-aria-fr / ...      aria-label
  *   data-ph-de / data-ph-fr / ...          placeholder di un campo
  *
- * Le tre lingue nazionali contano piu' dell'inglese, qui: i nomi dei modelli
+ * Le tre lingue nazionali contano piu' dell’inglese, qui: i nomi dei modelli
  * assicurativi arrivano gia' tradotti in tedesco, francese e italiano dal
- * dataset dell'UFSP, mentre in inglese non esistono e restano in tedesco.
+ * dataset dell’UFSP, mentre in inglese non esistono e restano in tedesco.
  *
  * Chi usa il sito lo apre quasi sempre nella lingua in cui vive, quindi la
- * prima scelta la fa il browser; da li' in poi vale quella dell'utente,
+ * prima scelta la fa il browser; da li' in poi vale quella dell’utente,
  * ricordata nel solo archivio locale (nessun cookie, niente che parta da qui).
  */
 (function (window, document) {
   "use strict";
 
-  var CHIAVE = "insurek-lingua";
   var LINGUE = ["it", "de", "fr", "en"];
 
   var META = {
     calcolatore: {
       it: {
         titolo: "Insurek — La cassa malati che ti costa meno",
-        descrizione: "Dimmi dove abiti e quanto spendi in salute: Insurek confronta tutte le casse malati e tutte le franchigie della tua zona con i dati ufficiali dell'UFSP, e ti dice quale combinazione costa meno."
+        descrizione: "Dimmi dove abiti e quanto spendi in salute: Insurek confronta tutte le casse malati e tutte le franchigie della tua zona con i dati ufficiali dell’UFSP, e ti dice quale combinazione costa meno."
       },
       de: {
         titolo: "Insurek — Die Krankenkasse, die Sie am wenigsten kostet",
         descrizione: "Wohnort und Gesundheitskosten eingeben: Insurek vergleicht alle Krankenkassen und alle Franchisen Ihrer Region mit den offiziellen BAG-Daten und zeigt, welche Kombination am günstigsten ist."
       },
       fr: {
-        titolo: "Insurek — L'assurance maladie qui vous coûte le moins",
-        descrizione: "Indiquez où vous habitez et vos frais de santé : Insurek compare toutes les caisses et toutes les franchises de votre région avec les données officielles de l'OFSP et vous dit quelle combinaison coûte le moins."
+        titolo: "Insurek — L’assurance maladie qui vous coûte le moins",
+        descrizione: "Indiquez où vous habitez et vos frais de santé : Insurek compare toutes les caisses et toutes les franchises de votre région avec les données officielles de l’OFSP et vous dit quelle combinaison coûte le moins."
       },
       en: {
         titolo: "Insurek — The Swiss health insurance that costs you least",
@@ -47,7 +46,7 @@
     metodo: {
       it: { titolo: "Come funziona il calcolo — Insurek", descrizione: "La regola svizzera in tre righe, la formula del costo totale annuo, da dove vengono i dati e cosa Insurek non fa." },
       de: { titolo: "Wie gerechnet wird — Insurek", descrizione: "Die Schweizer Regel in drei Zeilen, die Formel der jährlichen Gesamtkosten, woher die Daten kommen und was Insurek nicht tut." },
-      fr: { titolo: "Comment le calcul fonctionne — Insurek", descrizione: "La règle suisse en trois lignes, la formule du coût annuel total, d'où viennent les données et ce qu'Insurek ne fait pas." },
+      fr: { titolo: "Comment le calcul fonctionne — Insurek", descrizione: "La règle suisse en trois lignes, la formule du coût annuel total, d’où viennent les données et ce qu’Insurek ne fait pas." },
       en: { titolo: "How the calculation works — Insurek", descrizione: "The Swiss rule in three lines, the total annual cost formula, where the data comes from and what Insurek does not do." }
     }
   };
@@ -59,17 +58,17 @@
   var ascoltatori = [];
 
   /**
-   * La lingua la decide l'indirizzo, e nient'altro.
+   * La lingua la decide l’indirizzo, e nient’altro.
    *
    * Da settembre 2026 ogni lingua ha una pagina sua — / , /de/ , /fr/ , /en/ —
    * e ciascuna nasce gia' scritta nella sua lingua, con <html lang> che lo
-   * dichiara. Leggere qui l'archivio locale o la lingua del browser vorrebbe
+   * dichiara. Leggere qui l’archivio locale o la lingua del browser vorrebbe
    * dire avere due verita' per la stessa pagina, e i casi in cui non vanno
-   * d'accordo sono proprio quelli che fanno danno: apri un collegamento
+   * d’accordo sono proprio quelli che fanno danno: apri un collegamento
    * tedesco e ti ritrovi in italiano perche' un mese fa avevi premuto IT.
    *
-   * Chi arriva sulla radice in una lingua che non e' l'italiano lo vede
-   * dall'interruttore in alto, che ora e' fatto di collegamenti veri.
+   * Chi arriva sulla radice in una lingua che non e' l’italiano lo vede
+   * dall’interruttore in alto, che ora e' fatto di collegamenti veri.
    */
   function linguaIniziale() {
     try {
@@ -79,7 +78,7 @@
     return "it";
   }
 
-  /** Il valore per la lingua chiesta, con l'italiano dell'HTML come base. */
+  /** Il valore per la lingua chiesta, con l’italiano dell’HTML come base. */
   function valore(elemento, prefisso, lingua, base) {
     if (lingua === "it") return base;
     var attributo = elemento.getAttribute(prefisso + lingua);
@@ -128,9 +127,12 @@
     for (var j = 0; j < ascoltatori.length; j++) ascoltatori[j](lingua);
   }
 
+  /* Non si salva niente nel browser: la lingua la dice l’indirizzo, e
+     l’interruttore in alto e' fatto di collegamenti veri. L’informativa
+     dichiara che questi siti non lasciano niente sul computer di chi legge:
+     deve restare vero anche qui dentro. */
   function imposta(lingua) {
     if (LINGUE.indexOf(lingua) === -1 || lingua === corrente) return;
-    try { window.localStorage.setItem(CHIAVE, lingua); } catch (e) { /* pazienza */ }
     applica(lingua);
   }
 

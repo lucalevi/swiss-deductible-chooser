@@ -1,12 +1,12 @@
 /**
- * Insurek — l'applicazione.
+ * Insurek — l’applicazione.
  *
  * Tutto quello che succede succede qui, nel browser di chi usa il sito.
- * Non c'e' un server applicativo: la pagina scarica tre cose statiche —
- * l'anagrafica (meta.json), la tabella dei NPA (npa.json) e il file dei premi
+ * Non c’e' un server applicativo: la pagina scarica tre cose statiche —
+ * l’anagrafica (meta.json), la tabella dei NPA (npa.json) e il file dei premi
  * della sola zona in cui abita chi sta guardando — e da li' in poi calcola
  * da sola. Nessun dato di chi usa il sito viene inviato da nessuna parte,
- * perche' non c'e' nessuna parte a cui inviarlo.
+ * perche' non c’e' nessuna parte a cui inviarlo.
  *
  * La divisione del lavoro: calcolo.js sa la matematica e non sa niente della
  * pagina; lingua.js sa le lingue e non sa niente dei premi; questo file mette
@@ -28,7 +28,7 @@
 
   var TIPI = ["BASE", "HAM", "HMO", "DIV"];
 
-  /* Il testo che nasce da JavaScript. Quello che sta nell'HTML e' tradotto
+  /* Il testo che nasce da JavaScript. Quello che sta nell’HTML e' tradotto
      dagli attributi data-de/fr/en; questo no, perche' non esiste finche' non
      lo si costruisce. */
   var T = {
@@ -38,29 +38,29 @@
       classeE: "adulto", classeJ: "giovane adulto",
       etichettaRisposta: "La franchigia giusta per te",
       franchigiaCHF: "Franchigia {f} CHF",
-      percheSvolta: "Con {s} di spese sanitarie all'anno conviene la franchigia da {f} franchi. La soglia di convenienza è intorno a {b}: sotto conviene la {alta}, sopra la {bassa}.",
+      percheSvolta: "Con {s} di spese sanitarie all’anno conviene la franchigia da {f} franchi. La soglia di convenienza è intorno a {b}: sotto conviene la {alta}, sopra la {bassa}.",
       percheUnica: "Con questi premi la franchigia da {f} franchi conviene a qualsiasi livello di spesa.",
       combinazioneEtichetta: "La combinazione che costa meno nella tua zona",
       premiAnnui: "Premi, dodici mesi",
       tascaPropria: "Franchigia e partecipazione",
-      totaleAnno: "Costo totale dell'anno",
-      risparmio: "Sono <strong>{x}</strong> all'anno in meno della combinazione più cara della tua zona, e <strong>{y}</strong> in meno della media.",
+      totaleAnno: "Costo totale dell’anno",
+      risparmio: "Sono <strong>{x}</strong> all’anno in meno della combinazione più cara della tua zona, e <strong>{y}</strong> in meno della media.",
       classificaTitolo: "Le dieci più convenienti",
       classificaNota: "Una riga per ogni cassa e modello, con la franchigia che per quella combinazione costa meno. Le altre franchigie della prima combinazione si vedono nel grafico qui sotto.",
       colPosizione: "#", colCassa: "Cassa malati", colModello: "Modello",
       colFranchigia: "Franchigia", colPremio: "Premio/mese", colTasca: "Di tasca", colTotale: "Totale anno",
       graficoTitolo: "E se le tue spese fossero diverse?",
       graficoNota: "Le sei franchigie di {nome}, modello {modello}, {inf}. La linea verticale è la spesa che hai indicato. Si vede a occhio perché le franchigie intermedie non vincono quasi mai: le loro curve restano sopra a una delle due estreme a ogni livello di spesa.",
-      assiSpesa: "Spese sanitarie nell'anno (CHF)",
-      assiCosto: "Costo totale dell'anno (CHF)",
+      assiSpesa: "Spese sanitarie nell’anno (CHF)",
+      assiCosto: "Costo totale dell’anno (CHF)",
       minorenne: "Insurek per ora vale solo per gli adulti. Per i minorenni le franchigie vanno da 0 a 600 CHF, il tetto della partecipazione è 350 CHF e ci sono gli sconti famiglia: sono regole diverse, e trattarle male sarebbe peggio che non trattarle.",
-      annoStrano: "Controlla l'anno di nascita.",
+      annoStrano: "Controlla l’anno di nascita.",
       npaIgnoto: "Questo NPA non è nella tabella federale delle regioni di premio. Prova con il nome del comune.",
       nessunRisultato: "Con questi filtri non resta nessuna combinazione. Prova a riaprire qualche tipo di modello.",
       caricamento: "Carico i premi della tua zona…",
       erroreDati: "Non riesco a caricare i dati. Ricarica la pagina.",
       regione: "regione",
-      giovaneAdulto: "Fino all'anno in cui compi 25 anni paghi il premio da giovane adulto, che è più basso: è quello che vedi qui."
+      giovaneAdulto: "Fino all’anno in cui compi 25 anni paghi il premio da giovane adulto, che è più basso: è quello che vedi qui."
     },
     de: {
       tipo: { BASE: "Standard", HAM: "Hausarzt", HMO: "HMO", DIV: "Telmed und andere" },
@@ -92,35 +92,39 @@
       regione: "Region",
       giovaneAdulto: "Bis zum Jahr, in dem Sie 25 werden, zahlen Sie die tiefere Prämie für junge Erwachsene: die sehen Sie hier."
     },
+    /* Tipografia francese: prima di ; : ? ! e dentro le virgolette c’e' uno
+       spazio unificatore (U+00A0), non uno normale. Con quello normale il
+       segno di punteggiatura puo' andare a capo da solo, e a un lettore
+       francese salta all’occhio. Non si vede nel codice: si misura. */
     fr: {
       tipo: { BASE: "Standard", HAM: "Médecin de famille", HMO: "HMO", DIV: "Télémédecine et autres" },
       conInfortuni: "avec accidents", senzaInfortuni: "sans accidents",
       classeE: "adulte", classeJ: "jeune adulte",
-      etichettaRisposta: "La franchise qu'il vous faut",
+      etichettaRisposta: "La franchise qu’il vous faut",
       franchigiaCHF: "Franchise {f} CHF",
-      percheSvolta: "Avec {s} de frais de santé par an, la franchise de {f} francs est la bonne. Le seuil de bascule est vers {b} : en dessous la {alta}, au-dessus la {bassa}.",
+      percheSvolta: "Avec {s} de frais de santé par an, la franchise de {f} francs est la bonne. Le seuil de bascule est vers {b} : en dessous la {alta}, au-dessus la {bassa}.",
       percheUnica: "Avec ces primes, la franchise de {f} francs est la meilleure à tous les niveaux de frais.",
       combinazioneEtichetta: "La combinaison la moins chère de votre région",
       premiAnnui: "Primes, douze mois",
       tascaPropria: "Franchise et quote-part",
-      totaleAnno: "Coût total de l'année",
+      totaleAnno: "Coût total de l’année",
       risparmio: "Soit <strong>{x}</strong> de moins par an que la combinaison la plus chère de votre région, et <strong>{y}</strong> de moins que la moyenne.",
-      classificaTitolo: "Les dix meilleures",
+      classificaTitolo: "Les dix moins chères",
       classificaNota: "Une ligne par caisse et par modèle, avec la franchise la moins chère pour cette combinaison. Les autres franchises de la première combinaison sont dans le graphique ci-dessous.",
       colPosizione: "#", colCassa: "Caisse maladie", colModello: "Modèle",
       colFranchigia: "Franchise", colPremio: "Prime/mois", colTasca: "À charge", colTotale: "Total année",
-      graficoTitolo: "Et si vos frais étaient différents ?",
-      graficoNota: "Les six franchises de {nome}, modèle {modello}, {inf}. La ligne verticale correspond aux frais que vous avez indiqués. On voit pourquoi les franchises intermédiaires ne gagnent presque jamais : leurs courbes restent au-dessus de l'une des deux extrêmes à tous les niveaux.",
-      assiSpesa: "Frais de santé dans l'année (CHF)",
-      assiCosto: "Coût total de l'année (CHF)",
-      minorenne: "Insurek ne vaut pour l'instant que pour les adultes. Pour les enfants les franchises vont de 0 à 600 CHF, la quote-part est plafonnée à 350 CHF et il y a les rabais de famille : d'autres règles, qu'il vaut mieux ne pas traiter que mal traiter.",
-      annoStrano: "Vérifiez l'année de naissance.",
+      graficoTitolo: "Et si vos frais étaient différents ?",
+      graficoNota: "Les six franchises de {nome}, modèle {modello}, {inf}. La ligne verticale correspond aux frais que vous avez indiqués. On voit pourquoi les franchises intermédiaires ne gagnent presque jamais : leurs courbes restent au-dessus de l’une des deux extrêmes à tous les niveaux.",
+      assiSpesa: "Frais de santé dans l’année (CHF)",
+      assiCosto: "Coût total de l’année (CHF)",
+      minorenne: "Insurek ne vaut pour l’instant que pour les adultes. Pour les enfants les franchises vont de 0 à 600 CHF, la quote-part est plafonnée à 350 CHF et il y a les rabais de famille : d’autres règles, qu’il vaut mieux ne pas traiter que mal traiter.",
+      annoStrano: "Vérifiez l’année de naissance.",
       npaIgnoto: "Ce NPA ne figure pas dans la table fédérale des régions de primes. Essayez avec le nom de la commune.",
       nessunRisultato: "Avec ces filtres il ne reste aucune combinaison. Rouvrez quelques types de modèle.",
       caricamento: "Je charge les primes de votre région…",
       erroreDati: "Impossible de charger les données. Rechargez la page.",
       regione: "région",
-      giovaneAdulto: "Jusqu'à l'année de vos 25 ans vous payez la prime de jeune adulte, plus basse : c'est celle affichée ici."
+      giovaneAdulto: "Jusqu’à l’année de vos 25 ans vous payez la prime de jeune adulte, plus basse : c’est celle affichée ici."
     },
     en: {
       tipo: { BASE: "Standard", HAM: "Family doctor", HMO: "HMO", DIV: "Telemedicine and others" },
@@ -170,8 +174,8 @@
     /* 0 = senza infortuni, la variante di chi e' dipendente per almeno otto
        ore a settimana: gli infortuni glieli copre gia' il datore di lavoro
        (LAINF), e il premio scende. E' il caso della maggior parte delle
-       persone, quindi e' la predefinita. Deve restare d'accordo con
-       l'aria-pressed delle tessere [data-infortuni] nell'HTML. */
+       persone, quindi e' la predefinita. Deve restare d’accordo con
+       l’aria-pressed delle tessere [data-infortuni] nell’HTML. */
     infortuni: 0,
     tipi: TIPI.slice()
   };
@@ -261,8 +265,22 @@
     return unici;
   }
 
+  /** Quanti luoghi sono comparsi: lo dice solo il lettore di schermo. */
+  function annunciaLuoghi(n) {
+    var p = $("conta-luoghi");
+    if (!p) return;
+    var frasi = {
+      it: n === 0 ? "Nessun luogo trovato" : n === 1 ? "Un luogo trovato" : n + " luoghi trovati",
+      de: n === 0 ? "Kein Ort gefunden" : n === 1 ? "Ein Ort gefunden" : n + " Orte gefunden",
+      fr: n === 0 ? "Aucun lieu trouv\u00e9" : n === 1 ? "Un lieu trouv\u00e9" : n + " lieux trouv\u00e9s",
+      en: n === 0 ? "No place found" : n === 1 ? "One place found" : n + " places found",
+    };
+    p.textContent = frasi[window.Lingua.get()] || frasi.it;
+  }
+
   function disegnaSuggerimenti(voci) {
     var lista = $("suggerimenti");
+    annunciaLuoghi(voci.length);
     if (!voci.length) { lista.hidden = true; lista.innerHTML = ""; return; }
     var html = voci.map(function (v, i) {
       var zona = v.cantone + (v.regione !== "0" ? " · " + t().regione + " " + v.regione : "");
@@ -282,6 +300,7 @@
   function scegliLuogo(voce) {
     stato.luogo = voce;
     $("suggerimenti").hidden = true;
+    if ($("conta-luoghi")) $("conta-luoghi").textContent = "";
     $("cerca-npa").value = "";
     $("cerca-guscio").hidden = true;
     var zona = voce.cantone + (voce.regione !== "0" ? " · " + t().regione + " " + voce.regione : "");
@@ -389,7 +408,7 @@
           '<p class="combinazione-riga">' +
             (mod.nome.toLowerCase() === l.tipo[mod.tipo].toLowerCase() ? "" :
               '<span class="tipo-modello">' + testo(l.tipo[mod.tipo]) + "</span> &nbsp;") +
-            testo(inf) + " · " + testo(chf2(v.premioMensile)) + "/" +
+            testo(inf) + " · CHF " + testo(chf2(v.premioMensile)) + "/" +
             testo({ it: "mese", de: "Monat", fr: "mois", en: "month" }[window.Lingua.get()]) + "</p>" +
         "</div>" +
         '<div class="conti">' +
@@ -422,30 +441,50 @@
     return unici;
   }
 
+  /**
+   * La classifica. Su schermo largo e' una tabella di sette colonne; sotto i
+   * 700 px ogni riga diventa una scheda (lo fa il foglio di stile), perche' a
+   * 390 px la tabella era larga 883 px e il totale — la colonna che conta —
+   * finiva fuori dallo schermo.
+   *
+   * Due accorgimenti perche' la scheda non costi accessibilita':
+   *   - i ruoli sono scritti a mano (role="table", "row", "cell"...): con
+   *     display:block il browser perde da solo quelli impliciti, e chi legge
+   *     con un lettore di schermo si troverebbe un elenco di testi sciolti;
+   *   - l'etichetta visibile dentro la cella («Franchigia 300») e'
+   *     aria-hidden: l'intestazione di colonna c'e' gia' e la direbbe due
+   *     volte.
+   */
   function disegnaClassifica(esiti) {
     var l = t();
+    function cella(etichetta, valore) {
+      return '<td class="col-num" role="cell">' +
+        '<span class="et-mobile" aria-hidden="true">' + testo(etichetta) + "</span>" +
+        '<span class="va-mobile">' + valore + "</span></td>";
+    }
     var righe = unaPerModello(esiti).slice(0, 10).map(function (e, i) {
       var ass = assicuratore(e.assicuratore);
       var mod = modello(e.assicuratore, e.tariffa);
-      return '<tr' + (i === 0 ? ' data-vincente="true"' : "") + ">" +
-        '<td class="posizione">' + (i + 1) + "</td>" +
-        '<td class="nome-assicuratore">' + testo(ass.n) + "</td>" +
-        "<td>" + testo(mod.nome) +
+      return '<tr role="row"' + (i === 0 ? ' data-vincente="true"' : "") + ">" +
+        '<td class="posizione" role="cell">' + (i + 1) + "</td>" +
+        '<td class="nome-assicuratore" role="cell" data-posizione="' + (i + 1) + '">' + testo(ass.n) + "</td>" +
+        '<td class="col-modello" role="cell">' + testo(mod.nome) +
           (mod.nome.toLowerCase() === l.tipo[mod.tipo].toLowerCase() ? "" :
             '<br><span class="tipo-modello">' + testo(l.tipo[mod.tipo]) + "</span>") + "</td>" +
-        '<td class="col-num">' + formatoCHF.format(e.franchigia) + "</td>" +
-        '<td class="col-num">' + chf2(e.premioMensile) + "</td>" +
-        '<td class="col-num">' + formatoCHF.format(Math.round(e.diTasca)) + "</td>" +
-        '<td class="col-num">' + formatoCHF.format(Math.round(e.totale)) + "</td></tr>";
+        cella(l.colFranchigia, formatoCHF.format(e.franchigia)) +
+        cella(l.colPremio, chf2(e.premioMensile)) +
+        cella(l.colTasca, formatoCHF.format(Math.round(e.diTasca))) +
+        cella(l.colTotale, formatoCHF.format(Math.round(e.totale))) +
+        "</tr>";
     }).join("");
 
     return '<div class="reveal visibile" style="margin-top:2.5rem">' +
       '<h3 style="margin-bottom:1rem">' + testo(l.classificaTitolo) + "</h3>" +
-      '<div class="tabella-guscio"><table class="classifica"><thead><tr>' +
-        "<th>" + testo(l.colPosizione) + "</th><th>" + testo(l.colCassa) + "</th><th>" + testo(l.colModello) + "</th>" +
-        '<th class="col-num">' + testo(l.colFranchigia) + '</th><th class="col-num">' + testo(l.colPremio) + "</th>" +
-        '<th class="col-num">' + testo(l.colTasca) + '</th><th class="col-num">' + testo(l.colTotale) + "</th>" +
-      "</tr></thead><tbody>" + righe + "</tbody></table></div>" +
+      '<div class="tabella-guscio"><table class="classifica" role="table"><thead role="rowgroup"><tr role="row">' +
+        '<th role="columnheader">' + testo(l.colPosizione) + '</th><th role="columnheader">' + testo(l.colCassa) + '</th><th role="columnheader">' + testo(l.colModello) + "</th>" +
+        '<th class="col-num" role="columnheader">' + testo(l.colFranchigia) + '</th><th class="col-num" role="columnheader">' + testo(l.colPremio) + "</th>" +
+        '<th class="col-num" role="columnheader">' + testo(l.colTasca) + '</th><th class="col-num" role="columnheader">' + testo(l.colTotale) + "</th>" +
+      '</tr></thead><tbody role="rowgroup">' + righe + "</tbody></table></div>" +
       '<p class="legenda-grafico">' + testo(l.classificaNota) + "</p></div>";
   }
 
@@ -457,9 +496,9 @@
     var serie = Calcolo.curve(vincente.premi, limite).filter(Boolean);
     if (!serie.length) return "";
 
-    // Margine sinistro largo: ci stanno i valori dell'asse e, ruotato, il suo
+    // Margine sinistro largo: ci stanno i valori dell’asse e, ruotato, il suo
     // titolo. Senza titolo il lettore deve indovinare che quei numeri sono
-    // franchi all'anno, e sono la meta' del senso del grafico.
+    // franchi all’anno, e sono la meta' del senso del grafico.
     var L = 86, R = 16, S = 14, G = 46;      // margini
     var larghezza = 760, altezza = 380;
     var x0 = L, x1 = larghezza - R, y0 = S, y1 = altezza - G;
@@ -474,7 +513,7 @@
 
     var pezzi = [];
 
-    // griglia orizzontale e valori sull'asse dei costi
+    // griglia orizzontale e valori sull’asse dei costi
     var passi = 5;
     for (var i = 0; i <= passi; i++) {
       var valore = minCosto + (maxCosto - minCosto) * (i / passi);
@@ -483,7 +522,7 @@
       pezzi.push('<text x="' + (x0 - 8) + '" y="' + (y + 4).toFixed(1) + '" text-anchor="end">' +
                  formatoCHF.format(Math.round(valore / 100) * 100) + "</text>");
     }
-    // valori sull'asse delle spese
+    // valori sull’asse delle spese
     for (var k = 0; k <= 4; k++) {
       var spesa = (limite / 4) * k;
       pezzi.push('<text x="' + sx(spesa).toFixed(1) + '" y="' + (y1 + 18) + '" text-anchor="middle">' +
@@ -502,8 +541,8 @@
 
     // Le etichette delle sei franchigie finiscono tutte contro il bordo
     // destro, dove le curve sono vicinissime: senza spingerle via si
-    // sovrappongono. Si parte dall'ordinata vera e si tiene una distanza
-    // minima fra una e l'altra, dal basso verso l'alto.
+    // sovrappongono. Si parte dall’ordinata vera e si tiene una distanza
+    // minima fra una e l’altra, dal basso verso l’alto.
     var etichette = serie.map(function (s) {
       var ultimo = s.punti[s.punti.length - 1];
       return { franchigia: s.franchigia, y: sy(ultimo[1]), viva: s.franchigia === vincente.franchigia };
@@ -607,10 +646,10 @@
 
   /* ------------------------------------------------------------------ avvio */
 
-  /* L'anno di premio sta nell'HTML come segnaposto e viene riscritto da
-     meta.json: cosi' a settembre, quando escono i premi dell'anno dopo, basta
-     rifare girare l'ETL e nessuna pagina va toccata a mano. Va riscritto anche
-     a ogni cambio di lingua, perche' la traduzione rifa' l'innerHTML. */
+  /* L’anno di premio sta nell’HTML come segnaposto e viene riscritto da
+     meta.json: cosi' a settembre, quando escono i premi dell’anno dopo, basta
+     rifare girare l’ETL e nessuna pagina va toccata a mano. Va riscritto anche
+     a ogni cambio di lingua, perche' la traduzione rifa' l’innerHTML. */
   function scriviAnno() {
     if (!stato.meta) return;
     Array.prototype.forEach.call(document.querySelectorAll("[data-anno-premio]"), function (n) {
