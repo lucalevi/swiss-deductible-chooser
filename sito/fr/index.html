@@ -3,14 +3,14 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-    <title>Insurek — L’assurance maladie suisse qui vous coûte le moins</title>
+    <title>Insurek — L’assurance maladie qui vous coûte le moins</title>
     <meta name="description" content="Indiquez où vous habitez et vos frais de santé : Insurek compare toutes les caisses suisses et toutes les franchises de votre région avec les données officielles de l’OFSP et vous dit quelle combinaison coûte le moins." />
 
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230F0F0F'/%3E%3Cpath d='M6 22 L26 11 M6 14 L26 20' fill='none' stroke='%23F5F5F5' stroke-width='1.4'/%3E%3C/svg%3E" />
     <meta name="theme-color" content="#0F0F0F" />
     <meta name="author" content="Luca Iacolettig" />
 
-    <meta property="og:title" content="Insurek — L’assurance maladie suisse qui vous coûte le moins" />
+    <meta property="og:title" content="Insurek — L’assurance maladie qui vous coûte le moins" />
     <meta property="og:description" content="Indiquez où vous habitez et vos frais de santé : Insurek compare toutes les caisses suisses et toutes les franchises de votre région avec les données officielles de l’OFSP et vous dit quelle combinaison coûte le moins." />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Insurek" />
@@ -21,13 +21,13 @@
     <meta property="og:locale:alternate" content="de_CH" />
     <meta property="og:locale:alternate" content="en_GB" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Insurek — L’assurance maladie suisse qui vous coûte le moins" />
+    <meta name="twitter:title" content="Insurek — L’assurance maladie qui vous coûte le moins" />
     <!-- L'anteprima che compare quando l'indirizzo viene incollato in una
          chat o su un social. Si rigenera con `python3 materiali/og/genera.py`. -->
     <meta property="og:image" content="https://insurek.lucalevi.com/assets/og-insurek-fr.png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="Insurek — la caisse maladie, le modèle et la franchise qui coûtent le moins" />
+    <meta property="og:image:alt" content="Insurek — la cassa malati, il modello e la franchigia che costano meno" />
     <meta name="twitter:image" content="https://insurek.lucalevi.com/assets/og-insurek-fr.png" />
 
     <!-- I font stanno su questo dominio, come su lucalevi.com: nessuna
@@ -38,7 +38,7 @@
     <link rel="preload" href="/fonts/eb-garamond-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="/fonts/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="stylesheet" href="/assets/fonts.css?v=1b637806" />
-    <link rel="stylesheet" href="/assets/styles.css?v=8cc4fc46" />
+    <link rel="stylesheet" href="/assets/styles.css?v=666eaade" />
     <script defer src="/assets/lingua.js?v=0bb2792b"></script>
     <script defer src="/assets/calcolo.js?v=dbd969b7"></script>
     <script defer src="/assets/insurek.js?v=b2d8c005"></script>
@@ -131,7 +131,7 @@
           <p class="hero-sommario">Quatre questions — où vous habitez, votre année de naissance, combien vous dépensez pour votre santé et si vous êtes salarié — et Insurek compare chaque caisse, chaque modèle et chaque franchise de votre région. Avec les chiffres officiels de l’Office fédéral de la santé publique.</p>
           <div class="hero-azioni">
             <a class="btn btn-chiaro" href="#calcolatore">Calculer</a>
-            <a class="link-underline" href="/fr/methode/" style="font-size:0.9375rem">Comment le calcul fonctionne</a>
+            <a class="link-underline link-tocco" href="/fr/methode/" style="font-size:0.9375rem">Comment le calcul fonctionne</a>
           </div>
         </div>
       </section>
@@ -166,7 +166,7 @@
                 <!-- Casella con suggerimenti secondo lo schema «combobox» di
                      WAI-ARIA 1.2: frecce su/giu' per scorrere, Invio per
                      scegliere, Esc per chiudere. La gestisce insurek.js. -->
-                <input type="search" id="cerca-npa" autocomplete="postal-code" disabled role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="suggerimenti" placeholder="NPA ou nom de la commune, p. ex. 1003 ou Lausanne" aria-describedby="aiuto-luogo" />
+                <input type="search" id="cerca-npa" autocomplete="postal-code" disabled role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="suggerimenti" placeholder="NPA ou commune, ex. 1003" aria-describedby="aiuto-luogo" />
                 <ul class="suggerimenti" id="suggerimenti" role="listbox" hidden aria-label="Lieux trouvés"></ul>
                 <!-- Quando i suggerimenti compaiono, sullo schermo si vedono;
                      chi ascolta la pagina non se ne accorgerebbe. Qui sotto
