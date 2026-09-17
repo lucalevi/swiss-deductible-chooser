@@ -27,20 +27,20 @@
   var META = {
     calcolatore: {
       it: {
-        titolo: "Insurek — La cassa malati che ti costa meno",
-        descrizione: "Dimmi dove abiti e quanto spendi in salute: Insurek confronta tutte le casse malati e tutte le franchigie della tua zona con i dati ufficiali dell’UFSP, e ti dice quale combinazione costa meno."
+        titolo: "Insurek — La cassa malati svizzera che ti costa meno",
+        descrizione: "Dimmi dove abiti e quanto spendi in salute: Insurek confronta tutte le casse malati svizzere e tutte le franchigie della tua zona con i dati ufficiali dell’UFSP, e ti dice quale combinazione costa meno."
       },
       de: {
-        titolo: "Insurek — Die Krankenkasse, die Sie am wenigsten kostet",
-        descrizione: "Wohnort und Gesundheitskosten eingeben: Insurek vergleicht alle Krankenkassen und alle Franchisen Ihrer Region mit den offiziellen BAG-Daten und zeigt, welche Kombination am günstigsten ist."
+        titolo: "Insurek — Die Schweizer Krankenkasse, die Sie am wenigsten kostet",
+        descrizione: "Wohnort und Gesundheitskosten eingeben: Insurek vergleicht alle Schweizer Krankenkassen und alle Franchisen Ihrer Region mit den offiziellen BAG-Daten und zeigt, welche Kombination am günstigsten ist."
       },
       fr: {
-        titolo: "Insurek — L’assurance maladie qui vous coûte le moins",
-        descrizione: "Indiquez où vous habitez et vos frais de santé : Insurek compare toutes les caisses et toutes les franchises de votre région avec les données officielles de l’OFSP et vous dit quelle combinaison coûte le moins."
+        titolo: "Insurek — L’assurance maladie suisse qui vous coûte le moins",
+        descrizione: "Indiquez où vous habitez et vos frais de santé : Insurek compare toutes les caisses suisses et toutes les franchises de votre région avec les données officielles de l’OFSP et vous dit quelle combinaison coûte le moins."
       },
       en: {
         titolo: "Insurek — The Swiss health insurance that costs you least",
-        descrizione: "Tell it where you live and what you spend on health care: Insurek compares every insurer and every deductible in your area using the official FOPH data, and names the cheapest combination."
+        descrizione: "Tell it where you live and what you spend on health care: Insurek compares every Swiss insurer and every deductible in your area using the official FOPH data, and names the cheapest combination."
       }
     },
     metodo: {
