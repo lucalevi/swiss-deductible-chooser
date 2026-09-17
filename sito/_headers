@@ -25,3 +25,34 @@
 # non fa danno e toglie 250 KB di richieste a chi torna.
 /dati/*
   Cache-Control: public, max-age=86400
+
+# I due font che servono subito, anche come intestazione Link. Il <link
+# rel="preload"> nell'HTML c'e' gia', ma porta `crossorigin` (obbligatorio per
+# i font) e Cloudflare Pages non trasforma in Early Hints i <link> con
+# attributi in piu'. Scritti qui invece li manda come 103 Early Hints: il
+# browser comincia a scaricare i font mentre la pagina e' ancora in viaggio.
+# Solo sulle pagine, non su ogni file.
+/
+  Link: </fonts/eb-garamond-latin-400-normal.woff2>; rel=preload; as=font; type="font/woff2"; crossorigin
+  Link: </fonts/inter-latin-400-normal.woff2>; rel=preload; as=font; type="font/woff2"; crossorigin
+/de/
+  Link: </fonts/eb-garamond-latin-400-normal.woff2>; rel=preload; as=font; type="font/woff2"; crossorigin
+  Link: </fonts/inter-latin-400-normal.woff2>; rel=preload; as=font; type="font/woff2"; crossorigin
+/fr/
+  Link: </fonts/eb-garamond-latin-400-normal.woff2>; rel=preload; as=font; type="font/woff2"; crossorigin
+  Link: </fonts/inter-latin-400-normal.woff2>; rel=preload; as=font; type="font/woff2"; crossorigin
+/en/
+  Link: </fonts/eb-garamond-latin-400-normal.woff2>; rel=preload; as=font; type="font/woff2"; crossorigin
+  Link: </fonts/inter-latin-400-normal.woff2>; rel=preload; as=font; type="font/woff2"; crossorigin
+/metodo/
+  Link: </fonts/eb-garamond-latin-400-normal.woff2>; rel=preload; as=font; type="font/woff2"; crossorigin
+  Link: </fonts/inter-latin-400-normal.woff2>; rel=preload; as=font; type="font/woff2"; crossorigin
+/de/methode/
+  Link: </fonts/eb-garamond-latin-400-normal.woff2>; rel=preload; as=font; type="font/woff2"; crossorigin
+  Link: </fonts/inter-latin-400-normal.woff2>; rel=preload; as=font; type="font/woff2"; crossorigin
+/fr/methode/
+  Link: </fonts/eb-garamond-latin-400-normal.woff2>; rel=preload; as=font; type="font/woff2"; crossorigin
+  Link: </fonts/inter-latin-400-normal.woff2>; rel=preload; as=font; type="font/woff2"; crossorigin
+/en/method/
+  Link: </fonts/eb-garamond-latin-400-normal.woff2>; rel=preload; as=font; type="font/woff2"; crossorigin
+  Link: </fonts/inter-latin-400-normal.woff2>; rel=preload; as=font; type="font/woff2"; crossorigin

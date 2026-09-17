@@ -31,8 +31,8 @@
   --ring: 0 0% 20%;
   --radius: 2px;
 
-  --font-display: "EB Garamond", Georgia, "Times New Roman", serif;
-  --font-sans: Inter, system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+  --font-display: "EB Garamond", "EB Garamond Riserva", "EB Garamond Riserva Android", Georgia, "Times New Roman", serif;
+  --font-sans: Inter, "Inter Riserva", "Inter Riserva Android", system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
   --ease-editorial: cubic-bezier(0.16, 1, 0.3, 1);
 }
 

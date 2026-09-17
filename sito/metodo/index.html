@@ -20,8 +20,14 @@
     <meta property="og:image:height" content="630" />
     <meta property="og:image:alt" content="Insurek — la cassa malati, il modello e la franchigia che costano meno" />
     <meta name="twitter:image" content="https://insurek.lucalevi.com/assets/og-insurek-it.png" />
-    <link rel="stylesheet" href="/assets/fonts.css?v=a85ff2ea" />
-    <link rel="stylesheet" href="/assets/styles.css?v=ba0ff4ec" />
+    <!-- I due font che servono subito: il browser li chiede prima ancora di
+         leggere i CSS (e Cloudflare li annuncia con gli Early Hints). -->
+    <link rel="preload" href="/fonts/eb-garamond-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="/assets/fonts.css?v=1b637806" />
+    <link rel="stylesheet" href="/assets/styles.css?v=fc451586" />
+    <script defer src="/assets/lingua.js?v=06b0dc0a"></script>
+    <script defer src="/assets/avvio-semplice.js?v=0c433d8a"></script>
     <link rel="canonical" href="https://insurek.lucalevi.com/metodo/" />
     <link rel="alternate" hreflang="it-CH" href="https://insurek.lucalevi.com/metodo/" />
     <link rel="alternate" hreflang="de-CH" href="https://insurek.lucalevi.com/de/methode/" />
@@ -113,7 +119,5 @@
       </div>
     </footer>
 
-    <script src="/assets/lingua.js?v=06b0dc0a"></script>
-    <script>window.Lingua.avvia();</script>
   </body>
 </html>

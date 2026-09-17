@@ -167,3 +167,47 @@
   src: url('/fonts/inter-greek-ext-400-normal.woff2') format('woff2');
   unicode-range: U+1F00-1FFF;
 }
+
+/* ------------------------------------------------------ font di riserva */
+/* Mentre EB Garamond e Inter arrivano (font-display: swap) il testo si vede
+   subito in un font di sistema. Senza aggiustamenti quel font e' piu' largo o
+   piu' stretto, e quando arriva quello vero le righe si spostano: nelle pagine
+   del metodo il titolo saltava di 0,11-0,16 di CLS. Queste quattro regole
+   danno ai font di sistema le stesse misure dei nostri (larghezza, ascendenti,
+   discendenti), cosi' il cambio non muove niente. I numeri vengono da
+   @capsizecss/metrics; i nomi "Riserva" stanno nelle pile di font di
+   --font-display e --font-sans (in way: tailwind.config.ts), subito dopo
+   il font vero. Android non ha Times New Roman ne' Arial: per lui le regole
+   con Noto Serif e Roboto. */
+@font-face {
+  font-family: "EB Garamond Riserva";
+  src: local("Times New Roman"), local("TimesNewRomanPSMT");
+  ascent-override: 106.2581%;
+  descent-override: 31.4448%;
+  line-gap-override: 0%;
+  size-adjust: 94.7692%;
+}
+@font-face {
+  font-family: "EB Garamond Riserva Android";
+  src: local("Noto Serif Regular"), local("NotoSerif-Regular");
+  ascent-override: 125.8096%;
+  descent-override: 37.2306%;
+  line-gap-override: 0%;
+  size-adjust: 80.0416%;
+}
+@font-face {
+  font-family: "Inter Riserva";
+  src: local("Arial"), local("ArialMT");
+  ascent-override: 90.4365%;
+  descent-override: 22.518%;
+  line-gap-override: 0%;
+  size-adjust: 107.1194%;
+}
+@font-face {
+  font-family: "Inter Riserva Android";
+  src: local("Roboto Regular"), local("Roboto-Regular");
+  ascent-override: 90.2384%;
+  descent-override: 22.4686%;
+  line-gap-override: 0%;
+  size-adjust: 107.3546%;
+}
