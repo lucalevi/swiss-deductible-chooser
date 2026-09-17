@@ -38,10 +38,10 @@
     <link rel="preload" href="/fonts/eb-garamond-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="/fonts/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="stylesheet" href="/assets/fonts.css?v=1b637806" />
-    <link rel="stylesheet" href="/assets/styles.css?v=fc451586" />
+    <link rel="stylesheet" href="/assets/styles.css?v=8cc4fc46" />
     <script defer src="/assets/lingua.js?v=06b0dc0a"></script>
     <script defer src="/assets/calcolo.js?v=dbd969b7"></script>
-    <script defer src="/assets/insurek.js?v=1ccc58f1"></script>
+    <script defer src="/assets/insurek.js?v=b2d8c005"></script>
 
     <script type="application/ld+json">
       {
@@ -136,21 +136,38 @@
         </div>
       </section>
 
+      <!-- ================================================== in parole semplici -->
+      <!-- Tre righe per chi fa fatica a leggere o a seguire una pagina lunga:
+           l'essenziale, in frasi corte. -->
+      <section class="semplice" aria-labelledby="titolo-semplice">
+        <div class="container-editorial">
+          <h2 id="titolo-semplice" class="eyebrow muted">En mots simples</h2>
+          <ul class="semplice-righe">
+            <li>Vous indiquez où vous habitez, votre année de naissance, combien vous allez chez le médecin et si vous êtes salarié.</li>
+            <li>Insurek vous dit quelle caisse maladie et quelle franchise vous coûtent le moins.</li>
+            <li>C’est gratuit, cela ne demande pas votre nom et n’enregistre rien.</li>
+          </ul>
+        </div>
+      </section>
+
       <!-- ======================================================== calcolatore -->
       <section id="calcolatore" class="section-rhythm" aria-labelledby="titolo-calcolatore">
         <div class="container-editorial">
           <p class="eyebrow muted">Quatre questions</p>
           <h2 id="titolo-calcolatore" style="margin-top:1rem">Où, né quand, combien chez le médecin, salarié ou non.</h2>
 
-          <p id="stato-dati" class="caricamento" style="margin-top:1.5rem">Chargement des données…</p>
+          <p id="stato-dati" class="caricamento" style="margin-top:1.5rem" role="status">Chargement des données…</p>
 
           <div class="campi" style="margin-top:2.5rem">
             <!-- 1. il luogo -->
             <div class="campo">
               <label for="cerca-npa">1 — Où habitez-vous</label>
               <div class="cerca" id="cerca-guscio">
-                <input type="search" id="cerca-npa" autocomplete="postal-code" disabled placeholder="NPA ou nom de la commune, p. ex. 1003 ou Lausanne" aria-describedby="aiuto-luogo" />
-                <ul class="suggerimenti" id="suggerimenti" hidden></ul>
+                <!-- Casella con suggerimenti secondo lo schema «combobox» di
+                     WAI-ARIA 1.2: frecce su/giu' per scorrere, Invio per
+                     scegliere, Esc per chiudere. La gestisce insurek.js. -->
+                <input type="search" id="cerca-npa" autocomplete="postal-code" disabled role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="suggerimenti" placeholder="NPA ou nom de la commune, p. ex. 1003 ou Lausanne" aria-describedby="aiuto-luogo" />
+                <ul class="suggerimenti" id="suggerimenti" role="listbox" hidden aria-label="Lieux trouvés"></ul>
                 <!-- Quando i suggerimenti compaiono, sullo schermo si vedono;
                      chi ascolta la pagina non se ne accorgerebbe. Qui sotto
                      glielo diciamo. -->
@@ -164,13 +181,16 @@
             <div class="campo">
               <label for="anno-nascita">2 — Année de naissance</label>
               <input type="number" id="anno-nascita" inputmode="numeric" min="1900" max="2010" step="1" placeholder="p. ex. 1988" style="max-width:12rem" aria-describedby="nota-eta" />
-              <p class="campo-aiuto" id="nota-eta" hidden></p>
+              <!-- Sempre presente (vuoto quando non c'e' niente da dire): un
+                   avviso che compare dentro una regione gia' esistente viene
+                   letto dai lettori di schermo, uno che nasce nascosto no. -->
+              <p class="campo-aiuto" id="nota-eta" aria-live="polite"></p>
             </div>
 
             <!-- 3. la spesa -->
             <div class="campo">
-              <span class="campo-titolo">3 — Combien dépensez-vous par an pour votre santé</span>
-              <div class="tessere" role="group">
+              <span class="campo-titolo" id="titolo-spesa">3 — Combien dépensez-vous par an pour votre santé</span>
+              <div class="tessere" role="group" aria-labelledby="titolo-spesa">
                 <button type="button" class="tessera" data-fascia="rara" aria-pressed="false">
                   <span class="tessera-titolo">Rarement chez le médecin</span>
                   <span class="tessera-nota">Une visite par an, un contrôle. On compte environ 500 CHF.</span>
@@ -202,8 +222,8 @@
                  come una copertura che manca, ed è proprio l'equivoco che
                  portava a scegliere la variante più cara. -->
             <div class="campo">
-              <span class="campo-titolo">4 — Êtes-vous salarié ?</span>
-              <div class="tessere due" role="group">
+              <span class="campo-titolo" id="titolo-infortuni">4 — Êtes-vous salarié ?</span>
+              <div class="tessere due" role="group" aria-labelledby="titolo-infortuni">
                 <button type="button" class="tessera" data-infortuni="0" aria-pressed="true">
                   <span class="tessera-titolo">Oui, salarié</span>
                   <span class="tessera-nota">Au moins huit heures par semaine : votre employeur couvre déjà les accidents, et la prime baisse. Dans les tarifs, c’est la variante « sans accidents ».</span>
@@ -221,8 +241,8 @@
               <summary>Réglages supplémentaires</summary>
               <div class="dettagli-corpo">
                 <div class="campo">
-                  <span class="campo-titolo">Modèles d’assurance</span>
-                  <div class="caselle">
+                  <span class="campo-titolo" id="titolo-modelli">Modèles d’assurance</span>
+                  <div class="caselle" role="group" aria-labelledby="titolo-modelli">
                     <label class="casella"><input type="checkbox" data-tipo="BASE" checked /> <span>Standard</span></label>
                     <label class="casella"><input type="checkbox" data-tipo="HAM" checked /> <span>Médecin de famille</span></label>
                     <label class="casella"><input type="checkbox" data-tipo="HMO" checked /> <span>HMO</span></label>
@@ -233,11 +253,17 @@
               </div>
             </details>
           </div>
+          <!-- Quello che il lettore di schermo dice quando il risultato cambia:
+               una frase sola, scritta da insurek.js. -->
+          <p id="annuncio-risultati" class="solo-voce" role="status" aria-live="polite"></p>
         </div>
       </section>
 
       <!-- ========================================================= risultati -->
-      <section id="sezione-risultati" class="section-rhythm" style="padding-top:0" hidden aria-live="polite">
+      <!-- Non e' una regione «live»: i risultati sono lunghi, e letti per
+           intero a ogni tasto premuto sarebbero un muro di voce. Il riassunto
+           da leggere sta in #annuncio-risultati, qui sopra. -->
+      <section id="sezione-risultati" class="section-rhythm" style="padding-top:0" hidden aria-label="Résultats">
         <div class="container-editorial">
           <hr class="regola" style="margin-bottom:2.5rem" />
           <div id="risultati"></div>
@@ -282,7 +308,8 @@
           <a href="https://www.lucalevi.com/">lucalevi.com</a>
           <a href="https://way.lucalevi.com/">lucalevi&rsquo;s way</a>
           <a href="https://www.priminfo.admin.ch/">Priminfo</a>
-          <a href="https://www.lucalevi.com/privacy/">Confidentialité</a>
+          <a href="https://www.lucalevi.com/privacy/?lang=fr">Confidentialité</a>
+          <a href="https://www.lucalevi.com/accessibilita/?lang=fr">Accessibilité</a>
         </nav>
       </div>
     </footer>

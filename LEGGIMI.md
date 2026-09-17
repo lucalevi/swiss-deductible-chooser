@@ -129,3 +129,15 @@ peggio che non trattarle), i premi UE/AELS, la riduzione cantonale dei premi.
 Dati: Ufficio federale della sanità pubblica (UFSP), dataset
 «Krankenversicherungsprämien» su opendata.swiss, uso libero con indicazione
 della fonte. Codice: GNU GPL-2.0, vedi `LICENSE`.
+
+## Accessibilità (17 settembre 2026)
+
+WCAG 2.2 AA. La casella del NPA è una *combobox* WAI-ARIA 1.2 (frecce, Invio,
+Esc; il fuoco resta nel campo); le tessere scelte hanno bordo e spunta, non
+solo un grigio; i bordi dei campi usano `--control-border` (3,3:1). Chi usa un
+lettore di schermo sente una frase sola quando il risultato cambia
+(`#annuncio-risultati`), gli errori sull'età (`#nota-eta`, `aria-invalid`) e i
+numeri del grafico (`#dati-grafico`). In cima c'è «In parole semplici».
+Informativa e dichiarazione di accessibilità stanno su www.lucalevi.com, e
+`lingue.py` le apre nella lingua della pagina.
+

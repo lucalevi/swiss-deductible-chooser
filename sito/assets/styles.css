@@ -29,6 +29,10 @@
   --ink-muted: 0 0% 62%;
   --accent-surface: 0 0% 93%;
   --ring: 0 0% 20%;
+  /* Bordi dei controlli (campi, tessere): 3,3:1 sul bianco, il minimo che
+     WCAG 1.4.11 chiede perche' un campo si riconosca come campo. --border e
+     --hairline restano per le linee decorative. */
+  --control-border: 0 0% 56%;
   --radius: 2px;
 
   --font-display: "EB Garamond", "EB Garamond Riserva", "EB Garamond Riserva Android", Georgia, "Times New Roman", serif;
@@ -40,6 +44,9 @@
 *, *::before, *::after { box-sizing: border-box; }
 
 html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+/* La testata resta ferma in cima: senza questo spazio, l'elemento raggiunto
+   col tasto Tab puo' finirci sotto (WCAG 2.4.11). */
+html { scroll-padding-top: 5.5rem; scroll-padding-bottom: 1.5rem; }
 
 body {
   margin: 0;
@@ -97,7 +104,7 @@ a { color: inherit; }
 .eyebrow {
   font-family: var(--font-sans);
   text-transform: uppercase;
-  font-size: 0.75rem;
+  font-size: 0.8125rem;
   letter-spacing: 0.22em;
   line-height: 1;
 }
@@ -155,7 +162,7 @@ a { color: inherit; }
 
 .wordmark-link { display: flex; align-items: baseline; gap: 0.5rem; min-height: 44px; text-decoration: none; }
 .wordmark { font-family: var(--font-display); letter-spacing: -0.02em; font-size: 1.25rem; }
-.wordmark-nota { font-size: 0.6875rem; letter-spacing: 0.18em; text-transform: uppercase; color: hsl(var(--muted-foreground)); }
+.wordmark-nota { font-size: 0.8125rem; letter-spacing: 0.18em; text-transform: uppercase; color: hsl(var(--muted-foreground)); }
 @media (max-width: 30rem) { .wordmark-nota { display: none; } }
 
 .header-nav { display: none; gap: 1.5rem; }
@@ -175,7 +182,7 @@ a { color: inherit; }
 .risali {
   display: inline-flex; align-items: center; gap: 0.35rem;
   min-height: 44px; flex-shrink: 0;
-  font-size: 0.75rem; letter-spacing: 0.02em; white-space: nowrap;
+  font-size: 0.8125rem; letter-spacing: 0.02em; white-space: nowrap;
   color: hsl(var(--muted-foreground)); text-decoration: none;
   transition: color 180ms var(--ease-editorial);
 }
@@ -185,7 +192,7 @@ a { color: inherit; }
    lingua: il dominio si accorcia invece di mandare la riga a capo. */
 @media (max-width: 24rem) {
   .header-side { gap: 0.5rem; }
-  .risali { font-size: 0.6875rem; gap: 0.2rem; }
+  .risali { font-size: 0.8125rem; gap: 0.2rem; }
 }
 
 /* ------------------------------------------------------------ lingue */
@@ -197,7 +204,7 @@ a { color: inherit; }
 .lang-switch button,
 .lang-switch a {
   appearance: none; border: 0; background: none; cursor: pointer;
-  font-family: inherit; font-size: 0.75rem; letter-spacing: 0.08em;
+  font-family: inherit; font-size: 0.8125rem; letter-spacing: 0.08em;
   color: hsl(var(--muted-foreground));
   padding: 0.5rem 0.25rem; min-height: 44px;
   transition: color 180ms var(--ease-editorial);
@@ -248,10 +255,11 @@ a { color: inherit; }
 .campo > label,
 .campo > .campo-titolo {
   display: block;
-  font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.16em;
+  font-size: 0.8125rem; text-transform: uppercase; letter-spacing: 0.16em;
   color: hsl(var(--muted-foreground)); margin-bottom: 0.75rem;
 }
-.campo-aiuto { margin-top: 0.625rem; font-size: 0.8125rem; line-height: 1.55; color: hsl(var(--muted-foreground)); }
+.campo-aiuto:empty { margin: 0; }
+.campo-aiuto { margin-top: 0.625rem; font-size: 0.875rem; line-height: 1.55; color: hsl(var(--muted-foreground)); }
 
 input[type="text"], input[type="number"], input[type="search"], select {
   appearance: none; font-family: inherit; font-size: 1rem;
@@ -259,13 +267,14 @@ input[type="text"], input[type="number"], input[type="search"], select {
   padding: 0.75rem 0.875rem; min-height: 48px;
   background: hsl(var(--background));
   color: hsl(var(--foreground));
-  border: 1px solid hsl(var(--border));
-  border-bottom-color: hsl(var(--hairline));
+  border: 1px solid hsl(var(--control-border));
   border-radius: var(--radius);
   transition: border-color 180ms var(--ease-editorial);
 }
-input:hover, select:hover { border-color: hsl(var(--hairline)); }
-input::placeholder { color: hsl(0 0% 68%); }
+input:hover, select:hover { border-color: hsl(var(--foreground)); }
+input[aria-invalid="true"] { border-color: hsl(var(--foreground)); border-width: 2px; }
+/* L'esempio nel campo si deve poter leggere: 4,6:1 */
+input::placeholder { color: hsl(var(--muted-foreground)); opacity: 1; }
 /* La crocetta nativa dei campi di ricerca e' azzurra: qui non ci sono colori,
    e a svuotare il campo c'e' gia' il bottone «cambia». */
 input[type="search"]::-webkit-search-cancel-button,
@@ -295,20 +304,26 @@ select {
 }
 .suggerimenti li { border-top: 1px solid hsl(var(--border)); }
 .suggerimenti li:first-child { border-top: 0; }
-.suggerimenti button {
-  appearance: none; border: 0; background: none; cursor: pointer;
-  font-family: inherit; font-size: 0.9375rem; text-align: left;
-  width: 100%; padding: 0.6875rem 0.875rem;
+.suggerimenti [role="option"] {
+  cursor: pointer;
+  font-size: 0.9375rem;
+  padding: 0.6875rem 0.875rem;
   display: flex; justify-content: space-between; gap: 1rem; align-items: baseline;
 }
-.suggerimenti button:hover, .suggerimenti button:focus-visible { background: hsl(var(--muted)); }
+.suggerimenti [role="option"]:hover { background: hsl(var(--muted)); }
+/* La voce scelta con le frecce: sfondo e una barra a sinistra, che si vede
+   anche senza distinguere i grigi. */
+.suggerimenti [role="option"][aria-selected="true"] {
+  background: hsl(var(--muted));
+  box-shadow: inset 3px 0 0 hsl(var(--foreground));
+}
 .suggerimenti .luogo-npa { font-variant-numeric: tabular-nums; color: hsl(var(--muted-foreground)); font-size: 0.8125rem; }
-.suggerimenti .luogo-regione { color: hsl(var(--muted-foreground)); font-size: 0.75rem; letter-spacing: 0.06em; text-transform: uppercase; }
+.suggerimenti .luogo-regione { color: hsl(var(--muted-foreground)); font-size: 0.8125rem; letter-spacing: 0.06em; text-transform: uppercase; }
 
 .scelto {
   display: inline-flex; align-items: center; gap: 0.75rem;
   padding: 0.625rem 0.875rem;
-  border: 1px solid hsl(var(--border));
+  border: 1px solid hsl(var(--control-border));
   background: hsl(var(--muted));
   border-radius: var(--radius);
   font-size: 0.9375rem;
@@ -316,7 +331,8 @@ select {
 .scelto button {
   appearance: none; border: 0; background: none; cursor: pointer;
   font-family: inherit; font-size: 0.8125rem; color: hsl(var(--muted-foreground));
-  text-decoration: underline; text-underline-offset: 3px; padding: 0.25rem;
+  text-decoration: underline; text-underline-offset: 3px; padding: 0.25rem 0.375rem;
+  min-height: 24px; min-width: 24px;
 }
 .scelto button:hover { color: hsl(var(--foreground)); }
 
@@ -331,17 +347,29 @@ select {
   display: flex; flex-direction: column; gap: 0.375rem;
   padding: 1rem 1.125rem;
   background: hsl(var(--background));
-  border: 1px solid hsl(var(--border));
+  border: 1px solid hsl(var(--control-border));
   border-radius: var(--radius);
+  position: relative;
   transition: border-color 180ms var(--ease-editorial), background 180ms var(--ease-editorial);
 }
-.tessera:hover { border-color: hsl(var(--hairline)); }
+.tessera:hover { border-color: hsl(var(--foreground)); }
+/* La tessera scelta si riconosce da tre cose, non dal solo grigio: bordo nero
+   di 2 px (il secondo pixel e' un'ombra interna, cosi' il testo non si sposta),
+   sfondo, e il segno di spunta in alto a destra. */
 .tessera[aria-pressed="true"] {
   border-color: hsl(var(--foreground));
+  box-shadow: inset 0 0 0 1px hsl(var(--foreground));
   background: hsl(var(--accent-surface));
+  padding-right: 2.5rem;
+}
+.tessera[aria-pressed="true"]::after {
+  content: "\2713";
+  content: "\2713" / "";   /* il segno si vede, ma non si legge: lo stato lo dice aria-pressed */
+  position: absolute; top: 0.75rem; right: 0.875rem;
+  font-size: 1rem; line-height: 1; color: hsl(var(--foreground));
 }
 .tessera-titolo { font-size: 0.9375rem; letter-spacing: -0.005em; }
-.tessera-nota { font-size: 0.8125rem; line-height: 1.5; color: hsl(var(--muted-foreground)); }
+.tessera-nota { font-size: 0.875rem; line-height: 1.5; color: hsl(var(--muted-foreground)); }
 
 /* Le opzioni avanzate, chiuse per default */
 .dettagli { border-top: 1px solid hsl(var(--border)); padding-top: 1.5rem; }
@@ -349,7 +377,7 @@ select {
   cursor: pointer; list-style: none;
   font-size: 0.8125rem; letter-spacing: 0.06em; text-transform: uppercase;
   color: hsl(var(--muted-foreground));
-  display: inline-flex; align-items: center; gap: 0.5rem; min-height: 32px;
+  display: inline-flex; align-items: center; gap: 0.5rem; min-height: 44px;
 }
 .dettagli > summary::-webkit-details-marker { display: none; }
 .dettagli > summary::after { content: "+"; font-size: 1rem; }
@@ -358,14 +386,14 @@ select {
 .dettagli-corpo { padding-top: 1.5rem; display: grid; gap: 1.75rem; }
 
 .caselle { display: flex; flex-wrap: wrap; gap: 0.5rem 1.25rem; }
-.casella { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.9375rem; cursor: pointer; min-height: 36px; }
-.casella input { width: 1rem; height: 1rem; min-height: 0; accent-color: hsl(var(--foreground)); cursor: pointer; }
+.casella { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.9375rem; cursor: pointer; min-height: 44px; }
+.casella input { width: 1.25rem; height: 1.25rem; min-height: 0; accent-color: hsl(var(--foreground)); cursor: pointer; }
 
 /* --------------------------------------------------------------- risposta */
 .risposta { border: 1px solid hsl(var(--foreground)); border-radius: var(--radius); overflow: hidden; }
 .risposta-testa { background: hsl(var(--ink)); color: hsl(var(--ink-foreground)); padding: 1.75rem 1.5rem 1.5rem; }
 @media (min-width: 640px) { .risposta-testa { padding: 2.25rem 2rem 2rem; } }
-.risposta-etichetta { font-size: 0.6875rem; text-transform: uppercase; letter-spacing: 0.2em; color: hsl(var(--ink-muted)); }
+.risposta-etichetta { font-size: 0.8125rem; text-transform: uppercase; letter-spacing: 0.2em; color: hsl(var(--ink-muted)); }
 .risposta-franchigia { margin-top: 1rem; font-family: var(--font-display); font-size: clamp(2rem, 6vw, 3.25rem); line-height: 1; letter-spacing: -0.03em; }
 .risposta-perche { margin-top: 1rem; color: hsl(var(--ink-muted)); font-size: 0.9375rem; line-height: 1.6; max-width: 48ch; }
 
@@ -397,7 +425,7 @@ select {
 table.classifica { width: 100%; border-collapse: collapse; font-size: 0.875rem; min-width: 40rem; }
 table.classifica th {
   text-align: left; font-weight: 400;
-  font-size: 0.6875rem; text-transform: uppercase; letter-spacing: 0.14em;
+  font-size: 0.8125rem; text-transform: uppercase; letter-spacing: 0.14em;
   color: hsl(var(--muted-foreground));
   padding: 0.875rem 1rem; border-bottom: 1px solid hsl(var(--hairline));
   white-space: nowrap; background: hsl(var(--background));
@@ -468,7 +496,7 @@ table.classifica tr[data-vincente="true"] td { background: hsl(var(--accent-surf
 .nome-assicuratore { letter-spacing: -0.005em; }
 .nome-modello { color: hsl(var(--muted-foreground)); font-size: 0.8125rem; }
 .tipo-modello {
-  display: inline-block; font-size: 0.625rem; text-transform: uppercase; letter-spacing: 0.12em;
+  display: inline-block; font-size: 0.8125rem; text-transform: uppercase; letter-spacing: 0.12em;
   color: hsl(var(--muted-foreground)); border: 1px solid hsl(var(--border));
   padding: 0.125rem 0.375rem; border-radius: var(--radius); white-space: nowrap;
 }
@@ -514,7 +542,7 @@ table.classifica tr[data-vincente="true"] td { background: hsl(var(--accent-surf
 @media (min-width: 700px) { .footer-righe { grid-template-columns: 1fr auto; align-items: end; } }
 .footer-nota { font-size: 0.8125rem; line-height: 1.7; color: hsl(var(--muted-foreground)); max-width: 52ch; }
 .footer-link { display: flex; flex-wrap: wrap; gap: 1.25rem; font-size: 0.8125rem; }
-.footer-link a { color: hsl(var(--muted-foreground)); text-decoration: none; }
+.footer-link a { color: hsl(var(--muted-foreground)); text-decoration: none; display: inline-flex; align-items: center; min-height: 24px; }
 .footer-link a:hover { color: hsl(var(--foreground)); text-decoration: underline; text-underline-offset: 3px; }
 
 /* ---------------------------------------------------------- comparsa dolce */
@@ -529,4 +557,23 @@ table.classifica tr[data-vincente="true"] td { background: hsl(var(--accent-surf
 .solo-voce {
   position: absolute; width: 1px; height: 1px;
   margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+
+/* ------------------------------------------------------- in parole semplici */
+.semplice { border-bottom: 1px solid hsl(var(--border)); padding-block: 2.25rem; }
+.semplice-righe { margin-top: 1.25rem; display: grid; gap: 0.75rem; }
+@media (min-width: 900px) { .semplice-righe { grid-template-columns: repeat(3, 1fr); gap: 2rem; } }
+.semplice-righe li { display: flex; gap: 0.75rem; font-size: 1rem; line-height: 1.6; }
+.semplice-righe li::before { content: "\2014"; content: "\2014" / ""; color: hsl(var(--muted-foreground)); flex-shrink: 0; }
+
+/* ------------------------------------------------------------ alto contrasto */
+/* Con i colori forzati (Windows, «Contrasto elevato») sfondi e ombre spariscono:
+   quello che distingue uno stato deve passare da bordi e contorni, che il
+   sistema ridisegna con i suoi colori. */
+@media (forced-colors: active) {
+  .tessera[aria-pressed="true"] { outline: 3px solid Highlight; outline-offset: -3px; }
+  .tessera[aria-pressed="true"]::after { color: Highlight; }
+  .suggerimenti [role="option"][aria-selected="true"] { outline: 2px solid Highlight; outline-offset: -2px; }
+  table.classifica tr[data-vincente="true"] td { font-weight: 600; }
+  .skip-link:focus, .btn { border: 1px solid ButtonText; }
 }

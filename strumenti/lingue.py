@@ -270,7 +270,15 @@ def sposta_collegamenti(html, codice):
         if pezzo.startswith("<a") and "data-lingua=" in pezzo:
             continue
         pezzi[i] = re.sub(r'(href=")(/[^"#]*(?:#[^"]*)?)(")', riscrivi, pezzo)
-    return "".join(pezzi)
+    html = "".join(pezzi)
+    # Informativa e dichiarazione di accessibilita' stanno su www.lucalevi.com,
+    # una pagina a quattro lingue ciascuna: si apre nella lingua di chi legge.
+    for pagina in ("privacy", "accessibilita"):
+        html = html.replace(
+            f'href="https://www.lucalevi.com/{pagina}/"',
+            f'href="https://www.lucalevi.com/{pagina}/?lang={codice}"',
+        )
+    return html
 
 
 def interruttore(html, pagina, codice):

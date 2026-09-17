@@ -60,7 +60,12 @@
       caricamento: "Carico i premi della tua zona…",
       erroreDati: "Non riesco a caricare i dati. Ricarica la pagina.",
       regione: "regione",
-      giovaneAdulto: "Fino all’anno in cui compi 25 anni paghi il premio da giovane adulto, che è più basso: è quello che vedi qui."
+      giovaneAdulto: "Fino all’anno in cui compi 25 anni paghi il premio da giovane adulto, che è più basso: è quello che vedi qui.",
+      annuncio: "Risultato aggiornato: conviene la franchigia da {f} CHF. La combinazione più economica è {nome}, {modello}: {totale} all’anno.",
+      luoghiTrovati: ["Nessun luogo trovato", "Un luogo trovato: frecce su e giù per sceglierlo, Invio per confermare", "{n} luoghi trovati: frecce su e giù per sceglierne uno, Invio per confermare"],
+      cambia: "cambia", cambiaLuogo: "Cambia il luogo, ora {luogo}", luogoScelto: "Scelto: {luogo}",
+      graficoDati: "Costo totale dell’anno con {s} di spese, franchigia per franchigia: {elenco}.",
+      grafico: "Grafico, si può scorrere di lato"
     },
     de: {
       tipo: { BASE: "Standard", HAM: "Hausarzt", HMO: "HMO", DIV: "Telmed und andere" },
@@ -90,7 +95,12 @@
       caricamento: "Ich lade die Prämien Ihrer Region…",
       erroreDati: "Die Daten lassen sich nicht laden. Bitte die Seite neu laden.",
       regione: "Region",
-      giovaneAdulto: "Bis zum Jahr, in dem Sie 25 werden, zahlen Sie die tiefere Prämie für junge Erwachsene: die sehen Sie hier."
+      giovaneAdulto: "Bis zum Jahr, in dem Sie 25 werden, zahlen Sie die tiefere Prämie für junge Erwachsene: die sehen Sie hier.",
+      annuncio: "Ergebnis aktualisiert: Die Franchise von {f} CHF lohnt sich. Die günstigste Kombination ist {nome}, {modello}: {totale} pro Jahr.",
+      luoghiTrovati: ["Kein Ort gefunden", "Ein Ort gefunden: mit den Pfeiltasten auswählen, mit Enter bestätigen", "{n} Orte gefunden: mit den Pfeiltasten einen auswählen, mit Enter bestätigen"],
+      cambia: "ändern", cambiaLuogo: "Ort ändern, zurzeit {luogo}", luogoScelto: "Gewählt: {luogo}",
+      graficoDati: "Gesamtkosten des Jahres bei {s} Gesundheitskosten, Franchise für Franchise: {elenco}.",
+      grafico: "Grafik, seitlich scrollbar"
     },
     /* Tipografia francese: prima di ; : ? ! e dentro le virgolette c’e' uno
        spazio unificatore (U+00A0), non uno normale. Con quello normale il
@@ -124,7 +134,12 @@
       caricamento: "Je charge les primes de votre région…",
       erroreDati: "Impossible de charger les données. Rechargez la page.",
       regione: "région",
-      giovaneAdulto: "Jusqu’à l’année de vos 25 ans vous payez la prime de jeune adulte, plus basse : c’est celle affichée ici."
+      giovaneAdulto: "Jusqu’à l’année de vos 25 ans vous payez la prime de jeune adulte, plus basse : c’est celle affichée ici.",
+      annuncio: "Résultat mis à jour : la franchise de {f} CHF est la bonne. La combinaison la moins chère est {nome}, {modello} : {totale} par an.",
+      luoghiTrovati: ["Aucun lieu trouvé", "Un lieu trouvé : flèches haut et bas pour le choisir, Entrée pour confirmer", "{n} lieux trouvés : flèches haut et bas pour en choisir un, Entrée pour confirmer"],
+      cambia: "changer", cambiaLuogo: "Changer de lieu, actuellement {luogo}", luogoScelto: "Choisi : {luogo}",
+      graficoDati: "Coût total de l’année avec {s} de frais, franchise par franchise : {elenco}.",
+      grafico: "Graphique, défilement horizontal possible"
     },
     en: {
       tipo: { BASE: "Standard", HAM: "Family doctor", HMO: "HMO", DIV: "Telemedicine and others" },
@@ -154,7 +169,12 @@
       caricamento: "Loading the premiums for your area…",
       erroreDati: "The data will not load. Please reload the page.",
       regione: "region",
-      giovaneAdulto: "Until the year you turn 25 you pay the lower young-adult premium: that is what you see here."
+      giovaneAdulto: "Until the year you turn 25 you pay the lower young-adult premium: that is what you see here.",
+      annuncio: "Result updated: the CHF {f} deductible wins. The cheapest combination is {nome}, {modello}: {totale} a year.",
+      luoghiTrovati: ["No place found", "One place found: use the up and down arrows to pick it, Enter to confirm", "{n} places found: use the up and down arrows to pick one, Enter to confirm"],
+      cambia: "change", cambiaLuogo: "Change the place, now {luogo}", luogoScelto: "Chosen: {luogo}",
+      graficoDati: "Total cost for the year with {s} of health costs, deductible by deductible: {elenco}.",
+      grafico: "Chart, scrolls sideways"
     }
   };
 
@@ -269,46 +289,76 @@
   function annunciaLuoghi(n) {
     var p = $("conta-luoghi");
     if (!p) return;
-    var frasi = {
-      it: n === 0 ? "Nessun luogo trovato" : n === 1 ? "Un luogo trovato" : n + " luoghi trovati",
-      de: n === 0 ? "Kein Ort gefunden" : n === 1 ? "Ein Ort gefunden" : n + " Orte gefunden",
-      fr: n === 0 ? "Aucun lieu trouv\u00e9" : n === 1 ? "Un lieu trouv\u00e9" : n + " lieux trouv\u00e9s",
-      en: n === 0 ? "No place found" : n === 1 ? "One place found" : n + " places found",
-    };
-    p.textContent = frasi[window.Lingua.get()] || frasi.it;
+    var f = t().luoghiTrovati;
+    p.textContent = riempi(f[Math.min(n, 2)], { n: n });
+  }
+
+  /* La casella del NPA segue lo schema «combobox» di WAI-ARIA 1.2: il fuoco
+     resta nel campo, e aria-activedescendant dice quale voce dell'elenco e'
+     evidenziata. Si scrive e si sceglie senza lasciare il campo: frecce
+     su/giu' per scorrere, Invio per scegliere, Esc per chiudere. */
+  var suggeriti = [];
+  var evidenziata = -1;
+
+  function chiudiSuggerimenti() {
+    var campo = $("cerca-npa");
+    $("suggerimenti").hidden = true;
+    campo.setAttribute("aria-expanded", "false");
+    campo.removeAttribute("aria-activedescendant");
+    evidenziata = -1;
+  }
+
+  function evidenzia(i) {
+    var opzioni = $("suggerimenti").querySelectorAll('[role="option"]');
+    if (!opzioni.length) return;
+    evidenziata = (i + opzioni.length) % opzioni.length;
+    Array.prototype.forEach.call(opzioni, function (o, k) {
+      o.setAttribute("aria-selected", k === evidenziata ? "true" : "false");
+    });
+    var scelta = opzioni[evidenziata];
+    $("cerca-npa").setAttribute("aria-activedescendant", scelta.id);
+    if (scelta.scrollIntoView) scelta.scrollIntoView({ block: "nearest" });
   }
 
   function disegnaSuggerimenti(voci) {
     var lista = $("suggerimenti");
+    var campo = $("cerca-npa");
+    suggeriti = voci;
     annunciaLuoghi(voci.length);
-    if (!voci.length) { lista.hidden = true; lista.innerHTML = ""; return; }
-    var html = voci.map(function (v, i) {
+    if (!voci.length) { chiudiSuggerimenti(); lista.innerHTML = ""; return; }
+    lista.innerHTML = voci.map(function (v, i) {
       var zona = v.cantone + (v.regione !== "0" ? " · " + t().regione + " " + v.regione : "");
-      return '<li><button type="button" data-voce="' + i + '">' +
+      return '<li role="option" id="luogo-' + i + '" aria-selected="false" data-voce="' + i + '">' +
              '<span><span class="luogo-npa">' + testo(v.npa) + '</span> ' + testo(v.localita) + '</span>' +
-             '<span class="luogo-regione">' + testo(zona) + "</span></button></li>";
+             '<span class="luogo-regione">' + testo(zona) + "</span></li>";
     }).join("");
-    lista.innerHTML = html;
     lista.hidden = false;
-    Array.prototype.forEach.call(lista.querySelectorAll("button"), function (b) {
-      b.addEventListener("click", function () {
-        scegliLuogo(voci[parseInt(b.getAttribute("data-voce"), 10)]);
-      });
-    });
+    evidenziata = -1;
+    campo.setAttribute("aria-expanded", "true");
+    campo.removeAttribute("aria-activedescendant");
   }
 
-  function scegliLuogo(voce) {
+  function scegliLuogo(voce, daUtente) {
     stato.luogo = voce;
-    $("suggerimenti").hidden = true;
-    if ($("conta-luoghi")) $("conta-luoghi").textContent = "";
+    chiudiSuggerimenti();
+    suggeriti = [];
     $("cerca-npa").value = "";
     $("cerca-guscio").hidden = true;
     var zona = voce.cantone + (voce.regione !== "0" ? " · " + t().regione + " " + voce.regione : "");
+    var nomeLuogo = voce.npa + " " + voce.localita + ", " + zona;
     $("luogo-scelto").innerHTML =
       "<span>" + testo(voce.npa + " " + voce.localita) + " <span class=\"luogo-regione\">" + testo(zona) + "</span></span>" +
-      '<button type="button" id="cambia-luogo">' +
-      testo({ it: "cambia", de: "ändern", fr: "changer", en: "change" }[window.Lingua.get()]) + "</button>";
+      '<button type="button" id="cambia-luogo" aria-label="' + testo(riempi(t().cambiaLuogo, { luogo: nomeLuogo })) + '">' +
+      testo(t().cambia) + "</button>";
     $("luogo-scelto").hidden = false;
+    // Il campo di ricerca sparisce: il fuoco non puo' restare li' (finirebbe in
+    // cima alla pagina). Va sul bottone «cambia», che dice cosa e' stato scelto.
+    if (daUtente) {
+      $("cambia-luogo").focus();
+      $("conta-luoghi").textContent = riempi(t().luogoScelto, { luogo: nomeLuogo });
+    } else {
+      $("conta-luoghi").textContent = "";
+    }
     $("cambia-luogo").addEventListener("click", function () {
       stato.luogo = null;
       $("luogo-scelto").hidden = true;
@@ -328,7 +378,7 @@
       stato.offerte = dati.o;
       stato.areaCaricata = area;
       aggiorna();
-    }).catch(function () { mostraAvviso(t().erroreDati); });
+    }).catch(function () { mostraAvviso(t().erroreDati); annuncia(t().erroreDati); });
   }
 
   /* ------------------------------------------------------------- risultati */
@@ -345,17 +395,28 @@
     var anno = stato.meta ? stato.meta.anno : new Date().getFullYear();
     stato.classe = stato.annoNascita ? Calcolo.classeEta(stato.annoNascita, anno) : null;
 
+    // La nota resta sempre nella pagina (e' una regione «live»): cambia solo
+    // il testo, e solo quando cambia davvero, cosi' non si ripete. Un anno
+    // impossibile si segnala a quattro cifre scritte, non a meta'.
     var nota = $("nota-eta");
-    nota.hidden = true;
+    var campoAnno = $("anno-nascita");
+    var messaggio = "", errore = false;
     if (stato.annoNascita) {
-      if (stato.annoNascita < 1900 || stato.annoNascita > anno) { nota.textContent = t().annoStrano; nota.hidden = false; }
-      else if (stato.classe === "K") { nota.textContent = t().minorenne; nota.hidden = false; }
-      else if (stato.classe === "J") { nota.textContent = t().giovaneAdulto; nota.hidden = false; }
+      var fuori = stato.annoNascita < 1900 || stato.annoNascita > anno;
+      if (fuori) {
+        if (String(campoAnno.value).length >= 4) { messaggio = t().annoStrano; errore = true; }
+      }
+      else if (stato.classe === "K") { messaggio = t().minorenne; errore = true; }
+      else if (stato.classe === "J") { messaggio = t().giovaneAdulto; }
     }
+    if (nota.textContent !== messaggio) nota.textContent = messaggio;
+    if (errore) campoAnno.setAttribute("aria-invalid", "true");
+    else campoAnno.removeAttribute("aria-invalid");
 
     if (!pronti()) {
       $("risultati").innerHTML = "";
       $("sezione-risultati").hidden = true;
+      annuncia("");
       return;
     }
 
@@ -367,9 +428,27 @@
     });
 
     $("sezione-risultati").hidden = false;
-    if (!esiti.length) { mostraAvviso(t().nessunRisultato); return; }
+    if (!esiti.length) { mostraAvviso(t().nessunRisultato); annuncia(t().nessunRisultato); return; }
 
     disegnaRisposta(esiti);
+    var v = esiti[0];
+    annuncia(riempi(t().annuncio, {
+      f: formatoCHF.format(v.franchigia),
+      nome: assicuratore(v.assicuratore).n,
+      modello: modello(v.assicuratore, v.tariffa).nome,
+      totale: chf(v.totale)
+    }));
+  }
+
+  /* Una frase sola per il lettore di schermo, e solo quando chi scrive si
+     ferma: con un annuncio a ogni tasto l'anno «1985» ne produrrebbe quattro. */
+  var attesaAnnuncio = null;
+  function annuncia(frase) {
+    clearTimeout(attesaAnnuncio);
+    attesaAnnuncio = setTimeout(function () {
+      var r = $("annuncio-risultati");
+      if (r && r.textContent !== frase) r.textContent = frase;
+    }, frase ? 900 : 0);
   }
 
   function disegnaRisposta(esiti) {
@@ -479,11 +558,12 @@
     }).join("");
 
     return '<div class="reveal visibile" style="margin-top:2.5rem">' +
-      '<h3 style="margin-bottom:1rem">' + testo(l.classificaTitolo) + "</h3>" +
-      '<div class="tabella-guscio"><table class="classifica" role="table"><thead role="rowgroup"><tr role="row">' +
-        '<th role="columnheader">' + testo(l.colPosizione) + '</th><th role="columnheader">' + testo(l.colCassa) + '</th><th role="columnheader">' + testo(l.colModello) + "</th>" +
-        '<th class="col-num" role="columnheader">' + testo(l.colFranchigia) + '</th><th class="col-num" role="columnheader">' + testo(l.colPremio) + "</th>" +
-        '<th class="col-num" role="columnheader">' + testo(l.colTasca) + '</th><th class="col-num" role="columnheader">' + testo(l.colTotale) + "</th>" +
+      '<h3 id="titolo-classifica" style="margin-bottom:1rem">' + testo(l.classificaTitolo) + "</h3>" +
+      '<div class="tabella-guscio" tabindex="0" role="region" aria-labelledby="titolo-classifica">' +
+      '<table class="classifica" role="table" aria-labelledby="titolo-classifica"><thead role="rowgroup"><tr role="row">' +
+        '<th scope="col" role="columnheader">' + testo(l.colPosizione) + '</th><th role="columnheader">' + testo(l.colCassa) + '</th><th role="columnheader">' + testo(l.colModello) + "</th>" +
+        '<th scope="col" class="col-num" role="columnheader">' + testo(l.colFranchigia) + '</th><th class="col-num" role="columnheader">' + testo(l.colPremio) + "</th>" +
+        '<th scope="col" class="col-num" role="columnheader">' + testo(l.colTasca) + '</th><th class="col-num" role="columnheader">' + testo(l.colTotale) + "</th>" +
       '</tr></thead><tbody role="rowgroup">' + righe + "</tbody></table></div>" +
       '<p class="legenda-grafico">' + testo(l.classificaNota) + "</p></div>";
   }
@@ -569,14 +649,27 @@
     var ass = assicuratore(vincente.assicuratore);
     var mod = modello(vincente.assicuratore, vincente.tariffa);
 
+    // Quello che il grafico mostra, in parole: il costo dell'anno di ogni
+    // franchigia alla spesa indicata. Lo legge chi non vede le curve.
+    var elenco = [];
+    Calcolo.FRANCHIGIE.forEach(function (f, g) {
+      var premio = vincente.premi[g];
+      if (premio === null || premio === undefined) return;
+      elenco.push(formatoCHF.format(f) + " → " + chf(Calcolo.costoAnnuo(premio, f, stato.spesa)));
+    });
+    var dati = riempi(l.graficoDati, { s: chf(stato.spesa), elenco: elenco.join("; ") });
+
     return '<div class="reveal visibile" style="margin-top:2.5rem">' +
-      '<h3 style="margin-bottom:1rem">' + testo(l.graficoTitolo) + "</h3>" +
+      '<h3 id="titolo-grafico" style="margin-bottom:1rem">' + testo(l.graficoTitolo) + "</h3>" +
       '<div class="grafico-guscio">' +
-      '<div class="grafico-scorrevole"><svg class="grafico" viewBox="0 0 ' + larghezza + " " + altezza +
-        '" role="img" aria-label="' + testo(l.graficoTitolo) + '">' + pezzi.join("") + "</svg></div>" +
-      '<p class="legenda-grafico">' + testo(riempi(l.graficoNota, {
+      '<div class="grafico-scorrevole" tabindex="0" role="region" aria-label="' + testo(l.grafico) + '">' +
+      '<svg class="grafico" viewBox="0 0 ' + larghezza + " " + altezza +
+        '" role="img" aria-labelledby="titolo-grafico" aria-describedby="legenda-grafico dati-grafico">' +
+        pezzi.join("") + "</svg></div>" +
+      '<p class="legenda-grafico" id="legenda-grafico">' + testo(riempi(l.graficoNota, {
         nome: ass.n, modello: mod.nome, inf: vincente.infortuni ? l.conInfortuni : l.senzaInfortuni
-      })) + "</p></div></div>";
+      })) + "</p>" +
+      '<p class="solo-voce" id="dati-grafico">' + testo(dati) + "</p></div></div>";
   }
 
   /* ------------------------------------------------------------- controlli */
@@ -585,8 +678,39 @@
     var campo = $("cerca-npa");
     campo.addEventListener("input", function () { disegnaSuggerimenti(cerca(campo.value)); });
     campo.addEventListener("focus", function () { if (campo.value) disegnaSuggerimenti(cerca(campo.value)); });
+    campo.addEventListener("keydown", function (e) {
+      var aperta = !$("suggerimenti").hidden;
+      if (e.key === "ArrowDown" || e.key === "ArrowUp") {
+        e.preventDefault();
+        if (!aperta) { if (campo.value) disegnaSuggerimenti(cerca(campo.value)); if (!suggeriti.length) return; }
+        evidenzia(evidenziata < 0 ? (e.key === "ArrowDown" ? 0 : -1) : evidenziata + (e.key === "ArrowDown" ? 1 : -1));
+      } else if (e.key === "Enter") {
+        if (!aperta || !suggeriti.length) return;
+        e.preventDefault();
+        // con una voce sola, Invio la sceglie anche senza frecce
+        var i = evidenziata >= 0 ? evidenziata : (suggeriti.length === 1 ? 0 : -1);
+        if (i >= 0) scegliLuogo(suggeriti[i], true);
+      } else if (e.key === "Escape") {
+        if (aperta) { e.preventDefault(); chiudiSuggerimenti(); }
+        else if (campo.value) { e.preventDefault(); campo.value = ""; }
+      } else if (e.key === "Tab") {
+        chiudiSuggerimenti();
+      }
+    });
+    campo.addEventListener("blur", function () {
+      // dopo il clic su una voce, che arriva dopo il blur
+      setTimeout(function () { if (document.activeElement !== campo) chiudiSuggerimenti(); }, 150);
+    });
+    $("suggerimenti").addEventListener("mousedown", function (e) {
+      e.preventDefault();   // il campo non perde il fuoco mentre si sceglie col mouse
+    });
+    $("suggerimenti").addEventListener("click", function (e) {
+      var opzione = e.target.closest('[role="option"]');
+      if (!opzione) return;
+      scegliLuogo(suggeriti[parseInt(opzione.getAttribute("data-voce"), 10)], true);
+    });
     document.addEventListener("click", function (e) {
-      if (!$("cerca-guscio").contains(e.target)) $("suggerimenti").hidden = true;
+      if (!$("cerca-guscio").contains(e.target)) chiudiSuggerimenti();
     });
 
     $("anno-nascita").addEventListener("input", function () {
