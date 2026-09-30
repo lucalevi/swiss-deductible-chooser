@@ -141,3 +141,13 @@ numeri del grafico (`#dati-grafico`). In cima c'è «In parole semplici».
 Informativa e dichiarazione di accessibilità stanno su www.lucalevi.com, e
 `lingue.py` le apre nella lingua della pagina.
 
+
+## Aggiornamento ai premi 2027 (30 settembre 2026)
+
+L'UFSP ha cambiato tre cose, e il workflow di GitHub falliva per la prima:
+
+- Il registro degli assicuratori si chiama ora `zugelassene-krankenversicherer-AAAA-MM.xlsx` (2026-10) invece di `...-AAAA-01-01.xlsx`; il vecchio indirizzo dà 404. `etl/scarica.py` legge il nome dalla pagina dei download di Priminfo.
+- I codici del CSV usano `_` e livelli numerati (`AKA_03_ERW`, `PR_REG_0`, `MIT_UNF`, `FRA_01_E_0300`), e `Tarife.csv` è separato da virgole. Le regole di lettura stanno in `etl/costruisci.py` e `etl/verifica.py` le importa.
+- I tipi di modello sono `BASE`, `PRAXIS` (medico di famiglia e HMO), `TEL_DIG` (telemedicina e digitale), `FLEX` (altri flessibili) al posto di BASE/HAM/HMO/DIV: le caselle del form e i testi in `insurek.js` seguono la classificazione federale.
+
+Il workflow ha ora un lavoro «controlla» che si ferma se il sito ha già i premi dell'anno che viene; «Run workflow» lo salta.

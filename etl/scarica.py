@@ -19,6 +19,7 @@ from __future__ import annotations
 
 import base64
 import datetime as dt
+import re
 import sys
 import urllib.parse
 import urllib.request
@@ -46,14 +47,34 @@ FONTI = [
     ("praemienregionen.xlsx", PRIMINFO + "praemienregionen.xlsx", True),
 ]
 
-# Il registro degli assicuratori ha la data nel nome del file. L'anno di premio
-# e' quello dopo quello in corso da settembre in poi, ma a gennaio e' l'anno in
-# corso: si provano tutti e due invece di indovinare.
+# Il registro degli assicuratori ha la data nel nome del file, e l'UFSP ne ha
+# cambiato la forma: fino al 2026 era "zugelassene-krankenversicherer-AAAA-01-01.xlsx",
+# da settembre 2026 e' "zugelassene-krankenversicherer-AAAA-MM.xlsx" (2026-10) e
+# il vecchio indirizzo da' 404. Invece di indovinare il nome, lo si legge dalla
+# pagina dei download di Priminfo, che lo elenca sempre; l'elenco di nomi
+# ipotizzati serve solo se la pagina non risponde o cambia struttura.
+PAGINA_DOWNLOAD = "https://www.priminfo.admin.ch/de/downloads/aktuell"
+NOME_REGISTRO = re.compile(r"zugelassene-krankenversicherer-\d{4}-\d{2}(?:-\d{2})?\.xlsx")
+
+
 def fonti_registro() -> list[tuple[str, str]]:
+    nomi: list[str] = []
+    try:
+        richiesta = urllib.request.Request(
+            PAGINA_DOWNLOAD, headers={"User-Agent": "insurek/1.0 (+https://insurek.lucalevi.com)"})
+        with urllib.request.urlopen(richiesta, timeout=60) as risposta:
+            html = risposta.read().decode("utf-8", "replace")
+        nomi += sorted(set(NOME_REGISTRO.findall(html)), reverse=True)
+    except Exception as errore:
+        print(f"  pagina dei download non leggibile ({errore}): provo i nomi noti")
+
+    # ripiego: le due forme note del nome, per l'anno in arrivo e per quello in corso
     oggi = dt.date.today()
-    anni = [oggi.year + 1, oggi.year] if oggi.month >= 9 else [oggi.year, oggi.year + 1]
-    return [(f"zugelassene-krankenversicherer-{a}-01-01.xlsx",
-             PRIMINFO + f"zugelassene-krankenversicherer-{a}-01-01.xlsx") for a in anni]
+    for a in (oggi.year + 1, oggi.year):
+        for coda in ("10", "09", "01-01"):
+            nomi.append(f"zugelassene-krankenversicherer-{a}-{coda}.xlsx")
+    visti: set[str] = set()
+    return [(n, PRIMINFO + n) for n in nomi if not (n in visti or visti.add(n))]
 
 
 def scarica(nome: str, url: str) -> int:

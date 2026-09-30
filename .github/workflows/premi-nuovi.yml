@@ -1,7 +1,8 @@
 # Insurek — l'aggiornamento annuale dei premi.
 #
 # L'UFSP approva e pubblica i premi dell'anno dopo verso il 22-23 settembre.
-# Questo lavoro gira ogni giorno in settembre e ottobre: scarica i file,
+# Questo lavoro gira ogni giorno in settembre e ottobre (ma si ferma subito se il
+# sito ha gia' i premi dell'anno che viene, vedi il lavoro «controlla»): scarica i file,
 # ricostruisce i JSON, li verifica contro il CSV federale e, SE qualcosa e'
 # cambiato, apre una pull request. Se i dati sono ancora quelli dell'anno prima
 # non succede niente: etl/ignora_data.py scarta la sola data di generazione in
@@ -25,7 +26,34 @@ permissions:
   pull-requests: write
 
 jobs:
+  # Se il sito ha gia' i premi dell'anno che viene (meta.json dice 2027 e
+  # siamo nel 2026) non c'e' niente da aggiornare: i giri giornalieri di
+  # settembre e ottobre si fermano qui, in pochi secondi. Ripartono da soli
+  # a settembre dell'anno dopo, quando l'anno di premio nel sito non e' piu'
+  # "quello che viene". Il tasto «Run workflow» salta il controllo: serve se
+  # l'UFSP corregge i dati dopo la pubblicazione.
+  controlla:
+    runs-on: ubuntu-latest
+    outputs:
+      salta: ${{ steps.anno.outputs.salta }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Il sito ha gia' i premi dell'anno che viene?
+        id: anno
+        run: |
+          anno=$(python3 -c 'import json;print(json.load(open("sito/dati/meta.json"))["anno"])')
+          oggi=$(date -u +%Y)
+          if [ "${{ github.event_name }}" != "workflow_dispatch" ] && [ "$anno" -gt "$oggi" ]; then
+            echo "salta=true" >> "$GITHUB_OUTPUT"
+            echo "Il sito ha gia' i premi $anno (siamo nel $oggi): niente da fare."
+          else
+            echo "salta=false" >> "$GITHUB_OUTPUT"
+            echo "Premi nel sito: $anno, anno in corso: $oggi: si controlla l'UFSP."
+          fi
+
   aggiorna:
+    needs: controlla
+    if: needs.controlla.outputs.salta != 'true'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -53,14 +81,21 @@ jobs:
         id: anno
         run: |
           anno=$(python3 -c 'import json;print(json.load(open("sito/dati/meta.json"))["anno"])')
-          registro=$(ls dati-fonte/zugelassene-krankenversicherer-*.xlsx | sed -E 's/.*krankenversicherer-([0-9]{4})-.*/\1/' | head -1)
+          # il registro si chiama zugelassene-krankenversicherer-AAAA-MM.xlsx (dal
+          # 2026: 2026-10) o, prima, ...-AAAA-01-01.xlsx: si leggono anno e mese
+          file=$(ls dati-fonte/zugelassene-krankenversicherer-*.xlsx | tail -1)
+          data=$(echo "$file" | sed -E 's/.*krankenversicherer-([0-9]{4}-[0-9]{2}).*/\1/')
+          registro=${data%-*}
+          mese=$((10#${data#*-}))
           echo "anno=$anno" >> "$GITHUB_OUTPUT"
-          echo "registro=$registro" >> "$GITHUB_OUTPUT"
-          if [ "$anno" = "$registro" ]; then
+          echo "registro=$data" >> "$GITHUB_OUTPUT"
+          # va bene se e' dell'anno di premio, oppure dell'autunno prima
+          # (il registro d'ottobre 2026 vale per i premi 2027)
+          if [ "$registro" = "$anno" ] || { [ "$registro" = "$((anno - 1))" ] && [ "$mese" -ge 9 ]; }; then
             echo "registro_ok=true" >> "$GITHUB_OUTPUT"
           else
             echo "registro_ok=false" >> "$GITHUB_OUTPUT"
-            echo "::warning::Premi $anno ma registro assicuratori $registro: la pull request sara' una bozza."
+            echo "::warning::Premi $anno ma registro assicuratori $data: la pull request sara' una bozza."
           fi
 
       - name: Apri la pull request, se qualcosa e' cambiato

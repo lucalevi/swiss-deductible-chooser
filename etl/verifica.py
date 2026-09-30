@@ -30,8 +30,10 @@ FONTE = RADICE / "dati-fonte"
 USCITA = RADICE / "sito" / "dati"
 
 FRANCHIGIE = [300, 500, 1000, 1500, 2000, 2500]
-INDICE = {f"FRA-{f}": i for i, f in enumerate(FRANCHIGIE)}
-CLASSI = {"AKL-ERW": "E", "AKL-JUG": "J"}
+# Le regole di lettura sono quelle di costruisci.py, importate e non copiate:
+# se l'UFSP cambia ancora i codici, si rompono tutte e due insieme.
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from costruisci import CLASSI_ETA as CLASSI, indice_franchigia, regione_da_codice  # noqa: E402
 
 
 def main() -> None:
@@ -44,12 +46,12 @@ def main() -> None:
     with (FONTE / "Prämien_CH.csv").open(encoding="utf-8-sig", newline="") as f:
         for r in csv.DictReader(f):
             classe = CLASSI.get(r["Altersklasse"])
-            indice = INDICE.get(r["Franchise"])
+            indice = indice_franchigia(r["Franchise"])
             if classe is None or indice is None or r["Kanton"] not in cantoni:
                 continue
-            chiave = (r["Kanton"], r["Region"].replace("PR-REG CH", ""),
+            chiave = (r["Kanton"], regione_da_codice(r["Region"]),
                       int(r["Versicherer"]), r["Tarif"], classe,
-                      1 if r["Unfalleinschluss"] == "MIT-UNF" else 0)
+                      1 if r["Unfalleinschluss"] == "MIT_UNF" else 0)
             atteso.setdefault(chiave, [None] * 6)[indice] = round(float(r["Prämie"]), 2)
 
     letto: dict[tuple, list] = {}

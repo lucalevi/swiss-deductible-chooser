@@ -55,15 +55,40 @@ USCITA = RADICE / "sito" / "dati"
 # I minorenni (franchigie 0-600, tetto di partecipazione 350, sconti famiglia)
 # sono fuori dalla prima versione: vedi LEGGIMI.md.
 FRANCHIGIE = [300, 500, 1000, 1500, 2000, 2500]
-CHIAVI_FRANCHIGIA = {f"FRA-{f}": i for i, f in enumerate(FRANCHIGIE)}
 
-# AKL-ERW = adulti dai 26 anni, AKL-JUG = giovani adulti 19-25.
+# Formato dei codici. Fino ai premi 2026 l'UFSP usava i trattini ("FRA-300",
+# "AKL-ERW", "PR-REG CH0", "MIT-UNF", "TAR-HAM"); dai premi 2027 usa i trattini
+# bassi e numera i livelli ("FRA_01_E_0300", "AKA_03_ERW", "PR_REG_0", "MIT_UNF").
+# Le funzioni qui sotto leggono la forma nuova; verifica.py le importa, cosi' la
+# sorgente e il prodotto si leggono con la stessa regola e un cambio di formato
+# rompe l'ETL invece di produrre dati storti.
+#
+# AKA_03_ERW = adulti dai 26 anni, AKA_02_JUG = giovani adulti 19-25.
 # Stesse franchigie, stesso tetto di partecipazione (700 CHF): il calcolo e'
-# identico, cambia solo il prezzo. AKL-KIN resta fuori.
-CLASSI_ETA = {"AKL-ERW": "E", "AKL-JUG": "J"}
+# identico, cambia solo il prezzo. AKA_01_KIN (minorenni) resta fuori.
+CLASSI_ETA = {"AKA_03_ERW": "E", "AKA_02_JUG": "J"}
 
-# I quattro tipi di modello, come li chiama l'UFSP.
-TIPI_MODELLO = ["BASE", "HAM", "HMO", "DIV"]
+
+def indice_franchigia(codice: str) -> int | None:
+    """'FRA_03_E_1000' -> posizione di 1000 tra le sei franchigie da adulti.
+    Le franchigie dei minorenni ('FRA_03_K_0200') non sono tra le sei."""
+    m = re.fullmatch(r"FRA_\d\d_([EJ])_(\d{4})", codice)
+    if not m:
+        return None
+    importo = int(m.group(2))
+    return FRANCHIGIE.index(importo) if importo in FRANCHIGIE else None
+
+
+def regione_da_codice(codice: str) -> str:
+    """'PR_REG_2' -> '2'."""
+    return codice.replace("PR_REG_", "")
+
+
+# I quattro tipi di modello, come li chiama l'UFSP dal 2027: BASE (standard),
+# PRAXIS (medico di famiglia, HMO e altri modelli con studio di riferimento),
+# TEL_DIG (telemedicina e digitale), FLEX (altri modelli flessibili). Fino al
+# 2026 erano BASE, HAM, HMO, DIV.
+TIPI_MODELLO = ["BASE", "PRAXIS", "TEL_DIG", "FLEX"]
 
 # Nomi commerciali. Il registro federale contiene la ragione sociale completa
 # ("Genossenschaft KRANKENKASSE SLKK"), che in una tabella di confronto e'
@@ -206,14 +231,18 @@ def leggi_assicuratori() -> dict[int, dict]:
 def leggi_modelli() -> dict[str, dict]:
     """Tarife.csv: nome commerciale del modello in DE/FR/IT, per assicuratore.
 
-    Il file e' separato da punto e virgola (il CSV dei premi da virgole) e il
-    numero dell'assicuratore e' riempito di zeri: '0008' contro '8'."""
+    Fino al 2026 il file era separato da punto e virgola, dal 2027 da virgola:
+    il separatore si legge dalla prima riga. Il numero dell'assicuratore puo'
+    essere riempito di zeri ('0008' contro '8')."""
     percorso = FONTE / "Tarife.csv"
     if not percorso.exists():
         return {}
     modelli: dict[str, dict] = {}
     with percorso.open(encoding="utf-8-sig", newline="") as f:
-        for r in csv.DictReader(f, delimiter=";"):
+        primo = f.readline()
+        f.seek(0)
+        separatore = ";" if primo.count(";") > primo.count(",") else ","
+        for r in csv.DictReader(f, delimiter=separatore):
             if r.get("Kategorie") != "MOD":
                 continue
             chiave = f"{int(r['Versicherer'])}|{r['Tarif']}"
@@ -295,20 +324,20 @@ def leggi_premi() -> tuple[dict, dict, int]:
             classe = CLASSI_ETA.get(r["Altersklasse"])
             if classe is None:
                 continue
-            indice = CHIAVI_FRANCHIGIA.get(r["Franchise"])
+            indice = indice_franchigia(r["Franchise"])
             if indice is None:
                 continue
             anno = anno or int(r["Geschäftsjahr"])
-            regione = r["Region"].replace("PR-REG CH", "")
+            regione = regione_da_codice(r["Region"])
             chiave = (r["Kanton"], regione,
                       int(r["Versicherer"]), r["Tarif"],
-                      1 if r["Unfalleinschluss"] == "MIT-UNF" else 0,
+                      1 if r["Unfalleinschluss"] == "MIT_UNF" else 0,
                       classe)
             g = gruppi.get(chiave)
             if g is None:
                 g = gruppi[chiave] = {
                     "premi": [None] * len(FRANCHIGIE),
-                    "tipo": r["Tariftyp"].replace("TAR-", ""),
+                    "tipo": r["Tariftyp"],
                     "base": r["isBaseP"] == "1",
                     "etichetta": pulisci(r["Tarifbezeichnung"]),
                 }
