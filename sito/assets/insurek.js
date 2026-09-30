@@ -26,14 +26,14 @@
     continua:  6000
   };
 
-  var TIPI = ["BASE", "HAM", "HMO", "DIV"];
+  var TIPI = ["BASE", "PRAXIS", "TEL_DIG", "FLEX"];
 
   /* Il testo che nasce da JavaScript. Quello che sta nell’HTML e' tradotto
      dagli attributi data-de/fr/en; questo no, perche' non esiste finche' non
      lo si costruisce. */
   var T = {
     it: {
-      tipo: { BASE: "Base", HAM: "Medico di famiglia", HMO: "HMO", DIV: "Telemedicina e altri" },
+      tipo: { BASE: "Base", PRAXIS: "Medico di famiglia / HMO", TEL_DIG: "Telemedicina e digitale", FLEX: "Altri modelli flessibili" },
       conInfortuni: "con infortuni", senzaInfortuni: "senza infortuni",
       classeE: "adulto", classeJ: "giovane adulto",
       etichettaRisposta: "La franchigia giusta per te",
@@ -68,7 +68,7 @@
       grafico: "Grafico, si può scorrere di lato"
     },
     de: {
-      tipo: { BASE: "Standard", HAM: "Hausarzt", HMO: "HMO", DIV: "Telmed und andere" },
+      tipo: { BASE: "Standard", PRAXIS: "Hausarzt / HMO", TEL_DIG: "Telmed und digital", FLEX: "Andere flexible Modelle" },
       conInfortuni: "mit Unfall", senzaInfortuni: "ohne Unfall",
       classeE: "Erwachsene", classeJ: "junge Erwachsene",
       etichettaRisposta: "Ihre richtige Franchise",
@@ -107,7 +107,7 @@
        segno di punteggiatura puo' andare a capo da solo, e a un lettore
        francese salta all’occhio. Non si vede nel codice: si misura. */
     fr: {
-      tipo: { BASE: "Standard", HAM: "Médecin de famille", HMO: "HMO", DIV: "Télémédecine et autres" },
+      tipo: { BASE: "Standard", PRAXIS: "Médecin de famille / HMO", TEL_DIG: "Télémédecine et numérique", FLEX: "Autres modèles flexibles" },
       conInfortuni: "avec accidents", senzaInfortuni: "sans accidents",
       classeE: "adulte", classeJ: "jeune adulte",
       etichettaRisposta: "La franchise qu’il vous faut",
@@ -142,7 +142,7 @@
       grafico: "Graphique, défilement horizontal possible"
     },
     en: {
-      tipo: { BASE: "Standard", HAM: "Family doctor", HMO: "HMO", DIV: "Telemedicine and others" },
+      tipo: { BASE: "Standard", PRAXIS: "Family doctor / HMO", TEL_DIG: "Telemedicine and digital", FLEX: "Other flexible models" },
       conInfortuni: "with accident cover", senzaInfortuni: "without accident cover",
       classeE: "adult", classeJ: "young adult",
       etichettaRisposta: "The deductible that fits you",
@@ -231,7 +231,7 @@
 
   function modello(numero, tariffa) {
     var m = stato.meta.modelli[numero + "|" + tariffa];
-    if (!m) return { nome: tariffa, tipo: "DIV" };
+    if (!m) return { nome: tariffa, tipo: "FLEX" };
     var lingua = window.Lingua.get();
     var nome = m[lingua] || m.de;   // in inglese i modelli non esistono: resta il tedesco
     return { nome: nome, tipo: m.t, base: m.b === 1 };
